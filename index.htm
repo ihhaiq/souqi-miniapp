@@ -210,6 +210,26 @@ svg{display:block;width:100%;height:100%}
 .tab.active{background:var(--surface-3);color:#f3f3f3}
 .tab-label{display:none;font-size:13px;white-space:nowrap}
 .tab.active .tab-label{display:inline}
+.tab .tab-icon{
+  width:40px;
+  height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 40px;
+}
+.tab-asset-icon{
+  width:40px;
+  height:40px;
+  display:block;
+  object-fit:contain;
+  object-position:center;
+  transform:none!important;
+  filter:none!important;
+  opacity:1;
+  pointer-events:none;
+  user-select:none;
+}
 .cart-btn{
   flex:0 0 42px;
   width:42px;
@@ -609,11 +629,26 @@ svg{display:block;width:100%;height:100%}
 
       <div class="tabs-row">
         <div class="tabs" id="tabs">
-          <button class="tab active" data-mode="gifts"><span class="tab-icon" data-icon="gift"></span><span class="tab-label">هدايا</span></button>
-          <button class="tab" data-mode="avatars"><span class="tab-icon" data-icon="character"></span><span class="tab-label">شخصيات</span></button>
-          <button class="tab" data-mode="featured"><span class="tab-icon" data-icon="star"></span><span class="tab-label">مميزة</span></button>
-          <button class="tab" data-mode="collectibles"><span class="tab-icon" data-icon="card"></span><span class="tab-label">مقتنيات</span></button>
-          <button class="tab" data-mode="channels"><span class="tab-icon" data-icon="telegram"></span><span class="tab-label">قنوات</span></button>
+          <button class="tab active" data-mode="gifts">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_01 م-1.png" alt=""></span>
+            <span class="tab-label">هدايا</span>
+          </button>
+          <button class="tab" data-mode="avatars">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_02 م-2.png" alt=""></span>
+            <span class="tab-label">شخصيات</span>
+          </button>
+          <button class="tab" data-mode="featured">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_04 م-3.png" alt=""></span>
+            <span class="tab-label">مميزة</span>
+          </button>
+          <button class="tab" data-mode="collectibles">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_07 م-4.png" alt=""></span>
+            <span class="tab-label">مقتنيات</span>
+          </button>
+          <button class="tab" data-mode="channels">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_08 م-5.png" alt=""></span>
+            <span class="tab-label">قنوات</span>
+          </button>
         </div>
         <button class="cart-btn" aria-label="العربة"><span class="action-icon" data-icon="cart"></span></button>
       </div>
