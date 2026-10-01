@@ -240,6 +240,150 @@ svg{display:block;width:100%;height:100%}
   color:#bdbdbd
 }
 
+/* featured / star tab */
+.featured-panel{
+  direction:rtl;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:0 10px 12px;
+  margin:0 0 10px;
+}
+.featured-panel[hidden]{display:none!important}
+.featured-head{
+  min-height:49px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  border-bottom:1px solid #292929;
+  color:#aaa;
+  font-size:12px;
+  font-weight:700;
+}
+.featured-info{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#777;
+  color:#1b1b1b;
+  font-size:11px;
+  font-weight:900;
+}
+.featured-options{
+  display:grid;
+  gap:12px;
+  padding:14px 0 13px;
+}
+.featured-option{
+  min-height:28px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#bdbdbd;
+  font-size:13px;
+  cursor:pointer;
+}
+.featured-option input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+.radio-dot{
+  width:20px;
+  height:20px;
+  flex:0 0 20px;
+  border:1px solid #676767;
+  border-radius:50%;
+  position:relative;
+}
+.featured-option input:checked + .radio-dot{
+  border:2px solid #ffd400;
+}
+.featured-option input:checked + .radio-dot::after{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border-radius:50%;
+  background:#ffd400;
+}
+.product-mark{
+  font-size:15px;
+  margin-inline-start:2px;
+}
+.featured-divider{
+  height:1px;
+  background:#292929;
+  margin:0 0 13px;
+}
+.featured-label{
+  display:block;
+  color:#888;
+  font-size:12px;
+  margin:0 0 6px;
+}
+.featured-recipient-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:8px;
+  margin-bottom:13px;
+  direction:rtl;
+}
+.featured-input{
+  width:100%;
+  min-width:0;
+  height:42px;
+  border:1px solid #363636;
+  border-radius:8px;
+  background:#282828;
+  color:#e7e7e7;
+  padding:0 11px;
+  text-align:right;
+  direction:rtl;
+  font-size:12px;
+}
+.featured-input::placeholder{color:#777}
+.featured-self{
+  min-width:122px;
+  height:42px;
+  padding:0 13px;
+  border-radius:8px;
+  background:#ffd400;
+  color:#171717;
+  font-size:12px;
+  font-weight:700;
+}
+.featured-amount{
+  margin-bottom:8px;
+}
+.featured-quick{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+}
+.featured-quick-btn{
+  height:38px;
+  border-radius:8px;
+  background:#292929;
+  border:1px solid #383838;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  color:#cfcfcf;
+  font-size:12px;
+}
+.featured-quick-btn b{
+  font-family:"Bodoni MT","Times New Roman",serif;
+  font-size:15px;
+  font-weight:400;
+}
+.tab[data-mode="featured"].active{
+  flex:1 1 0;
+}
+
 /* search + tools */
 .search-tools{
   display:grid;
@@ -813,9 +957,8 @@ svg{display:block;width:100%;height:100%}
             <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_02 م-2.png" alt=""></span>
             <span class="tab-label">شخصيات</span>
           </button>
-          <button class="tab" data-mode="featured">
+          <button class="tab" data-mode="featured" aria-label="شراء النجوم أو بريميوم">
             <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_04 م-3.png" alt=""></span>
-            <span class="tab-label">مميزة</span>
           </button>
           <button class="tab" data-mode="collectibles">
             <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_07 م-4.png" alt=""></span>
@@ -828,6 +971,45 @@ svg{display:block;width:100%;height:100%}
         </div>
         <button class="cart-btn" aria-label="العربة"><span class="action-icon" data-icon="cart"></span></button>
       </div>
+
+      <section id="featuredPanel" class="featured-panel" hidden>
+        <div class="featured-head">
+          <span>ماذا تريد أن تشتري؟</span>
+          <span class="featured-info" aria-hidden="true">i</span>
+        </div>
+
+        <div class="featured-options">
+          <label class="featured-option">
+            <input type="radio" name="featuredProduct" value="stars" checked>
+            <span class="radio-dot"></span>
+            <span>نجوم تليكرام</span>
+            <span class="product-mark">⭐</span>
+          </label>
+          <label class="featured-option">
+            <input type="radio" name="featuredProduct" value="premium">
+            <span class="radio-dot"></span>
+            <span>تليكرام بريميوم</span>
+            <span class="product-mark">🌟</span>
+          </label>
+        </div>
+
+        <div class="featured-divider"></div>
+
+        <label class="featured-label" for="featuredRecipient">المستلم</label>
+        <div class="featured-recipient-row">
+          <input id="featuredRecipient" class="featured-input" placeholder="أدخل مستخدم تليكرام">
+          <button id="sendToSelfBtn" class="featured-self" type="button">أرسل لنفسك</button>
+        </div>
+
+        <label class="featured-label" for="featuredAmount">الكمية</label>
+        <input id="featuredAmount" class="featured-input featured-amount" inputmode="numeric" placeholder="أدخل الكمية (50 - 1000000) أو اختر سريعاً">
+
+        <div class="featured-quick">
+          <button class="featured-quick-btn" type="button" data-amount="50"><span>⭐</span><b>50</b></button>
+          <button class="featured-quick-btn" type="button" data-amount="500"><span>⭐</span><b>500</b></button>
+          <button class="featured-quick-btn" type="button" data-amount="1000"><span>⭐</span><b>1000</b></button>
+        </div>
+      </section>
 
       <div class="search-tools" id="searchTools">
         <div class="search">
@@ -980,6 +1162,9 @@ const searchInput = document.getElementById('searchInput');
 const marketTitle = document.getElementById('marketTitle');
 const marketMeta = document.getElementById('marketMeta');
 const sortLabel = document.getElementById('sortLabel');
+const featuredPanel = document.getElementById('featuredPanel');
+const searchTools = document.getElementById('searchTools');
+const marketLine = document.querySelector('.market-line');
 
 const giftItems = [
   {name:'هدية كلاسيكية', id:'#GIFT-1201', price:3.76, type:'gift'},
@@ -1069,7 +1254,17 @@ function renderCards(items, visualKind, visualLabel){
 }
 
 function renderCurrent(){
-  notice.classList.toggle('show', currentMode === 'channels');
+  const isFeatured = currentMode === 'featured';
+  featuredPanel.hidden = !isFeatured;
+  searchTools.classList.toggle('hidden', isFeatured);
+  marketLine.classList.toggle('hidden', isFeatured);
+  grid.classList.toggle('hidden', isFeatured);
+  notice.classList.toggle('show', currentMode === 'channels' && !isFeatured);
+
+  if (isFeatured) {
+    return;
+  }
+
   if (currentMode === 'channels') {
     marketTitle.textContent = 'القنوات المعروضة';
     searchInput.placeholder = 'ابحث باسم القناة';
@@ -1078,10 +1273,6 @@ function renderCurrent(){
     marketTitle.textContent = 'الشخصيات المعروضة';
     searchInput.placeholder = 'ابحث باسم العنصر أو رقمه';
     renderCards(giftItems, 'character', 'شخصية');
-  } else if (currentMode === 'featured') {
-    marketTitle.textContent = 'العناصر المميزة';
-    searchInput.placeholder = 'ابحث باسم العنصر أو رقمه';
-    renderCards(giftItems, 'featured', 'مميز');
   } else if (currentMode === 'collectibles') {
     marketTitle.textContent = 'المقتنيات المعروضة';
     searchInput.placeholder = 'ابحث باسم العنصر أو رقمه';
@@ -1220,6 +1411,25 @@ document.getElementById('walletCustom').addEventListener('input', function(e){
 document.getElementById('walletContinue').addEventListener('click', function(){
   const msg = 'تم اختيار تعبئة 💎 ' + walletAmount + ' — هذه معاينة فقط.';
   if (tg && tg.showAlert) tg.showAlert(msg); else alert(msg);
+});
+
+document.querySelectorAll('.featured-quick-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.getElementById('featuredAmount').value = btn.dataset.amount || '';
+  });
+});
+
+document.getElementById('sendToSelfBtn').addEventListener('click', function(){
+  const input = document.getElementById('featuredRecipient');
+  let username = '';
+  if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user && tg.initDataUnsafe.user.username) {
+    username = '@' + tg.initDataUnsafe.user.username;
+  }
+  if (username) {
+    input.value = username;
+  } else if (tg && tg.showAlert) {
+    tg.showAlert('اسم مستخدم تليكرام غير متاح في جلسة المعاينة.');
+  }
 });
 
 renderCurrent();
