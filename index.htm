@@ -424,6 +424,79 @@ svg{display:block;width:100%;height:100%}
 }
 .tool-btn.active{background:#2c2c2c;color:#f2f2f2;border-color:#484848}
 
+.market-filter-strip{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  padding:0 0 8px;
+  direction:ltr;
+  scroll-snap-type:x proximity;
+}
+.market-filter-strip::-webkit-scrollbar{display:none}
+.market-filter-chip{
+  flex:0 0 auto;
+  height:36px;
+  padding:0 11px;
+  border-radius:8px;
+  background:#262626;
+  border:1px solid #303030;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  color:#b8b8b8;
+  font-size:12px;
+  white-space:nowrap;
+  scroll-snap-align:start;
+}
+.market-filter-chip:active{background:#2d2d2d}
+.chip-chevron{
+  font-size:14px;
+  line-height:1;
+  color:#9a9a9a;
+  transform:translateY(-1px)
+}
+.cube-mini{
+  width:16px;
+  height:16px;
+  position:relative;
+  display:inline-block;
+}
+.cube-mini::before,
+.cube-mini::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border:1.3px solid #9d9d9d;
+  transform:rotate(30deg) skewY(-30deg) scaleY(.86);
+  border-radius:2px;
+}
+.cube-mini::after{
+  inset:5px 2px 1px 7px;
+  border-left:0;
+  border-top:0;
+  transform:none;
+  border-radius:0;
+}
+.market-strip-sort{
+  flex:0 0 38px;
+  width:38px;
+  height:36px;
+  border-radius:8px;
+  background:#292929;
+  border:1px solid #343434;
+  color:#ffd400;
+  display:grid;
+  place-items:center;
+}
+.market-strip-sort .small-icon{
+  width:18px;
+  height:18px;
+}
 .market-line{
   min-height:27px;
   display:flex;
@@ -732,13 +805,14 @@ svg{display:block;width:100%;height:100%}
   }
 
   .row-top{
-    min-height:44px;
-    margin-bottom:7px;
+    min-height:42px;
+    margin-bottom:2px;
   }
 
   .banner-wrap{
     height:76px;
-    margin-bottom:11px;
+    margin-top:-1px;
+    margin-bottom:10px;
     border-radius:15px;
   }
   .banner-slide{
@@ -829,6 +903,22 @@ svg{display:block;width:100%;height:100%}
   }
   .search input{
     font-size:12px;
+  }
+
+  .market-filter-strip{
+    gap:6px;
+    padding-bottom:8px;
+  }
+  .market-filter-chip{
+    height:34px;
+    padding:0 10px;
+    border-radius:8px;
+    font-size:11px;
+  }
+  .market-strip-sort{
+    width:36px;
+    height:34px;
+    flex-basis:36px;
   }
 
   .market-line{
@@ -1020,6 +1110,24 @@ svg{display:block;width:100%;height:100%}
         <button id="sortBtn" class="tool-btn" aria-label="الترتيب"><span class="small-icon" data-icon="sort"></span></button>
       </div>
 
+      <div class="market-filter-strip" id="marketFilterStrip">
+        <button class="market-filter-chip" type="button" data-strip-filter="symbol">
+          <span>الرمز</span><span class="chip-chevron">⌄</span>
+        </button>
+        <button class="market-filter-chip" type="button" data-strip-filter="price">
+          <span>السعر</span><span class="chip-chevron">⌄</span>
+        </button>
+        <button class="market-filter-chip premarket-chip" type="button" data-strip-filter="premarket">
+          <span class="cube-mini" aria-hidden="true"></span><span>قبل السوق</span>
+        </button>
+        <button class="market-filter-chip" type="button" data-strip-filter="upgrade">
+          <span>الترقية</span><span class="chip-chevron">⌄</span>
+        </button>
+        <button class="market-strip-sort" id="marketStripSort" type="button" aria-label="ترتيب">
+          <span class="small-icon" data-icon="sort"></span>
+        </button>
+      </div>
+
       <div class="market-line">
         <div>
           <div id="marketTitle" class="market-title">الهدايا المعروضة</div>
@@ -1174,6 +1282,7 @@ const sortLabel = document.getElementById('sortLabel');
 const featuredPanel = document.getElementById('featuredPanel');
 const searchTools = document.getElementById('searchTools');
 const marketLine = document.querySelector('.market-line');
+const marketFilterStrip = document.getElementById('marketFilterStrip');
 
 const giftItems = [
   {name:'هدية كلاسيكية', id:'#GIFT-1201', price:3.76, type:'gift'},
@@ -1266,6 +1375,7 @@ function renderCurrent(){
   const isFeatured = currentMode === 'featured';
   featuredPanel.hidden = !isFeatured;
   searchTools.classList.toggle('hidden', isFeatured);
+  marketFilterStrip.classList.toggle('hidden', isFeatured);
   marketLine.classList.toggle('hidden', isFeatured);
   grid.classList.toggle('hidden', isFeatured);
   notice.classList.toggle('show', currentMode === 'channels' && !isFeatured);
@@ -1307,6 +1417,19 @@ document.getElementById('tabs').addEventListener('click', function(e){
 });
 
 searchInput.addEventListener('input', renderCurrent);
+
+document.querySelectorAll('.market-filter-chip').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    const kind = btn.dataset.stripFilter;
+    if (kind === 'price' || kind === 'symbol' || kind === 'upgrade' || kind === 'premarket') {
+      openSheet();
+    }
+  });
+});
+
+document.getElementById('marketStripSort').addEventListener('click', function(){
+  document.getElementById('sortBtn').click();
+});
 
 document.getElementById('sortBtn').addEventListener('click', function(){
   sortMode = (sortMode + 1) % 3;
