@@ -1542,3 +1542,8 @@ body.subpage-open .market{display:none}
   }
   .status-tab{min-width:64px}
 }
+
+
+#escrowHistory{
+  scroll-margin-top:72px
+}

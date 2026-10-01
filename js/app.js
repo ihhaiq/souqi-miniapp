@@ -536,6 +536,20 @@ document.querySelectorAll('[data-go-market]').forEach(function(btn){
   btn.addEventListener('click', function(){ showRoute('market', true); });
 });
 
+document.querySelectorAll('[data-escrow-action="market"]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    showRoute('market', true);
+  });
+});
+
+document.querySelectorAll('[data-escrow-action="history"]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    const historySection = document.getElementById('escrowHistory');
+    if (!historySection) return;
+    historySection.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
 document.querySelectorAll('.status-tab').forEach(function(btn){
   btn.addEventListener('click', function(){
     document.querySelectorAll('.status-tab').forEach(function(tab){ tab.classList.remove('active'); });
