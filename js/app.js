@@ -482,5 +482,72 @@ document.getElementById('sendToSelfBtn').addEventListener('click', function(){
   }
 });
 
+
+
+/* frontend-only page routing */
+const marketPage = document.getElementById('marketPage');
+const addProductPage = document.getElementById('addProductPage');
+const escrowPage = document.getElementById('escrowPage');
+const bottomNav = document.getElementById('bottomNav');
+
+function normalizeRoute(value){
+  const route = String(value || '').replace(/^#/, '');
+  if (route === 'add-product' || route === 'escrow' || route === 'market') return route;
+  return 'market';
+}
+
+function showRoute(route, updateHash){
+  route = normalizeRoute(route);
+  const isMarket = route === 'market';
+
+  if (marketPage) marketPage.hidden = !isMarket;
+  if (addProductPage) addProductPage.hidden = route !== 'add-product';
+  if (escrowPage) escrowPage.hidden = route !== 'escrow';
+  document.body.classList.toggle('subpage-open', !isMarket);
+
+  if (bottomNav) {
+    bottomNav.querySelectorAll('.nav').forEach(function(btn){
+      btn.classList.toggle('active', btn.dataset.route === route);
+    });
+  }
+
+  if (updateHash && window.location.hash !== '#' + route) {
+    history.replaceState(null, '', '#' + route);
+  }
+
+  window.scrollTo({top:0, behavior:'instant'});
+  mountIcons(document);
+}
+
+if (bottomNav) {
+  bottomNav.addEventListener('click', function(e){
+    const btn = e.target.closest('.nav');
+    if (!btn) return;
+    const route = btn.dataset.route;
+
+    if (route === 'add-product' || route === 'escrow' || route === 'market') {
+      showRoute(route, true);
+    }
+    // "طلباتي" و"المخزن" يبقيان قابلين للضغط بصريًا فقط في هذه المرحلة.
+  });
+}
+
+document.querySelectorAll('[data-go-market]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('market', true); });
+});
+
+document.querySelectorAll('.status-tab').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.status-tab').forEach(function(tab){ tab.classList.remove('active'); });
+    btn.classList.add('active');
+  });
+});
+
+window.addEventListener('hashchange', function(){
+  showRoute(window.location.hash, false);
+});
+
+
 renderCurrent();
 hydrateFromBackend();
+showRoute(window.location.hash || '#market', false);
