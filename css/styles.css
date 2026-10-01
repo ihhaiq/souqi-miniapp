@@ -1260,3 +1260,34 @@ body.subpage-open .market{display:none}
   .add-product-hero,.mediation-hero{padding:24px 15px 15px}
   .status-tab{min-width:66px}
 }
+
+
+.subpage-heading{flex:1}
+.subpage-actions{
+  display:flex;
+  gap:7px;
+  margin-inline-start:auto
+}
+.subpage-actions .icon-btn{
+  width:38px;
+  height:38px;
+  flex:0 0 38px
+}
+.history-search-go{
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  color:#8b8b8b;
+  font-size:17px
+}
+.history-search-go:active{background:#292929}
+@media(max-width:370px){
+  .subpage-header{gap:8px;padding-left:9px;padding-right:9px}
+  .subpage-actions{gap:5px}
+  .subpage-actions .icon-btn{width:34px;height:34px;flex-basis:34px}
+  .subpage-back{width:38px;height:38px;flex-basis:38px}
+  .subpage-heading h1{font-size:17px}
+}
