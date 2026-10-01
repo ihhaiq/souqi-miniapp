@@ -240,8 +240,8 @@
           <h2>الوساطة في سوقي</h2>
           <p>اتفاق واضح، إثباتات خاصة، ومتابعة لكل خطوة.</p>
           <div class="mediation-hero-actions">
-            <button class="page-primary ui-only-action" type="button">اختر منتجًا وابدأ طلبك</button>
-            <button class="page-secondary ui-only-action" type="button">سجل عملياتي</button>
+            <button class="page-primary ui-only-action" type="button" data-escrow-action="market">اختر منتجًا وابدأ طلبك</button>
+            <button class="page-secondary ui-only-action" type="button" data-escrow-action="history">سجل عملياتي</button>
           </div>
         </section>
 
@@ -288,7 +288,7 @@
           <p class="section-copy">لا يوجد وسيط متاح الآن. تواصل مع الإدارة.</p>
         </section>
 
-        <section class="info-card mediation-history">
+        <section class="info-card mediation-history" id="escrowHistory">
           <h2 class="section-title">سجل الوساطة الخاص بك</h2>
 
           <div class="status-tabs" aria-label="حالات الوساطة">
