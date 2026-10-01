@@ -87,6 +87,13 @@ svg{display:block;width:100%;height:100%}
   color:#bdbdbd
 }
 .action-icon,.tab-icon,.small-icon,.nav-icon,.banner-icon{width:20px;height:20px;display:inline-block}
+[data-icon].uses-asset{overflow:hidden;position:relative}
+.asset-icon{width:100%;height:100%;display:block;object-fit:contain;pointer-events:none;user-select:none}
+[data-icon="gift"] .asset-icon{transform:scale(1.78)}
+[data-icon="character"] .asset-icon{transform:scale(1.64)}
+[data-icon="star"] .asset-icon{transform:scale(2.06)}
+[data-icon="card"] .asset-icon{transform:scale(2.02)}
+[data-icon="telegram"] .asset-icon{transform:scale(1.56)}
 
 /* banner */
 .banner-wrap{
@@ -729,9 +736,29 @@ const svg = {
   back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>'
 };
 
+const assetIcons = {
+  gift:'Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_01 م-1.png',
+  character:'Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_02 م-2.png',
+  star:'Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_04 م-3.png',
+  card:'Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_07 م-4.png',
+  telegram:'Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_08 م-5.png'
+};
+
 function mountIcons(root) {
   (root || document).querySelectorAll('[data-icon]').forEach(function(el){
-    if (!el.innerHTML) el.innerHTML = svg[el.dataset.icon] || '';
+    if (el.innerHTML) return;
+    const name = el.dataset.icon;
+    if (assetIcons[name]) {
+      el.classList.add('uses-asset');
+      const img = document.createElement('img');
+      img.className = 'asset-icon';
+      img.src = assetIcons[name];
+      img.alt = '';
+      img.draggable = false;
+      el.appendChild(img);
+      return;
+    }
+    el.innerHTML = svg[name] || '';
   });
 }
 mountIcons();
