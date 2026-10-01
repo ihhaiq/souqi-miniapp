@@ -162,7 +162,6 @@ async function hydrateFromBackend(){
     const note = document.querySelector('.wallet-note');
     if (note) note.textContent = 'سيتم تنفيذ التعبئة عبر الخادم المرتبط بالتطبيق.';
     renderCurrent();
-hydrateFromBackend();
   } catch (error) {
     console.error('[souqi] backend bootstrap failed', error);
   }
@@ -484,3 +483,4 @@ document.getElementById('sendToSelfBtn').addEventListener('click', function(){
 });
 
 renderCurrent();
+hydrateFromBackend();
