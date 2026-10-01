@@ -3,105 +3,541 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#151515">
+<meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{
-  --bg:#151515; --panel:#1d1d1d; --panel-2:#252525; --line:#343434;
-  --text:#f2f2f2; --muted:#8e8e8e; --soft:#bdbdbd; --yellow:#ffd33b; --green:#43b36b;
+  --bg:#141414;
+  --surface:#1c1c1c;
+  --surface-2:#232323;
+  --surface-3:#292929;
+  --line:#303030;
+  --line-strong:#3a3a3a;
+  --text:#f4f4f4;
+  --muted:#8b8b8b;
+  --soft:#b9b9b9;
+  --accent:#f0c94a;
+  --danger:#c77474;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+html,body{
+  margin:0;
+  min-height:100%;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased
+}
 body{min-height:100vh;overflow-x:hidden}
+body.sheet-open{overflow:hidden}
 button,input{font:inherit}
-button{border:0;background:none;color:inherit;cursor:pointer}
+button{border:0;background:none;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
 input{outline:0}
-.app{width:100%;max-width:960px;margin:0 auto;min-height:100vh;padding-bottom:calc(74px + env(safe-area-inset-bottom))}
-.market.hidden{display:none}
-.shell{padding:16px 8px 0}
-.row-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;direction:ltr}
-.user-box{display:flex;align-items:center;gap:10px}
-.avatar{width:44px;height:44px;border-radius:10px;object-fit:cover;background:#222}
-.balance{display:flex;align-items:center;gap:6px;font-size:18px;color:#fff}
-.balance-gem{width:14px;height:14px;display:inline-block}
-.plus{width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:#3a3a3a;color:#ccc;font-weight:800}
-.actions{display:flex;gap:8px}
-.icon-btn,.cart-btn,.feed,.wallet-back,.chip-icon{display:grid;place-items:center}
-.icon-btn{width:44px;height:44px;border-radius:8px;background:#262626;border:1px solid #353535;color:#c0c0c0}
-.banner-wrap{position:relative;height:86px;border-radius:16px;overflow:hidden;background:#222;margin-bottom:14px}
-.banner-track{display:flex;height:100%;direction:ltr;transition:transform .62s cubic-bezier(.22,.75,.22,1)}
-.banner-slide{min-width:100%;height:100%;padding:14px 16px 12px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.banner-copy{min-width:0}
-.banner-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:4px}
-.banner-sub{font-size:13px;color:#ddd}
-.banner-badge{display:inline-flex;align-items:center;justify-content:center;padding:5px 12px;background:#f1f1f1;color:#111;border-radius:999px;font-size:12px;font-weight:700;margin-top:10px}
-.banner-art{display:flex;align-items:center;justify-content:center;gap:10px;min-width:110px}
-.banner-dots{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);display:flex;gap:5px;direction:ltr}
-.banner-dot{width:6px;height:6px;border-radius:999px;background:rgba(255,255,255,.36);transition:.25s}
-.banner-dot.active{width:17px;background:#fff}
-.banner-1{background:linear-gradient(90deg,#090909 0%,#24211a 60%,#3a3224 100%)}
-.banner-2{background:linear-gradient(90deg,#101010 0%,#1a2a1a 55%,#294534 100%)}
-.banner-3{background:linear-gradient(90deg,#101010 0%,#262626 58%,#3d3120 100%)}
-.tabs-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;direction:ltr}
-.tabs{flex:1;display:flex;border:1px solid #2f2f2f;border-radius:8px;overflow:hidden;background:rgba(0,0,0,.06)}
-.tab{height:46px;min-width:52px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 11px;color:#bdbdbd;border-right:1px solid #2f2f2f}
+svg{display:block;width:100%;height:100%}
+.app{
+  width:100%;
+  max-width:960px;
+  margin:0 auto;
+  min-height:100vh;
+  padding-bottom:calc(64px + env(safe-area-inset-bottom))
+}
+.shell{padding:10px 10px 18px}
+
+/* top */
+.row-top{
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:9px;
+  direction:ltr
+}
+.user-box{display:flex;align-items:center;gap:8px}
+.avatar{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  object-fit:cover;
+  background:var(--surface-2);
+  border:1px solid var(--line)
+}
+.balance{display:flex;align-items:center;gap:5px;color:#fff;font-size:16px;font-weight:700}
+.balance-gem{width:13px;height:13px;display:inline-block;flex:0 0 auto}
+.plus{
+  width:21px;
+  height:21px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#343434;
+  color:#d7d7d7;
+  font-size:15px;
+  font-weight:800
+}
+.actions{display:flex;gap:6px}
+.icon-btn,.cart-btn,.wallet-back,.tool-btn{display:grid;place-items:center}
+.icon-btn{
+  width:38px;
+  height:38px;
+  border-radius:9px;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  color:#bdbdbd
+}
+.action-icon,.tab-icon,.small-icon,.nav-icon,.banner-icon{width:20px;height:20px;display:inline-block}
+
+/* banner */
+.banner-wrap{
+  position:relative;
+  height:92px;
+  overflow:hidden;
+  border-radius:15px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  margin-bottom:9px
+}
+.banner-track{
+  display:flex;
+  height:100%;
+  direction:ltr;
+  transition:transform .52s cubic-bezier(.2,.75,.25,1)
+}
+.banner-slide{
+  min-width:100%;
+  height:100%;
+  padding:12px 14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  background:#211f1a
+}
+.banner-slide:nth-child(2){background:#1c211d}
+.banner-slide:nth-child(3){background:#202020}
+.banner-copy{min-width:0;text-align:right;direction:rtl}
+.banner-title{font-size:16px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:4px}
+.banner-sub{
+  font-size:11px;
+  color:#b7b7b7;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:260px
+}
+.banner-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:22px;
+  padding:0 10px;
+  margin-top:7px;
+  border-radius:999px;
+  background:#efefef;
+  color:#121212;
+  font-size:10px;
+  font-weight:800
+}
+.banner-art{
+  flex:0 0 76px;
+  height:58px;
+  border-radius:13px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.07);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  color:#d8d8d8
+}
+.banner-art .banner-icon{width:25px;height:25px}
+.banner-dots{
+  position:absolute;
+  left:50%;
+  bottom:7px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:4px;
+  direction:ltr
+}
+.banner-dot{
+  width:5px;
+  height:5px;
+  border-radius:999px;
+  background:rgba(255,255,255,.3);
+  transition:.2s
+}
+.banner-dot.active{width:15px;background:#f0f0f0}
+
+/* categories */
+.tabs-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:9px;
+  direction:ltr
+}
+.tabs{
+  min-width:0;
+  flex:1;
+  display:flex;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--surface)
+}
+.tab{
+  min-width:44px;
+  height:42px;
+  flex:1;
+  padding:0 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  color:#9b9b9b;
+  border-right:1px solid var(--line)
+}
 .tab:last-child{border-right:0}
-.tab.active{background:#2a2a2a;color:#fff;box-shadow:inset 0 0 0 1px #555}
-.tab-label{display:none;font-size:15px;white-space:nowrap}
+.tab.active{background:var(--surface-3);color:#f3f3f3}
+.tab-label{display:none;font-size:13px;white-space:nowrap}
 .tab.active .tab-label{display:inline}
-.tab-icon,.small-icon,.nav-icon,.action-icon,.banner-icon{width:20px;height:20px;display:inline-block}
-.cart-btn{width:47px;height:47px;border-radius:8px;background:#252525;border:1px solid #343434;color:#bdbdbd}
-.search-row{display:flex;gap:8px;direction:ltr;margin-bottom:10px}
-.search{flex:1;height:48px;border-radius:8px;background:#242424;border:1px solid #343434;display:flex;align-items:center;gap:8px;padding:0 13px;color:#8d8d8d}
-.search input{width:100%;border:0;background:transparent;color:#ddd;font-size:15px}
-.feed{width:108px;height:48px;border-radius:8px;background:#292929;border:1px solid #393939;color:#bdbdbd;font-size:14px;grid-template-columns:18px 1fr;gap:7px;padding:0 12px}
-.filters{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;direction:ltr;margin-bottom:14px}
-.filters::-webkit-scrollbar{display:none}
-.filter{flex:0 0 auto;height:39px;padding:0 12px;border-radius:8px;background:#292929;border:1px solid #2f2f2f;color:#aaa;font-size:13px}
-.notice{display:none;margin-bottom:12px;background:#483612;border:1px solid #5b471b;border-radius:8px;padding:12px 13px;color:#dbc9a6;font-size:13px}
+.cart-btn{
+  flex:0 0 42px;
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  color:#bdbdbd
+}
+
+/* search + tools */
+.search-tools{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 42px 42px;
+  gap:7px;
+  margin-bottom:9px;
+  direction:ltr
+}
+.search{
+  height:42px;
+  border-radius:10px;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:0 11px;
+  color:#888
+}
+.search input{
+  width:100%;
+  min-width:0;
+  border:0;
+  background:transparent;
+  color:#e4e4e4;
+  font-size:13px;
+  text-align:right;
+  direction:rtl
+}
+.search input::placeholder{color:#777}
+.tool-btn{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  color:#aaa
+}
+.tool-btn.active{background:#2c2c2c;color:#f2f2f2;border-color:#484848}
+
+.market-line{
+  min-height:27px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:0 2px 7px;
+  direction:rtl
+}
+.market-title{font-size:13px;font-weight:800;color:#dcdcdc}
+.market-meta{font-size:10px;color:#777;font-weight:500}
+.sort-label{font-size:10px;color:#888;white-space:nowrap}
+
+.notice{
+  display:none;
+  margin-bottom:9px;
+  background:#2a2518;
+  border:1px solid #403823;
+  border-radius:10px;
+  padding:10px 11px;
+  color:#cbbf9d;
+  font-size:11px;
+  line-height:1.55
+}
 .notice.show{display:block}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;direction:ltr}
-.card{background:#1d1d1d;border:1px solid #2c2c2c;border-radius:8px;overflow:hidden;direction:ltr}
-.preview{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;background:radial-gradient(circle at 50% 22%, rgba(255,255,255,.07), transparent 45%), linear-gradient(180deg,#262626 0%,#1f1f1f 100%)}
-.preview.gift-only{background:radial-gradient(circle at 50% 18%, rgba(255,211,59,.08), transparent 42%), linear-gradient(180deg,#232323 0%,#1d1d1d 100%)}
-.preview-title{font-size:17px;font-weight:800;color:#f4f4f4}
-.card-body{padding:9px 8px}
-.item-name{font-size:12px;color:#f1f1f1;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700}
-.hash{font-size:10px;color:#8b8b8b;margin-bottom:8px}
-.pay-row{display:flex;gap:6px;margin-bottom:6px}
-.pay-badge{height:24px;flex:1;border-radius:7px;background:#272727;border:1px solid #343434;display:flex;align-items:center;justify-content:center;gap:4px;color:#cfcfcf;font-size:10px}
-.buy-row{display:flex;gap:6px}
-.price{height:35px;flex:1;border-radius:7px;background:#2a2a2a;border:1px solid #353535;display:flex;align-items:center;justify-content:center;gap:4px;color:#d7d7d7;font-size:12px;font-weight:700}
-.buy-btn{width:36px;height:35px;border-radius:7px;background:#2a2a2a;border:1px solid #353535;color:#bdbdbd;display:grid;place-items:center}
-.bottom{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,960px);height:calc(72px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#191919;border-top:1px solid #252525;display:grid;grid-template-columns:repeat(5,1fr);z-index:25}
-.nav{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#707070;font-size:11px}
-.nav.active{color:#f2f2f2}
-.wallet-page{display:none;position:fixed;inset:0;z-index:60;background:#151515;overflow:auto;padding:0 16px 30px}
+
+/* cards */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+  direction:rtl
+}
+.card{
+  min-width:0;
+  overflow:hidden;
+  border-radius:13px;
+  background:var(--surface);
+  border:1px solid #2b2b2b;
+  direction:rtl
+}
+.preview{
+  position:relative;
+  width:100%;
+  aspect-ratio:1.12/1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:8px;
+  background:#222;
+  border-bottom:1px solid #2a2a2a;
+  color:#bdbdbd
+}
+.preview.gift-only{background:#211f1a;color:#d4d0c2}
+.preview .banner-icon{width:31px;height:31px}
+.preview-title{font-size:14px;font-weight:800;color:#dedede}
+.preview-type{
+  position:absolute;
+  top:8px;
+  right:8px;
+  height:21px;
+  display:flex;
+  align-items:center;
+  padding:0 8px;
+  border-radius:999px;
+  background:rgba(20,20,20,.66);
+  border:1px solid rgba(255,255,255,.08);
+  color:#bdbdbd;
+  font-size:9px
+}
+.card-body{padding:9px}
+.item-name{
+  font-size:13px;
+  line-height:1.35;
+  color:#f0f0f0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-weight:700;
+  margin-bottom:3px
+}
+.hash{
+  font-size:10px;
+  color:#7e7e7e;
+  direction:ltr;
+  text-align:right;
+  margin-bottom:8px
+}
+.price{
+  width:100%;
+  height:34px;
+  border-radius:9px;
+  background:#282828;
+  border:1px solid #383838;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  color:#e4e4e4;
+  font-size:12px;
+  font-weight:700;
+  transition:transform .12s,background .12s
+}
+.price:active{transform:scale(.985);background:#303030}
+.price-num{
+  font-family:"Bodoni MT","Times New Roman",serif;
+  font-size:16px;
+  line-height:1;
+  direction:ltr
+}
+.empty-state{
+  grid-column:1/-1;
+  min-height:180px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  color:#777;
+  font-size:13px
+}
+
+/* bottom navigation */
+.bottom{
+  position:fixed;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:min(100%,960px);
+  height:calc(62px + env(safe-area-inset-bottom));
+  padding-bottom:env(safe-area-inset-bottom);
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  background:#181818;
+  border-top:1px solid #252525;
+  z-index:25
+}
+.nav{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  color:#666;
+  font-size:10px
+}
+.nav .nav-icon{width:19px;height:19px}
+.nav.active{color:#efefef}
+
+/* filter sheet */
+.sheet-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:70;
+  background:rgba(0,0,0,.58);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s
+}
+.filter-sheet{
+  position:fixed;
+  left:50%;
+  bottom:0;
+  z-index:71;
+  width:min(100%,960px);
+  transform:translate(-50%,105%);
+  background:#1a1a1a;
+  border:1px solid #2d2d2d;
+  border-bottom:0;
+  border-radius:18px 18px 0 0;
+  padding:12px 14px calc(18px + env(safe-area-inset-bottom));
+  transition:transform .22s ease
+}
+.sheet-backdrop.show{opacity:1;pointer-events:auto}
+.filter-sheet.show{transform:translate(-50%,0)}
+.sheet-grab{width:38px;height:4px;border-radius:99px;background:#444;margin:0 auto 12px}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
+.sheet-head strong{font-size:15px}
+.sheet-close{font-size:12px;color:#aaa}
+.filter-group{margin-bottom:13px}
+.filter-group-title{font-size:11px;color:#8e8e8e;margin-bottom:7px}
+.filter-options{display:flex;flex-wrap:wrap;gap:7px}
+.filter-chip{
+  min-height:34px;
+  padding:0 11px;
+  border-radius:9px;
+  background:#232323;
+  border:1px solid #333;
+  color:#b7b7b7;
+  font-size:11px
+}
+.filter-chip.active{background:#303030;border-color:#555;color:#fff}
+.sheet-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:5px}
+.sheet-reset,.sheet-apply{height:42px;border-radius:10px;font-weight:800;font-size:12px}
+.sheet-reset{background:#252525;border:1px solid #343434;color:#bbb}
+.sheet-apply{background:#ededed;color:#121212}
+
+/* wallet */
+.wallet-page{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:90;
+  background:var(--bg);
+  overflow:auto;
+  padding:0 14px 30px
+}
 .wallet-page.show{display:block}
-.wallet-head{position:sticky;top:0;z-index:2;height:60px;background:#151515;border-bottom:1px solid #272727;display:flex;align-items:center;justify-content:space-between;margin:0 -16px 18px;padding:0 16px}
-.wallet-head h2{font-size:18px;margin:0}
-.wallet-back{width:40px;height:40px;border-radius:9px;background:#242424;border:1px solid #333}
-.wallet-card{background:#1d1d1d;border:1px solid #303030;border-radius:14px;padding:18px;margin-bottom:16px}
-.wallet-card small{display:block;color:#888;margin-bottom:8px}
-.wallet-balance{font-size:32px;font-weight:800;direction:ltr;text-align:right}
-.wallet-title{font-size:15px;font-weight:700;margin-bottom:10px}
-.wallet-amounts{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-.wallet-amount{height:64px;border-radius:11px;background:#222;border:1px solid #333;display:flex;align-items:center;justify-content:space-between;padding:0 14px}
-.wallet-amount.active{background:#292929;border-color:#5a5a5a}
-.wallet-custom{display:flex;gap:8px;margin-top:10px}
-.wallet-custom input{flex:1;height:49px;background:#222;border:1px solid #333;border-radius:10px;color:#fff;padding:0 12px;text-align:right}
-.wallet-primary{height:49px;padding:0 18px;border-radius:10px;background:#f2f2f2;color:#151515;font-weight:800}
-.wallet-note{font-size:11px;color:#777;line-height:1.7;margin-top:12px}
+.wallet-head{
+  position:sticky;
+  top:0;
+  z-index:2;
+  height:58px;
+  margin:0 -14px 16px;
+  padding:0 14px;
+  background:var(--bg);
+  border-bottom:1px solid #262626;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+.wallet-head h2{font-size:16px;margin:0}
+.wallet-back{
+  width:38px;
+  height:38px;
+  border-radius:9px;
+  background:var(--surface-2);
+  border:1px solid var(--line)
+}
+.wallet-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:15px
+}
+.wallet-card small{display:block;color:#888;margin-bottom:7px}
+.wallet-balance{font-size:30px;font-weight:800;direction:ltr;text-align:right}
+.wallet-title{font-size:14px;font-weight:700;margin-bottom:9px}
+.wallet-amounts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.wallet-amount{
+  height:60px;
+  border-radius:11px;
+  background:#222;
+  border:1px solid #333;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 12px
+}
+.wallet-amount.active{background:#292929;border-color:#555}
+.wallet-custom{display:flex;gap:8px;margin-top:9px}
+.wallet-custom input{
+  flex:1;
+  min-width:0;
+  height:47px;
+  background:#222;
+  border:1px solid #333;
+  border-radius:10px;
+  color:#fff;
+  padding:0 11px;
+  text-align:right
+}
+.wallet-primary{
+  height:47px;
+  padding:0 16px;
+  border-radius:10px;
+  background:#efefef;
+  color:#151515;
+  font-weight:800
+}
+.wallet-note{font-size:10px;color:#777;line-height:1.7;margin-top:11px}
 .hidden{display:none!important}
-@media(max-width:430px){
-  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .banner-wrap{height:80px}
-  .banner-title{font-size:16px}
-  .banner-sub{font-size:12px}
-  .tab{padding:0 8px;min-width:0;flex:1}
-  .tab-label{font-size:14px}
-  .feed{width:96px}
+
+@media(max-width:370px){
+  .shell{padding-left:8px;padding-right:8px}
+  .banner-art{flex-basis:64px}
+  .banner-sub{max-width:205px}
+  .grid{gap:7px}
+  .card-body{padding:8px}
+  .tab{padding:0 5px}
+  .tab-label{font-size:12px}
+}
+@media(min-width:700px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .preview{aspect-ratio:1.18/1}
 }
 </style>
 </head>
@@ -113,7 +549,7 @@ input{outline:0}
         <div class="user-box">
           <img class="avatar" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCAAuAC4DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDkf2aP2XLL4m+HX8c+Op7uDQWkMVhZWziN7xlYBnZ+SIwdy4AySCcgDn6hi/ZA/Z+dB/xQDHjhjqt7z+U3/wBarv7Lkaj9k3wXKV+X7LIcep8+Tmu8+IHi+w8FfDnUfEursotYFAxKxCZZgoyfqw+teY5zqTaudKhGKPDvHH7Pf7NXgzS4pp/h/bSTux/cPr15E7KFOdu6fnnAJ6DJPavCNC1j9kO68SDTPEPwruNJtiWU38WtXt3HGR2YJKG+pAOM+nI5zxF+0BqnxE0OTStcuYbNGly0VspCrCMpErMOQqsysznkuRjoK8S1nVrG6vojYwNGYyy72JLvhiATkZzz6mt6VKUr8zCUoxS5T9GbX9ln9mzxH4aS/wBD8KkW9zGGhu7fVbssAeQQHlIzgjhl4PXpXxv+0R8Cbj4K+MrQWF3Nf+HtUDvYTzgebGVxuik24BYbhhgACCeODXvH7Enj7UZBqXgO4h820jja9hdJFDR/MA4+YjKAtnjJBbp1x0f7c72N7+zfol5aTRStH4lii8yIg7c21ySoPpwPrisOaVOok3oVKKlG6R6j+zIcfsjeCASB/oshz/23krpvjL4Bb4j/AAW1nw3bIn9oSQO1i0hwiz7SEJyD3P8AI9QK4r9mhmn/AGSPCUQwdlq+DnP/AC2kNd1Lr/kSmJ5GUpkFM4B/D/PeuZYlU6jbN1Qc4o/MrR4bTwX8OfG3gjxToxj8R6s8CedKmHsEhlDnDFvmJIwVAPAHIIriNa8H674V1CK08TQT2F3Lbx3MMUqEM8TjKMOPun1zxzX6Sat4W8AeOvjal94k8Jad4gdLISyyTlme0KsAny5wyHLErg4Iz3NcF+0pr3wputPsbfUNE0vxN4tT91bXdm7BNPgLZ/eupx/uoTnLZ4BOeyON1M3hbmf+xL8M9a0+C/8AiNqa/ZobiP7DaRuh3SIdrO4ORjoijqPvVp/txwRWvwB0y2s7KK3gPiO2kIjXarMbW6zjt+VHgT4veNtXW20y3+xWOm26BRFbwkEKOi5z3qh+2G1/cfss6Nf38mXn8TQFA+eB9luvWuX27qVVFG06Hs6blc6/9lzxVYv8DvDGgeY0syWUshCD7mJn4PPrmu3+Jfh7WLoQ3+i7ijvh1hTLsefk3ZwM9M471+dXw5+KOt+Ab0fZpZ3tjwFjk2snJJxnjnNfUXhr9uHwvY2iW/iTw9r99IpB8yGOEn9ZBUV8G1NszpYjRJHd+CvEeq+EfDPjjxBeaDPe6s0sXlW0SEKiRoxJ9lTexI+g6njk9asLf4veEPEOq23h59KuIF3SzrEAl6ByzcE4cYxk8Nn2OdBv22fgvN9qY+FvGUEt1kTGOztWDnGMnNxzwKpaR+2F8BNG0KPSIfC3jd7dSWKPY2hDEnv/AKTTcZ9jSNVLqdB8FPhRfQzxT3bTLZAj5ZRu3AY4B69utYv7eOq6fF8GvDvhmF085dYS4XnqqQTK35GRfzpdT/bp+GFtok0Hhzwl4ot7gqRG0ttbooPvtmPFfJPxe+LeufFrxdFqWpRC1srVClnZht/lhsFmZsAszEDPpgAdMnXD0G58zMKs7xtfY//Z" alt="">
           <div class="balance">
-            <svg class="balance-gem" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 10l9 12 9-12-9-8Z" fill="#FFD33B"/><path d="M7.5 9 12 2l4.5 7L12 22 7.5 9Z" fill="#F4C723" opacity=".55"/></svg>
+            <svg class="balance-gem" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 10l9 12 9-12-9-8Z" fill="#F0C94A"/><path d="M7.5 9 12 2l4.5 7L12 22 7.5 9Z" fill="#DDB633" opacity=".55"/></svg>
             <span>0</span>
             <button id="topupBtn" class="plus" aria-label="إعادة تعبئة المحفظة">+</button>
           </div>
@@ -127,10 +563,10 @@ input{outline:0}
 
       <div class="banner-wrap" id="bannerCarousel">
         <div class="banner-track" id="bannerTrack">
-          <div class="banner-slide banner-1">
+          <div class="banner-slide">
             <div class="banner-copy">
               <div class="banner-title">ضع إعلانك هنا</div>
-              <div class="banner-sub">مساحة مخصصة للمتاجر والقنوات والعروض</div>
+              <div class="banner-sub">مساحة إعلانية واضحة داخل السوق</div>
               <div class="banner-badge">احجز الآن</div>
             </div>
             <div class="banner-art">
@@ -138,22 +574,22 @@ input{outline:0}
               <span class="banner-icon" data-icon="gift"></span>
             </div>
           </div>
-          <div class="banner-slide banner-2">
+          <div class="banner-slide">
             <div class="banner-copy">
               <div class="banner-title">إعلان معروض</div>
-              <div class="banner-sub">أظهر منتجك داخل الواجهة بشكل واضح</div>
-              <div class="banner-badge">تمييز العرض</div>
+              <div class="banner-sub">اعرض منتجك للمستخدمين مباشرة</div>
+              <div class="banner-badge">اعرض إعلانك</div>
             </div>
             <div class="banner-art">
               <span class="banner-icon" data-icon="star"></span>
               <span class="banner-icon" data-icon="card"></span>
             </div>
           </div>
-          <div class="banner-slide banner-3">
+          <div class="banner-slide">
             <div class="banner-copy">
               <div class="banner-title">لوحة إعلانية</div>
-              <div class="banner-sub">تدوير تلقائي للإعلانات داخل السوق</div>
-              <div class="banner-badge">إعلان نشط</div>
+              <div class="banner-sub">تتغير الإعلانات تلقائياً كل عدة ثوانٍ</div>
+              <div class="banner-badge">مساحة متاحة</div>
             </div>
             <div class="banner-art">
               <span class="banner-icon" data-icon="board"></span>
@@ -175,15 +611,23 @@ input{outline:0}
         <button class="cart-btn" aria-label="العربة"><span class="action-icon" data-icon="cart"></span></button>
       </div>
 
-      <div class="search-row" id="searchRow">
+      <div class="search-tools" id="searchTools">
         <div class="search">
           <span class="small-icon" data-icon="search"></span>
           <input id="searchInput" placeholder="ابحث باسم الهدية أو رقمها">
         </div>
-        <button class="feed"><span class="small-icon" data-icon="feed"></span><span>الخلاصة</span></button>
+        <button id="filterBtn" class="tool-btn" aria-label="الفلاتر"><span class="small-icon" data-icon="sliders"></span></button>
+        <button id="sortBtn" class="tool-btn" aria-label="الترتيب"><span class="small-icon" data-icon="sort"></span></button>
       </div>
 
-      <div class="filters" id="filters"></div>
+      <div class="market-line">
+        <div>
+          <div id="marketTitle" class="market-title">الهدايا المعروضة</div>
+          <div id="marketMeta" class="market-meta">8 عناصر</div>
+        </div>
+        <div id="sortLabel" class="sort-label">الأحدث أولاً</div>
+      </div>
+
       <div class="notice" id="notice">تجنب القنوات التي تبيع هدايا مطورة بطرق غير موثوقة</div>
       <section class="grid" id="grid"></section>
     </div>
@@ -197,11 +641,42 @@ input{outline:0}
     </nav>
   </section>
 
+  <div id="sheetBackdrop" class="sheet-backdrop"></div>
+  <section id="filterSheet" class="filter-sheet" aria-hidden="true">
+    <div class="sheet-grab"></div>
+    <div class="sheet-head">
+      <strong>تصفية النتائج</strong>
+      <button id="sheetClose" class="sheet-close">إغلاق</button>
+    </div>
+    <div class="filter-group">
+      <div class="filter-group-title">النوع</div>
+      <div class="filter-options">
+        <button class="filter-chip active" data-filter="type" data-value="all">الكل</button>
+        <button class="filter-chip" data-filter="type" data-value="gift">هدايا</button>
+        <button class="filter-chip" data-filter="type" data-value="nft">NFT</button>
+        <button class="filter-chip" data-filter="type" data-value="channel">قنوات</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-group-title">السعر</div>
+      <div class="filter-options">
+        <button class="filter-chip active" data-filter="price" data-value="all">الكل</button>
+        <button class="filter-chip" data-filter="price" data-value="low">أقل من 10</button>
+        <button class="filter-chip" data-filter="price" data-value="mid">10 - 20</button>
+        <button class="filter-chip" data-filter="price" data-value="high">أكثر من 20</button>
+      </div>
+    </div>
+    <div class="sheet-actions">
+      <button id="resetFilters" class="sheet-reset">إعادة ضبط</button>
+      <button id="applyFilters" class="sheet-apply">عرض النتائج</button>
+    </div>
+  </section>
+
   <section class="wallet-page" id="walletPage">
     <div class="wallet-head">
       <button class="wallet-back" id="walletBack" aria-label="رجوع"><span class="small-icon" data-icon="back"></span></button>
       <h2>إعادة تعبئة المحفظة</h2>
-      <div style="width:40px"></div>
+      <div style="width:38px"></div>
     </div>
     <div class="wallet-card">
       <small>الرصيد الحالي</small>
@@ -218,230 +693,298 @@ input{outline:0}
       <input id="walletCustom" inputmode="numeric" placeholder="مبلغ مخصص">
       <button class="wallet-primary" id="walletContinue">متابعة</button>
     </div>
-    <div class="wallet-note">واجهة معاينة فقط. يمكنك لاحقًا ربط Stars أو USDT أو أي وسيلة دفع تريدها.</div>
+    <div class="wallet-note">واجهة معاينة حالياً. يمكن ربط وسائل الدفع الفعلية لاحقاً.</div>
   </section>
 </div>
 
 <script>
-const tg = window.Telegram?.WebApp;
+const tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null;
 if (tg) {
   try { tg.ready(); } catch(e) {}
   try { tg.expand(); } catch(e) {}
-  try { tg.setHeaderColor('#151515'); } catch(e) {}
-  try { tg.setBackgroundColor('#151515'); } catch(e) {}
-  try { tg.setBottomBarColor('#191919'); } catch(e) {}
+  try { tg.setHeaderColor('#141414'); } catch(e) {}
+  try { tg.setBackgroundColor('#141414'); } catch(e) {}
+  try { tg.setBottomBarColor('#181818'); } catch(e) {}
 }
 
 const svg = {
-  gift:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="2.2" fill="currentColor" opacity=".12"/><path d="M12 9v12M4 9h16M7.2 9c-1.7 0-2.8-.8-2.8-2.1 0-1.1.8-1.9 1.9-1.9 1.8 0 3.1 1.9 3.9 4m1.8 0c.8-2.1 2.1-4 3.9-4 1.1 0 1.9.8 1.9 1.9 0 1.3-1.1 2.1-2.8 2.1"/></svg>`,
-  character:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5.7" r="2.3"/><path d="M9 10.2 7 14.4m8-4.2 2 4.2M12 8.2v4.3M10.4 13.2l-1 6M13.6 13.2l1 6"/></svg>`,
-  star:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.8 2.76 5.58 6.16.9-4.46 4.34 1.05 6.13L12 16.95 6.49 19.75l1.05-6.13L3.08 9.28l6.16-.9L12 2.8Z" opacity=".95"/></svg>`,
-  card:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.2"/><path d="M7.5 7.5h9M7.5 11.3h9M7.5 15.1h6.2"/></svg>`,
-  telegram:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.4 3.8 11.8l5.4 2.1 8.7-6.1-6.7 7 0 4.8 2.7-2.4 4.1 3.1 2.8-14.1Z" fill="currentColor" opacity=".16"/></svg>`,
-  wallet:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5h13.5a1.5 1.5 0 0 1 1.5 1.5v8a2 2 0 0 1-2 2H6.5A2.5 2.5 0 0 1 4 16.5V9a1.5 1.5 0 0 1 1-1.42L16.5 4a1 1 0 0 1 1.3.95V7.5"/><circle cx="16.6" cy="13.1" r="1.2"/></svg>`,
-  megaphone:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h4l8-4v8l-8-4H4Z"/><path d="M8 12v5a2 2 0 0 0 2 2h1"/></svg>`,
-  menu:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 7h14M5 12h14M5 17h14"/></svg>`,
-  cart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h2l1.5 9.2a1.5 1.5 0 0 0 1.48 1.25h8.64a1.5 1.5 0 0 0 1.47-1.18L20 8H7.1"/><circle cx="10" cy="19" r="1.2"/><circle cx="17" cy="19" r="1.2"/></svg>`,
-  search:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="5.5"/><path d="M16 16 20 20"/></svg>`,
-  feed:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>`,
-  market:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 4.5h7M16.5 13v7"/></svg>`,
-  orders:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h6"/></svg>`,
-  gamepad:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9h8a4 4 0 0 1 3.9 4.7l-.5 2.4a2.4 2.4 0 0 1-3.7 1.4l-2.3-1.5a2.4 2.4 0 0 0-2.8 0l-2.3 1.5a2.4 2.4 0 0 1-3.7-1.4l-.5-2.4A4 4 0 0 1 8 9Z"/><path d="M8 12v4M6 14h4M16.5 13.2h.01M18.5 15.2h.01"/></svg>`,
-  tasks:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7h10M9 12h10M9 17h10"/><path d="m4.8 7.2 1.3 1.3 2.1-2.1M4.8 12.2l1.3 1.3 2.1-2.1M4.8 17.2l1.3 1.3 2.1-2.1"/></svg>`,
-  storage:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="M4.8 7.8 12 12l7.2-4.2M12 12v9"/></svg>`,
-  board:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="2"/><path d="M9 20h6M12 15v5M7.5 8h9M7.5 11h6"/></svg>`,
-  back:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>`
+  gift:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M12 9v11.5M4 9h16M7.2 9C5.6 9 4.6 8.2 4.6 6.9c0-1.1.8-1.9 1.9-1.9 1.7 0 3 1.8 3.8 4m1.7 0c.8-2.2 2.1-4 3.8-4 1.1 0 1.9.8 1.9 1.9 0 1.3-1 2.1-2.7 2.1"/></svg>',
+  character:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5.7" r="2.3"/><path d="M9 10.2 7 14.4m8-4.2 2 4.2M12 8.2v4.3M10.4 13.2l-1 6M13.6 13.2l1 6"/></svg>',
+  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="m12 3.2 2.7 5.45 6 .87-4.35 4.24 1.03 5.98L12 16.97l-5.38 2.77 1.03-5.98L3.3 9.52l6-.87L12 3.2Z"/></svg>',
+  card:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.2"/><path d="M7.5 7.5h9M7.5 11.3h9M7.5 15.1h6.2"/></svg>',
+  telegram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 5.2 3.8 11.6l5.4 2.1 8.5-6-6.5 6.9v4.7l2.6-2.3 4 3 2.7-14.8Z"/></svg>',
+  wallet:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5h13.5A1.5 1.5 0 0 1 20 9v8a2 2 0 0 1-2 2H6.5A2.5 2.5 0 0 1 4 16.5V9a1.5 1.5 0 0 1 1-1.42L16.5 4a1 1 0 0 1 1.3.95V7.5"/><circle cx="16.6" cy="13.1" r="1.2"/></svg>',
+  megaphone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h4l8-4v8l-8-4H4Z"/><path d="M8 12v5a2 2 0 0 0 2 2h1"/></svg>',
+  menu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 7h14M5 12h14M5 17h14"/></svg>',
+  cart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h2l1.5 9.2a1.5 1.5 0 0 0 1.48 1.25h8.64a1.5 1.5 0 0 0 1.47-1.18L20 8H7.1"/><circle cx="10" cy="19" r="1.2"/><circle cx="17" cy="19" r="1.2"/></svg>',
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="5.5"/><path d="M16 16 20 20"/></svg>',
+  sliders:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M5 7h14M5 12h14M5 17h14"/><circle cx="9" cy="7" r="1.5" fill="#1c1c1c"/><circle cx="15" cy="12" r="1.5" fill="#1c1c1c"/><circle cx="11" cy="17" r="1.5" fill="#1c1c1c"/></svg>',
+  sort:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14m0 0-3-3m3 3 3-3M16 19V5m0 0-3 3m3-3 3 3"/></svg>',
+  market:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 4.5h7M16.5 13v7"/></svg>',
+  orders:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h6"/></svg>',
+  gamepad:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9h8a4 4 0 0 1 3.9 4.7l-.5 2.4a2.4 2.4 0 0 1-3.7 1.4l-2.3-1.5a2.4 2.4 0 0 0-2.8 0l-2.3 1.5a2.4 2.4 0 0 1-3.7-1.4l-.5-2.4A4 4 0 0 1 8 9Z"/><path d="M8 12v4M6 14h4M16.5 13.2h.01M18.5 15.2h.01"/></svg>',
+  tasks:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7h10M9 12h10M9 17h10"/><path d="m4.8 7.2 1.3 1.3 2.1-2.1M4.8 12.2l1.3 1.3 2.1-2.1M4.8 17.2l1.3 1.3 2.1-2.1"/></svg>',
+  storage:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="M4.8 7.8 12 12l7.2-4.2M12 12v9"/></svg>',
+  board:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="2"/><path d="M9 20h6M12 15v5M7.5 8h9M7.5 11h6"/></svg>',
+  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>'
 };
 
-document.querySelectorAll('[data-icon]').forEach(el => el.innerHTML = svg[el.dataset.icon] || '');
+function mountIcons(root) {
+  (root || document).querySelectorAll('[data-icon]').forEach(function(el){
+    if (!el.innerHTML) el.innerHTML = svg[el.dataset.icon] || '';
+  });
+}
+mountIcons();
 
-const filters = document.getElementById('filters');
 const grid = document.getElementById('grid');
 const notice = document.getElementById('notice');
-const searchRow = document.getElementById('searchRow');
+const searchInput = document.getElementById('searchInput');
+const marketTitle = document.getElementById('marketTitle');
+const marketMeta = document.getElementById('marketMeta');
+const sortLabel = document.getElementById('sortLabel');
 
 const giftItems = [
-  ['هدية كلاسيكية', '#GIFT-1201', '3.76'],
-  ['هدية نادرة', '#GIFT-1840', '10.2'],
-  ['هدية مميزة', '#GIFT-2038', '14.9'],
-  ['هدية سريعة', '#GIFT-2644', '6.8'],
-  ['هدية خاصة', '#GIFT-2781', '22.0'],
-  ['هدية قابلة للتجميع', '#GIFT-2910', '8.4'],
-  ['هدية عرض', '#GIFT-3208', '12.6'],
-  ['هدية فاخرة', '#GIFT-3492', '29.1']
+  {name:'هدية كلاسيكية', id:'#GIFT-1201', price:3.76, type:'gift'},
+  {name:'هدية نادرة', id:'#GIFT-1840', price:10.2, type:'nft'},
+  {name:'هدية مميزة', id:'#GIFT-2038', price:14.9, type:'gift'},
+  {name:'هدية سريعة', id:'#GIFT-2644', price:6.8, type:'gift'},
+  {name:'هدية خاصة', id:'#GIFT-2781', price:22.0, type:'nft'},
+  {name:'هدية قابلة للتجميع', id:'#GIFT-2910', price:8.4, type:'gift'},
+  {name:'هدية عرض', id:'#GIFT-3208', price:12.6, type:'gift'},
+  {name:'هدية فاخرة', id:'#GIFT-3492', price:29.1, type:'nft'}
 ];
 
 const channelItems = [
-  ['@giftmarket01', '10.5'], ['@souqistars', '36.75'], ['@rarecollections', '31.5'], ['@giftchannelsale', '21'],
-  ['@telegramnftiq', '18.0'], ['@blockgiftstore', '42'], ['@collectorshub', '64'], ['@marketpromo', '27.3']
+  {name:'@giftmarket01', id:'قناة تيليجرام', price:10.5, type:'channel'},
+  {name:'@souqistars', id:'قناة تيليجرام', price:36.75, type:'channel'},
+  {name:'@rarecollections', id:'قناة تيليجرام', price:31.5, type:'channel'},
+  {name:'@giftchannelsale', id:'قناة تيليجرام', price:21, type:'channel'},
+  {name:'@telegramnftiq', id:'قناة تيليجرام', price:18, type:'channel'},
+  {name:'@blockgiftstore', id:'قناة تيليجرام', price:42, type:'channel'},
+  {name:'@collectorshub', id:'قناة تيليجرام', price:64, type:'channel'},
+  {name:'@marketpromo', id:'قناة تيليجرام', price:27.3, type:'channel'}
 ];
 
-function setGiftFilters(){
-  filters.innerHTML = `
-    <button class="filter">تصفية</button>
-    <button class="filter">NFT⌄</button>
-    <button class="filter">النوع⌄</button>
-    <button class="filter">التصنيف⌄</button>
-    <button class="filter">السعر⌄</button>
-    <button class="filter">الدفع⌄</button>`;
+let currentMode = 'gifts';
+let sortMode = 0;
+let selectedType = 'all';
+let selectedPrice = 'all';
+
+function gemSvg(){
+  return '<svg class="balance-gem" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 10l9 12 9-12-9-8Z" fill="#F0C94A"/><path d="M7.5 9 12 2l4.5 7L12 22 7.5 9Z" fill="#DDB633" opacity=".55"/></svg>';
 }
 
-function setChannelFilters(){
-  filters.innerHTML = `
-    <button class="filter">تصفية</button>
-    <button class="filter">النوع⌄</button>
-    <button class="filter">السعر⌄</button>`;
+function previewMarkup(kind, label){
+  return '<div class="preview' + (kind === 'gift' ? ' gift-only' : '') + '">' +
+    '<div class="preview-type">' + (kind === 'nft' ? 'NFT' : label) + '</div>' +
+    '<span class="banner-icon" data-icon="' + (kind === 'channel' ? 'telegram' : kind === 'character' ? 'character' : kind === 'featured' ? 'star' : kind === 'collectible' ? 'card' : 'gift') + '"></span>' +
+    '<div class="preview-title">' + label + '</div>' +
+  '</div>';
 }
 
-function giftPreview(){
-  return `
-    <div class="preview gift-only">
-      <span class="banner-icon" data-icon="gift"></span>
-      <div class="preview-title">هدية</div>
-    </div>`;
+function priceMatch(price){
+  if (selectedPrice === 'low') return price < 10;
+  if (selectedPrice === 'mid') return price >= 10 && price <= 20;
+  if (selectedPrice === 'high') return price > 20;
+  return true;
 }
 
-function cardPayBadges(){
-  return `
-    <div class="pay-row">
-      <div class="pay-badge">Stars</div>
-      <div class="pay-badge">USDT</div>
-    </div>`;
+function typeMatch(item){
+  if (selectedType === 'all') return true;
+  if (currentMode === 'channels') return selectedType === 'channel';
+  return item.type === selectedType;
 }
 
-function renderGifts(){
-  searchRow.classList.remove('hidden');
-  notice.classList.remove('show');
-  setGiftFilters();
-  grid.innerHTML = giftItems.map(item => `
-    <article class="card">
-      ${giftPreview()}
-      <div class="card-body">
-        <div class="item-name">${item[0]}</div>
-        <div class="hash">${item[1]}</div>
-        ${cardPayBadges()}
-        <div class="buy-row">
-          <div class="price"><svg class="balance-gem" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 10l9 12 9-12-9-8Z" fill="#FFD33B"/><path d="M7.5 9 12 2l4.5 7L12 22 7.5 9Z" fill="#F4C723" opacity=".55"/></svg> ${item[2]}</div>
-          <button class="buy-btn" aria-label="إضافة للعربة"><span class="small-icon" data-icon="cart"></span></button>
-        </div>
-      </div>
-    </article>`).join('');
-  document.querySelectorAll('[data-icon]').forEach(el => { if (!el.innerHTML) el.innerHTML = svg[el.dataset.icon] || ''; });
+function sortedFiltered(items){
+  const q = searchInput.value.trim().toLowerCase();
+  let out = items.filter(function(item){
+    const searchable = (item.name + ' ' + item.id).toLowerCase();
+    return (!q || searchable.indexOf(q) !== -1) && priceMatch(item.price) && typeMatch(item);
+  });
+  if (sortMode === 1) out.sort(function(a,b){ return a.price - b.price; });
+  if (sortMode === 2) out.sort(function(a,b){ return b.price - a.price; });
+  return out;
 }
 
-function renderChannels(){
-  searchRow.classList.add('hidden');
-  notice.classList.add('show');
-  setChannelFilters();
-  grid.innerHTML = channelItems.map(item => `
-    <article class="card">
-      <div class="preview">
-        <span class="banner-icon" data-icon="telegram"></span>
-        <div class="preview-title">قناة</div>
-      </div>
-      <div class="card-body">
-        <div class="item-name">${item[0]}</div>
-        <div class="hash">قناة تيليجرام للبيع</div>
-        <div class="pay-row"><div class="pay-badge">USDT</div><div class="pay-badge">تحويل</div></div>
-        <div class="buy-row">
-          <div class="price"><svg class="balance-gem" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 10l9 12 9-12-9-8Z" fill="#FFD33B"/><path d="M7.5 9 12 2l4.5 7L12 22 7.5 9Z" fill="#F4C723" opacity=".55"/></svg> ${item[1]}</div>
-          <button class="buy-btn" aria-label="إضافة للعربة"><span class="small-icon" data-icon="cart"></span></button>
-        </div>
-      </div>
-    </article>`).join('');
-  document.querySelectorAll('[data-icon]').forEach(el => { if (!el.innerHTML) el.innerHTML = svg[el.dataset.icon] || ''; });
+function renderCards(items, visualKind, visualLabel){
+  const data = sortedFiltered(items);
+  marketMeta.textContent = data.length + (data.length === 1 ? ' عنصر' : ' عناصر');
+  if (!data.length) {
+    grid.innerHTML = '<div class="empty-state">لا توجد نتائج مطابقة حالياً</div>';
+    return;
+  }
+  grid.innerHTML = data.map(function(item){
+    const kind = currentMode === 'channels' ? 'channel' : (visualKind || item.type);
+    const label = currentMode === 'channels' ? 'قناة' : (visualLabel || 'هدية');
+    return '<article class="card">' +
+      previewMarkup(kind, label) +
+      '<div class="card-body">' +
+        '<div class="item-name">' + item.name + '</div>' +
+        '<div class="hash">' + item.id + '</div>' +
+        '<button class="price" aria-label="السعر ' + item.price + '">' +
+          gemSvg() + '<span class="price-num">' + item.price + '</span>' +
+        '</button>' +
+      '</div>' +
+    '</article>';
+  }).join('');
+  mountIcons(grid);
 }
 
-function renderPlaceholder(labelIcon, labelName){
-  searchRow.classList.remove('hidden');
-  notice.classList.remove('show');
-  setGiftFilters();
-  grid.innerHTML = giftItems.slice(0,8).map(item => `
-    <article class="card">
-      <div class="preview">
-        <span class="banner-icon" data-icon="${labelIcon}"></span>
-        <div class="preview-title">${labelName}</div>
-      </div>
-      <div class="card-body">
-        <div class="item-name">${item[0]}</div>
-        <div class="hash">${item[1]}</div>
-        ${cardPayBadges()}
-        <div class="buy-row"><div class="price"><svg class="balance-gem" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 10l9 12 9-12-9-8Z" fill="#FFD33B"/><path d="M7.5 9 12 2l4.5 7L12 22 7.5 9Z" fill="#F4C723" opacity=".55"/></svg> ${item[2]}</div><button class="buy-btn"><span class="small-icon" data-icon="cart"></span></button></div>
-      </div>
-    </article>`).join('');
-  document.querySelectorAll('[data-icon]').forEach(el => { if (!el.innerHTML) el.innerHTML = svg[el.dataset.icon] || ''; });
+function renderCurrent(){
+  notice.classList.toggle('show', currentMode === 'channels');
+  if (currentMode === 'channels') {
+    marketTitle.textContent = 'القنوات المعروضة';
+    searchInput.placeholder = 'ابحث باسم القناة';
+    renderCards(channelItems, 'channel', 'قناة');
+  } else if (currentMode === 'avatars') {
+    marketTitle.textContent = 'الشخصيات المعروضة';
+    searchInput.placeholder = 'ابحث باسم العنصر أو رقمه';
+    renderCards(giftItems, 'character', 'شخصية');
+  } else if (currentMode === 'featured') {
+    marketTitle.textContent = 'العناصر المميزة';
+    searchInput.placeholder = 'ابحث باسم العنصر أو رقمه';
+    renderCards(giftItems, 'featured', 'مميز');
+  } else if (currentMode === 'collectibles') {
+    marketTitle.textContent = 'المقتنيات المعروضة';
+    searchInput.placeholder = 'ابحث باسم العنصر أو رقمه';
+    renderCards(giftItems, 'collectible', 'مقتنى');
+  } else {
+    marketTitle.textContent = 'الهدايا المعروضة';
+    searchInput.placeholder = 'ابحث باسم الهدية أو رقمها';
+    renderCards(giftItems, null, 'هدية');
+  }
 }
 
-const modeMap = {
-  gifts: () => renderGifts(),
-  channels: () => renderChannels(),
-  avatars: () => renderPlaceholder('character','شخصية'),
-  featured: () => renderPlaceholder('star','مميز'),
-  collectibles: () => renderPlaceholder('card','مقتنى')
-};
-
-document.getElementById('tabs').addEventListener('click', e => {
+document.getElementById('tabs').addEventListener('click', function(e){
   const tab = e.target.closest('.tab');
   if (!tab) return;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
   tab.classList.add('active');
-  (modeMap[tab.dataset.mode] || modeMap.gifts)();
+  currentMode = tab.dataset.mode || 'gifts';
+  searchInput.value = '';
+  selectedType = currentMode === 'channels' ? 'channel' : 'all';
+  selectedPrice = 'all';
+  syncFilterChips();
+  renderCurrent();
 });
 
-// carousel
+searchInput.addEventListener('input', renderCurrent);
+
+document.getElementById('sortBtn').addEventListener('click', function(){
+  sortMode = (sortMode + 1) % 3;
+  sortLabel.textContent = sortMode === 0 ? 'الأحدث أولاً' : sortMode === 1 ? 'السعر: الأقل أولاً' : 'السعر: الأعلى أولاً';
+  this.classList.toggle('active', sortMode !== 0);
+  renderCurrent();
+});
+
+/* filter sheet */
+const sheet = document.getElementById('filterSheet');
+const backdrop = document.getElementById('sheetBackdrop');
+function openSheet(){
+  sheet.classList.add('show');
+  backdrop.classList.add('show');
+  sheet.setAttribute('aria-hidden','false');
+  document.body.classList.add('sheet-open');
+}
+function closeSheet(){
+  sheet.classList.remove('show');
+  backdrop.classList.remove('show');
+  sheet.setAttribute('aria-hidden','true');
+  document.body.classList.remove('sheet-open');
+}
+document.getElementById('filterBtn').addEventListener('click', openSheet);
+document.getElementById('sheetClose').addEventListener('click', closeSheet);
+backdrop.addEventListener('click', closeSheet);
+
+sheet.addEventListener('click', function(e){
+  const chip = e.target.closest('.filter-chip');
+  if (!chip) return;
+  const group = chip.dataset.filter;
+  sheet.querySelectorAll('.filter-chip[data-filter="' + group + '"]').forEach(function(x){ x.classList.remove('active'); });
+  chip.classList.add('active');
+  if (group === 'type') selectedType = chip.dataset.value;
+  if (group === 'price') selectedPrice = chip.dataset.value;
+});
+
+function syncFilterChips(){
+  sheet.querySelectorAll('.filter-chip[data-filter="type"]').forEach(function(x){ x.classList.toggle('active', x.dataset.value === selectedType); });
+  sheet.querySelectorAll('.filter-chip[data-filter="price"]').forEach(function(x){ x.classList.toggle('active', x.dataset.value === selectedPrice); });
+}
+
+document.getElementById('resetFilters').addEventListener('click', function(){
+  selectedType = currentMode === 'channels' ? 'channel' : 'all';
+  selectedPrice = 'all';
+  syncFilterChips();
+});
+
+document.getElementById('applyFilters').addEventListener('click', function(){
+  document.getElementById('filterBtn').classList.toggle('active', selectedType !== 'all' || selectedPrice !== 'all');
+  renderCurrent();
+  closeSheet();
+});
+
+/* carousel */
 const track = document.getElementById('bannerTrack');
 const dotsWrap = document.getElementById('bannerDots');
 const slides = Array.from(track.children);
-let slideIndex = 0, timer;
-slides.forEach((_,i)=>{
-  const d = document.createElement('span');
-  d.className = 'banner-dot' + (i===0 ? ' active' : '');
-  d.addEventListener('click',()=>goSlide(i,true));
-  dotsWrap.appendChild(d);
+let slideIndex = 0;
+let timer = null;
+slides.forEach(function(_,i){
+  const dot = document.createElement('span');
+  dot.className = 'banner-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', function(){ goSlide(i, true); });
+  dotsWrap.appendChild(dot);
 });
-function goSlide(i,restart=false){
+function goSlide(i,restart){
   slideIndex = (i + slides.length) % slides.length;
-  track.style.transform = `translateX(-${slideIndex * 100}%)`;
-  [...dotsWrap.children].forEach((d,idx)=>d.classList.toggle('active', idx===slideIndex));
+  track.style.transform = 'translateX(-' + (slideIndex * 100) + '%)';
+  Array.from(dotsWrap.children).forEach(function(d,idx){ d.classList.toggle('active', idx === slideIndex); });
   if (restart) autoSlide();
 }
-function autoSlide(){ clearInterval(timer); timer = setInterval(()=>goSlide(slideIndex+1), 4200); }
+function autoSlide(){
+  clearInterval(timer);
+  timer = setInterval(function(){ goSlide(slideIndex + 1, false); }, 4400);
+}
 autoSlide();
-let sx = null;
-document.getElementById('bannerCarousel').addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
-document.getElementById('bannerCarousel').addEventListener('touchend', e => {
-  if (sx === null) return;
-  const dx = e.changedTouches[0].clientX - sx;
-  if (Math.abs(dx) > 40) goSlide(slideIndex + (dx < 0 ? 1 : -1), true);
-  sx = null;
+
+let touchX = null;
+document.getElementById('bannerCarousel').addEventListener('touchstart', function(e){
+  touchX = e.touches[0].clientX;
+}, {passive:true});
+document.getElementById('bannerCarousel').addEventListener('touchend', function(e){
+  if (touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 38) goSlide(slideIndex + (dx < 0 ? 1 : -1), true);
+  touchX = null;
 }, {passive:true});
 
-// wallet
+/* wallet */
 const walletPage = document.getElementById('walletPage');
-document.getElementById('topupBtn').addEventListener('click',()=>walletPage.classList.add('show'));
-document.getElementById('walletBack').addEventListener('click',()=>walletPage.classList.remove('show'));
+document.getElementById('topupBtn').addEventListener('click', function(){ walletPage.classList.add('show'); });
+document.getElementById('walletBack').addEventListener('click', function(){ walletPage.classList.remove('show'); });
+
 let walletAmount = 50;
-document.getElementById('walletAmounts').addEventListener('click', e => {
+document.getElementById('walletAmounts').addEventListener('click', function(e){
   const btn = e.target.closest('.wallet-amount');
   if (!btn) return;
-  document.querySelectorAll('.wallet-amount').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.wallet-amount').forEach(function(x){ x.classList.remove('active'); });
   btn.classList.add('active');
   walletAmount = Number(btn.dataset.amount);
   document.getElementById('walletCustom').value = '';
 });
-document.getElementById('walletCustom').addEventListener('input', e => {
+document.getElementById('walletCustom').addEventListener('input', function(e){
   const v = Number(e.target.value);
   if (v > 0) {
     walletAmount = v;
-    document.querySelectorAll('.wallet-amount').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.wallet-amount').forEach(function(x){ x.classList.remove('active'); });
   }
 });
-document.getElementById('walletContinue').addEventListener('click', () => {
-  const msg = `تم اختيار تعبئة 💎 ${walletAmount} — هذه معاينة فقط.`;
-  if (tg?.showAlert) tg.showAlert(msg); else alert(msg);
+document.getElementById('walletContinue').addEventListener('click', function(){
+  const msg = 'تم اختيار تعبئة 💎 ' + walletAmount + ' — هذه معاينة فقط.';
+  if (tg && tg.showAlert) tg.showAlert(msg); else alert(msg);
 });
 
-renderGifts();
+renderCurrent();
 </script>
 </body>
 </html>
