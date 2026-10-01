@@ -564,7 +564,169 @@ svg{display:block;width:100%;height:100%}
 }
 @media(min-width:700px){
   .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .preview{aspect-ratio:1.18/1}
+  .preview{aspect-ratio:1.08/1}
+}
+
+/* MRKT-like mobile spacing / sizing pass */
+@media(max-width:699px){
+  .shell{
+    padding:8px 10px 16px;
+  }
+
+  .row-top{
+    min-height:44px;
+    margin-bottom:7px;
+  }
+
+  .banner-wrap{
+    height:76px;
+    margin-bottom:11px;
+    border-radius:15px;
+  }
+  .banner-slide{
+    padding:9px 13px 17px;
+    gap:10px;
+  }
+  .banner-title{
+    font-size:15px;
+    margin-bottom:2px;
+  }
+  .banner-sub{
+    font-size:10px;
+  }
+  .banner-badge{
+    height:19px;
+    padding:0 9px;
+    margin-top:5px;
+    font-size:9px;
+  }
+  .banner-art{
+    flex-basis:68px;
+    height:50px;
+    border-radius:12px;
+  }
+  .banner-art .banner-icon{
+    width:22px;
+    height:22px;
+  }
+  .banner-dots{
+    bottom:6px;
+  }
+
+  .tabs-row{
+    justify-content:space-between;
+    gap:0;
+    margin-bottom:10px;
+  }
+  .tabs{
+    flex:0 0 calc(100% - 108px);
+    width:calc(100% - 108px);
+    border-radius:9px;
+  }
+  .tab{
+    min-width:0;
+    height:36px;
+    flex:1 1 0;
+    padding:0 5px;
+    gap:5px;
+  }
+  .tab.active{
+    flex:2.05 1 0;
+  }
+  .tab .tab-icon{
+    width:32px;
+    height:32px;
+    flex-basis:32px;
+  }
+  .tab-asset-icon{
+    width:32px;
+    height:32px;
+  }
+  .tab-label{
+    font-size:12px;
+  }
+  .cart-btn{
+    flex:0 0 36px;
+    width:36px;
+    height:36px;
+    border-radius:8px;
+  }
+
+  .search-tools{
+    grid-template-columns:minmax(0,1fr) 42px 42px;
+    gap:7px;
+    margin-bottom:10px;
+  }
+  .search,
+  .tool-btn{
+    height:38px;
+  }
+  .tool-btn{
+    width:42px;
+    border-radius:8px;
+  }
+  .search{
+    border-radius:8px;
+    padding:0 10px;
+  }
+  .search input{
+    font-size:12px;
+  }
+
+  .market-line{
+    min-height:25px;
+    margin:0 1px 7px;
+  }
+  .market-title{
+    font-size:12px;
+  }
+  .market-meta,
+  .sort-label{
+    font-size:9px;
+  }
+
+  .grid{
+    gap:10px;
+  }
+  .card{
+    border-radius:11px;
+  }
+  .preview{
+    aspect-ratio:1/1;
+    gap:6px;
+  }
+  .preview .banner-icon{
+    width:28px;
+    height:28px;
+  }
+  .preview-title{
+    font-size:13px;
+  }
+  .preview-type{
+    top:7px;
+    right:7px;
+    height:19px;
+    padding:0 7px;
+    font-size:8px;
+  }
+  .card-body{
+    padding:8px;
+  }
+  .item-name{
+    font-size:12px;
+    margin-bottom:2px;
+  }
+  .hash{
+    font-size:9px;
+    margin-bottom:7px;
+  }
+  .price{
+    height:31px;
+    border-radius:8px;
+  }
+  .price-num{
+    font-size:15px;
+  }
 }
 </style>
 </head>
