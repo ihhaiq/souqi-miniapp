@@ -515,7 +515,7 @@ function showRoute(route, updateHash){
     history.replaceState(null, '', '#' + route);
   }
 
-  window.scrollTo({top:0, behavior:'instant'});
+  window.scrollTo({top:0, behavior:'auto'});
   mountIcons(document);
 }
 
