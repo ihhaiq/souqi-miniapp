@@ -1760,24 +1760,15 @@ body.subpage-open .market{display:none}
   overflow:hidden;
   border-radius:20px;
   border:1px solid rgba(255,255,255,.11);
-  background:
-    linear-gradient(145deg,rgba(41,46,50,.96),rgba(24,24,24,.96));
+  background:#1b1b1b;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.07),
-    0 10px 28px rgba(0,0,0,.22),
-    0 1px 0 rgba(255,255,255,.02);
+    inset 0 1px 0 rgba(255,255,255,.055),
+    0 10px 28px rgba(0,0,0,.24),
+    0 1px 0 rgba(255,255,255,.018);
   isolation:isolate
 }
 .account-profile-panel::before{
-  content:"";
-  position:absolute;
-  inset:-35% auto auto -10%;
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(63,172,236,.08),transparent 68%);
-  pointer-events:none;
-  z-index:-1
+  content:none
 }
 
 .account-profile-top{
@@ -1798,7 +1789,7 @@ body.subpage-open .market{display:none}
   display:grid;
   place-items:center;
   background:#20282d;
-  border:1px solid rgba(107,184,227,.28);
+  border:1px solid rgba(255,255,255,.12);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.05),
     0 6px 16px rgba(0,0,0,.18)
@@ -1827,11 +1818,9 @@ body.subpage-open .market{display:none}
   min-width:0
 }
 .account-name-row{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:10px;
-  min-width:0
+  display:block;
+  min-width:0;
+  padding-inline-start:58px
 }
 .account-title-wrap{
   min-width:0;
@@ -1859,9 +1848,13 @@ body.subpage-open .market{display:none}
 }
 
 .account-edit-name{
+  position:absolute;
+  top:14px;
+  left:14px;
+  z-index:2;
   flex:0 0 auto;
-  min-height:30px;
-  padding:0 9px;
+  min-height:28px;
+  padding:0 8px;
   border-radius:9px;
   background:rgba(255,255,255,.055);
   border:1px solid rgba(255,255,255,.08);
@@ -1918,8 +1911,8 @@ body.subpage-open .market{display:none}
   line-height:1
 }
 .account-stat-deals{
-  border-color:rgba(69,176,238,.16);
-  background:rgba(47,137,191,.06)
+  border-color:rgba(255,255,255,.075);
+  background:rgba(255,255,255,.035)
 }
 .account-stat-deals b{
   font-size:29px
@@ -1939,9 +1932,8 @@ body.subpage-open .market{display:none}
   align-items:center;
   gap:10px;
   padding:13px 15px;
-  border-color:rgba(69,176,238,.22);
-  background:
-    linear-gradient(90deg,rgba(52,155,216,.11),rgba(255,255,255,.025))
+  border-color:rgba(255,255,255,.095);
+  background:#202020
 }
 .account-stat-products span{
   font-size:12px;
@@ -2075,8 +2067,13 @@ body.subpage-open .market{display:none}
     margin-top:5px;
     font-size:12px
   }
+  .account-name-row{
+    padding-inline-start:50px
+  }
   .account-edit-name{
-    min-height:28px;
+    top:12px;
+    left:12px;
+    min-height:27px;
     padding:0 7px;
     font-size:9px
   }
@@ -2136,8 +2133,13 @@ body.subpage-open .market{display:none}
   .account-edit-name span:last-child{
     display:none
   }
+  .account-name-row{
+    padding-inline-start:36px
+  }
   .account-edit-name{
-    width:29px;
+    top:10px;
+    left:10px;
+    width:28px;
     padding:0
   }
 }
