@@ -1910,7 +1910,7 @@ body.subpage-open .market{display:none}
   position:relative;
   min-width:0;
   margin:0;
-  padding:18px 14px 12px;
+  padding:21px 14px 12px;
   border:1px solid var(--stat-line);
   border-top:0;
   border-radius:14px;
@@ -1926,20 +1926,21 @@ body.subpage-open .market{display:none}
     inset 0 1px 0 rgba(255,255,255,.075),
     inset 0 -1px 0 rgba(0,0,0,.07),
     0 5px 14px rgba(0,0,0,.10);
-  overflow:hidden
+  overflow:visible
 }
 .account-stat-label{
   position:absolute;
   top:0;
   right:0;
   left:0;
-  height:26px;
+  height:1px;
   transform:none;
   display:flex;
   flex-direction:row;
   align-items:center;
   gap:7px;
   direction:rtl;
+  overflow:visible;
   pointer-events:none
 }
 .account-stat-label::before,
@@ -1947,7 +1948,8 @@ body.subpage-open .market{display:none}
   content:"";
   display:block;
   height:1px;
-  background:var(--stat-line)
+  background:var(--stat-line);
+  box-shadow:0 1px 0 rgba(255,255,255,.025)
 }
 .account-stat-label::before{
   flex:0 0 18px
@@ -1968,7 +1970,7 @@ body.subpage-open .market{display:none}
   font-family:"Times New Roman",Times,serif;
   font-size:18px;
   font-weight:700;
-  line-height:1.1;
+  line-height:1;
   direction:rtl;
   text-align:right;
   white-space:nowrap
@@ -2000,7 +2002,7 @@ body.subpage-open .market{display:none}
   unicode-bidi:plaintext
 }
 .account-stat-deals .account-stat-label span{
-  font-size:20px;
+  font-size:21px;
   color:#f3f3f3
 }
 .account-stat-deals{
@@ -2017,7 +2019,7 @@ body.subpage-open .market{display:none}
   font-size:39px
 }
 .account-stat-rating .account-stat-label span{
-  font-size:17px;
+  font-size:18px;
   color:#c9c9c9
 }
 .account-stat-rating{
@@ -2039,7 +2041,7 @@ body.subpage-open .market{display:none}
   margin-top:2px
 }
 .account-stat-products .account-stat-label span{
-  font-size:21px;
+  font-size:22px;
   color:#f4f4f4
 }
 .account-stat-products{
@@ -2682,11 +2684,11 @@ h1,h2,h3,
     gap:15px 10px
   }
   .account-stat{
-    padding:17px 12px 10px
+    padding:20px 12px 10px
   }
   .account-stat-label{
     top:0;
-    height:24px;
+    height:1px;
     transform:none;
     gap:6px
   }
@@ -2731,4 +2733,33 @@ h1,h2,h3,
     -webkit-backdrop-filter:none;
     backdrop-filter:none
   }
+}
+
+
+/* account glass edge polish */
+.account-profile-panel{
+  border-color:rgba(255,255,255,.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.11),
+    inset 0 -1px 0 rgba(0,0,0,.09),
+    0 14px 34px rgba(0,0,0,.22)
+}
+.account-profile-panel,
+.account-stat{
+  background-clip:padding-box
+}
+.account-stat{
+  border-color:rgba(255,255,255,.13)
+}
+.account-stat-deals{
+  border-color:rgba(255,255,255,.17)
+}
+.account-stat-products{
+  border-color:rgba(255,255,255,.18)
+}
+.account-stat-field b{
+  text-shadow:0 1px 2px rgba(0,0,0,.18)
+}
+.account-stat-label span{
+  text-shadow:0 1px 1px rgba(0,0,0,.14)
 }
