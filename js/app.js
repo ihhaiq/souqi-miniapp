@@ -419,17 +419,18 @@ document.getElementById('tabs').addEventListener('click', function(e){
 searchInput.addEventListener('input', renderCurrent);
 
 document.querySelectorAll('.market-filter-chip').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    const kind = btn.dataset.stripFilter;
-    if (kind === 'price' || kind === 'symbol' || kind === 'upgrade' || kind === 'premarket') {
-      openSheet();
-    }
-  });
+  btn.addEventListener('click', openSheet);
 });
 
-document.getElementById('marketStripSort').addEventListener('click', function(){
-  document.getElementById('sortBtn').click();
-});
+const marketStripFilterBtn = document.getElementById('marketStripFilterBtn');
+if (marketStripFilterBtn) marketStripFilterBtn.addEventListener('click', openSheet);
+
+const marketStripSort = document.getElementById('marketStripSort');
+if (marketStripSort) {
+  marketStripSort.addEventListener('click', function(){
+    document.getElementById('sortBtn').click();
+  });
+}
 
 document.getElementById('sortBtn').addEventListener('click', function(){
   sortMode = (sortMode + 1) % 3;
@@ -456,6 +457,25 @@ function closeSheet(){
 document.getElementById('filterBtn').addEventListener('click', openSheet);
 document.getElementById('sheetClose').addEventListener('click', closeSheet);
 backdrop.addEventListener('click', closeSheet);
+
+sheet.querySelectorAll('[data-filter-toggle]').forEach(function(toggle){
+  toggle.addEventListener('click', function(){
+    const key = toggle.dataset.filterToggle;
+    const panel = sheet.querySelector('[data-filter-panel="' + key + '"]');
+    if (!panel) return;
+
+    const willOpen = panel.hidden;
+    sheet.querySelectorAll('.filter-accordion-panel').forEach(function(other){
+      other.hidden = true;
+    });
+    sheet.querySelectorAll('[data-filter-toggle]').forEach(function(otherToggle){
+      otherToggle.setAttribute('aria-expanded','false');
+    });
+
+    panel.hidden = !willOpen;
+    toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  });
+});
 
 sheet.addEventListener('click', function(e){
   const chip = e.target.closest('.filter-chip');
