@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>السوق - Telegram Mini App</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- FRAME 1: MAIN MARKET SCREEN (390px)         -->
+  <!-- ========================================== -->
+  <div class="mobile-frame" id="frame-1">
+    <div class="frame-badge-title">Frame 1: شاشة السوق الأساسية</div>
+
+    <!-- TOP BAR -->
+    <header class="top-bar">
+      <!-- Right side: Back icon button + Titles (RTL layout) -->
+      <div class="top-bar-right">
+        <button class="icon-btn" aria-label="الرجوع">
+          <!-- Back points right in RTL -->
+          <svg class="icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <div class="top-titles">
+          <span class="title">السوق</span>
+          <span class="subtitle">سوقي</span>
+        </div>
+      </div>
+
+      <!-- Left side: Wallet & Menu icon buttons -->
+      <div class="top-bar-left">
+        <button class="icon-btn" aria-label="المحفظة">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/><circle cx="16" cy="14" r="1.5"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="القائمة">
+          <svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT AREA -->
+    <main class="content-scroll">
+
+      <!-- Search bar -->
+      <div class="search-bar" role="search" aria-label="بحث العروض">
+        <input type="text" class="search-input" placeholder="ابحث عن منتج أو حساب…" aria-label="بحث العروض">
+        <button class="search-icon-btn" aria-label="بحث">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+
+      <!-- Horizontally scrolling chips row -->
+      <div class="chips-wrapper" role="tablist">
+        <div class="chip active" role="tab" aria-selected="true">الكل</div>
+        <div class="chip" role="tab" aria-selected="false">👥 · Facebook</div>
+        <div class="chip" role="tab" aria-selected="false">📸 · Instagram</div>
+        <div class="chip" role="tab" aria-selected="false">🎵 · TikTok</div>
+        <div class="chip" role="tab" aria-selected="false">▶️ · YouTube</div>
+        <div class="chip" role="tab" aria-selected="false">✈️ · Telegram</div>
+        <div class="chip" role="tab" aria-selected="false">👻 · Snapchat</div>
+        <div class="chip" role="tab" aria-selected="false">🐦 · X / Twitter</div>
+        <div class="chip" role="tab" aria-selected="false">🎮 · Twitch</div>
+        <div class="chip" role="tab" aria-selected="false">💬 · Discord</div>
+        <div class="chip" role="tab" aria-selected="false">🧵 · Threads</div>
+        <div class="chip" role="tab" aria-selected="false">💼 · LinkedIn</div>
+        <div class="chip" role="tab" aria-selected="false">📌 · Pinterest</div>
+        <div class="chip" role="tab" aria-selected="false">🌐 · أخرى</div>
+        <div class="chip" role="tab" aria-selected="false">✨ · Gemini</div>
+        <div class="chip" role="tab" aria-selected="false">🎬 · CapCut</div>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="filter-bar">
+        <button class="filter-btn">
+          <svg class="icon" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+          <span>تصفية</span>
+        </button>
+        <button class="filter-btn">
+          <svg class="icon" viewBox="0 0 24 24"><line x1="11" y1="5" x2="19" y2="5"/><line x1="11" y1="9" x2="16" y2="9"/><line x1="11" y1="13" x2="14" y2="13"/><path d="M5 6v12M2 15l3 3 3-3"/></svg>
+          <span>ترتيب</span>
+        </button>
+        <button class="icon-btn fav-btn" aria-label="المفضلة">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+
+      <!-- Products list -->
+      <div class="product-card">
+        <!-- Card cover image -->
+        <div class="card-cover">
+          <div class="cover-mock-preview">
+            <div class="cover-avatar"></div>
+            <div class="cover-meta-line"></div>
+            <div class="cover-meta-line" style="width: 40px;"></div>
+          </div>
+
+          <button class="cover-fav-btn" aria-label="إضافة للمفضلة">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+
+          <button class="cover-zoom-action" aria-label="تكبير صورة قناه تلجرام 23k للبيع">
+            <span>تكبير الصورة ⤢</span>
+          </button>
+        </div>
+
+        <div class="card-body">
+          <!-- Platform label -->
+          <div class="platform-label">
+            <span>✈️</span>
+            <span>Telegram</span>
+          </div>
+
+          <!-- Heading -->
+          <h2 class="card-title">قناه تلجرام 23k للبيع</h2>
+
+          <!-- Seller row -->
+          <div class="seller-row">
+            <span class="seller-name">
+              <svg class="icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              سليم
+            </span>
+            <span class="tag-id">TG-1002</span>
+          </div>
+
+          <div class="card-divider"></div>
+
+          <!-- Price row -->
+          <div class="price-row">
+            <span class="price-label">السعر</span>
+            <span class="price-val">$30.00</span>
+          </div>
+
+          <!-- Button Details -->
+          <button class="btn-details">
+            <span>التفاصيل</span>
+            <!-- Chevrons point left in Arabic RTL for forward/details -->
+            <svg class="icon" style="width:15px;height:15px;" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <span class="pagination-info">1 منتج · صفحة 1</span>
+        <div class="pagination-actions">
+          <button class="btn-page" disabled>السابق</button>
+          <button class="btn-page" disabled>التالي</button>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- BOTTOM NAV (5 tabs) -->
+    <nav class="bottom-nav">
+      <div class="nav-tab active">
+        <div class="nav-tab-icon">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+        </div>
+        <span class="nav-tab-label">السوق</span>
+      </div>
+      <div class="nav-tab">
+        <div class="nav-tab-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <span class="nav-tab-label">طلباتي</span>
+      </div>
+      <div class="nav-tab">
+        <div class="nav-tab-icon">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <span class="nav-tab-label">بيع</span>
+      </div>
+      <div class="nav-tab">
+        <div class="nav-tab-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <span class="nav-tab-label">الوساطة</span>
+      </div>
+      <div class="nav-tab">
+        <div class="nav-tab-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <span class="nav-tab-label">حسابي</span>
+      </div>
+    </nav>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- FRAME 2: SORT BOTTOM SHEET OVER DIMMED BG   -->
+  <!-- ========================================== -->
+  <div class="mobile-frame" id="frame-2">
+    <div class="frame-badge-title">Frame 2: شيت ترتيب المنتجات</div>
+
+    <!-- Underlying dimmed content (exact background replica) -->
+    <header class="top-bar" style="opacity: 0.35;">
+      <div class="top-bar-right">
+        <button class="icon-btn" aria-label="الرجوع"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+        <div class="top-titles">
+          <span class="title">السوق</span>
+          <span class="subtitle">سوقي</span>
+        </div>
+      </div>
+      <div class="top-bar-left">
+        <button class="icon-btn"><svg class="icon" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg></button>
+        <button class="icon-btn"><svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+    </header>
+
+    <main class="content-scroll" style="opacity: 0.35;">
+      <div class="search-bar">
+        <input type="text" class="search-input" placeholder="ابحث عن منتج أو حساب…" disabled>
+      </div>
+      <div class="chips-wrapper">
+        <div class="chip active">الكل</div>
+        <div class="chip">👥 · Facebook</div>
+        <div class="chip">📸 · Instagram</div>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn">تصفية</button>
+        <button class="filter-btn">ترتيب</button>
+        <button class="icon-btn fav-btn"></button>
+      </div>
+    </main>
+
+    <!-- SHEET OVERLAY -->
+    <div class="sheet-overlay">
+      <div class="bottom-sheet">
+        <div class="sheet-handle-bar"></div>
+        <div class="sheet-header">
+          <h3>ترتيب المنتجات</h3>
+          <button class="sheet-close-btn" aria-label="إغلاق">
+            <svg class="icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <div class="sheet-body">
+          <button class="sort-option-btn selected">
+            <span>المقترحة</span>
+            <svg class="icon" style="color:var(--accent);width:16px;height:16px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button class="sort-option-btn">
+            <span>الأحدث</span>
+            <svg class="icon" style="color:var(--muted);width:16px;height:16px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </button>
+          <button class="sort-option-btn">
+            <span>السعر: الأقل أولًا</span>
+            <svg class="icon" style="color:var(--muted);width:16px;height:16px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </button>
+          <button class="sort-option-btn">
+            <span>السعر: الأعلى أولًا</span>
+            <svg class="icon" style="color:var(--muted);width:16px;height:16px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </button>
+          <button class="sort-option-btn">
+            <span>عدد المتابعين</span>
+            <svg class="icon" style="color:var(--muted);width:16px;height:16px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- FRAME 3: FILTER BOTTOM SHEET OVER DIMMED   -->
+  <!-- ========================================== -->
+  <div class="mobile-frame" id="frame-3">
+    <div class="frame-badge-title">Frame 3: شيت تصفية المنتجات</div>
+
+    <!-- Underlying dimmed content -->
+    <header class="top-bar" style="opacity: 0.35;">
+      <div class="top-bar-right">
+        <button class="icon-btn"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+        <div class="top-titles">
+          <span class="title">السوق</span>
+          <span class="subtitle">سوقي</span>
+        </div>
+      </div>
+      <div class="top-bar-left">
+        <button class="icon-btn"><svg class="icon" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg></button>
+        <button class="icon-btn"><svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+    </header>
+
+    <main class="content-scroll" style="opacity: 0.35;">
+      <div class="search-bar">
+        <input type="text" class="search-input" placeholder="ابحث عن منتج أو حساب…" disabled>
+      </div>
+      <div class="chips-wrapper">
+        <div class="chip active">الكل</div>
+        <div class="chip">👥 · Facebook</div>
+      </div>
+    </main>
+
+    <!-- SHEET OVERLAY -->
+    <div class="sheet-overlay">
+      <div class="bottom-sheet">
+        <div class="sheet-handle-bar"></div>
+        <div class="sheet-header">
+          <h3>تصفية المنتجات</h3>
+          <button class="sheet-close-btn" aria-label="إغلاق">
+            <svg class="icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <div class="sheet-body">
+          <form onsubmit="return false;">
+            <!-- Field: أقل سعر ($) -->
+            <div class="form-group">
+              <label class="form-label">أقل سعر ($)</label>
+              <input type="number" class="form-input-number" placeholder="0.00">
+            </div>
+
+            <!-- Field: أعلى سعر ($) -->
+            <div class="form-group" style="margin-top: 6px;">
+              <label class="form-label">أعلى سعر ($)</label>
+              <input type="number" class="form-input-number" placeholder="1000.00">
+            </div>
+
+            <div style="height: 10px;"></div>
+
+            <!-- Checkbox: إعلانات موثقة فقط -->
+            <div class="checkbox-row">
+              <div class="custom-checkbox"></div>
+              <span class="checkbox-text">إعلانات موثقة فقط</span>
+            </div>
+
+            <!-- Checkbox: المنتجات المميزة فقط -->
+            <div class="checkbox-row">
+              <div class="custom-checkbox"></div>
+              <span class="checkbox-text">المنتجات المميزة فقط</span>
+            </div>
+
+            <!-- Button: مسح التصفية [ghost] -->
+            <button type="button" class="btn-clear-filter">مسح التصفية</button>
+          </form>
+        </div>
+
+        <!-- Sheet Footer Actions -->
+        <div class="sheet-footer-actions">
+          <button type="button" class="btn-ghost">إلغاء</button>
+          <button type="button" class="btn-primary">تطبيق التصفية</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

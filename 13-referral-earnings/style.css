@@ -1,0 +1,26 @@
+body {
+      background-color: #0b0c0e;
+      color: #F2F4F7;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .num-tabular {
+      font-family: 'Space Grotesk', sans-serif;
+      font-variant-numeric: tabular-nums;
+      direction: ltr;
+      display: inline-block;
+    }
+    .ltr-text {
+      direction: ltr;
+      text-align: left;
+    }
+    /* Hide scrollbars */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    * {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }

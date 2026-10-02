@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفاصيل المنتج - Telegram Mini App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#121315',
+            panel: '#1A1C1F',
+            'panel-2': '#23262B',
+            line: '#2E3238',
+            'app-text': '#F2F4F7',
+            muted: '#878E99',
+            accent: '#339CFF',
+            'accent-wash': 'rgba(51, 156, 255, 0.12)',
+            green: '#2CC984',
+            red: '#F2545B',
+            amber: '#F0A732',
+          },
+          fontFamily: {
+            sans: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'sans-serif'],
+          },
+          borderRadius: {
+            sm: '8px',
+            md: '12px',
+            lg: '18px',
+            pill: '9999px',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-6 flex flex-col items-center">
+
+  <!-- Mobile Screen Frame (390px wide) -->
+  <div class="w-[390px] min-h-[844px] bg-[#121315] border border-[#2E3238] rounded-[24px] shadow-2xl relative flex flex-col overflow-hidden text-[#F2F4F7]">
+
+    <!-- TOP BAR -->
+    <header class="h-14 px-4 border-b border-[#2E3238] flex items-center justify-between bg-[#121315]/95 backdrop-blur-md sticky top-0 z-30">
+      <!-- Right Side in RTL: Back Button + Title -->
+      <div class="flex items-center gap-3">
+        <button type="button" aria-label="الرجوع" class="w-9 h-9 rounded-sm bg-[#1A1C1F] border border-[#2E3238] flex items-center justify-center text-[#F2F4F7] hover:bg-[#23262B] transition-colors active:scale-95">
+          <!-- Back arrow pointing right for RTL history back -->
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <div class="flex flex-col">
+          <h1 class="text-[15px] font-semibold leading-tight text-[#F2F4F7]">تفاصيل المنتج</h1>
+          <span class="text-[11px] text-[#878E99] leading-tight">سوقي</span>
+        </div>
+      </div>
+
+      <!-- Left Side in RTL: Wallet & Menu Icon Buttons -->
+      <div class="flex items-center gap-2">
+        <button type="button" aria-label="المحفظة" class="w-9 h-9 rounded-sm bg-[#1A1C1F] border border-[#2E3238] flex items-center justify-center text-[#878E99] hover:text-[#F2F4F7] hover:bg-[#23262B] transition-colors active:scale-95">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+            <path d="M16 12h.01"></path>
+            <path d="M2 10h20"></path>
+          </svg>
+        </button>
+        <button type="button" aria-label="القائمة" class="w-9 h-9 rounded-sm bg-[#1A1C1F] border border-[#2E3238] flex items-center justify-center text-[#878E99] hover:text-[#F2F4F7] hover:bg-[#23262B] transition-colors active:scale-95">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- SCROLLABLE CONTENT BODY -->
+    <main class="flex-1 overflow-y-auto px-4 pt-3.5 pb-24 flex flex-col gap-3.5">
+
+      <!-- COVER IMAGE CONTAINER -->
+      <div class="relative w-full h-[190px] rounded-md bg-[#1A1C1F] border border-[#2E3238] overflow-hidden group">
+        <!-- Modern Graphic Representation of Telegram Channel Stats Preview -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[#1A1C1F] via-[#141d26] to-[#0e1721] p-3 flex flex-col justify-between">
+          <div class="flex items-center justify-between text-[#878E99] text-[11px]">
+            <span class="font-mono">t.me/FFFOJO</span>
+            <span class="inline-flex items-center gap-1 text-[#339CFF] font-medium bg-[#339CFF]/10 px-2 py-0.5 rounded-pill border border-[#339CFF]/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#339CFF]"></span>
+              قناة نشطة
+            </span>
+          </div>
+          <!-- Channel Stats Mock Graphic Card Inside -->
+          <div class="bg-[#121315]/80 border border-[#2E3238] rounded-sm p-3 mx-2 my-auto backdrop-blur-sm flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-[#339CFF]/20 flex items-center justify-center text-[#339CFF] text-xs font-bold font-mono">
+                  TG
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-xs font-semibold text-[#F2F4F7]">قناة إعلانية وتقنية</span>
+                  <span class="text-[10px] text-[#878E99] font-mono">23,000 subscribers</span>
+                </div>
+              </div>
+              <span class="text-xs text-[#2CC984] font-mono font-medium">+18.4%</span>
+            </div>
+            <div class="w-full bg-[#23262B] h-1.5 rounded-full overflow-hidden">
+              <div class="bg-[#339CFF] h-full w-[72%] rounded-full"></div>
+            </div>
+          </div>
+          <div class="text-[10px] text-[#878E99] flex justify-between items-center px-1 font-mono">
+            <span>ID: TG-1002</span>
+            <span>23k members</span>
+          </div>
+        </div>
+
+        <!-- Icon button (aria: تكبير قناه تلجرام 23k للبيع) -->
+        <button type="button" aria-label="تكبير قناه تلجرام 23k للبيع" class="absolute bottom-2.5 left-2.5 px-2.5 py-1.5 rounded-sm bg-[#121315]/90 border border-[#2E3238] text-[11px] text-[#F2F4F7] flex items-center gap-1.5 backdrop-blur-md hover:bg-[#23262B] transition-colors active:scale-95 shadow-sm">
+          <span>تكبير الصورة</span>
+          <svg class="w-3.5 h-3.5 text-[#878E99]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- META ROW: ID + PLATFORM & FAVORITE BUTTON -->
+      <div class="flex items-start justify-between gap-2 pt-0.5">
+        <div class="flex flex-col gap-1">
+          <!-- Small text: "TG-1002 · Telegram" -->
+          <span class="text-[12px] font-mono font-medium text-[#878E99] tracking-tight">TG-1002 · Telegram</span>
+          <!-- Heading: "قناه تلجرام 23k للبيع" -->
+          <h2 class="text-[18px] font-bold text-[#F2F4F7] leading-snug">قناه تلجرام 23k للبيع</h2>
+        </div>
+
+        <!-- Icon button: favorite heart -->
+        <button type="button" aria-label="إضافة للمفضلة" class="w-10 h-10 rounded-sm bg-[#1A1C1F] border border-[#2E3238] flex items-center justify-center text-[#878E99] hover:text-[#F2545B] hover:bg-[#23262B] transition-colors active:scale-95 shrink-0 mt-0.5">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Text: Long free-text product description -->
+      <p class="text-[13px] text-[#878E99] leading-relaxed bg-[#1A1C1F]/40 p-3 rounded-md border border-[#2E3238]/60">
+        قناه قويه للبيع الارباح مفعله العدد 23k اختصر الوقت وتقدر تبلش فيها باي محتوى يناسبك بدلا من انشاء قناة فارغة رابط القناه 👇🏻🔥 https://t.me/FFFOJO السعر مناسب جدا للشراء والاستفسار: @8_16_X تم تفريغ محتواها لعدم التفرغ
+      </p>
+
+      <!-- SPECIFICATION KEY-VALUE PANEL -->
+      <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-md overflow-hidden divide-y divide-[#2E3238]">
+        <!-- Key-value row 1 -->
+        <div class="flex items-center justify-between px-3.5 py-2.5 text-[13px]">
+          <span class="text-[#878E99]">المنصة</span>
+          <span class="font-medium text-[#F2F4F7] font-mono">Telegram</span>
+        </div>
+        <!-- Key-value row 2 -->
+        <div class="flex items-center justify-between px-3.5 py-2.5 text-[13px]">
+          <span class="text-[#878E99]">عدد مشتركي القناة</span>
+          <span class="font-semibold text-[#F2F4F7] font-mono">23,000</span>
+        </div>
+        <!-- Key-value row 3 -->
+        <div class="flex items-center justify-between px-3.5 py-2.5 text-[13px]">
+          <span class="text-[#878E99]">التحقق</span>
+          <span class="text-[#878E99] font-medium">غير موثق</span>
+        </div>
+        <!-- Key-value row 4 -->
+        <div class="flex items-center justify-between px-3.5 py-2.5 text-[13px]">
+          <span class="text-[#878E99]">دولة الجمهور الأساسية</span>
+          <span class="text-[#F2F4F7]">الخليج مصر متنوع</span>
+        </div>
+        <!-- Key-value row 5 -->
+        <div class="flex items-center justify-between px-3.5 py-2.5 text-[13px]">
+          <span class="text-[#878E99]">عمر الحساب أو تاريخ إنشائه</span>
+          <span class="text-[#F2F4F7]">سنه</span>
+        </div>
+        <!-- Key-value row 6 -->
+        <div class="flex items-center justify-between px-3.5 py-2.5 text-[13px]">
+          <span class="text-[#878E99]">موضوع القناة أو المجموعة</span>
+          <span class="text-[#F2F4F7]">متنوع</span>
+        </div>
+      </div>
+
+      <!-- IMAGE GALLERY SECTION -->
+      <div class="flex flex-col gap-1.5">
+        <div class="relative w-full h-[96px] rounded-md bg-[#1A1C1F] border border-[#2E3238] overflow-hidden flex items-center justify-center group">
+          <div class="absolute inset-0 bg-[#23262B]/50 flex items-center justify-center">
+            <!-- Simulated thumbnail detail grid -->
+            <div class="w-48 h-14 bg-[#121315] border border-[#2E3238] rounded-sm p-2 flex items-center justify-between text-[11px] text-[#878E99]">
+              <div class="flex flex-col">
+                <span class="text-[#F2F4F7] font-mono font-medium">إحصائيات القناة</span>
+                <span class="text-[9px]">لوحة الملاك الأصلية</span>
+              </div>
+              <span class="px-1.5 py-0.5 rounded bg-[#23262B] text-[10px] text-[#339CFF] font-mono">1.9x</span>
+            </div>
+          </div>
+          <!-- Icon button (aria: تكبير صورة قناه تلجرام 23k للبيع) -->
+          <button type="button" aria-label="تكبير صورة قناه تلجرام 23k للبيع" class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/20 transition-colors group">
+            <span class="px-3 py-1.5 rounded-sm bg-[#121315]/90 border border-[#2E3238] text-[11px] text-[#F2F4F7] flex items-center gap-1.5 backdrop-blur-md shadow-sm">
+              <svg class="w-3.5 h-3.5 text-[#339CFF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <polyline points="9 21 3 21 3 15"></polyline>
+                <line x1="21" y1="3" x2="14" y2="10"></line>
+                <line x1="3" y1="21" x2="10" y2="14"></line>
+              </svg>
+              <span>تكبير الصورة ⤢</span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SELLER ROW BUTTON: "س · البائع · سليم" -->
+      <button type="button" class="w-full bg-[#1A1C1F] hover:bg-[#23262B] border border-[#2E3238] rounded-md px-3.5 py-3 flex items-center justify-between transition-colors active:scale-[0.99] group">
+        <div class="flex items-center gap-3">
+          <!-- Avatar "س" -->
+          <div class="w-8 h-8 rounded-full bg-[#23262B] border border-[#2E3238] text-[#2CC984] font-bold text-xs flex items-center justify-center">
+            س
+          </div>
+          <div class="flex flex-col text-right">
+            <span class="text-[11px] text-[#878E99] leading-tight">البائع</span>
+            <span class="text-[14px] font-semibold text-[#F2F4F7] leading-tight">سليم</span>
+          </div>
+        </div>
+        <!-- Chevron pointing left for RTL navigation -->
+        <svg class="w-4 h-4 text-[#878E99] group-hover:text-[#F2F4F7] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- PRICE & ESCROW POLICY PANEL -->
+      <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-md p-3.5 flex flex-col gap-1.5">
+        <div class="flex items-baseline justify-between">
+          <span class="text-[13px] text-[#878E99]">سعر المنتج</span>
+          <span class="text-[20px] font-bold text-[#F2F4F7] font-mono tracking-tight">$30.00</span>
+        </div>
+        <p class="text-[11px] text-[#878E99] leading-relaxed pt-1 border-t border-[#2E3238]/60">
+          إنشاء الطلب لا يخصم من المحفظة. تحدد الإدارة والوسيط تفاصيل الدفع والتسليم.
+        </p>
+      </div>
+
+      <!-- DISCLAIMER TEXT -->
+      <div class="bg-[#23262B]/30 border border-[#2E3238]/50 rounded-sm p-2.5 text-center">
+        <p class="text-[11px] text-[#878E99] leading-normal">
+          مراجعة الإعلان لا تعني ضمان الملكية. تابع الصفقة مع وسيط معتمد.
+        </p>
+      </div>
+
+      <!-- ACTION BUTTONS ROW: "مشاركة" AND "إبلاغ" -->
+      <div class="grid grid-cols-2 gap-2.5 pt-0.5">
+        <button type="button" class="h-10 rounded-sm bg-[#1A1C1F] hover:bg-[#23262B] border border-[#2E3238] text-[13px] font-medium text-[#F2F4F7] flex items-center justify-center gap-2 transition-colors active:scale-95">
+          <svg class="w-4 h-4 text-[#878E99]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+          <span>مشاركة</span>
+        </button>
+
+        <button type="button" class="h-10 rounded-sm bg-[#1A1C1F] hover:bg-[#23262B] border border-[#2E3238] text-[13px] font-medium text-[#878E99] hover:text-[#F2545B] flex items-center justify-center gap-2 transition-colors active:scale-95">
+          <svg class="w-4 h-4 text-[#878E99]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>إبلاغ</span>
+        </button>
+      </div>
+
+    </main>
+
+    <!-- STICKY BOTTOM PURCHASE BAR -->
+    <div class="absolute bottom-[56px] left-0 right-0 h-16 bg-[#1A1C1F]/95 border-t border-[#2E3238] px-4 flex items-center justify-between backdrop-blur-md z-20">
+      <div class="flex flex-col">
+        <span class="text-[10px] text-[#878E99]">المبلغ الإجمالي</span>
+        <span class="text-[18px] font-bold text-[#F2F4F7] font-mono leading-none">$30.00</span>
+      </div>
+
+      <!-- Button: "طلب شراء" [PRIMARY] -->
+      <button type="button" class="h-10 px-5 rounded-sm bg-[#339CFF] hover:bg-[#258aed] text-white text-[13px] font-semibold flex items-center gap-2 shadow-sm transition-all active:scale-95">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span>طلب شراء</span>
+      </button>
+    </div>
+
+    <!-- BOTTOM NAV (5 tabs, NO tab is active on this screen) -->
+    <nav class="h-14 border-t border-[#2E3238] bg-[#121315] grid grid-cols-5 items-center px-1 absolute bottom-0 left-0 right-0 z-30">
+      <!-- Tab 1: السوق -->
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-[#878E99] hover:text-[#F2F4F7] transition-colors py-1">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <span class="text-[10px] font-medium leading-none">السوق</span>
+      </a>
+
+      <!-- Tab 2: طلباتي -->
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-[#878E99] hover:text-[#F2F4F7] transition-colors py-1">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+        </svg>
+        <span class="text-[10px] font-medium leading-none">طلباتي</span>
+      </a>
+
+      <!-- Tab 3: بيع -->
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-[#878E99] hover:text-[#F2F4F7] transition-colors py-1">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        <span class="text-[10px] font-medium leading-none">بيع</span>
+      </a>
+
+      <!-- Tab 4: الوساطة -->
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-[#878E99] hover:text-[#F2F4F7] transition-colors py-1">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <polyline points="9 12 11 14 15 10"></polyline>
+        </svg>
+        <span class="text-[10px] font-medium leading-none">الوساطة</span>
+      </a>
+
+      <!-- Tab 5: حسابي -->
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-[#878E99] hover:text-[#F2F4F7] transition-colors py-1">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span class="text-[10px] font-medium leading-none">حسابي</span>
+      </a>
+    </nav>
+
+  </div>
+
+</body>
+</html>

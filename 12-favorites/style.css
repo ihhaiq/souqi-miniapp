@@ -1,0 +1,13 @@
+.no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .num-font {
+      font-family: 'Space Grotesk', sans-serif;
+      direction: ltr;
+      display: inline-block;
+      font-variant-numeric: tabular-nums;
+    }

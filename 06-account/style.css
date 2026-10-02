@@ -1,0 +1,35 @@
+body {
+      background-color: #0b0c0e;
+      color: #F2F4F7;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 32px 16px;
+    }
+    .num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-variant-numeric: tabular-nums;
+      direction: ltr;
+      display: inline-block;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .device-viewport {
+      width: 390px;
+      min-width: 390px;
+      max-width: 390px;
+      height: 844px;
+      background-color: #121315;
+      border: 1px solid #2E3238;
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }

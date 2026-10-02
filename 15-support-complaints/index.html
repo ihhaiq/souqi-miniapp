@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الدعم والشكاوى - الشاشات التفاعلية (Support & Complaints)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Spec Banner -->
+  <div class="meta-board">
+    <div class="meta-badge">TELEGRAM MINI APP · 390PX VIEWPORT · RTL ARABIC</div>
+    <h1 class="meta-title">شاشة الدعم والشكاوى (Support & Complaints)</h1>
+    <p class="meta-desc">
+      إعادة تصميم متكاملة وفق نظام التصميم المعتمد لمشروع سوقي (النمط الداكن المحايد وقواعد التخطيط العربي المعكوس RTL).
+      عرض 3 حالات للشاشة: الأساسية المطابقة، نافذة إضافة تذكرة منبثقة، والحالة المقترحة (PROPOSED) بسجلات الدعم الحية.
+    </p>
+  </div>
+
+  <!-- Frames Grid -->
+  <div class="frames-container">
+
+    <!-- FRAME 1: Restyled Empty State -->
+    <div class="frame-wrapper">
+      <div class="frame-tag">الإطار 1: شاشة الدعم الأساسية (Restyled)</div>
+      
+      <div class="screen-device">
+        <!-- Phone Status Bar -->
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="status-notch"></div>
+          <div class="status-icons">
+            <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M0 8.5C0 7.67 0.67 7 1.5 7H2.5C3.33 7 4 7.67 4 8.5V9.5C4 10.33 3.33 11 2.5 11H1.5C0.67 11 0 10.33 0 9.5V8.5ZM5.5 5.5C5.5 4.67 6.17 4 7 4H8C8.83 4 9.5 4.67 9.5 5.5V9.5C9.5 10.33 8.83 11 8 11H7C6.17 11 5.5 10.33 5.5 9.5V5.5ZM11 2.5C11 1.67 11.67 1 12.5 1H13.5C14.33 1 15 1.67 15 2.5V9.5C15 10.33 14.33 11 13.5 11H12.5C11.67 11 11 10.33 11 9.5V2.5Z"/></svg>
+            <svg width="16" height="11" viewBox="0 0 16 11" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="0.6" y="0.6" width="13" height="9.8" rx="2.5"/><path d="M14.5 4v3" stroke-linecap="round"/><rect x="2" y="2" width="7" height="7" rx="1.5" fill="currentColor"/></svg>
+          </div>
+        </div>
+
+        <!-- Top Bar -->
+        <div class="top-bar">
+          <div class="top-bar-right">
+            <!-- Back Button pointing Right in RTL (→) -->
+            <button class="icon-btn" aria-label="رجوع">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <div class="top-titles">
+              <span class="top-title">الدعم</span>
+              <span class="top-subtitle">سوقي</span>
+            </div>
+          </div>
+          <div class="top-bar-left">
+            <button class="icon-btn" aria-label="المحفظة">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/>
+              </svg>
+            </button>
+            <button class="icon-btn" aria-label="القائمة">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="screen-content">
+          <!-- Page Heading Area -->
+          <div class="page-heading-block">
+            <div class="eyebrow-text">WE ARE HERE FOR YOU</div>
+            <div class="heading-title-row">
+              <h2 class="main-heading">نسمعك، ونتابع معك</h2>
+              <!-- Button: تذكرة جديدة [PRIMARY] -->
+              <button class="btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                تذكرة جديدة
+              </button>
+            </div>
+            <p class="main-desc">استفسار، اقتراح أو مشكلة في طلب؟ اكتب لنا التفاصيل.</p>
+          </div>
+
+          <!-- Stack -> Empty state -->
+          <div class="content-stack">
+            <div class="empty-state-box">
+              <div class="empty-icon-wrap">
+                <!-- Geometric Clean Cube Icon matching other screens -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <h3 class="empty-title">كيف نقدر نساعدك؟</h3>
+              <p class="empty-text">ابدأ تذكرة جديدة وسيراجع الفريق رسالتك. يمكنك متابعة الرد من هذه الصفحة.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Navigation Bar (5 tabs, NO tab active) -->
+        <div class="bottom-nav">
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+            <span>السوق</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span>طلباتي</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span>بيع</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <span>الوساطة</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>حسابي</span>
+          </a>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- FRAME 2: New Ticket Bottom Sheet -->
+    <div class="frame-wrapper">
+      <div class="frame-tag">الإطار 2: نافذة تذكرة دعم جديدة (New-Ticket Sheet)</div>
+      
+      <div class="screen-device">
+        <!-- Phone Status Bar -->
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="status-notch"></div>
+          <div class="status-icons">
+            <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M0 8.5C0 7.67 0.67 7 1.5 7H2.5C3.33 7 4 7.67 4 8.5V9.5C4 10.33 3.33 11 2.5 11H1.5C0.67 11 0 10.33 0 9.5V8.5ZM5.5 5.5C5.5 4.67 6.17 4 7 4H8C8.83 4 9.5 4.67 9.5 5.5V9.5C9.5 10.33 8.83 11 8 11H7C6.17 11 5.5 10.33 5.5 9.5V5.5ZM11 2.5C11 1.67 11.67 1 12.5 1H13.5C14.33 1 15 1.67 15 2.5V9.5C15 10.33 14.33 11 13.5 11H12.5C11.67 11 11 10.33 11 9.5V2.5Z"/></svg>
+            <svg width="16" height="11" viewBox="0 0 16 11" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="0.6" y="0.6" width="13" height="9.8" rx="2.5"/><path d="M14.5 4v3" stroke-linecap="round"/><rect x="2" y="2" width="7" height="7" rx="1.5" fill="currentColor"/></svg>
+          </div>
+        </div>
+
+        <!-- Dimmed Background Content Under Sheet -->
+        <div class="top-bar">
+          <div class="top-bar-right">
+            <button class="icon-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <div class="top-titles">
+              <span class="top-title">الدعم</span>
+              <span class="top-subtitle">سوقي</span>
+            </div>
+          </div>
+          <div class="top-bar-left">
+            <button class="icon-btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg></button>
+            <button class="icon-btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+          </div>
+        </div>
+
+        <div class="screen-content" style="opacity: 0.25; filter: blur(2px);">
+          <div class="page-heading-block">
+            <div class="eyebrow-text">WE ARE HERE FOR YOU</div>
+            <div class="heading-title-row">
+              <h2 class="main-heading">نسمعك، ونتابع معك</h2>
+              <button class="btn-primary">تذكرة جديدة</button>
+            </div>
+            <p class="main-desc">استفسار، اقتراح أو مشكلة في طلب؟ اكتب لنا التفاصيل.</p>
+          </div>
+          <div class="content-stack">
+            <div class="empty-state-box">
+              <div class="empty-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+              <h3 class="empty-title">كيف نقدر نساعدك؟</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dimmed Overlay with Bottom Sheet -->
+        <div class="screen-overlay">
+          <div class="bottom-sheet">
+            <div class="sheet-handle"></div>
+            
+            <!-- Sheet Header -->
+            <div class="sheet-header">
+              <h3 class="sheet-title">تذكرة دعم جديدة</h3>
+              <button class="sheet-close-btn" aria-label="إغلاق">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Sheet Body Form -->
+            <div class="sheet-body">
+              <div class="form-group">
+                <label class="form-label" for="ticket-msg">
+                  <span>الرسالة</span>
+                  <span class="req-star">*</span>
+                </label>
+                <textarea id="ticket-msg" class="form-textarea" placeholder="اكتب استفسارك أو مشكلتك بالتفصيل مع ذكر رقم الطلب إن وجد..." autofocus></textarea>
+              </div>
+
+              <!-- Sheet Actions -->
+              <div class="sheet-actions">
+                <button class="btn-ghost">إلغاء</button>
+                <button class="btn-sheet-submit">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                  إرسال الرسالة
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Navigation Bar -->
+        <div class="bottom-nav">
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+            <span>السوق</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span>طلباتي</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span>بيع</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <span>الوساطة</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>حسابي</span>
+          </a>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+    <!-- FRAME 3: PROPOSED with 2 ticket rows -->
+    <div class="frame-wrapper">
+      <div class="frame-tag">
+        <span>الإطار 3:</span>
+        <span class="badge-proposed">PROPOSED</span>
+        <span>(قائمة التذاكر النشطة)</span>
+      </div>
+      
+      <div class="screen-device">
+        <!-- Phone Status Bar -->
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="status-notch"></div>
+          <div class="status-icons">
+            <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M0 8.5C0 7.67 0.67 7 1.5 7H2.5C3.33 7 4 7.67 4 8.5V9.5C4 10.33 3.33 11 2.5 11H1.5C0.67 11 0 10.33 0 9.5V8.5ZM5.5 5.5C5.5 4.67 6.17 4 7 4H8C8.83 4 9.5 4.67 9.5 5.5V9.5C9.5 10.33 8.83 11 8 11H7C6.17 11 5.5 10.33 5.5 9.5V5.5ZM11 2.5C11 1.67 11.67 1 12.5 1H13.5C14.33 1 15 1.67 15 2.5V9.5C15 10.33 14.33 11 13.5 11H12.5C11.67 11 11 10.33 11 9.5V2.5Z"/></svg>
+            <svg width="16" height="11" viewBox="0 0 16 11" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="0.6" y="0.6" width="13" height="9.8" rx="2.5"/><path d="M14.5 4v3" stroke-linecap="round"/><rect x="2" y="2" width="7" height="7" rx="1.5" fill="currentColor"/></svg>
+          </div>
+        </div>
+
+        <!-- Top Bar -->
+        <div class="top-bar">
+          <div class="top-bar-right">
+            <button class="icon-btn" aria-label="رجوع">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <div class="top-titles">
+              <span class="top-title">الدعم</span>
+              <span class="top-subtitle">سوقي</span>
+            </div>
+          </div>
+          <div class="top-bar-left">
+            <button class="icon-btn" aria-label="المحفظة">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/>
+              </svg>
+            </button>
+            <button class="icon-btn" aria-label="القائمة">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable Content with 2 Ticket Rows -->
+        <div class="screen-content">
+          <!-- Page Heading Area -->
+          <div class="page-heading-block">
+            <div class="eyebrow-text">WE ARE HERE FOR YOU</div>
+            <div class="heading-title-row">
+              <h2 class="main-heading">نسمعك، ونتابع معك</h2>
+              <button class="btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                تذكرة جديدة
+              </button>
+            </div>
+            <p class="main-desc">استفسار، اقتراح أو مشكلة في طلب؟ اكتب لنا التفاصيل.</p>
+          </div>
+
+          <!-- Active Tickets Stack (PROPOSED 2 Rows) -->
+          <div class="content-stack">
+            <div class="tickets-list">
+              <!-- Ticket Row 1: Under Review / Pending -->
+              <div class="ticket-card">
+                <div class="ticket-card-header">
+                  <span class="ticket-subject">مشكلة في توثيق ملكية قناة تيليجرام TG-1002</span>
+                  <div class="status-badge pending">
+                    <span class="status-dot"></span>
+                    <span>قيد المراجعة</span>
+                  </div>
+                </div>
+                <div class="ticket-card-footer">
+                  <span class="ticket-id">#TCK-8421</span>
+                  <span class="ticket-date">2025-05-19 · 15:40</span>
+                  <div class="ticket-action-hint">
+                    <span>التفاصيل</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ticket Row 2: Answered / Closed -->
+              <div class="ticket-card">
+                <div class="ticket-card-header">
+                  <span class="ticket-subject">استفسار عن عمولة الوساطة ومدة حجز الرصيد</span>
+                  <div class="status-badge answered">
+                    <span class="status-dot"></span>
+                    <span>تم الرد</span>
+                  </div>
+                </div>
+                <div class="ticket-card-footer">
+                  <span class="ticket-id">#TCK-8309</span>
+                  <span class="ticket-date">2025-05-18 · 11:25</span>
+                  <div class="ticket-action-hint">
+                    <span>التفاصيل</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Navigation Bar (5 tabs, NO tab active) -->
+        <div class="bottom-nav">
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+            <span>السوق</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span>طلباتي</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span>بيع</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <span>الوساطة</span>
+          </a>
+          <a class="nav-tab" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>حسابي</span>
+          </a>
+        </div>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="spec-footer">
+    متوافق تماماً مع نظام التصميم المعتمد DOCUMENT_52 · خط IBM Plex Sans Arabic للأبجدية العربية، وأرقام Space Grotesk بصيغة tabular-nums
+  </div>
+
+</body>
+</html>

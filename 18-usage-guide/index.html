@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>سوقي - دليل الاستخدام</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            base: '#121315',
+            panel: '#1A1C1F',
+            'panel-2': '#23262B',
+            hairline: '#2E3238',
+            'primary-txt': '#F2F4F7',
+            'muted-txt': '#878E99',
+            accent: '#339CFF',
+            'accent-wash': 'rgba(51, 156, 255, 0.12)'
+          },
+          fontFamily: {
+            arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace']
+          },
+          boxShadow: {
+            'device': '0 25px 60px -15px rgba(0, 0, 0, 0.75), 0 0 0 12px #26292e, 0 0 0 14px #1c1e22'
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom CSS Styling -->
+<link rel="stylesheet" href="style.css">
+<!-- END: Custom CSS Styling -->
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start py-8 px-4 sm:px-6">
+<!-- BEGIN: Desktop Showcase Header -->
+<header class="w-full max-w-2xl text-center mb-8" data-purpose="presentation-header">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-panel border border-hairline mb-3">
+<span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+<span class="text-[11px] font-mono font-semibold tracking-wider text-accent uppercase">TELEGRAM MINI APP • 390PX VIEWPORT • RTL ARABIC</span>
+</div>
+<h1 class="text-2xl sm:text-3xl font-bold text-primary-txt mb-2">شاشة دليل الاستخدام (Usage Guide)</h1>
+<p class="text-sm text-muted-txt leading-relaxed max-w-xl mx-auto">
+      إعادة تصميم متكاملة وفق نظام التصميم المعتمد لمشروع سوقي (النمط الداكن المحايد وقواعد التخطيط العربي المعكوس RTL).
+    </p>
+</header>
+<!-- END: Desktop Showcase Header -->
+<!-- BEGIN: Mobile Device Mockup Frame -->
+<main class="w-[390px] h-[844px] bg-base rounded-[48px] shadow-device border-[3px] border-[#383C44] relative flex flex-col overflow-hidden shrink-0 select-none" data-purpose="mobile-viewport">
+<!-- BEGIN: Device Status Bar & Dynamic Island -->
+<div class="w-full pt-3 px-7 pb-2 flex justify-between items-center z-30 select-none" data-purpose="status-bar">
+<!-- Time Display (RTL order: time on right or left as per modern iOS) -->
+<span class="text-[14px] font-mono font-semibold text-primary-txt tracking-tight">9:41</span>
+<!-- Dynamic Island Pill -->
+<div class="w-24 h-5 bg-black rounded-full absolute left-1/2 -translate-x-1/2 top-2 flex items-center justify-end px-2">
+<div class="w-2.5 h-2.5 rounded-full bg-[#101923] border border-[#1e2730] flex items-center justify-center">
+<div class="w-1 h-1 rounded-full bg-[#0a3556]"></div>
+</div>
+</div>
+<!-- Network and Battery Icons -->
+<div class="flex items-center gap-1.5 text-primary-txt">
+<!-- Signal Icon -->
+<svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z" opacity="0.3"></path>
+<rect height="5" rx="1" width="3" x="2" y="16"></rect>
+<rect height="9" rx="1" width="3" x="7" y="12"></rect>
+<rect height="13" rx="1" width="3" x="12" y="8"></rect>
+<rect height="17" rx="1" width="3" x="17" y="4"></rect>
+</svg>
+<!-- Wifi Icon -->
+<svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4zm0 3.5c3.51 0 6.72 1.34 9.14 3.54L12 19.35 2.86 11.04C5.28 8.84 8.49 7.5 12 7.5z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="w-5 h-2.5 border border-primary-txt rounded-sm p-0.5 flex items-center">
+<div class="h-full w-full bg-primary-txt rounded-[1px]"></div>
+</div>
+</div>
+</div>
+<!-- END: Device Status Bar & Dynamic Island -->
+<!-- BEGIN: Top Navigation Bar -->
+<header class="px-4 py-2.5 flex items-center justify-between border-b border-hairline/60 bg-base/90 backdrop-blur-md z-20 shrink-0" data-purpose="app-header">
+<!-- Right Side: RTL Back Button (Points Right) -->
+<button aria-label="الرجوع" class="w-9 h-9 flex items-center justify-center bg-panel border border-hairline rounded-lg text-primary-txt hover:border-muted-txt transition-colors active:scale-95" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<!-- Back arrow pointing right for RTL -->
+<line x1="5" x2="19" y1="12" y2="12"></line>
+<polyline points="12 5 19 12 12 19"></polyline>
+</svg>
+</button>
+<!-- Center Title and Subtitle -->
+<div class="flex flex-col items-center justify-center text-center">
+<h2 class="text-[17px] font-bold text-primary-txt tracking-tight leading-snug">دليل الاستخدام</h2>
+<span class="text-[12px] text-muted-txt leading-none mt-0.5">سوقي</span>
+</div>
+<!-- Left Side Action Buttons: Wallet & Menu -->
+<div class="flex items-center gap-2">
+<!-- Wallet Icon Button -->
+<button aria-label="المحفظة" class="w-9 h-9 flex items-center justify-center bg-panel border border-hairline rounded-lg text-primary-txt hover:border-muted-txt transition-colors active:scale-95" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="14" rx="3" width="20" x="2" y="5"></rect>
+<path d="M16 12h.01"></path>
+<path d="M18 12a2 2 0 1 0 0 0"></path>
+</svg>
+</button>
+<!-- Menu / Drawer Button -->
+<button aria-label="القائمة" class="w-9 h-9 flex items-center justify-center bg-panel border border-hairline rounded-lg text-primary-txt hover:border-muted-txt transition-colors active:scale-95" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
+<line x1="3" x2="21" y1="6" y2="6"></line>
+<line x1="3" x2="21" y1="12" y2="12"></line>
+<line x1="3" x2="21" y1="18" y2="18"></line>
+</svg>
+</button>
+</div>
+</header>
+<!-- END: Top Navigation Bar -->
+<!-- BEGIN: Main Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto px-4 py-3.5 space-y-3 no-scrollbar" data-purpose="guide-panels-container">
+<!-- BEGIN: Panel 1 - الشراء -->
+<article class="bg-panel border border-hairline rounded-[14px] p-4 flex flex-col gap-2 transition hover:border-[#383d44]" data-purpose="guide-panel-buy">
+<header class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-accent-wash flex items-center justify-center text-accent shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+<line x1="3" x2="21" y1="6" y2="6"></line>
+<path d="M16 10a4 4 0 0 1-8 0"></path>
+</svg>
+</div>
+<h3 class="text-[16px] font-bold text-primary-txt">الشراء</h3>
+</header>
+<p class="text-[13px] text-muted-txt leading-[1.6] font-normal m-0 text-justify">
+          تصفح السوق، افتح تفاصيل المنتج ثم اطلب شراءه. تتابع الإدارة الطلب وتعين وسيطًا؛ تابع الحالة من طلباتي.
+        </p>
+</article>
+<!-- END: Panel 1 - الشراء -->
+<!-- BEGIN: Panel 2 - البيع -->
+<article class="bg-panel border border-hairline rounded-[14px] p-4 flex flex-col gap-2 transition hover:border-[#383d44]" data-purpose="guide-panel-sell">
+<header class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-accent-wash flex items-center justify-center text-accent shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+<line x1="7" x2="7.01" y1="7" y2="7"></line>
+</svg>
+</div>
+<h3 class="text-[16px] font-bold text-primary-txt">البيع</h3>
+</header>
+<p class="text-[13px] text-muted-txt leading-[1.6] font-normal m-0 text-justify">
+          اختر بيع، ثم أضف منتجك وتفاصيله وصوره. تظهر إثباتات الملكية للإدارة فقط. راجع حالة منتجك من منتجاتي.
+        </p>
+</article>
+<!-- END: Panel 2 - البيع -->
+<!-- BEGIN: Panel 3 - المحفظة -->
+<article class="bg-panel border border-hairline rounded-[14px] p-4 flex flex-col gap-2 transition hover:border-[#383d44]" data-purpose="guide-panel-wallet">
+<header class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-accent-wash flex items-center justify-center text-accent shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<rect height="16" rx="3" width="20" x="2" y="4"></rect>
+<path d="M16 12h2"></path>
+</svg>
+</div>
+<h3 class="text-[16px] font-bold text-primary-txt">المحفظة</h3>
+</header>
+<p class="text-[13px] text-muted-txt leading-[1.6] font-normal m-0 text-justify">
+          اشحن بالنجوم أو بكود شحن أو بأحد التحويلات المفعلة. التحويلات اليدوية تحتاج مراجعة الإدارة قبل إضافة الرصيد.
+        </p>
+</article>
+<!-- END: Panel 3 - المحفظة -->
+<!-- BEGIN: Panel 4 - الإعلانات -->
+<article class="bg-panel border border-hairline rounded-[14px] p-4 flex flex-col gap-2 transition hover:border-[#383d44]" data-purpose="guide-panel-ads">
+<header class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-accent-wash flex items-center justify-center text-accent shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+<path d="M12 7v4"></path>
+<path d="M12 15h.01"></path>
+</svg>
+</div>
+<h3 class="text-[16px] font-bold text-primary-txt">الإعلانات</h3>
+</header>
+<p class="text-[13px] text-muted-txt leading-[1.6] font-normal m-0 text-justify">
+          من أعلن لدينا، املأ قالب النشر وراجع المعاينة ثم أرسل. القناة تستقبل أربعة إعلانات بحد أقصى خلال الساعة الأخيرة بعد الموافقة.
+        </p>
+</article>
+<!-- END: Panel 4 - الإعلانات -->
+<!-- BEGIN: Panel 5 - الدعم -->
+<article class="bg-panel border border-hairline rounded-[14px] p-4 flex flex-col gap-2 transition hover:border-[#383d44]" data-purpose="guide-panel-support">
+<header class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-accent-wash flex items-center justify-center text-accent shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+<line x1="12" x2="12.01" y1="17" y2="17"></line>
+</svg>
+</div>
+<h3 class="text-[16px] font-bold text-primary-txt">الدعم</h3>
+</header>
+<p class="text-[13px] text-muted-txt leading-[1.6] font-normal m-0 text-justify">
+          أرسل مشكلة أو شكوى من الدعم، وتابع رد الإدارة من نفس الصفحة. لمشكلات مشتريات النجوم يمكنك استخدام <code class="px-1.5 py-0.5 rounded text-[12px] bg-panel-2 border border-hairline text-accent font-mono font-medium" dir="ltr">/paysupport</code> في البوت.
+        </p>
+</article>
+<!-- END: Panel 5 - الدعم -->
+</div>
+<!-- END: Main Scrollable Content Area -->
+<!-- BEGIN: Bottom Navigation Bar (5 Tabs) -->
+<!-- CRITICAL: Strictly no active state on this screen (all muted #878E99) -->
+<nav class="border-t border-hairline bg-panel/95 backdrop-blur-md px-2 pt-2.5 pb-4 z-20 shrink-0" data-purpose="bottom-navigation">
+<div class="grid grid-cols-5 gap-1">
+<!-- Tab 1: السوق (Rightmost in RTL) -->
+<a class="flex flex-col items-center justify-center gap-1 py-1 text-muted-txt hover:text-primary-txt transition-colors group" href="#market">
+<svg class="w-5 h-5 text-muted-txt group-hover:text-primary-txt transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="7" rx="1.5" width="7" x="3" y="3"></rect>
+<rect height="7" rx="1.5" width="7" x="14" y="3"></rect>
+<rect height="7" rx="1.5" width="7" x="14" y="14"></rect>
+<rect height="7" rx="1.5" width="7" x="3" y="14"></rect>
+</svg>
+<span class="text-[11px] font-medium tracking-tight">السوق</span>
+</a>
+<!-- Tab 2: طلباتي -->
+<a class="flex flex-col items-center justify-center gap-1 py-1 text-muted-txt hover:text-primary-txt transition-colors group" href="#orders">
+<svg class="w-5 h-5 text-muted-txt group-hover:text-primary-txt transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path>
+<rect height="4" rx="1" width="6" x="9" y="3"></rect>
+<line x1="9" x2="15" y1="12" y2="12"></line>
+<line x1="9" x2="13" y1="16" y2="16"></line>
+</svg>
+<span class="text-[11px] font-medium tracking-tight">طلباتي</span>
+</a>
+<!-- Tab 3: بيع -->
+<a class="flex flex-col items-center justify-center gap-1 py-1 text-muted-txt hover:text-primary-txt transition-colors group" href="#sell">
+<svg class="w-5 h-5 text-muted-txt group-hover:text-primary-txt transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" opacity="0.4" r="9"></circle>
+<line x1="12" x2="12" y1="8" y2="16"></line>
+<line x1="8" x2="16" y1="12" y2="12"></line>
+</svg>
+<span class="text-[11px] font-medium tracking-tight">بيع</span>
+</a>
+<!-- Tab 4: الوساطة -->
+<a class="flex flex-col items-center justify-center gap-1 py-1 text-muted-txt hover:text-primary-txt transition-colors group" href="#escrow">
+<svg class="w-5 h-5 text-muted-txt group-hover:text-primary-txt transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+<polyline points="9 12 11 14 15 10"></polyline>
+</svg>
+<span class="text-[11px] font-medium tracking-tight">الوساطة</span>
+</a>
+<!-- Tab 5: حسابي (Leftmost in RTL) -->
+<a class="flex flex-col items-center justify-center gap-1 py-1 text-muted-txt hover:text-primary-txt transition-colors group" href="#account">
+<svg class="w-5 h-5 text-muted-txt group-hover:text-primary-txt transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+<circle cx="12" cy="7" r="4"></circle>
+</svg>
+<span class="text-[11px] font-medium tracking-tight">حسابي</span>
+</a>
+</div>
+</nav>
+<!-- END: Bottom Navigation Bar -->
+<!-- BEGIN: iOS Home Indicator Bar -->
+<div class="w-full pb-2 pt-1 flex justify-center bg-panel shrink-0" data-purpose="home-indicator">
+<div class="w-32 h-1 bg-white/20 rounded-full"></div>
+</div>
+<!-- END: iOS Home Indicator Bar -->
+</main>
+<!-- END: Mobile Device Mockup Frame -->
+</body></html>

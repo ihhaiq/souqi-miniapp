@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>عضوية VIP - سوقي</title>
+<!-- Fonts Setup -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            app: {
+              bg: '#121315',
+              panel: '#1A1C1F',
+              panel2: '#23262B',
+              line: '#2E3238',
+              text: '#F2F4F7',
+              muted: '#878E99',
+              accent: '#339CFF',
+              amber: '#F0A732',
+              green: '#2CC984',
+              red: '#F2545B',
+            }
+          },
+          fontFamily: {
+            arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace']
+          },
+          borderRadius: {
+            'sm': '8px',
+            'md': '12px',
+            'lg': '18px',
+            'pill': '9999px'
+          }
+        }
+      }
+    };
+  </script>
+<!-- Typography & Canvas Base Styles -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen canvas-bg flex flex-col items-center justify-center p-4 md:py-10">
+<!-- BEGIN: PresentationHeader -->
+<header class="text-center max-w-lg mb-6 flex flex-col items-center gap-2">
+<!-- Viewport spec badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-app-panel border border-app-line text-xs font-mono font-medium tracking-wide text-app-muted">
+<span class="w-2 h-2 rounded-full bg-app-accent animate-pulse"></span>
+      TELEGRAM MINI APP · 390PX VIEWPORT · RTL ARABIC
+    </div>
+<h1 class="text-xl md:text-2xl font-bold text-app-text">شاشة عضوية VIP (VIP Membership)</h1>
+<p class="text-xs md:text-sm text-app-muted max-w-md">
+      إعادة تصميم متكاملة وفق نظام التصميم المعتمد لمشروع سوقي (النمط الداكن المحايد وقواعد الاتجاه العربي RTL).
+    </p>
+</header>
+<!-- END: PresentationHeader -->
+<!-- BEGIN: MobileFrameContainer -->
+<!-- 390px reference frame based on Telegram Mini App specification -->
+<main class="w-[390px] max-w-full bg-app-bg border border-app-line rounded-[36px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] overflow-hidden flex flex-col relative" style="min-height: 844px;">
+<!-- Top safe status bar space -->
+<div class="h-3 w-full bg-transparent"></div>
+<!-- BEGIN: TopBar -->
+<header class="h-14 px-4 flex items-center justify-between z-10">
+<!-- Right: Back Button & Screen Title -->
+<div class="flex items-center gap-3">
+<!-- Back Button (Arrow pointing right for RTL return) -->
+<button aria-label="الرجوع" class="w-9 h-9 flex items-center justify-center bg-app-panel border border-app-line rounded-sm text-app-text hover:bg-app-panel2 active:scale-95 transition-all" type="button">
+<svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<line x1="19" x2="5" y1="12" y2="12"></line>
+<polyline points="12 19 5 12 12 5"></polyline>
+</svg>
+</button>
+<!-- Title Block -->
+<div class="flex flex-col">
+<h2 class="text-base font-bold text-app-text leading-tight">عضوية VIP</h2>
+<span class="text-[11px] font-medium text-app-muted leading-tight">سوقي</span>
+</div>
+</div>
+<!-- Left: Utility Actions (Wallet & Menu) -->
+<div class="flex items-center gap-2">
+<!-- Wallet Icon Button -->
+<button aria-label="المحفظة" class="w-9 h-9 flex items-center justify-center bg-app-panel border border-app-line rounded-sm text-app-muted hover:text-app-text hover:bg-app-panel2 active:scale-95 transition-all" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<rect height="16" rx="2" width="20" x="2" y="4"></rect>
+<line x1="6" x2="10" y1="8" y2="8"></line>
+<circle cx="16" cy="12" r="1"></circle>
+</svg>
+</button>
+<!-- Menu / Hamburger Button -->
+<button aria-label="القائمة الرئيسية" class="w-9 h-9 flex items-center justify-center bg-app-panel border border-app-line rounded-sm text-app-muted hover:text-app-text hover:bg-app-panel2 active:scale-95 transition-all" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<line x1="3" x2="21" y1="6" y2="6"></line>
+<line x1="3" x2="21" y1="12" y2="12"></line>
+<line x1="3" x2="21" y1="18" y2="18"></line>
+</svg>
+</button>
+</div>
+</header>
+<!-- END: TopBar -->
+<!-- BEGIN: ScreenContent -->
+<div class="flex-1 px-4 py-3 flex flex-col gap-4 overflow-y-auto">
+<!-- BEGIN: IntroCard -->
+<!-- Highlight presentation card with soft glow -->
+<section class="relative bg-app-panel border border-app-line rounded-lg p-5 text-center flex flex-col items-center justify-center overflow-hidden" data-purpose="intro-card" style="background-image: radial-gradient(circle at 50% 30%, rgba(51, 156, 255, 0.08) 0%, transparent 75%);">
+<!-- Shield Badge Icon with Glow Background -->
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-app-accent/10 border border-app-accent/20 mb-3 shadow-inner">
+<svg class="w-6 h-6 text-app-accent" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+<polyline points="9 12 11 14 15 10"></polyline>
+</svg>
+</div>
+<h3 class="text-[17px] font-bold text-app-text mb-1.5">عضوية التجار VIP</h3>
+<p class="text-[13px] font-normal text-app-muted leading-relaxed max-w-[280px]">
+          شارة عضوية مميزة بجانب اسمك وإعلاناتك في المتجر والقناة.
+        </p>
+</section>
+<!-- END: IntroCard -->
+<!-- BEGIN: MembershipPlansList -->
+<!-- Vertical list of 4 subscription packages -->
+<section class="flex flex-col gap-2.5" data-purpose="membership-plans">
+<!-- Plan 1: 7 Days -->
+<button class="interactive-card w-full h-[62px] bg-app-panel border border-app-line rounded-md px-4 flex items-center justify-between group hover:border-app-line/80 focus:outline-none" type="button">
+<!-- Text details (Right in RTL) -->
+<div class="flex flex-col items-start text-right">
+<span class="text-sm font-semibold text-app-text group-hover:text-white">عضوية 7 يوم</span>
+<span class="text-xs text-app-muted font-medium tabular-nums mt-0.5">150 نجمة تيليجرام</span>
+</div>
+<!-- Action Arrow (Left in RTL indicates forward progression) -->
+<div class="text-app-muted group-hover:text-app-accent transition-colors">
+<svg class="w-5 h-5 transform rotate-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<line x1="19" x2="5" y1="12" y2="12"></line>
+<polyline points="12 19 5 12 12 5"></polyline>
+</svg>
+</div>
+</button>
+<!-- Plan 2: 30 Days -->
+<button class="interactive-card w-full h-[62px] bg-app-panel border border-app-line rounded-md px-4 flex items-center justify-between group hover:border-app-line/80 focus:outline-none" type="button">
+<!-- Text details (Right in RTL) -->
+<div class="flex flex-col items-start text-right">
+<span class="text-sm font-semibold text-app-text group-hover:text-white">عضوية 30 يوم</span>
+<span class="text-xs text-app-muted font-medium tabular-nums mt-0.5">450 نجمة تيليجرام</span>
+</div>
+<!-- Action Arrow -->
+<div class="text-app-muted group-hover:text-app-accent transition-colors">
+<svg class="w-5 h-5 transform rotate-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<line x1="19" x2="5" y1="12" y2="12"></line>
+<polyline points="12 19 5 12 12 5"></polyline>
+</svg>
+</div>
+</button>
+<!-- Plan 3: 90 Days -->
+<button class="interactive-card w-full h-[62px] bg-app-panel border border-app-line rounded-md px-4 flex items-center justify-between group hover:border-app-line/80 focus:outline-none" type="button">
+<!-- Text details (Right in RTL) -->
+<div class="flex flex-col items-start text-right">
+<span class="text-sm font-semibold text-app-text group-hover:text-white">عضوية 90 يوم</span>
+<span class="text-xs text-app-muted font-medium tabular-nums mt-0.5">1,350 نجمة تيليجرام</span>
+</div>
+<!-- Action Arrow -->
+<div class="text-app-muted group-hover:text-app-accent transition-colors">
+<svg class="w-5 h-5 transform rotate-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<line x1="19" x2="5" y1="12" y2="12"></line>
+<polyline points="12 19 5 12 12 5"></polyline>
+</svg>
+</div>
+</button>
+<!-- Plan 4: 365 Days -->
+<button class="interactive-card w-full h-[62px] bg-app-panel border border-app-line rounded-md px-4 flex items-center justify-between group hover:border-app-line/80 focus:outline-none" type="button">
+<!-- Text details (Right in RTL) -->
+<div class="flex flex-col items-start text-right">
+<span class="text-sm font-semibold text-app-text group-hover:text-white">عضوية 365 يوم</span>
+<span class="text-xs text-app-muted font-medium tabular-nums mt-0.5">2,500 نجمة تيليجرام</span>
+</div>
+<!-- Action Arrow -->
+<div class="text-app-muted group-hover:text-app-accent transition-colors">
+<svg class="w-5 h-5 transform rotate-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<line x1="19" x2="5" y1="12" y2="12"></line>
+<polyline points="12 19 5 12 12 5"></polyline>
+</svg>
+</div>
+</button>
+</section>
+<!-- END: MembershipPlansList -->
+<!-- BEGIN: NoticeBox -->
+<!-- Telegram stars verification and support note -->
+<footer class="bg-app-panel border border-app-line rounded-md p-3.5 mt-1" data-purpose="payment-notice">
+<p class="text-xs text-app-muted leading-relaxed text-center font-normal">
+          تُفعّل العضوية بعد تأكيد الدفع من تيليجرام. للدعم بشأن الاشتراك استخدم 
+          <span class="font-mono text-app-accent font-medium px-1 bg-app-panel2 rounded inline-block" dir="ltr">/paysupport</span>
+          في البوت.
+        </p>
+</footer>
+<!-- END: NoticeBox -->
+</div>
+<!-- END: ScreenContent -->
+<!-- BEGIN: BottomNavigation -->
+<!-- 5 Tab Bar with all tabs in inactive/muted state as required -->
+<nav class="h-16 bg-[#16181C] border-t border-app-line px-2 flex items-center justify-around z-20 shrink-0 select-none">
+<!-- 1. Market Tab (السوق) -->
+<a class="flex flex-col items-center justify-center gap-1 w-16 py-1 text-app-muted hover:text-app-text transition-colors" href="#market">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="7" width="7" x="3" y="3"></rect>
+<rect height="7" width="7" x="14" y="3"></rect>
+<rect height="7" width="7" x="14" y="14"></rect>
+<rect height="7" width="7" x="3" y="14"></rect>
+</svg>
+<span class="text-[11px] font-medium leading-none">السوق</span>
+</a>
+<!-- 2. Orders Tab (طلباتي) -->
+<a class="flex flex-col items-center justify-center gap-1 w-16 py-1 text-app-muted hover:text-app-text transition-colors" href="#orders">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+<polyline points="14 2 14 8 20 8"></polyline>
+<line x1="16" x2="8" y1="13" y2="13"></line>
+<line x1="16" x2="8" y1="17" y2="17"></line>
+<polyline points="10 9 9 9 8 9"></polyline>
+</svg>
+<span class="text-[11px] font-medium leading-none">طلباتي</span>
+</a>
+<!-- 3. Sell Tab (بيع) -->
+<a class="flex flex-col items-center justify-center gap-1 w-16 py-1 text-app-muted hover:text-app-text transition-colors" href="#sell">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<line x1="12" x2="12" y1="5" y2="19"></line>
+<line x1="5" x2="19" y1="12" y2="12"></line>
+</svg>
+<span class="text-[11px] font-medium leading-none">بيع</span>
+</a>
+<!-- 4. Escrow Tab (الوساطة) -->
+<a class="flex flex-col items-center justify-center gap-1 w-16 py-1 text-app-muted hover:text-app-text transition-colors" href="#escrow">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+<polyline points="9 12 11 14 15 10"></polyline>
+</svg>
+<span class="text-[11px] font-medium leading-none">الوساطة</span>
+</a>
+<!-- 5. Profile Tab (حسابي) -->
+<a class="flex flex-col items-center justify-center gap-1 w-16 py-1 text-app-muted hover:text-app-text transition-colors" href="#profile">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+<circle cx="12" cy="7" r="4"></circle>
+</svg>
+<span class="text-[11px] font-medium leading-none">حسابي</span>
+</a>
+</nav>
+<!-- END: BottomNavigation -->
+</main>
+<!-- END: MobileFrameContainer -->
+</body></html>

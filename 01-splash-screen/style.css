@@ -1,0 +1,44 @@
+body {
+      background-color: #0D0E11;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      min-height: 100vh;
+      color: #F2F4F7;
+    }
+
+    /* Subtle dot grid pattern on presentation canvas */
+    .bg-dot-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+@keyframes spin-loader {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loader-ring {
+      width: 34px;
+      height: 34px;
+      border: 3px solid rgba(255, 255, 255, 0.08);
+      border-top-color: #339CFF;
+      border-radius: 50%;
+      animation: spin-loader 0.9s cubic-bezier(0.5, 0.1, 0.4, 0.9) infinite;
+    }
+
+    /* Gentle pulsing glow on app icon badge */
+    @keyframes soft-glow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(51, 156, 255, 0.0);
+      }
+      50% {
+        box-shadow: 0 0 20px 2px rgba(51, 156, 255, 0.08);
+      }
+    }
+
+    .icon-badge {
+      animation: soft-glow 3s ease-in-out infinite;
+    }

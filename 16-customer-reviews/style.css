@@ -1,0 +1,155 @@
+:root {
+      --bg: #121315;
+      --panel: #1A1C1F;
+      --panel-2: #23262B;
+      --line: #2E3238;
+      --text: #F2F4F7;
+      --muted: #878E99;
+      --accent: #339CFF;
+      --accent-wash: rgba(51, 156, 255, 0.12);
+      --green: #2CC984;
+      --amber: #F0A732;
+      --red: #F2545B;
+    }
+    body {
+      background-color: #0b0c0e;
+      color: var(--text);
+      font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .num-font {
+      font-family: 'Space Grotesk', sans-serif;
+      font-variant-numeric: tabular-nums;
+    }
+    .phone-container {
+      width: 390px;
+      height: 844px;
+      background-color: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      flex-shrink: 0;
+    }
+    .dynamic-island {
+      width: 110px;
+      height: 28px;
+      background-color: #000;
+      border-radius: 20px;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+    }
+    .status-bar {
+      height: 44px;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      z-index: 40;
+    }
+    .scroll-content {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 90px;
+      scrollbar-width: none;
+    }
+    .scroll-content::-webkit-scrollbar {
+      display: none;
+    }
+    .bottom-nav {
+      height: 72px;
+      background-color: rgba(26, 28, 31, 0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      z-index: 40;
+      padding: 0 6px 6px;
+    }
+    .sheet-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 9, 11, 0.72);
+      backdrop-filter: blur(6px);
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .bottom-sheet {
+      background: var(--panel);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px 24px 0 0;
+      padding: 12px 20px 28px;
+      box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    .sheet-handle {
+      width: 40px;
+      height: 4px;
+      background-color: var(--line);
+      border-radius: 9999px;
+      margin: 0 auto 16px;
+    }
+    .glass-tile {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+    .glass-tile-inner {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .btn-primary {
+      background-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+    .btn-primary:active {
+      opacity: 0.85;
+      transform: scale(0.98);
+    }
+    .btn-ghost {
+      background-color: var(--panel-2);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-ghost:active {
+      background-color: var(--line);
+    }
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background-color: var(--panel-2);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: background-color 0.15s;
+    }
+    .icon-btn:active {
+      background-color: var(--line);
+    }

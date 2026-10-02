@@ -1,0 +1,48 @@
+:root {
+      --bg: #121315;
+      --panel: #1A1C1F;
+      --panel-2: #23262B;
+      --line: #2E3238;
+      --text: #F2F4F7;
+      --muted: #878E99;
+      --accent: #339CFF;
+      --accent-wash: rgba(51, 156, 255, 0.12);
+      --green: #2CC984;
+      --red: #F2545B;
+      --amber: #F0A732;
+    }
+    body {
+      background-color: #0b0c0e;
+      color: var(--text);
+      font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 32px 16px 64px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .num, .latin-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-variant-numeric: tabular-nums;
+      direction: ltr;
+      display: inline-block;
+    }
+    /* Mobile frame preview container */
+    .screen-frame {
+      width: 390px;
+      min-width: 390px;
+      background-color: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.04);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Hide scrollbars for clean mini app look */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
