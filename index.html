@@ -68,23 +68,45 @@
       </div>
 
       <div class="tabs-row">
-        <div class="tabs" id="tabs">
-          <button class="tab active" data-mode="gifts">
+        <div class="tabs social-tabs" id="tabs">
+          <button class="tab tab-fixed active" data-mode="gifts" data-wallet-close type="button" aria-label="الهدايا">
             <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_01 م-1.png" alt=""></span>
             <span class="tab-label">هدايا</span>
           </button>
-          <button class="tab" data-mode="avatars">
-            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_02 م-2.png" alt=""></span>
-            <span class="tab-label">شخصيات</span>
+
+          <button id="socialWalletToggle" class="tab tab-fixed wallet-toggle" type="button" aria-label="فتح مواقع التواصل" aria-expanded="false">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_08 م-5.png" alt=""></span>
           </button>
-          <button class="tab" data-mode="featured" aria-label="شراء النجوم أو بريميوم">
+
+          <div id="socialWallet" class="social-wallet closed" aria-hidden="true">
+            <div class="social-wallet-fade social-wallet-fade-start" aria-hidden="true"></div>
+            <div id="socialWalletTrack" class="social-wallet-track" role="tablist" aria-label="مواقع التواصل">
+              <button class="social-pill active" type="button" data-platform="all" role="tab" aria-selected="true"><span>الكل</span></button>
+              <button class="social-pill" type="button" data-platform="facebook" role="tab" aria-selected="false"><span>Facebook</span><span aria-hidden="true">👥</span></button>
+              <button class="social-pill" type="button" data-platform="instagram" role="tab" aria-selected="false"><span>Instagram</span><span aria-hidden="true">📸</span></button>
+              <button class="social-pill" type="button" data-platform="tiktok" role="tab" aria-selected="false"><span>TikTok</span><span aria-hidden="true">🎵</span></button>
+              <button class="social-pill" type="button" data-platform="youtube" role="tab" aria-selected="false"><span>YouTube</span><span aria-hidden="true">▶️</span></button>
+              <button class="social-pill" type="button" data-platform="telegram" role="tab" aria-selected="false"><span>Telegram</span><span aria-hidden="true">✈️</span></button>
+              <button class="social-pill" type="button" data-platform="snapchat" role="tab" aria-selected="false"><span>Snapchat</span><span aria-hidden="true">👻</span></button>
+              <button class="social-pill" type="button" data-platform="x" role="tab" aria-selected="false"><span>X</span><span aria-hidden="true">❌</span></button>
+              <button class="social-pill" type="button" data-platform="capcut" role="tab" aria-selected="false"><span>CapCut</span><span aria-hidden="true">🎬</span></button>
+              <button class="social-pill" type="button" data-platform="gemini" role="tab" aria-selected="false"><span>Gemini</span><span aria-hidden="true">✨</span></button>
+              <button class="social-pill" type="button" data-platform="other" role="tab" aria-selected="false"><span>أخرى</span><span aria-hidden="true">🌐</span></button>
+              <button class="social-pill" type="button" data-platform="pinterest" role="tab" aria-selected="false"><span>Pinterest</span><span aria-hidden="true">📌</span></button>
+              <button class="social-pill" type="button" data-platform="linkedin" role="tab" aria-selected="false"><span>LinkedIn</span><span aria-hidden="true">💼</span></button>
+              <button class="social-pill" type="button" data-platform="threads" role="tab" aria-selected="false"><span>Threads</span><span aria-hidden="true">🧵</span></button>
+            </div>
+            <div class="social-wallet-fade social-wallet-fade-end" aria-hidden="true"></div>
+          </div>
+
+          <button class="tab tab-fixed" data-mode="featured" type="button" aria-label="شراء النجوم أو بريميوم">
             <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_04 م-3.png" alt=""></span>
           </button>
-          <button class="tab" data-mode="collectibles">
+          <button class="tab tab-fixed" data-mode="collectibles" type="button" aria-label="المقتنيات">
             <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_07 م-4.png" alt=""></span>
             <span class="tab-label">مقتنيات</span>
           </button>
-          <button class="tab" data-mode="channels">
+          <button class="tab tab-fixed" data-mode="channels" type="button" aria-label="القنوات">
             <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_08 م-5.png" alt=""></span>
             <span class="tab-label">قنوات</span>
           </button>
