@@ -1877,20 +1877,21 @@ body.subpage-open .market{display:none}
 }
 .account-stats-priority{
   width:100%;
-  margin-top:18px;
-  padding-top:16px;
-  border-top:1px solid rgba(255,255,255,.08);
+  margin-top:22px;
+  padding-top:0;
+  border-top:0;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
+  gap:16px 12px;
   direction:rtl
 }
 .account-stat{
+  --stat-line:rgba(255,255,255,.08);
   position:relative;
   min-width:0;
   margin:0;
   padding:18px 14px 12px;
-  border:1px solid rgba(255,255,255,.08);
+  border:1px solid var(--stat-line);
   border-top:0;
   border-radius:14px;
   direction:rtl;
@@ -1900,14 +1901,16 @@ body.subpage-open .market{display:none}
 }
 .account-stat-label{
   position:absolute;
-  top:-13px;
-  left:0;
+  top:0;
   right:0;
+  left:0;
   height:26px;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) max-content 18px;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:row;
   align-items:center;
-  column-gap:7px;
+  gap:7px;
+  direction:rtl;
   pointer-events:none
 }
 .account-stat-label::before,
@@ -1915,13 +1918,17 @@ body.subpage-open .market{display:none}
   content:"";
   display:block;
   height:1px;
-  background:rgba(255,255,255,.08)
+  background:var(--stat-line)
 }
 .account-stat-label::before{
-  grid-column:1
+  flex:0 0 18px
+}
+.account-stat-label::after{
+  flex:1 1 auto;
+  min-width:0
 }
 .account-stat-label span{
-  grid-column:2;
+  flex:0 0 auto;
   display:block;
   padding:0;
   margin:0;
@@ -1936,9 +1943,6 @@ body.subpage-open .market{display:none}
   direction:rtl;
   text-align:right;
   white-space:nowrap
-}
-.account-stat-label::after{
-  grid-column:3
 }
 .account-stat-field{
   width:100%;
@@ -1970,7 +1974,7 @@ body.subpage-open .market{display:none}
   color:#f3f3f3
 }
 .account-stat-deals{
-  border-color:rgba(255,255,255,.105)
+  --stat-line:rgba(255,255,255,.105)
 }
 .account-stat-deals .account-stat-field{
   min-height:72px
@@ -2001,7 +2005,7 @@ body.subpage-open .market{display:none}
   color:#f4f4f4
 }
 .account-stat-products{
-  border-color:rgba(255,255,255,.12)
+  --stat-line:rgba(255,255,255,.12)
 }
 .account-stat-products .account-stat-field{
   min-height:78px
@@ -2631,14 +2635,18 @@ h1,h2,h3,
 
 /* account split-border label alignment */
 @media(max-width:390px){
+  .account-stats-priority{
+    gap:15px 10px
+  }
   .account-stat{
     padding:17px 12px 10px
   }
   .account-stat-label{
-    top:-12px;
     height:24px;
-    grid-template-columns:minmax(0,1fr) max-content 14px;
-    column-gap:6px
+    gap:6px
+  }
+  .account-stat-label::before{
+    flex-basis:14px
   }
   .account-stat-label span{
     font-size:16px
@@ -2652,11 +2660,3 @@ h1,h2,h3,
 }
 
 
-.account-stat-deals .account-stat-label::before,
-.account-stat-deals .account-stat-label::after{
-  background:rgba(255,255,255,.105)
-}
-.account-stat-products .account-stat-label::before,
-.account-stat-products .account-stat-label::after{
-  background:rgba(255,255,255,.12)
-}
