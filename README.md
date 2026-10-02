@@ -366,7 +366,6 @@ X-Telegram-Init-Data: ...
 ```text
 gift
 nft
-character
 collectible
 channel
 ```
