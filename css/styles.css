@@ -3332,13 +3332,25 @@ h1,h2,h3,
 /* gift marketplace reference filters */
 .market-filter-strip{
   display:flex;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
   align-items:center;
-  gap:7px 6px;
-  overflow:visible;
+  gap:6px;
+  overflow-x:auto;
+  overflow-y:hidden;
   padding:0 0 9px;
   direction:rtl;
-  scroll-snap-type:none
+  scroll-snap-type:x proximity;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-x
+}
+.market-filter-strip::-webkit-scrollbar{
+  display:none
+}
+.market-filter-tool,
+.market-filter-chip{
+  scroll-snap-align:start
 }
 .market-filter-tool{
   flex:0 0 38px;
@@ -3536,7 +3548,7 @@ h1,h2,h3,
 
 @media(max-width:390px){
   .market-filter-strip{
-    gap:6px 5px
+    gap:5px
   }
   .market-filter-tool{
     width:36px;
