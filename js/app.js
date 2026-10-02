@@ -313,7 +313,6 @@ function setWalletOpen(open){
   socialWallet.classList.toggle('closed', !walletOpen);
   socialWallet.setAttribute('aria-hidden', walletOpen ? 'false' : 'true');
   socialWalletToggle.setAttribute('aria-expanded', walletOpen ? 'true' : 'false');
-  socialWalletToggle.classList.toggle('active', walletOpen);
   if (socialTabs) socialTabs.classList.toggle('wallet-open', walletOpen);
 }
 
@@ -327,6 +326,7 @@ function selectSocialPlatform(button){
     pill.setAttribute('aria-selected', active ? 'true' : 'false');
   });
 
+  document.querySelectorAll('#tabs > .tab').forEach(function(tab){ tab.classList.remove('active'); });
   setWalletOpen(true);
 
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -346,15 +346,7 @@ function selectSocialPlatform(button){
 }
 
 function activateTelegramPlatformOnOpen(){
-  if (!socialWalletTrack) return;
-  const telegramButton = socialWalletTrack.querySelector('[data-platform="telegram"]');
-  if (!telegramButton) return;
-
-  socialWalletTrack.querySelectorAll('.social-pill').forEach(function(pill){
-    const active = pill === telegramButton;
-    pill.classList.toggle('active', active);
-    pill.setAttribute('aria-selected', active ? 'true' : 'false');
-  });
+  if (!socialWalletToggle) return;
 
   selectedPlatform = 'telegram';
   currentMode = 'channels';
@@ -364,10 +356,16 @@ function activateTelegramPlatformOnOpen(){
   syncFilterChips();
   renderCurrent();
 
-  requestAnimationFrame(function(){
-    const targetLeft = telegramButton.offsetLeft - ((socialWalletTrack.clientWidth - telegramButton.offsetWidth) / 2);
-    socialWalletTrack.scrollTo({left:Math.max(0,targetLeft), behavior:'auto'});
-  });
+  document.querySelectorAll('#tabs > .tab').forEach(function(tab){ tab.classList.remove('active'); });
+  socialWalletToggle.classList.add('active');
+
+  if (socialWalletTrack) {
+    socialWalletTrack.querySelectorAll('.social-pill').forEach(function(pill){
+      pill.classList.remove('active');
+      pill.setAttribute('aria-selected','false');
+    });
+    socialWalletTrack.scrollTo({left:0, behavior:'auto'});
+  }
 }
 
 if (socialWalletToggle) {
@@ -376,10 +374,10 @@ if (socialWalletToggle) {
     if (!walletOpen) {
       activateTelegramPlatformOnOpen();
       setWalletOpen(true);
-      document.querySelectorAll('#tabs > .tab').forEach(function(tab){ tab.classList.remove('active'); });
-      socialWalletToggle.classList.add('active');
     } else {
       setWalletOpen(false);
+      document.querySelectorAll('#tabs > .tab').forEach(function(tab){ tab.classList.remove('active'); });
+      socialWalletToggle.classList.add('active');
     }
   });
 }
@@ -394,6 +392,7 @@ if (socialWalletTrack) {
 
 document.querySelectorAll('[data-wallet-close]').forEach(function(button){
   button.addEventListener('click', function(){
+    selectedPlatform = 'telegram';
     setWalletOpen(false);
   });
 });

@@ -2213,3 +2213,55 @@ h1,h2,h3,
     transition:none!important
   }
 }
+
+
+/* active main market tab label */
+.social-tabs > .tab{
+  width:auto;
+  transition:
+    flex-basis .18s cubic-bezier(.2,.82,.2,1),
+    width .18s cubic-bezier(.2,.82,.2,1),
+    padding .18s cubic-bezier(.2,.82,.2,1),
+    background .14s ease,
+    color .14s ease
+}
+.social-tabs > .tab .tab-label{
+  display:block!important;
+  max-width:0;
+  opacity:0;
+  overflow:hidden;
+  white-space:nowrap;
+  transition:
+    max-width .18s cubic-bezier(.2,.82,.2,1),
+    opacity .1s ease
+}
+.social-tabs > .tab.active{
+  flex:0 0 auto!important;
+  width:auto!important;
+  padding:0 8px 0 3px!important;
+  gap:4px
+}
+.social-tabs > .tab.active .tab-label{
+  max-width:78px;
+  opacity:1
+}
+.social-tabs > .wallet-toggle.active{
+  min-width:78px;
+}
+.social-tabs > .tab[data-mode="gifts"].active{
+  min-width:76px;
+}
+
+@media(max-width:699px){
+  .social-tabs > .tab.active{
+    flex:0 0 auto!important;
+    width:auto!important;
+    padding:0 7px 0 3px!important
+  }
+  .social-tabs > .wallet-toggle.active{
+    min-width:74px
+  }
+  .social-tabs > .tab[data-mode="gifts"].active{
+    min-width:72px
+  }
+}
