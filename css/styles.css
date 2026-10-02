@@ -2084,3 +2084,41 @@ body.subpage-open .market{display:none}
     font-size:15px
   }
 }
+
+
+/* wallet compact closed-state sizing */
+.social-tabs{
+  flex:0 0 auto!important;
+  width:max-content!important;
+  max-width:calc(100% - 42px);
+}
+.social-tabs.wallet-open{
+  flex:1 1 auto!important;
+  width:auto!important;
+  max-width:calc(100% - 42px);
+}
+.social-wallet.closed{
+  flex:0 0 0!important;
+  width:0!important;
+  min-width:0!important;
+  max-width:0!important;
+  margin:0!important;
+}
+.social-wallet.open{
+  flex:1 1 auto!important;
+  width:auto!important;
+  min-width:0!important;
+}
+
+@media(max-width:699px){
+  .social-tabs{
+    flex:0 0 auto!important;
+    width:max-content!important;
+    max-width:calc(100% - 42px)!important;
+  }
+  .social-tabs.wallet-open{
+    flex:1 1 auto!important;
+    width:auto!important;
+    max-width:calc(100% - 42px)!important;
+  }
+}
