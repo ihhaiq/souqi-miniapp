@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="./css/styles.css?v=20261002-1900">
+<link rel="stylesheet" href="./css/styles.css?v=20261002-1935">
 <style id="critical-active-tab-style">
 #tabs.social-tabs > .tab > .tab-label{
   display:block!important;
@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="actions">
-          <button class="icon-btn" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn" data-go-wallet aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
           <button class="icon-btn" aria-label="الإعلانات"><span class="action-icon" data-icon="megaphone"></span></button>
           <button class="icon-btn" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
         </div>
@@ -254,7 +254,7 @@
           <span>سوقي</span>
         </div>
         <div class="subpage-actions" aria-label="أدوات الصفحة">
-          <button class="icon-btn ui-only-action" type="button" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn ui-only-action" type="button" data-go-wallet aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
           <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
         </div>
       </header>
@@ -300,7 +300,7 @@
           <span>سوقي</span>
         </div>
         <div class="subpage-actions" aria-label="أدوات الصفحة">
-          <button class="icon-btn ui-only-action" type="button" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn ui-only-action" type="button" data-go-wallet aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
           <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
         </div>
       </header>
@@ -423,7 +423,7 @@
           <span>سوقي</span>
         </div>
         <div class="subpage-actions" aria-label="أدوات الصفحة">
-          <button class="icon-btn ui-only-action" type="button" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn ui-only-action" type="button" data-go-wallet aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
           <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
         </div>
       </header>
@@ -467,7 +467,7 @@
         </section>
 
         <section class="account-menu-group" aria-label="إدارة الحساب">
-          <button class="account-menu-row ui-only-action" type="button">
+          <button class="account-menu-row ui-only-action" type="button" data-go-wallet>
             <span class="account-row-icon" data-icon="wallet"></span>
             <span class="account-row-label">المحفظة وشحن الرصيد</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
@@ -587,33 +587,109 @@
     </div>
   </section>
 
-  <section class="wallet-page" id="walletPage">
-    <div class="wallet-head">
-      <button class="wallet-back" id="walletBack" aria-label="رجوع"><span class="small-icon" data-icon="back"></span></button>
-      <h2>إعادة تعبئة المحفظة</h2>
-      <div style="width:38px"></div>
+  <section id="walletPage" class="app-page subpage wallet-page" data-page="wallet" hidden>
+    <div class="subpage-shell wallet-shell">
+      <header class="subpage-header wallet-page-header">
+        <button class="subpage-back" type="button" data-go-market aria-label="الرجوع إلى السوق">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>المحفظة</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات المحفظة">
+          <button class="icon-btn ui-only-action" type="button" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content wallet-content">
+        <section class="wallet-intro" aria-labelledby="walletIntroTitle">
+          <h2 id="walletIntroTitle">محفظتك، جاهزة لفرصتك القادمة</h2>
+          <p>اشحن رصيدك، وتابع كل حركة مالية بوضوح.</p>
+        </section>
+
+        <section class="wallet-balance-card" aria-label="الرصيد المتاح">
+          <div class="wallet-balance-head">
+            <div class="wallet-balance-brand">
+              <span class="wallet-balance-brand-icon" data-icon="wallet"></span>
+              <span>المحفظة الرقمية</span>
+            </div>
+            <div class="wallet-safe-badge">
+              <span class="wallet-safe-icon" data-icon="shield"></span>
+              <span>حسابك</span>
+            </div>
+          </div>
+          <div class="wallet-balance-label">الرصيد المتاح</div>
+          <div class="wallet-cash-balance" aria-label="رصيد المحفظة">$<span id="walletBalanceValue">0.00</span></div>
+          <div class="wallet-balance-note">كل عملياتك محفوظة في كشف الحساب</div>
+        </section>
+
+        <section class="wallet-section-card wallet-stars-card">
+          <div class="wallet-section-heading">
+            <span class="wallet-section-icon" aria-hidden="true">☆</span>
+            <h2>الشحن بنجوم تيليجرام</h2>
+          </div>
+
+          <div class="wallet-star-options" id="walletAmounts" aria-label="خيارات شحن النجوم">
+            <button class="wallet-star-option" type="button" data-amount="1" data-stars="100">
+              <span class="wallet-option-main"><b>$1.00</b><small>100 نجمة</small></span>
+              <span class="wallet-option-plus" aria-hidden="true">＋</span>
+            </button>
+            <button class="wallet-star-option" type="button" data-amount="5" data-stars="450">
+              <span class="wallet-option-main"><b>$5.00</b><small>450 نجمة</small></span>
+              <span class="wallet-option-plus" aria-hidden="true">＋</span>
+            </button>
+            <button class="wallet-star-option" type="button" data-amount="10" data-stars="850">
+              <span class="wallet-option-main"><b>$10.00</b><small>850 نجمة</small></span>
+              <span class="wallet-option-plus" aria-hidden="true">＋</span>
+            </button>
+            <button class="wallet-star-option" type="button" data-amount="25" data-stars="2000">
+              <span class="wallet-option-main"><b>$25.00</b><small>2,000 نجمة</small></span>
+              <span class="wallet-option-plus" aria-hidden="true">＋</span>
+            </button>
+          </div>
+
+          <button class="wallet-coupon-row ui-only-action" type="button">
+            <span class="wallet-coupon-icon" data-icon="card"></span>
+            <span>لديك كود شحن؟</span>
+            <span class="wallet-row-arrow" aria-hidden="true">←</span>
+          </button>
+        </section>
+
+        <button class="wallet-section-card wallet-transfer-methods ui-only-action" type="button">
+          <span class="wallet-transfer-icon" data-icon="wallet"></span>
+          <span>طرق التحويل</span>
+        </button>
+
+        <section class="wallet-activity-card">
+          <div class="wallet-activity-head">
+            <h2>آخر حركات المحفظة</h2>
+            <button class="wallet-refresh ui-only-action" id="walletRefresh" type="button" aria-label="تحديث سجل المحفظة">↻</button>
+          </div>
+
+          <div class="wallet-empty-state wallet-history-empty">
+            <span class="wallet-empty-icon" data-icon="storage"></span>
+            <strong>بداية صفحة جديدة</strong>
+            <p>سيظهر سجل الشحن هنا بعد أول عملية.</p>
+          </div>
+
+          <div class="wallet-activity-divider"></div>
+
+          <div class="wallet-transfer-title">طلبات التحويل</div>
+          <div class="wallet-empty-state wallet-transfer-empty">
+            <span class="wallet-empty-icon" data-icon="storage"></span>
+            <strong>لا توجد طلبات تحويل</strong>
+            <p>تستطيع متابعة الطلب هنا بعد إرسال رقم العملية.</p>
+          </div>
+        </section>
+      </main>
     </div>
-    <div class="wallet-card">
-      <small>الرصيد الحالي</small>
-      <div class="wallet-balance">💎 <span id="walletBalanceValue">2007</span></div>
-    </div>
-    <div class="wallet-title">اختر قيمة التعبئة</div>
-    <div class="wallet-amounts" id="walletAmounts">
-      <button class="wallet-amount active" data-amount="50"><span>Stars</span><b>💎 50</b></button>
-      <button class="wallet-amount" data-amount="100"><span>USDT</span><b>💎 100</b></button>
-      <button class="wallet-amount" data-amount="250"><span>بطاقة</span><b>💎 250</b></button>
-      <button class="wallet-amount" data-amount="500"><span>تحويل</span><b>💎 500</b></button>
-    </div>
-    <div class="wallet-custom">
-      <input id="walletCustom" inputmode="numeric" placeholder="مبلغ مخصص">
-      <button class="wallet-primary" id="walletContinue">متابعة</button>
-    </div>
-    <div class="wallet-note">واجهة معاينة حالياً. يمكن ربط وسائل الدفع الفعلية لاحقاً.</div>
   </section>
 </div>
 
-<script src="./config.js?v=20261002-1900"></script>
-<script src="./js/api.js?v=20261002-1900"></script>
-<script src="./js/app.js?v=20261002-1900"></script>
+<script src="./config.js?v=20261002-1935"></script>
+<script src="./js/api.js?v=20261002-1935"></script>
+<script src="./js/app.js?v=20261002-1935"></script>
 </body>
 </html>

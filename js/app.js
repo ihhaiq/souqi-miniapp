@@ -159,9 +159,14 @@ function setBalance(value){
   const amount = Number(value);
   if (!Number.isFinite(amount)) return;
   const topBalance = document.getElementById('balanceValue');
-  const walletBalance = document.getElementById('walletBalanceValue');
   if (topBalance) topBalance.textContent = String(amount);
-  if (walletBalance) walletBalance.textContent = String(amount);
+}
+
+function setWalletCashBalance(value){
+  const amount = Number(value);
+  const walletBalance = document.getElementById('walletBalanceValue');
+  if (!walletBalance || !Number.isFinite(amount)) return;
+  walletBalance.textContent = amount.toFixed(2);
 }
 
 async function hydrateFromBackend(){
@@ -181,12 +186,11 @@ async function hydrateFromBackend(){
     const channels = extractItems(results[3]);
 
     if (bootstrap.balance !== undefined) setBalance(bootstrap.balance);
+    if (bootstrap.wallet_balance !== undefined) setWalletCashBalance(bootstrap.wallet_balance);
     if (gifts) giftItems = normalizeItems(gifts, 'gift');
     if (collectibles) collectibleItems = normalizeItems(collectibles, 'collectible');
     if (channels) channelItems = normalizeItems(channels, 'channel');
 
-    const note = document.querySelector('.wallet-note');
-    if (note) note.textContent = 'سيتم تنفيذ التعبئة عبر الخادم المرتبط بالتطبيق.';
     renderCurrent();
   } catch (error) {
     console.error('[souqi] backend bootstrap failed', error);
@@ -550,49 +554,44 @@ document.getElementById('bannerCarousel').addEventListener('touchend', function(
 
 /* wallet */
 const walletPage = document.getElementById('walletPage');
-document.getElementById('topupBtn').addEventListener('click', function(){ walletPage.classList.add('show'); });
-document.getElementById('walletBack').addEventListener('click', function(){ walletPage.classList.remove('show'); });
+const topupBtn = document.getElementById('topupBtn');
+const walletAmounts = document.getElementById('walletAmounts');
+const walletRefresh = document.getElementById('walletRefresh');
 
-let walletAmount = 50;
-document.getElementById('walletAmounts').addEventListener('click', function(e){
-  const btn = e.target.closest('.wallet-amount');
-  if (!btn) return;
-  document.querySelectorAll('.wallet-amount').forEach(function(x){ x.classList.remove('active'); });
-  btn.classList.add('active');
-  walletAmount = Number(btn.dataset.amount);
-  document.getElementById('walletCustom').value = '';
-});
-document.getElementById('walletCustom').addEventListener('input', function(e){
-  const v = Number(e.target.value);
-  if (v > 0) {
-    walletAmount = v;
-    document.querySelectorAll('.wallet-amount').forEach(function(x){ x.classList.remove('active'); });
-  }
-});
-document.getElementById('walletContinue').addEventListener('click', async function(){
-  const button = this;
+if (topupBtn) {
+  topupBtn.addEventListener('click', function(){
+    showRoute('wallet', true);
+  });
+}
 
-  window.dispatchEvent(new CustomEvent('souqi:topup-request', {
-    detail: { amount: walletAmount }
-  }));
+if (walletAmounts) {
+  walletAmounts.addEventListener('click', function(e){
+    const btn = e.target.closest('.wallet-star-option');
+    if (!btn) return;
 
-  if (!window.SouqiAPI || window.SouqiAPI.demoMode) {
-    const msg = 'تم اختيار تعبئة 💎 ' + walletAmount + ' — هذه معاينة فقط.';
-    if (tg && tg.showAlert) tg.showAlert(msg); else alert(msg);
-    return;
-  }
+    walletAmounts.querySelectorAll('.wallet-star-option').forEach(function(option){
+      option.classList.toggle('active', option === btn);
+    });
 
-  button.disabled = true;
-  try {
-    const result = await window.SouqiAPI.createTopUp({ amount: walletAmount });
-    window.dispatchEvent(new CustomEvent('souqi:topup-created', { detail: result }));
-  } catch (error) {
-    console.error('[souqi] topup failed', error);
-    if (tg && tg.showAlert) tg.showAlert('تعذر بدء عملية التعبئة. حاول مرة أخرى.');
-  } finally {
-    button.disabled = false;
-  }
-});
+    const price = Number(btn.dataset.amount || 0);
+    const stars = Number(btn.dataset.stars || 0);
+
+    window.dispatchEvent(new CustomEvent('souqi:topup-request', {
+      detail: { amount: price, stars: stars, source: 'telegram-stars' }
+    }));
+  });
+}
+
+if (walletRefresh) {
+  walletRefresh.addEventListener('click', function(){
+    walletRefresh.classList.remove('is-refreshing');
+    void walletRefresh.offsetWidth;
+    walletRefresh.classList.add('is-refreshing');
+    window.setTimeout(function(){ walletRefresh.classList.remove('is-refreshing'); }, 420);
+
+    window.dispatchEvent(new CustomEvent('souqi:wallet-refresh'));
+  });
+}
 
 document.querySelectorAll('.featured-quick-btn').forEach(function(btn){
   btn.addEventListener('click', function(){
@@ -625,7 +624,7 @@ const bottomNav = document.getElementById('bottomNav');
 
 function normalizeRoute(value){
   const route = String(value || '').replace(/^#/, '');
-  if (route === 'add-product' || route === 'escrow' || route === 'account' || route === 'market') return route;
+  if (route === 'add-product' || route === 'escrow' || route === 'account' || route === 'wallet' || route === 'market') return route;
   return 'market';
 }
 
@@ -637,7 +636,9 @@ function showRoute(route, updateHash){
   if (addProductPage) addProductPage.hidden = route !== 'add-product';
   if (escrowPage) escrowPage.hidden = route !== 'escrow';
   if (accountPage) accountPage.hidden = route !== 'account';
+  if (walletPage) walletPage.hidden = route !== 'wallet';
   document.body.classList.toggle('subpage-open', !isMarket);
+  document.body.classList.toggle('wallet-route', route === 'wallet');
 
   if (bottomNav) {
     bottomNav.querySelectorAll('.nav').forEach(function(btn){
@@ -674,6 +675,10 @@ if (bottomNav) {
 
 document.querySelectorAll('[data-go-market]').forEach(function(btn){
   btn.addEventListener('click', function(){ showRoute('market', true); });
+});
+
+document.querySelectorAll('[data-go-wallet]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('wallet', true); });
 });
 
 document.querySelectorAll('[data-escrow-action="market"]').forEach(function(btn){
