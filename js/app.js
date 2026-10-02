@@ -318,10 +318,14 @@ function selectSocialPlatform(button){
   setWalletOpen(true);
 
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  button.scrollIntoView({
-    behavior: reducedMotion ? 'auto' : 'smooth',
-    block: 'nearest',
-    inline: 'center'
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      const targetLeft = button.offsetLeft - ((socialWalletTrack.clientWidth - button.offsetWidth) / 2);
+      socialWalletTrack.scrollTo({
+        left: Math.max(0, targetLeft),
+        behavior: reducedMotion ? 'auto' : 'smooth'
+      });
+    });
   });
 
   window.dispatchEvent(new CustomEvent('souqi:social-platform-change', {
