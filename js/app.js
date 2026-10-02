@@ -13,6 +13,26 @@ if (tg) {
       userAvatar.src = telegramUser.photo_url;
       userAvatar.alt = telegramUser.first_name ? ('صورة ' + telegramUser.first_name) : 'صورة المستخدم';
     }
+
+    if (telegramUser) {
+      const accountName = document.getElementById('accountProfileName');
+      const accountId = document.getElementById('accountProfileId');
+      const accountAvatar = document.getElementById('accountProfileAvatar');
+      const accountFallback = document.getElementById('accountProfileFallback');
+      const displayName = [telegramUser.first_name, telegramUser.last_name].filter(Boolean).join(' ') || telegramUser.username || 'مستخدم سوقي';
+      const fallbackLetter = (telegramUser.first_name || telegramUser.username || 'H').trim().charAt(0).toUpperCase();
+
+      if (accountName) accountName.textContent = displayName;
+      if (accountId && telegramUser.id !== undefined) accountId.textContent = 'USR-' + telegramUser.id;
+      if (accountFallback) accountFallback.textContent = fallbackLetter || 'H';
+
+      if (accountAvatar && telegramUser.photo_url) {
+        accountAvatar.src = telegramUser.photo_url;
+        accountAvatar.alt = 'صورة ' + displayName;
+        accountAvatar.hidden = false;
+        if (accountFallback) accountFallback.hidden = true;
+      }
+    }
   } catch(e) {}
 }
 
@@ -35,7 +55,16 @@ const svg = {
   tasks:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7h10M9 12h10M9 17h10"/><path d="m4.8 7.2 1.3 1.3 2.1-2.1M4.8 12.2l1.3 1.3 2.1-2.1M4.8 17.2l1.3 1.3 2.1-2.1"/></svg>',
   storage:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="M4.8 7.8 12 12l7.2-4.2M12 12v9"/></svg>',
   board:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="2"/><path d="M9 20h6M12 15v5M7.5 8h9M7.5 11h6"/></svg>',
-  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>'
+  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>',
+  user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.4-3.4 2.4-5.2 5.5-5.2s5.1 1.8 5.5 5.2M16.5 7.2a2.8 2.8 0 0 1 0 5.5M17.6 14.2c1.9.7 2.9 2.2 3.1 4.5"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.8c-2.2-2.3-5.8-1.9-7.6.6L12 8l-1.2-1.6C9 3.9 5.4 3.5 3.2 5.8c-2.1 2.2-1.9 5.6.2 7.6L12 21l8.6-7.6c2.1-2 2.3-5.4.2-7.6Z"/></svg>',
+  send:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m21 3-7.2 17-3.4-6.4L4 10.2 21 3Z"/><path d="m10.4 13.6 4.5-4.5"/></svg>',
+  referral:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M12 9v11M4 13h16M7.2 9C5.6 9 5 8.1 5.3 7.1c.4-1.3 2-1.5 3-.7L12 9M16.8 9c1.6 0 2.2-.9 1.9-1.9-.4-1.3-2-1.5-3-.7L12 9"/></svg>',
+  'star-outline':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 6v5.4c0 4.7-3.1 7.9-8 9.6-4.9-1.7-8-4.9-8-9.6V6l8-3Z"/><path d="m8.8 12 2.1 2.1 4.5-4.6"/></svg>',
+  document:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v5h5M9 12h6M9 16h6"/></svg>',
+  support:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 10h8M8 14h5"/></svg>',
+  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>'
 };
 
 const assetIcons = {
@@ -488,11 +517,13 @@ document.getElementById('sendToSelfBtn').addEventListener('click', function(){
 const marketPage = document.getElementById('marketPage');
 const addProductPage = document.getElementById('addProductPage');
 const escrowPage = document.getElementById('escrowPage');
+const accountPage = document.getElementById('accountPage');
+const accountAvatarBtn = document.getElementById('accountAvatarBtn');
 const bottomNav = document.getElementById('bottomNav');
 
 function normalizeRoute(value){
   const route = String(value || '').replace(/^#/, '');
-  if (route === 'add-product' || route === 'escrow' || route === 'market') return route;
+  if (route === 'add-product' || route === 'escrow' || route === 'account' || route === 'market') return route;
   return 'market';
 }
 
@@ -503,6 +534,7 @@ function showRoute(route, updateHash){
   if (marketPage) marketPage.hidden = !isMarket;
   if (addProductPage) addProductPage.hidden = route !== 'add-product';
   if (escrowPage) escrowPage.hidden = route !== 'escrow';
+  if (accountPage) accountPage.hidden = route !== 'account';
   document.body.classList.toggle('subpage-open', !isMarket);
 
   if (bottomNav) {
@@ -517,6 +549,12 @@ function showRoute(route, updateHash){
 
   window.scrollTo({top:0, behavior:'auto'});
   mountIcons(document);
+}
+
+if (accountAvatarBtn) {
+  accountAvatarBtn.addEventListener('click', function(){
+    showRoute('account', true);
+  });
 }
 
 if (bottomNav) {
