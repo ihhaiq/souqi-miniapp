@@ -3327,3 +3327,232 @@ h1,h2,h3,
   width:31px;
   height:31px
 }
+
+
+/* gift marketplace reference filters */
+.market-filter-strip{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:7px 6px;
+  overflow:visible;
+  padding:0 0 9px;
+  direction:rtl;
+  scroll-snap-type:none
+}
+.market-filter-tool{
+  flex:0 0 38px;
+  width:38px;
+  height:34px;
+  border-radius:8px;
+  background:#252525;
+  border:1px solid #303030;
+  display:grid;
+  place-items:center;
+  color:#aaa
+}
+.market-filter-tool .small-icon{
+  width:17px;
+  height:17px
+}
+.market-filter-chip{
+  flex:0 0 auto;
+  height:34px;
+  padding:0 10px;
+  border-radius:8px;
+  background:#252525;
+  border:1px solid #303030;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  color:#d2d2d2;
+  font-family:"Times New Roman",Times,serif;
+  font-size:13px;
+  font-weight:700;
+  line-height:1;
+  white-space:nowrap;
+  letter-spacing:0
+}
+.market-filter-chip:active{
+  background:#2e2e2e;
+  border-color:#3b3b3b
+}
+.market-filter-chip .chip-chevron{
+  color:#9b9b9b;
+  font-size:13px
+}
+.market-filter-chip.premarket-chip{
+  color:#d5d5d5
+}
+.market-filter-chip .cube-mini{
+  width:15px;
+  height:15px
+}
+
+.gift-filter-sheet{
+  max-height:min(86vh,720px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  padding:16px 14px calc(16px + env(safe-area-inset-bottom));
+  background:#151515;
+  border-color:#282828;
+  border-radius:18px 18px 0 0;
+  direction:rtl;
+  font-family:"Times New Roman",Times,serif
+}
+.gift-filter-sheet .sheet-head{
+  min-height:44px;
+  margin:0 0 4px;
+  direction:rtl
+}
+.gift-filter-sheet .sheet-head strong{
+  color:#f2f2f2;
+  font-family:"Times New Roman",Times,serif;
+  font-size:20px;
+  font-weight:700;
+  line-height:1.2
+}
+.gift-filter-sheet .sheet-close{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  color:#8f8f8f;
+  font-family:Arial,sans-serif;
+  font-size:28px;
+  font-weight:300;
+  line-height:1
+}
+.filter-accordion{
+  border-top:1px solid #242424
+}
+.filter-accordion-item{
+  border-bottom:1px solid #242424
+}
+.filter-accordion-toggle{
+  width:100%;
+  min-height:58px;
+  padding:0 2px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  color:#d0d0d0;
+  text-align:right;
+  direction:rtl;
+  font-family:"Times New Roman",Times,serif;
+  font-size:14px;
+  font-weight:700;
+  line-height:1.2
+}
+.filter-accordion-toggle > span:first-child{
+  flex:1 1 auto
+}
+.filter-chevron{
+  flex:0 0 auto;
+  color:#909090;
+  font-size:18px;
+  transition:transform .16s ease
+}
+.filter-accordion-toggle[aria-expanded="true"] .filter-chevron{
+  transform:rotate(180deg)
+}
+.filter-accordion-panel{
+  padding:0 0 13px
+}
+.filter-accordion-panel[hidden]{
+  display:none!important
+}
+.filter-accordion-panel .filter-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px
+}
+.gift-filter-sheet .filter-chip{
+  min-height:34px;
+  padding:0 11px;
+  border-radius:8px;
+  background:#222;
+  border:1px solid #303030;
+  color:#bdbdbd;
+  font-family:"Times New Roman",Times,serif;
+  font-size:12px;
+  font-weight:700
+}
+.gift-filter-sheet .filter-chip.active{
+  background:#303030;
+  border-color:#505050;
+  color:#fff
+}
+.filter-saved-item{
+  padding-bottom:10px
+}
+.filter-save-mark{
+  flex:0 0 auto;
+  color:#777;
+  font-size:11px
+}
+.filter-save-btn{
+  width:100%;
+  height:40px;
+  border-radius:8px;
+  background:#202020;
+  border:1px solid #292929;
+  color:#c8c8c8;
+  font-family:"Times New Roman",Times,serif;
+  font-size:13px;
+  font-weight:700
+}
+.gift-filter-sheet .sheet-actions{
+  position:sticky;
+  bottom:calc(-16px - env(safe-area-inset-bottom));
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(84px,.28fr) minmax(0,1fr);
+  gap:10px;
+  margin-top:14px;
+  padding:12px 0 calc(16px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,rgba(21,21,21,0),#151515 24%,#151515 100%)
+}
+.gift-filter-sheet .sheet-reset,
+.gift-filter-sheet .sheet-apply{
+  height:52px;
+  border-radius:9px;
+  font-family:"Times New Roman",Times,serif;
+  font-size:14px;
+  font-weight:700
+}
+.gift-filter-sheet .sheet-reset{
+  background:#232323;
+  border:1px solid #323232;
+  color:#bcbcbc
+}
+.gift-filter-sheet .sheet-apply{
+  background:#ffd400;
+  color:#161616;
+  border:1px solid #e6c100
+}
+
+@media(max-width:390px){
+  .market-filter-strip{
+    gap:6px 5px
+  }
+  .market-filter-tool{
+    width:36px;
+    height:32px;
+    flex-basis:36px
+  }
+  .market-filter-chip{
+    height:32px;
+    padding:0 9px;
+    font-size:12px
+  }
+  .gift-filter-sheet .sheet-head strong{
+    font-size:19px
+  }
+  .filter-accordion-toggle{
+    min-height:54px;
+    font-size:13px
+  }
+}

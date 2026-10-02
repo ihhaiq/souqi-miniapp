@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="./css/styles.css?v=20261002-2202">
+<link rel="stylesheet" href="./css/styles.css?v=20261002-2158">
 <style id="critical-active-tab-style">
 #tabs.social-tabs > .tab > .tab-label{
   display:block!important;
@@ -211,22 +211,19 @@
         <button id="sortBtn" class="tool-btn" aria-label="الترتيب"><span class="small-icon" data-icon="sort"></span></button>
       </div>
 
-      <div class="market-filter-strip" id="marketFilterStrip">
-        <button class="market-filter-chip" type="button" data-strip-filter="symbol">
-          <span>الرمز</span><span class="chip-chevron">⌄</span>
+      <div class="market-filter-strip" id="marketFilterStrip" aria-label="فلاتر الهدايا">
+        <button class="market-filter-tool" id="marketStripFilterBtn" type="button" aria-label="فتح الفلاتر">
+          <span class="small-icon" data-icon="sliders"></span>
         </button>
-        <button class="market-filter-chip" type="button" data-strip-filter="price">
-          <span>السعر</span><span class="chip-chevron">⌄</span>
-        </button>
-        <button class="market-filter-chip premarket-chip" type="button" data-strip-filter="premarket">
-          <span class="cube-mini" aria-hidden="true"></span><span>قبل السوق</span>
-        </button>
-        <button class="market-filter-chip" type="button" data-strip-filter="upgrade">
-          <span>الترقية</span><span class="chip-chevron">⌄</span>
-        </button>
-        <button class="market-strip-sort" id="marketStripSort" type="button" aria-label="ترتيب">
-          <span class="small-icon" data-icon="sort"></span>
-        </button>
+        <button class="market-filter-chip" type="button" data-strip-filter="nft"><span>NFT</span><span class="chip-chevron">⌄</span></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="model"><span>النموذج</span><span class="chip-chevron">⌄</span></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="backdrop"><span>الخلفية</span><span class="chip-chevron">⌄</span></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="symbol"><span>الرمز</span><span class="chip-chevron">⌄</span></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="price"><span>السعر</span><span class="chip-chevron">⌄</span></button>
+        <button class="market-filter-chip premarket-chip" type="button" data-strip-filter="premarket"><span class="cube-mini" aria-hidden="true"></span><span>قبل السوق</span></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="lucky"><span>شراء محظوظ</span></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="unupgraded"><span>غير مطوّرة</span></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="crafted"><span>مصنوعة</span></button>
       </div>
 
       <div class="market-line">
@@ -557,33 +554,81 @@
     </nav>
 
   <div id="sheetBackdrop" class="sheet-backdrop"></div>
-  <section id="filterSheet" class="filter-sheet" aria-hidden="true">
-    <div class="sheet-grab"></div>
+  <section id="filterSheet" class="filter-sheet gift-filter-sheet" aria-hidden="true">
     <div class="sheet-head">
-      <strong>تصفية النتائج</strong>
-      <button id="sheetClose" class="sheet-close">إغلاق</button>
+      <strong>فلاتر</strong>
+      <button id="sheetClose" class="sheet-close" type="button" aria-label="إغلاق">×</button>
     </div>
-    <div class="filter-group">
-      <div class="filter-group-title">النوع</div>
-      <div class="filter-options">
-        <button class="filter-chip active" data-filter="type" data-value="all">الكل</button>
-        <button class="filter-chip" data-filter="type" data-value="gift">هدايا</button>
-        <button class="filter-chip" data-filter="type" data-value="nft">NFT</button>
-        <button class="filter-chip" data-filter="type" data-value="channel">قنوات</button>
+
+    <div class="filter-accordion">
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button" data-filter-toggle="price" aria-expanded="false">
+          <span>السعر</span><span class="filter-chevron">⌄</span>
+        </button>
+        <div class="filter-accordion-panel" data-filter-panel="price" hidden>
+          <div class="filter-options">
+            <button class="filter-chip active" data-filter="price" data-value="all">الكل</button>
+            <button class="filter-chip" data-filter="price" data-value="low">أقل من 10</button>
+            <button class="filter-chip" data-filter="price" data-value="mid">10 - 20</button>
+            <button class="filter-chip" data-filter="price" data-value="high">أكثر من 20</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>المميزة</span><span class="filter-chevron">⌄</span>
+        </button>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button" data-filter-toggle="nft" aria-expanded="false">
+          <span>NFT</span><span class="filter-chevron">⌄</span>
+        </button>
+        <div class="filter-accordion-panel" data-filter-panel="nft" hidden>
+          <div class="filter-options">
+            <button class="filter-chip active" data-filter="type" data-value="all">الكل</button>
+            <button class="filter-chip" data-filter="type" data-value="gift">هدايا</button>
+            <button class="filter-chip" data-filter="type" data-value="nft">NFT</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>النموذج</span><span class="filter-chevron">⌄</span>
+        </button>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>الخلفية</span><span class="filter-chevron">⌄</span>
+        </button>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>الرمز</span><span class="filter-chevron">⌄</span>
+        </button>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>رقم الهدية</span><span class="filter-chevron">⌄</span>
+        </button>
+      </div>
+
+      <div class="filter-accordion-item filter-saved-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>فلتر محفوظ</span><span class="filter-save-mark" aria-hidden="true">▮</span><span class="filter-chevron">⌄</span>
+        </button>
+        <button class="filter-save-btn ui-only-action" type="button">حفظ <span aria-hidden="true">▮</span></button>
       </div>
     </div>
-    <div class="filter-group">
-      <div class="filter-group-title">السعر</div>
-      <div class="filter-options">
-        <button class="filter-chip active" data-filter="price" data-value="all">الكل</button>
-        <button class="filter-chip" data-filter="price" data-value="low">أقل من 10</button>
-        <button class="filter-chip" data-filter="price" data-value="mid">10 - 20</button>
-        <button class="filter-chip" data-filter="price" data-value="high">أكثر من 20</button>
-      </div>
-    </div>
+
     <div class="sheet-actions">
-      <button id="resetFilters" class="sheet-reset">إعادة ضبط</button>
-      <button id="applyFilters" class="sheet-apply">عرض النتائج</button>
+      <button id="resetFilters" class="sheet-reset" type="button">إعادة ضبط</button>
+      <button id="applyFilters" class="sheet-apply" type="button">عرض النتائج</button>
     </div>
   </section>
 
@@ -688,8 +733,8 @@
   </section>
 </div>
 
-<script src="./config.js?v=20261002-2202"></script>
-<script src="./js/api.js?v=20261002-2202"></script>
-<script src="./js/app.js?v=20261002-2202"></script>
+<script src="./config.js?v=20261002-2158"></script>
+<script src="./js/api.js?v=20261002-2158"></script>
+<script src="./js/app.js?v=20261002-2158"></script>
 </body>
 </html>
