@@ -117,14 +117,14 @@ let giftItems = [
 ];
 
 let channelItems = [
-  {name:'@giftmarket01', id:'قناة تيليجرام', price:10.5, type:'channel'},
-  {name:'@souqistars', id:'قناة تيليجرام', price:36.75, type:'channel'},
-  {name:'@rarecollections', id:'قناة تيليجرام', price:31.5, type:'channel'},
-  {name:'@giftchannelsale', id:'قناة تيليجرام', price:21, type:'channel'},
-  {name:'@telegramnftiq', id:'قناة تيليجرام', price:18, type:'channel'},
-  {name:'@blockgiftstore', id:'قناة تيليجرام', price:42, type:'channel'},
-  {name:'@collectorshub', id:'قناة تيليجرام', price:64, type:'channel'},
-  {name:'@marketpromo', id:'قناة تيليجرام', price:27.3, type:'channel'}
+  {name:'قناة تقنية عربية قديمة', id:'@tech_legacy_ar', price:185, type:'channel', created:'2014', audience:'185K مشترك'},
+  {name:'مجموعة تداول نشطة', id:'@trade_room_old', price:142, type:'group', created:'2015', audience:'96K عضو'},
+  {name:'قناة أخبار عراقية', id:'@iraq_news_archive', price:230, type:'channel', created:'2013', audience:'240K مشترك'},
+  {name:'مجموعة ألعاب ومجتمع', id:'@gaming_community_iq', price:118, type:'group', created:'2016', audience:'82K عضو'},
+  {name:'قناة عروض وتسوق', id:'@offers_market_old', price:165, type:'channel', created:'2015', audience:'150K مشترك'},
+  {name:'مجموعة وظائف وفرص', id:'@jobs_network_old', price:128, type:'group', created:'2014', audience:'74K عضو'},
+  {name:'قناة كريبتو قديمة', id:'@crypto_archive_hub', price:260, type:'channel', created:'2013', audience:'310K مشترك'},
+  {name:'مجموعة بيع وشراء', id:'@buy_sell_legacy', price:135, type:'group', created:'2016', audience:'88K عضو'}
 ];
 let collectibleItems = giftItems.map(function(item){ return Object.assign({}, item, {type:'collectible'}); });
 
@@ -146,7 +146,9 @@ function normalizeItems(items, fallbackType){
       id: String(item.id || ''),
       name: String(item.name || ''),
       price: Number(item.price || 0),
-      type: String(item.type || fallbackType || 'gift')
+      type: String(item.type || fallbackType || 'gift'),
+      created: item.created ? String(item.created) : '',
+      audience: item.audience ? String(item.audience) : ''
     };
   }).filter(function(item){
     return item.id && item.name && Number.isFinite(item.price);
@@ -227,7 +229,7 @@ function typeMatch(item){
 function sortedFiltered(items){
   const q = searchInput.value.trim().toLowerCase();
   let out = items.filter(function(item){
-    const searchable = (item.name + ' ' + item.id).toLowerCase();
+    const searchable = (item.name + ' ' + item.id + ' ' + (item.created || '') + ' ' + (item.audience || '')).toLowerCase();
     return (!q || searchable.indexOf(q) !== -1) && priceMatch(item.price) && typeMatch(item);
   });
   if (sortMode === 1) out.sort(function(a,b){ return a.price - b.price; });
@@ -243,13 +245,21 @@ function renderCards(items, visualKind, visualLabel){
     return;
   }
   grid.innerHTML = data.map(function(item){
-    const kind = currentMode === 'channels' ? 'channel' : (visualKind || item.type);
-    const label = currentMode === 'channels' ? 'قناة' : (visualLabel || 'هدية');
+    const isTelegramItem = currentMode === 'channels';
+    const kind = isTelegramItem ? 'channel' : (visualKind || item.type);
+    const label = isTelegramItem ? (item.type === 'group' ? 'مجموعة' : 'قناة') : (visualLabel || 'هدية');
+    const telegramMeta = isTelegramItem
+      ? '<div class="telegram-meta"><span>' + label + '</span>' +
+          (item.created ? '<span>إنشاء ' + item.created + '</span>' : '') +
+          (item.audience ? '<span>' + item.audience + '</span>' : '') +
+        '</div>'
+      : '';
     return '<article class="card">' +
       previewMarkup(kind, label) +
       '<div class="card-body">' +
         '<div class="item-name">' + item.name + '</div>' +
         '<div class="hash">' + item.id + '</div>' +
+        telegramMeta +
         '<button class="price" data-item-id="' + item.id + '" data-item-mode="' + currentMode + '" aria-label="السعر ' + item.price + '">' +
           gemSvg() + '<span class="price-num">' + item.price + '</span>' +
         '</button>' +
@@ -273,8 +283,8 @@ function renderCurrent(){
   }
 
   if (currentMode === 'channels') {
-    marketTitle.textContent = 'القنوات المعروضة';
-    searchInput.placeholder = 'ابحث باسم القناة';
+    marketTitle.textContent = 'تيليكرام — قنوات ومجموعات';
+    searchInput.placeholder = 'ابحث باسم القناة أو المجموعة';
     renderCards(channelItems, 'channel', 'قناة');
   } else if (currentMode === 'collectibles') {
     marketTitle.textContent = 'المقتنيات المعروضة';
@@ -288,7 +298,7 @@ function renderCurrent(){
 }
 
 let walletOpen = false;
-let selectedPlatform = 'all';
+let selectedPlatform = 'telegram';
 
 const socialWallet = document.getElementById('socialWallet');
 const socialWalletTrack = document.getElementById('socialWalletTrack');
@@ -335,10 +345,42 @@ function selectSocialPlatform(button){
   }));
 }
 
+function activateTelegramPlatformOnOpen(){
+  if (!socialWalletTrack) return;
+  const telegramButton = socialWalletTrack.querySelector('[data-platform="telegram"]');
+  if (!telegramButton) return;
+
+  socialWalletTrack.querySelectorAll('.social-pill').forEach(function(pill){
+    const active = pill === telegramButton;
+    pill.classList.toggle('active', active);
+    pill.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+
+  selectedPlatform = 'telegram';
+  currentMode = 'channels';
+  selectedType = 'all';
+  selectedPrice = 'all';
+  searchInput.value = '';
+  syncFilterChips();
+  renderCurrent();
+
+  requestAnimationFrame(function(){
+    const targetLeft = telegramButton.offsetLeft - ((socialWalletTrack.clientWidth - telegramButton.offsetWidth) / 2);
+    socialWalletTrack.scrollTo({left:Math.max(0,targetLeft), behavior:'auto'});
+  });
+}
+
 if (socialWalletToggle) {
   socialWalletToggle.addEventListener('click', function(e){
     e.stopPropagation();
-    setWalletOpen(!walletOpen);
+    if (!walletOpen) {
+      activateTelegramPlatformOnOpen();
+      setWalletOpen(true);
+      document.querySelectorAll('#tabs > .tab').forEach(function(tab){ tab.classList.remove('active'); });
+      socialWalletToggle.classList.add('active');
+    } else {
+      setWalletOpen(false);
+    }
   });
 }
 
