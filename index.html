@@ -6,7 +6,30 @@
 <meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="./css/styles.css">
+<link rel="stylesheet" href="./css/styles.css?v=20261002-1325">
+<style id="critical-active-tab-style">
+#tabs.social-tabs > .tab > .tab-label{
+  display:block!important;
+  max-width:0!important;
+  opacity:0!important;
+  overflow:hidden!important;
+  white-space:nowrap!important;
+}
+#tabs.social-tabs > .tab.active{
+  width:auto!important;
+  flex:0 0 auto!important;
+  padding-inline:4px 8px!important;
+  gap:4px!important;
+}
+#tabs.social-tabs > .tab.active > .tab-label{
+  display:block!important;
+  width:auto!important;
+  max-width:82px!important;
+  opacity:1!important;
+}
+#tabs.social-tabs > .tab[data-mode="gifts"].active{min-width:74px!important}
+#tabs.social-tabs > .wallet-toggle.active{min-width:78px!important}
+</style>
 </head>
 <body>
 <div class="app">
@@ -585,8 +608,8 @@
   </section>
 </div>
 
-<script src="./config.js"></script>
-<script src="./js/api.js"></script>
-<script src="./js/app.js"></script>
+<script src="./config.js?v=20261002-1325"></script>
+<script src="./js/api.js?v=20261002-1325"></script>
+<script src="./js/app.js?v=20261002-1325"></script>
 </body>
 </html>
