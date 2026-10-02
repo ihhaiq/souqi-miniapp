@@ -172,46 +172,56 @@ svg{display:block;width:100%;height:100%}
 .tabs-row{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:6px;
   margin-bottom:9px;
   direction:ltr
 }
 .tabs{
   min-width:0;
-  flex:1;
+  flex:1 1 auto;
   display:flex;
+  align-items:center;
+  gap:3px;
   overflow:hidden;
   border:1px solid var(--line);
-  border-radius:10px;
-  background:var(--surface)
+  border-radius:11px;
+  background:var(--surface);
+  padding:3px
 }
 .tab{
-  min-width:44px;
-  height:42px;
-  flex:1;
-  padding:0 8px;
+  min-width:0;
+  height:36px;
+  flex:0 0 36px;
+  padding:0 4px;
+  border-radius:8px;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:6px;
+  gap:4px;
   color:#9b9b9b;
-  border-right:1px solid var(--line)
+  border:0
 }
-.tab:last-child{border-right:0}
-.tab.active{background:var(--surface-3);color:#f3f3f3}
-.tab-label{display:none;font-size:13px;white-space:nowrap}
-.tab.active .tab-label{display:inline}
+.tab.active{
+  background:var(--surface-3);
+  color:#f3f3f3
+}
+.tab-label{
+  display:none;
+  font-size:11px;
+  white-space:nowrap
+}
+.tab.active:not(.wallet-toggle) .tab-label{display:none}
 .tab .tab-icon{
-  width:40px;
-  height:40px;
+  width:30px;
+  height:30px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  flex:0 0 40px;
+  flex:0 0 30px
 }
 .tab-asset-icon{
-  width:40px;
-  height:40px;
+  width:30px;
+  height:30px;
   display:block;
   object-fit:contain;
   object-position:center;
@@ -219,16 +229,130 @@ svg{display:block;width:100%;height:100%}
   filter:none!important;
   opacity:1;
   pointer-events:none;
-  user-select:none;
+  user-select:none
+}
+.wallet-toggle{
+  position:relative;
+  flex:0 0 36px;
+  z-index:3
+}
+.wallet-toggle.active{
+  background:#262d31;
+  box-shadow:inset 0 0 0 1px rgba(83,190,248,.18)
+}
+
+.social-wallet{
+  min-width:0;
+  flex:1 1 auto;
+  height:36px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.045);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.055),
+    inset 0 -1px 0 rgba(0,0,0,.1),
+    0 2px 7px rgba(0,0,0,.09);
+  transform-origin:left center;
+  transition:
+    max-width .2s cubic-bezier(.2,.82,.2,1),
+    opacity .14s ease,
+    transform .2s cubic-bezier(.2,.82,.2,1),
+    border-color .16s ease;
+  will-change:max-width,opacity,transform
+}
+.social-wallet.closed{
+  max-width:0;
+  opacity:0;
+  transform:scaleX(.88);
+  border-color:transparent;
+  pointer-events:none
+}
+.social-wallet.open{
+  max-width:100%;
+  opacity:1;
+  transform:scaleX(1);
+  pointer-events:auto
+}
+.social-wallet-track{
+  min-width:0;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  padding:3px 12px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  scroll-behavior:smooth;
+  overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch
+}
+.social-wallet-track::-webkit-scrollbar{display:none}
+.social-pill{
+  flex:0 0 auto;
+  height:28px;
+  padding:0 9px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.035);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  color:#a9a9a9;
+  font-size:10px;
+  white-space:nowrap;
+  transition:
+    background .14s ease,
+    border-color .14s ease,
+    color .14s ease,
+    transform .12s ease
+}
+.social-pill:active{transform:scale(.97)}
+.social-pill.active{
+  background:#2ea8f5;
+  border-color:#2ea8f5;
+  color:#fff
+}
+.social-wallet-fade{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:14px;
+  z-index:2;
+  pointer-events:none
+}
+.social-wallet-fade-start{
+  left:0;
+  background:linear-gradient(90deg,var(--surface),transparent)
+}
+.social-wallet-fade-end{
+  right:0;
+  background:linear-gradient(270deg,var(--surface),transparent)
 }
 .cart-btn{
-  flex:0 0 42px;
-  width:42px;
-  height:42px;
-  border-radius:10px;
+  flex:0 0 36px;
+  width:36px;
+  height:36px;
+  border-radius:9px;
   background:var(--surface-2);
   border:1px solid var(--line);
   color:#bdbdbd
+}
+
+@media(prefers-reduced-motion:reduce){
+  .social-wallet,
+  .social-wallet-track,
+  .social-pill{
+    transition:none!important;
+    scroll-behavior:auto!important
+  }
 }
 
 /* featured / star tab */
@@ -1754,5 +1878,100 @@ body.subpage-open .market{display:none}
   }
   .account-row-label{
     font-size:12px
+  }
+}
+
+
+/* social wallet final mobile override */
+@media(max-width:699px){
+  .tabs-row{
+    gap:6px;
+    margin-bottom:10px
+  }
+  .tabs{
+    flex:1 1 auto;
+    width:auto;
+    padding:3px;
+    gap:3px;
+    border-radius:10px
+  }
+  .tab,
+  .wallet-toggle{
+    min-width:34px;
+    width:34px;
+    height:34px;
+    flex:0 0 34px;
+    padding:0
+  }
+  .tab.active{
+    flex:0 0 34px
+  }
+  .tab .tab-icon{
+    width:28px;
+    height:28px;
+    flex-basis:28px
+  }
+  .tab-asset-icon{
+    width:28px;
+    height:28px
+  }
+  .tab-label,
+  .tab.active .tab-label{
+    display:none
+  }
+  .social-wallet{
+    height:34px
+  }
+  .social-wallet-track{
+    gap:3px;
+    padding:3px 10px
+  }
+  .social-pill{
+    height:26px;
+    padding:0 8px;
+    gap:4px;
+    font-size:9px
+  }
+  .cart-btn{
+    flex:0 0 36px;
+    width:36px;
+    height:36px
+  }
+}
+@media(max-width:360px){
+  .tabs{
+    gap:2px;
+  }
+  .tab,
+  .wallet-toggle{
+    min-width:32px;
+    width:32px;
+    flex-basis:32px
+  }
+  .tab.active{
+    flex-basis:32px
+  }
+  .tab .tab-icon,
+  .tab-asset-icon{
+    width:26px;
+    height:26px
+  }
+  .social-pill{
+    padding:0 7px
+  }
+}
+
+
+.social-tabs .tab[data-mode="featured"].active{
+  flex:0 0 36px
+}
+@media(max-width:699px){
+  .social-tabs .tab[data-mode="featured"].active{
+    flex:0 0 34px
+  }
+}
+@media(max-width:360px){
+  .social-tabs .tab[data-mode="featured"].active{
+    flex:0 0 32px
   }
 }
