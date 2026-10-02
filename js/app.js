@@ -126,8 +126,6 @@ let channelItems = [
   {name:'@collectorshub', id:'قناة تيليجرام', price:64, type:'channel'},
   {name:'@marketpromo', id:'قناة تيليجرام', price:27.3, type:'channel'}
 ];
-
-let avatarItems = giftItems.map(function(item){ return Object.assign({}, item, {type:'character'}); });
 let collectibleItems = giftItems.map(function(item){ return Object.assign({}, item, {type:'collectible'}); });
 
 let currentMode = 'gifts';
@@ -171,20 +169,17 @@ async function hydrateFromBackend(){
     const results = await Promise.all([
       window.SouqiAPI.getBootstrap(),
       window.SouqiAPI.getCatalog('gifts'),
-      window.SouqiAPI.getCatalog('avatars'),
       window.SouqiAPI.getCatalog('collectibles'),
       window.SouqiAPI.getCatalog('channels')
     ]);
 
     const bootstrap = results[0] || {};
     const gifts = extractItems(results[1]);
-    const avatars = extractItems(results[2]);
-    const collectibles = extractItems(results[3]);
-    const channels = extractItems(results[4]);
+    const collectibles = extractItems(results[2]);
+    const channels = extractItems(results[3]);
 
     if (bootstrap.balance !== undefined) setBalance(bootstrap.balance);
     if (gifts) giftItems = normalizeItems(gifts, 'gift');
-    if (avatars) avatarItems = normalizeItems(avatars, 'character');
     if (collectibles) collectibleItems = normalizeItems(collectibles, 'collectible');
     if (channels) channelItems = normalizeItems(channels, 'channel');
 
@@ -199,7 +194,6 @@ async function hydrateFromBackend(){
 function findCatalogItem(id, mode){
   const source =
     mode === 'channels' ? channelItems :
-    mode === 'avatars' ? avatarItems :
     mode === 'collectibles' ? collectibleItems :
     giftItems;
   return source.find(function(item){ return item.id === id; }) || null;
@@ -282,10 +276,6 @@ function renderCurrent(){
     marketTitle.textContent = 'القنوات المعروضة';
     searchInput.placeholder = 'ابحث باسم القناة';
     renderCards(channelItems, 'channel', 'قناة');
-  } else if (currentMode === 'avatars') {
-    marketTitle.textContent = 'الشخصيات المعروضة';
-    searchInput.placeholder = 'ابحث باسم العنصر أو رقمه';
-    renderCards(avatarItems, 'character', 'شخصية');
   } else if (currentMode === 'collectibles') {
     marketTitle.textContent = 'المقتنيات المعروضة';
     searchInput.placeholder = 'ابحث باسم العنصر أو رقمه';
@@ -297,11 +287,76 @@ function renderCurrent(){
   }
 }
 
+let walletOpen = false;
+let selectedPlatform = 'all';
+
+const socialWallet = document.getElementById('socialWallet');
+const socialWalletTrack = document.getElementById('socialWalletTrack');
+const socialWalletToggle = document.getElementById('socialWalletToggle');
+
+function setWalletOpen(open){
+  walletOpen = Boolean(open);
+  if (!socialWallet || !socialWalletToggle) return;
+
+  socialWallet.classList.toggle('open', walletOpen);
+  socialWallet.classList.toggle('closed', !walletOpen);
+  socialWallet.setAttribute('aria-hidden', walletOpen ? 'false' : 'true');
+  socialWalletToggle.setAttribute('aria-expanded', walletOpen ? 'true' : 'false');
+  socialWalletToggle.classList.toggle('active', walletOpen);
+}
+
+function selectSocialPlatform(button){
+  if (!button || !socialWalletTrack) return;
+  selectedPlatform = button.dataset.platform || 'all';
+
+  socialWalletTrack.querySelectorAll('.social-pill').forEach(function(pill){
+    const active = pill === button;
+    pill.classList.toggle('active', active);
+    pill.setAttribute('aria-selected', active ? 'true' : 'false');
+  });
+
+  setWalletOpen(true);
+
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  button.scrollIntoView({
+    behavior: reducedMotion ? 'auto' : 'smooth',
+    block: 'nearest',
+    inline: 'center'
+  });
+
+  window.dispatchEvent(new CustomEvent('souqi:social-platform-change', {
+    detail: { platform: selectedPlatform }
+  }));
+}
+
+if (socialWalletToggle) {
+  socialWalletToggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    setWalletOpen(!walletOpen);
+  });
+}
+
+if (socialWalletTrack) {
+  socialWalletTrack.addEventListener('click', function(e){
+    const pill = e.target.closest('.social-pill');
+    if (!pill) return;
+    selectSocialPlatform(pill);
+  });
+}
+
+document.querySelectorAll('[data-wallet-close]').forEach(function(button){
+  button.addEventListener('click', function(){
+    setWalletOpen(false);
+  });
+});
+
 document.getElementById('tabs').addEventListener('click', function(e){
+  if (e.target.closest('.social-wallet') || e.target.closest('#socialWalletToggle')) return;
   const tab = e.target.closest('.tab');
   if (!tab) return;
   document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
   tab.classList.add('active');
+  setWalletOpen(false);
   currentMode = tab.dataset.mode || 'gifts';
   searchInput.value = '';
   selectedType = currentMode === 'channels' ? 'channel' : 'all';
