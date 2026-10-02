@@ -1886,10 +1886,12 @@ body.subpage-open .market{display:none}
   direction:rtl
 }
 .account-stat{
+  position:relative;
   min-width:0;
   margin:0;
-  padding:0 14px 12px;
+  padding:18px 14px 12px;
   border:1px solid rgba(255,255,255,.08);
+  border-top:0;
   border-radius:14px;
   direction:rtl;
   text-align:right;
@@ -1897,18 +1899,46 @@ body.subpage-open .market{display:none}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.025)
 }
 .account-stat-label{
-  width:auto;
-  max-width:calc(100% - 24px);
-  margin:0 4px 0 auto;
-  padding:0 7px;
+  position:absolute;
+  top:-13px;
+  left:0;
+  right:0;
+  height:26px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) max-content 18px;
+  align-items:center;
+  column-gap:7px;
+  pointer-events:none
+}
+.account-stat-label::before,
+.account-stat-label::after{
+  content:"";
+  display:block;
+  height:1px;
+  background:rgba(255,255,255,.08)
+}
+.account-stat-label::before{
+  grid-column:1
+}
+.account-stat-label span{
+  grid-column:2;
+  display:block;
+  padding:0;
+  margin:0;
   color:#e2e2e2;
-  background:transparent;
+  background:none!important;
+  box-shadow:none!important;
+  border:0!important;
   font-family:"Times New Roman",Times,serif;
   font-size:18px;
   font-weight:700;
-  line-height:1.2;
+  line-height:1.1;
+  direction:rtl;
   text-align:right;
   white-space:nowrap
+}
+.account-stat-label::after{
+  grid-column:3
 }
 .account-stat-field{
   width:100%;
@@ -1935,7 +1965,7 @@ body.subpage-open .market{display:none}
   text-align:right;
   unicode-bidi:plaintext
 }
-.account-stat-deals .account-stat-label{
+.account-stat-deals .account-stat-label span{
   font-size:20px;
   color:#f3f3f3
 }
@@ -1948,7 +1978,7 @@ body.subpage-open .market{display:none}
 .account-stat-deals .account-stat-field b{
   font-size:39px
 }
-.account-stat-rating .account-stat-label{
+.account-stat-rating .account-stat-label span{
   font-size:17px;
   color:#c9c9c9
 }
@@ -1966,7 +1996,7 @@ body.subpage-open .market{display:none}
   grid-column:1 / -1;
   margin-top:2px
 }
-.account-stat-products .account-stat-label{
+.account-stat-products .account-stat-label span{
   font-size:21px;
   color:#f4f4f4
 }
@@ -2599,20 +2629,34 @@ h1,h2,h3,
 }
 
 
-/* account legend alignment fix */
+/* account split-border label alignment */
 @media(max-width:390px){
   .account-stat{
-    padding:0 12px 10px
+    padding:17px 12px 10px
   }
   .account-stat-label{
-    max-width:calc(100% - 20px);
-    padding:0 6px;
+    top:-12px;
+    height:24px;
+    grid-template-columns:minmax(0,1fr) max-content 14px;
+    column-gap:6px
+  }
+  .account-stat-label span{
     font-size:16px
   }
-  .account-stat-deals .account-stat-label{
+  .account-stat-deals .account-stat-label span{
     font-size:18px
   }
-  .account-stat-products .account-stat-label{
+  .account-stat-products .account-stat-label span{
     font-size:19px
   }
+}
+
+
+.account-stat-deals .account-stat-label::before,
+.account-stat-deals .account-stat-label::after{
+  background:rgba(255,255,255,.105)
+}
+.account-stat-products .account-stat-label::before,
+.account-stat-products .account-stat-label::after{
+  background:rgba(255,255,255,.12)
 }
