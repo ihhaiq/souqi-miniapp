@@ -1756,7 +1756,7 @@ body.subpage-open .market{display:none}
 .account-profile-panel{
   position:relative;
   width:100%;
-  padding:18px;
+  padding:14px 10px 16px 16px;
   overflow:hidden;
   border-radius:20px;
   border:1px solid rgba(255,255,255,.14);
@@ -1789,19 +1789,19 @@ body.subpage-open .market{display:none}
 
 .account-profile-top{
   display:flex;
-  align-items:center;
-  gap:14px;
+  align-items:flex-start;
+  gap:12px;
   min-width:0;
   direction:rtl
 }
 
 .account-profile-avatar-wrap{
   position:relative;
-  width:74px;
-  height:74px;
-  flex:0 0 74px;
-  margin:0;
-  border-radius:22px;
+  width:84px;
+  height:84px;
+  flex:0 0 84px;
+  margin:-2px -2px 0 0;
+  border-radius:24px;
   overflow:hidden;
   display:grid;
   place-items:center;
@@ -1897,12 +1897,12 @@ body.subpage-open .market{display:none}
 }
 .account-stats-priority{
   width:100%;
-  margin-top:14px;
+  margin-top:12px;
   padding-top:0;
   border-top:0;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:16px 12px;
+  gap:12px 12px;
   direction:rtl
 }
 .account-stat{
@@ -1910,7 +1910,7 @@ body.subpage-open .market{display:none}
   position:relative;
   min-width:0;
   margin:0;
-  padding:21px 14px 12px;
+  padding:14px 12px 8px;
   border:1px solid var(--stat-line);
   border-top:0;
   border-radius:14px;
@@ -1931,8 +1931,8 @@ body.subpage-open .market{display:none}
 .account-stat-label{
   position:absolute;
   top:0;
-  right:0;
-  left:0;
+  right:12px;
+  left:12px;
   height:1px;
   transform:none;
   display:flex;
@@ -1952,7 +1952,7 @@ body.subpage-open .market{display:none}
   box-shadow:0 1px 0 rgba(255,255,255,.025)
 }
 .account-stat-label::before{
-  flex:0 0 18px
+  flex:0 0 12px
 }
 .account-stat-label::after{
   flex:1 1 auto;
@@ -1977,8 +1977,8 @@ body.subpage-open .market{display:none}
 }
 .account-stat-field{
   width:100%;
-  min-height:64px;
-  padding-top:10px;
+  min-height:44px;
+  padding-top:3px;
   display:flex;
   align-items:center;
   justify-content:flex-start;
@@ -2013,7 +2013,7 @@ body.subpage-open .market{display:none}
       rgba(139,85,125,.28) 100%)
 }
 .account-stat-deals .account-stat-field{
-  min-height:76px
+  min-height:50px
 }
 .account-stat-deals .account-stat-field b{
   font-size:39px
@@ -2030,7 +2030,7 @@ body.subpage-open .market{display:none}
       rgba(116,85,123,.26) 100%)
 }
 .account-stat-rating .account-stat-field{
-  min-height:72px
+  min-height:46px
 }
 .account-stat-rating .account-stat-field b{
   font-size:30px;
@@ -2053,7 +2053,7 @@ body.subpage-open .market{display:none}
       rgba(115,104,54,.18) 100%)
 }
 .account-stat-products .account-stat-field{
-  min-height:82px
+  min-height:54px
 }
 .account-stat-products .account-stat-field b{
   font-size:42px
@@ -2158,17 +2158,18 @@ body.subpage-open .market{display:none}
 
 @media(max-width:390px){
   .account-profile-panel{
-    padding:15px;
+    padding:12px 8px 14px 14px;
     border-radius:18px
   }
   .account-profile-top{
     gap:11px
   }
   .account-profile-avatar-wrap{
-    width:66px;
-    height:66px;
-    flex-basis:66px;
-    border-radius:19px
+    width:76px;
+    height:76px;
+    flex-basis:76px;
+    margin:-1px -1px 0 0;
+    border-radius:21px
   }
   .account-profile-fallback{
     font-size:27px
@@ -2188,9 +2189,9 @@ body.subpage-open .market{display:none}
     font-size:9px
   }
   .account-stats-priority{
-    margin-top:14px;
-    padding-top:13px;
-    gap:7px
+    margin-top:12px;
+    padding-top:8px;
+    gap:10px 8px
   }
   .account-stat-label{
     font-size:14px
@@ -2202,14 +2203,14 @@ body.subpage-open .market{display:none}
     font-size:16px
   }
   .account-stat-field{
-    min-height:68px;
-    padding:10px 12px
+    min-height:42px;
+    padding:2px 10px 0
   }
   .account-stat-field b{
     font-size:30px
   }
   .account-stat-deals .account-stat-field{
-    min-height:72px
+    min-height:48px
   }
   .account-stat-deals .account-stat-field b{
     font-size:34px
@@ -2218,8 +2219,8 @@ body.subpage-open .market{display:none}
     font-size:27px
   }
   .account-stat-products .account-stat-field{
-    min-height:78px;
-    padding:12px 14px
+    min-height:52px;
+    padding:2px 12px 0
   }
   .account-stat-products .account-stat-field b{
     font-size:37px
@@ -2241,9 +2242,9 @@ body.subpage-open .market{display:none}
     padding:13px
   }
   .account-profile-avatar-wrap{
-    width:60px;
-    height:60px;
-    flex-basis:60px
+    width:70px;
+    height:70px;
+    flex-basis:70px
   }
   .account-profile-name{
     font-size:20px
@@ -2684,16 +2685,18 @@ h1,h2,h3,
     gap:15px 10px
   }
   .account-stat{
-    padding:20px 12px 10px
+    padding:13px 10px 7px
   }
   .account-stat-label{
     top:0;
+    right:10px;
+    left:10px;
     height:1px;
     transform:none;
     gap:6px
   }
   .account-stat-label::before{
-    flex-basis:14px
+    flex-basis:10px
   }
   .account-stat-label span{
     font-size:16px
@@ -2762,4 +2765,20 @@ h1,h2,h3,
 }
 .account-stat-label span{
   text-shadow:0 1px 1px rgba(0,0,0,.14)
+}
+
+
+/* compact account metric geometry */
+.account-stat-label{
+  max-width:calc(100% - 24px);
+  margin-inline:auto
+}
+.account-stat-label::before,
+.account-stat-label::after{
+  max-width:100%
+}
+@media(max-width:390px){
+  .account-stat-label{
+    max-width:calc(100% - 20px)
+  }
 }
