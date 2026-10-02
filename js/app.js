@@ -23,7 +23,7 @@ if (tg) {
       const fallbackLetter = (telegramUser.first_name || telegramUser.username || 'H').trim().charAt(0).toUpperCase();
 
       if (accountName) accountName.textContent = displayName;
-      if (accountId && telegramUser.id !== undefined) accountId.textContent = 'USR-' + telegramUser.id;
+      if (accountId) accountId.textContent = '- 1467';
       if (accountFallback) accountFallback.textContent = fallbackLetter || 'H';
 
       if (accountAvatar && telegramUser.photo_url) {
