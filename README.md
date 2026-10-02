@@ -750,7 +750,7 @@ CORS مضبوط بشكل صحيح إذا كان النطاق مختلفًا
 - `apiBaseUrl` يشير إلى Backend HTTPS الصحيح.
 - `demoMode` أصبح `false`.
 - `GET /api/bootstrap` يعمل لمستخدم Telegram موثق.
-- جميع فئات `GET /api/catalog` الأربع تعمل.
+- جميع فئات `GET /api/catalog` الثلاث تعمل.
 - `POST /api/orders` يعيد التحقق من العنصر والسعر على السيرفر.
 - `POST /api/wallet/topup` يتحقق من المبلغ على السيرفر.
 - `X-Telegram-Init-Data` يتم التحقق منه وليس مجرد قراءته.
