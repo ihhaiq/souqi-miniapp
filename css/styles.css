@@ -1759,16 +1759,32 @@ body.subpage-open .market{display:none}
   padding:18px;
   overflow:hidden;
   border-radius:20px;
-  border:1px solid rgba(255,255,255,.11);
-  background:#1b1b1b;
+  border:1px solid rgba(255,255,255,.14);
+  background:
+    linear-gradient(135deg,
+      rgba(46,54,88,.78) 0%,
+      rgba(82,62,101,.68) 54%,
+      rgba(101,68,92,.58) 78%,
+      rgba(100,91,44,.30) 100%);
+  -webkit-backdrop-filter:blur(18px) saturate(135%);
+  backdrop-filter:blur(18px) saturate(135%);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.055),
-    0 10px 28px rgba(0,0,0,.24),
-    0 1px 0 rgba(255,255,255,.018);
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.08),
+    0 12px 30px rgba(0,0,0,.24);
   isolation:isolate
 }
 .account-profile-panel::before{
-  content:none
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(126,143,214,.14),transparent 34%),
+    radial-gradient(circle at 88% 12%,rgba(207,139,190,.12),transparent 30%),
+    linear-gradient(180deg,rgba(255,255,255,.035),transparent 38%);
+  mix-blend-mode:screen;
+  z-index:-1
 }
 
 .account-profile-top{
@@ -1789,11 +1805,13 @@ body.subpage-open .market{display:none}
   overflow:hidden;
   display:grid;
   place-items:center;
-  background:#20282d;
-  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.15);
+  -webkit-backdrop-filter:blur(14px) saturate(130%);
+  backdrop-filter:blur(14px) saturate(130%);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.05),
-    0 6px 16px rgba(0,0,0,.18)
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 6px 16px rgba(0,0,0,.16)
 }
 .account-profile-avatar,
 .account-profile-fallback{
@@ -1861,8 +1879,10 @@ body.subpage-open .market{display:none}
   min-height:28px;
   padding:0 10px;
   border-radius:9px;
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.085);
+  border:1px solid rgba(255,255,255,.13);
+  -webkit-backdrop-filter:blur(14px) saturate(130%);
+  backdrop-filter:blur(14px) saturate(130%);
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -1886,7 +1906,7 @@ body.subpage-open .market{display:none}
   direction:rtl
 }
 .account-stat{
-  --stat-line:rgba(255,255,255,.08);
+  --stat-line:rgba(255,255,255,.14);
   position:relative;
   min-width:0;
   margin:0;
@@ -1896,8 +1916,16 @@ body.subpage-open .market{display:none}
   border-radius:14px;
   direction:rtl;
   text-align:right;
-  background:#202020;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,.085) 0%,
+      rgba(255,255,255,.035) 100%);
+  -webkit-backdrop-filter:blur(16px) saturate(130%);
+  backdrop-filter:blur(16px) saturate(130%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.075),
+    inset 0 -1px 0 rgba(0,0,0,.07),
+    0 5px 14px rgba(0,0,0,.10);
   overflow:hidden
 }
 .account-stat-label{
@@ -1933,7 +1961,7 @@ body.subpage-open .market{display:none}
   display:block;
   padding:0;
   margin:0;
-  color:#e2e2e2;
+  color:rgba(255,255,255,.92);
   background:none!important;
   box-shadow:none!important;
   border:0!important;
@@ -1962,7 +1990,7 @@ body.subpage-open .market{display:none}
   display:block;
   width:100%;
   margin:0;
-  color:#f5f5f5;
+  color:#fff;
   font-family:"Times New Roman",Times,serif;
   font-size:34px;
   font-weight:700;
@@ -1976,7 +2004,11 @@ body.subpage-open .market{display:none}
   color:#f3f3f3
 }
 .account-stat-deals{
-  --stat-line:rgba(255,255,255,.105)
+  --stat-line:rgba(255,255,255,.17);
+  background:
+    linear-gradient(135deg,
+      rgba(105,91,132,.40) 0%,
+      rgba(139,85,125,.28) 100%)
 }
 .account-stat-deals .account-stat-field{
   min-height:76px
@@ -1989,7 +2021,11 @@ body.subpage-open .market{display:none}
   color:#c9c9c9
 }
 .account-stat-rating{
-  background:#1f1f1f
+  --stat-line:rgba(255,255,255,.15);
+  background:
+    linear-gradient(135deg,
+      rgba(83,89,126,.40) 0%,
+      rgba(116,85,123,.26) 100%)
 }
 .account-stat-rating .account-stat-field{
   min-height:72px
@@ -2007,7 +2043,12 @@ body.subpage-open .market{display:none}
   color:#f4f4f4
 }
 .account-stat-products{
-  --stat-line:rgba(255,255,255,.12)
+  --stat-line:rgba(255,255,255,.18);
+  background:
+    linear-gradient(135deg,
+      rgba(82,84,124,.36) 0%,
+      rgba(131,84,116,.29) 68%,
+      rgba(115,104,54,.18) 100%)
 }
 .account-stat-products .account-stat-field{
   min-height:82px
@@ -2664,3 +2705,30 @@ h1,h2,h3,
 }
 
 
+
+
+/* account liquid-glass palette */
+.account-menu-group,
+.account-terms-collapsible{
+  background:rgba(27,27,30,.78);
+  border-color:rgba(255,255,255,.085);
+  -webkit-backdrop-filter:blur(12px) saturate(120%);
+  backdrop-filter:blur(12px) saturate(120%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 5px 16px rgba(0,0,0,.09)
+}
+
+@media(prefers-reduced-transparency:reduce){
+  .account-profile-panel{
+    background:#40384f;
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none
+  }
+  .account-stat,
+  .account-menu-group,
+  .account-terms-collapsible{
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none
+  }
+}
