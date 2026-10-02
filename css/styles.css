@@ -3568,3 +3568,23 @@ h1,h2,h3,
     font-size:13px
   }
 }
+
+
+/* filter chevron asset */
+.chip-chevron-img{
+  width:14px;
+  height:14px;
+  flex:0 0 14px;
+  display:block;
+  object-fit:contain;
+  opacity:.82;
+  pointer-events:none;
+  user-select:none
+}
+@media(max-width:390px){
+  .chip-chevron-img{
+    width:13px;
+    height:13px;
+    flex-basis:13px
+  }
+}
