@@ -150,7 +150,6 @@ window.SOUQI_CONFIG = Object.freeze({
 GET /api/bootstrap
 
 GET /api/catalog?category=gifts
-GET /api/catalog?category=avatars
 GET /api/catalog?category=collectibles
 GET /api/catalog?category=channels
 ```
@@ -312,7 +311,6 @@ X-Telegram-Init-Data: ...
 
 ```text
 gifts
-avatars
 collectibles
 channels
 ```
@@ -862,6 +860,22 @@ README.md
 جميع عناصر قائمة الحساب الداخلية **واجهة فقط** في هذه المرحلة ولا ترسل API requests.
 
 إذا تم بناء Backend لهذه الصفحات لاحقًا، يجب إضافة العقود الجديدة إلى `js/api.js` و`config.js` وتوثيقها هنا قبل ربطها بمنطق الواجهة.
+
+### محفظة مواقع التواصل
+
+شريط التصنيفات الرئيسي لم يعد يحتوي قسم `الشخصيات`. تم استبداله بمحفظة مواقع التواصل داخل نفس الشريط.
+
+السلوك الحالي:
+
+- زر الهدايا ثابت خارج المحفظة ويغلق المحفظة عند اختياره.
+- زر Telegram ثابت ويعمل كزر فتح/إغلاق المحفظة.
+- المحفظة مغلقة افتراضيًا وتفتح بحركة خفيفة من `max-width: 0` مع `opacity` و`scaleX`.
+- عناصر المحفظة تتحرك أفقيًا وحدها، بينما أزرار السوق الأخرى تبقى ثابتة.
+- اختيار منصة يبقي المحفظة مفتوحة، يفعّل الـ Pill المختار، ويحرك الشريط تلقائيًا لإظهار الاختيار في المنتصف قدر الإمكان.
+- المنصات الحالية: الكل، Facebook، Instagram، TikTok، YouTube، Telegram، Snapchat، X، CapCut، Gemini، أخرى، Pinterest، LinkedIn، Threads.
+- الإيموجيات داخل المنصات مؤقتة وسيتم تعديلها لاحقًا بدون تغيير منطق المحفظة.
+- اختيار المنصة حاليًا Frontend-only ويطلق الحدث `souqi:social-platform-change` بدون تغيير بيانات Backend.
+- عند تفعيل `prefers-reduced-motion` يتم تعطيل حركات فتح المحفظة والتمرير السلس.
 
 ### Mobile-first layout contract
 
