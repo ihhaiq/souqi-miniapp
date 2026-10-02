@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="./css/styles.css?v=20261002-1334">
+<link rel="stylesheet" href="./css/styles.css?v=20261002-1640">
 <style id="critical-active-tab-style">
 #tabs.social-tabs > .tab > .tab-label{
   display:block!important;
@@ -429,91 +429,95 @@
       </header>
 
       <main class="subpage-content account-content">
-        <section class="info-card account-profile-card">
-          <div class="account-profile-avatar-wrap">
-            <img id="accountProfileAvatar" class="account-profile-avatar" alt="" hidden>
-            <span id="accountProfileFallback" class="account-profile-fallback" aria-hidden="true">H</span>
+        <section class="account-profile-panel" aria-label="بيانات الحساب">
+          <div class="account-profile-top">
+            <div class="account-profile-avatar-wrap">
+              <img id="accountProfileAvatar" class="account-profile-avatar" alt="" hidden>
+              <span id="accountProfileFallback" class="account-profile-fallback" aria-hidden="true">H</span>
+            </div>
+
+            <div class="account-profile-main">
+              <div class="account-name-row">
+                <div class="account-title-wrap">
+                  <h2 id="accountProfileName" class="account-profile-name">Huge Pony</h2>
+                  <div id="accountProfileId" class="account-profile-id" dir="ltr">- 1467</div>
+                </div>
+
+                <button class="account-edit-name ui-only-action" type="button" aria-label="تعديل الاسم">
+                  <span class="account-edit-icon" data-icon="user"></span>
+                  <span>تعديل</span>
+                </button>
+              </div>
+            </div>
           </div>
 
-          <h2 id="accountProfileName" class="account-profile-name">Huge</h2>
-          <div id="accountProfileId" class="account-profile-id" dir="ltr">USR-8997225441</div>
-
-          <button class="account-edit-name ui-only-action" type="button">
-            <span class="account-edit-icon" data-icon="user"></span>
-            <span>تعديل الاسم</span>
-          </button>
-
-          <div class="account-stats" aria-label="إحصائيات الحساب">
-            <div class="account-stat">
-              <b>0</b>
-              <span>منتجات</span>
-            </div>
-            <div class="account-stat">
-              <b>0</b>
+          <div class="account-stats account-stats-priority" aria-label="إحصائيات الحساب">
+            <div class="account-stat account-stat-deals">
               <span>صفقات مكتملة</span>
+              <b>0</b>
             </div>
-            <div class="account-stat">
-              <b dir="ltr">0.00</b>
+
+            <div class="account-stat account-stat-rating">
               <span>التقييم</span>
+              <b dir="ltr">0.00</b>
+            </div>
+
+            <div class="account-stat account-stat-products">
+              <span>المنتجات</span>
+              <b>0</b>
             </div>
           </div>
         </section>
 
-        <section class="account-menu" aria-label="قائمة حسابي">
+        <section class="account-menu-group" aria-label="إدارة الحساب">
           <button class="account-menu-row ui-only-action" type="button">
             <span class="account-row-icon" data-icon="wallet"></span>
             <span class="account-row-label">المحفظة وشحن الرصيد</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-
           <button class="account-menu-row ui-only-action" type="button">
             <span class="account-row-icon" data-icon="storage"></span>
             <span class="account-row-label">منتجاتي</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-
           <button class="account-menu-row ui-only-action" type="button">
             <span class="account-row-icon" data-icon="heart"></span>
             <span class="account-row-label">المفضلة</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-
           <button class="account-menu-row ui-only-action" type="button">
             <span class="account-row-icon" data-icon="send"></span>
             <span class="account-row-label">أعلن لدينا</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
+        </section>
 
+        <section class="account-menu-group" aria-label="الخدمات والإعدادات">
           <button class="account-menu-row ui-only-action" type="button">
             <span class="account-row-icon" data-icon="referral"></span>
             <span class="account-row-label">الإحالة والأرباح</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-
           <button class="account-menu-row ui-only-action" type="button">
             <span class="account-row-icon" data-icon="star-outline"></span>
             <span class="account-row-label">تجارب العملاء</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-
           <button class="account-menu-row ui-only-action" type="button">
             <span class="account-row-icon" data-icon="shield"></span>
             <span class="account-row-label">عضوية VIP</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-
           <button class="account-menu-row ui-only-action" type="button">
             <span class="account-row-icon" data-icon="document"></span>
             <span class="account-row-label">دليل الاستخدام</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-
           <button class="account-menu-row ui-only-action" type="button">
             <span class="account-row-icon" data-icon="support"></span>
             <span class="account-row-label">الدعم والشكاوى</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-
           <button class="account-menu-row ui-only-action" type="button">
             <span class="account-row-icon" data-icon="sun"></span>
             <span class="account-row-label">تغيير المظهر · فاتح</span>
@@ -521,14 +525,17 @@
           </button>
         </section>
 
-        <section class="info-card account-terms-card">
-          <div class="account-terms-title">
-            <h2>شروط المتجر</h2>
+        <details class="account-terms-collapsible">
+          <summary class="account-terms-summary">
             <span class="account-terms-icon" data-icon="shield"></span>
+            <span>شروط المتجر</span>
+            <span class="account-terms-chevron" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="account-terms-body">
+            <p>أنت مسؤول عن صحة البيانات. يُحظر الاحتيال والحسابات المسروقة. مراجعة الإعلان لا تعني ضمان الملكية. تتم متابعة الصفقة بإشراف الإدارة والوسيط. لا تضع في متجرك أي بيانات خاصة أو حساسة. عند الحاجة استخدم /paysupport.</p>
+            <div class="account-terms-accepted">✓ وافقت على الشروط</div>
           </div>
-          <p>أنت مسؤول عن صحة البيانات. يُحظر الاحتيال والحسابات المسروقة. مراجعة الإعلان لا تعني ضمان الملكية. تتم متابعة الصفقة بإشراف الإدارة والوسيط. لا تضع في متجرك أي بيانات خاصة أو حساسة. عند الحاجة استخدم /paysupport.</p>
-          <div class="account-terms-accepted">✓ وافقت على الشروط</div>
-        </section>
+        </details>
       </main>
     </div>
   </section>
@@ -608,8 +615,8 @@
   </section>
 </div>
 
-<script src="./config.js?v=20261002-1334"></script>
-<script src="./js/api.js?v=20261002-1334"></script>
-<script src="./js/app.js?v=20261002-1334"></script>
+<script src="./config.js?v=20261002-1640"></script>
+<script src="./js/api.js?v=20261002-1640"></script>
+<script src="./js/app.js?v=20261002-1640"></script>
 </body>
 </html>
