@@ -293,6 +293,7 @@ let selectedPlatform = 'all';
 const socialWallet = document.getElementById('socialWallet');
 const socialWalletTrack = document.getElementById('socialWalletTrack');
 const socialWalletToggle = document.getElementById('socialWalletToggle');
+const socialTabs = document.getElementById('tabs');
 
 function setWalletOpen(open){
   walletOpen = Boolean(open);
@@ -303,6 +304,7 @@ function setWalletOpen(open){
   socialWallet.setAttribute('aria-hidden', walletOpen ? 'false' : 'true');
   socialWalletToggle.setAttribute('aria-expanded', walletOpen ? 'true' : 'false');
   socialWalletToggle.classList.toggle('active', walletOpen);
+  if (socialTabs) socialTabs.classList.toggle('wallet-open', walletOpen);
 }
 
 function selectSocialPlatform(button){
