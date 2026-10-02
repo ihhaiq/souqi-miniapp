@@ -418,8 +418,12 @@ document.getElementById('tabs').addEventListener('click', function(e){
 
 searchInput.addEventListener('input', renderCurrent);
 
-document.querySelectorAll('.market-filter-chip').forEach(function(btn){
-  btn.addEventListener('click', openSheet);
+// Gift strip category buttons will open dedicated selector lists later.
+// Keep them intentionally inactive for now; only the filter tool opens Filters.
+document.querySelectorAll('.market-filter-chip[data-strip-filter]').forEach(function(btn){
+  btn.addEventListener('click', function(event){
+    event.preventDefault();
+  });
 });
 
 const marketStripFilterBtn = document.getElementById('marketStripFilterBtn');

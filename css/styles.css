@@ -3588,3 +3588,30 @@ h1,h2,h3,
     flex-basis:13px
   }
 }
+
+
+/* bookmark asset + deferred strip selectors */
+.filter-bookmark-icon{
+  width:13px;
+  height:13px;
+  flex:0 0 13px;
+  display:block;
+  object-fit:contain;
+  opacity:.82;
+  pointer-events:none;
+  user-select:none
+}
+.filter-bookmark-save{
+  width:12px;
+  height:12px;
+  flex-basis:12px
+}
+.filter-save-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px
+}
+.market-filter-chip[aria-disabled="true"]{
+  cursor:default
+}
