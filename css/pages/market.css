@@ -1599,13 +1599,13 @@
 
 /* navigation label clarity */
 .bottom .nav{
-  color:rgba(230,236,245,.58)
+  color:var(--nav-inactive-color)
 }
 .bottom .nav.active{
-  color:#fff
+  color:var(--nav-active-color)
 }
 @media(max-width:390px){
   .bottom .nav{
-    font-size:11.5px
+    font-size:11px
   }
 }
