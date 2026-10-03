@@ -1135,3 +1135,81 @@ js/app.js?v=20261002-2248
 - نصوص شريط التنقل السفلي أصبحت أكبر قليلًا وبوزن عريض لتحسين القراءة على الهاتف.
 - نصوص `فلتر محفوظ` و`حفظ` أصبحت أوضح وأكبر.
 - أيقونة `bookmark.png` أصبحت أكبر وأكثر وضوحًا في صف الفلتر المحفوظ وزر الحفظ.
+
+
+## تنظيم الواجهة حسب الصفحات
+
+ابتداءً من فرع `agent-branch` تم فصل الواجهة تنظيميًا بأسلوب Page-oriented بدل إبقاء كل التنسيقات والتفاعلات داخل ملفين كبيرين. التطبيق ما زال Single Page Mini App واحدًا ولا توجد نسخ مستقلة لكل شاشة.
+
+```text
+souqi-miniapp/
+├── index.html
+├── config.js
+├── css/
+│   ├── styles.css          # entrypoint / imports only
+│   ├── core.css            # tokens + shared primitives
+│   └── pages/
+│       ├── market.css
+│       ├── wallet.css
+│       ├── account.css
+│       └── subpages.css    # add-product + escrow
+└── js/
+    ├── api.js
+    ├── app.js              # market/data/Telegram bootstrap
+    ├── router.js           # shared client-side routing
+    └── pages/
+        ├── wallet.js
+        └── subpages.js
+```
+
+القواعد:
+- منطق الـAPI وTelegram المشترك لا يتكرر داخل الصفحات.
+- كل صفحة تضع CSS الخاص بها في `css/pages/`.
+- التفاعلات الخاصة بصفحة توضع في `js/pages/` عندما لا تكون مشتركة.
+- `router.js` هو المسؤول عن إظهار وإخفاء الصفحات وتحديث hash والتنقل السفلي.
+- لا يوجد Build step أو Tailwind؛ الملفات تبقى Static ومناسبة للاستضافة الحالية.
+
+
+---
+
+## Backend-ready handoff architecture
+
+ابتداءً من هذا الإصدار، `agent-branch` هو قالب التسليم المنظم لمطور الباك إند. الواجهة تبقى Single Page Mini App بدون Build step، لكن تم فصل طبقة الشبكة عن الصفحات بشكل صريح.
+
+```text
+souqi-miniapp/
+├── index.html
+├── config.js
+├── css/
+│   ├── tokens.css
+│   ├── core.css
+│   ├── styles.css
+│   └── pages/
+├── js/
+│   ├── api.js
+│   ├── app.js
+│   ├── router.js
+│   ├── services/
+│   │   ├── telegram.js
+│   │   ├── account.js
+│   │   ├── catalog.js
+│   │   ├── orders.js
+│   │   └── wallet.js
+│   └── pages/
+└── docs/
+    └── BACKEND_HANDOFF.md
+```
+
+القواعد الجديدة:
+
+- `js/api.js` هو HTTP transport مشترك فقط، ويهتم بالـheaders والـtimeout وTelegram initData ومعالجة HTTP errors.
+- لا يوضع `fetch()` داخل صفحة أو مكوّن. أي اتصال بالباك إند يمر عبر `js/services/*`.
+- كل مسارات الـAPI معرفة مركزيًا في `config.js`.
+- `telegram.js` يعزل Telegram WebApp عن بقية الواجهة ويقدم user/initData/alert بشكل موحد.
+- `css/tokens.css` هو المصدر المركزي للألوان والمسافات والـradii والطباعة، على أسلوب Design System بدل قيم عشوائية بكل صفحة.
+- `core.css` يحتفظ بالـshared primitives والـcompatibility aliases، بينما CSS الخاص بالشاشات يبقى في `css/pages/`.
+- `demoMode: true` يبقي التطبيق قابلًا للعرض بدون Backend، و`demoMode: false` يحول طبقات الـservices إلى الـAPI الحقيقي.
+- عمليات الشراء والشحن تطلق Events قبل وبعد الطلب وتطلق Error events عند الفشل حتى يبقى الربط قابلًا للتوسع.
+- وثيقة التسليم الأساسية لمطور الباك إند هي `docs/BACKEND_HANDOFF.md` وتشمل بنية الملفات، المصادقة، الـendpoints، أمثلة JSON، الأخطاء، والأمان.
+
+هذا التنظيم هو المرجع الحالي؛ أي هيكل أقدم موصوف أعلاه يعتبر مرحلة انتقالية قبل إضافة طبقة `services/` و`tokens.css`.

@@ -1,0 +1,48 @@
+/* Souqi design tokens.
+   Centralize visual decisions here. Page CSS should consume semantic tokens instead of inventing values. */
+:root{
+  /* surfaces */
+  --souqi-bg:#141414;
+  --souqi-panel:#1c1c1c;
+  --souqi-panel-2:#232323;
+  --souqi-panel-3:#292929;
+  --souqi-line:#303030;
+  --souqi-line-strong:#3a3a3a;
+
+  /* content */
+  --souqi-text:#f4f4f4;
+  --souqi-muted:#8b8b8b;
+  --souqi-soft:#b9b9b9;
+  --souqi-accent:#f0c94a;
+  --souqi-danger:#c77474;
+  --souqi-success:#2cc984;
+  --souqi-warning:#f0a732;
+
+  /* spacing: one shared scale for every page */
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:24px;
+  --space-6:32px;
+
+  /* radii */
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:18px;
+  --radius-pill:9999px;
+
+  /* typography */
+  --font-arabic:"Times New Roman",Times,serif;
+  --font-numeric:"Times New Roman",Times,serif;
+  --type-display:26px;
+  --type-h1:18px;
+  --type-card:15px;
+  --type-body:13px;
+  --type-subtext:11px;
+  --type-micro:10px;
+
+  /* app geometry */
+  --app-max-width:960px;
+  --mobile-content-max:480px;
+}
