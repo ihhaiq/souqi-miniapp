@@ -11,12 +11,6 @@ const liquidNavIndicator = document.getElementById('liquidNavIndicator');
 let liquidNavTimer = 0;
 let currentBottomRoute = null;
 
-function setNavThemeFromTelegram(){
-  const tg = window.Telegram && window.Telegram.WebApp;
-  if (!tg || !tg.colorScheme) return;
-  document.documentElement.setAttribute('data-nav-theme', tg.colorScheme === 'light' ? 'light' : 'dark');
-}
-
 function hapticSelection(){
   try {
     const haptic = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback;
@@ -145,14 +139,6 @@ window.addEventListener('hashchange', function(){
 window.addEventListener('resize', function(){
   syncLiquidIndicator(false);
 });
-
-setNavThemeFromTelegram();
-try {
-  const tg = window.Telegram && window.Telegram.WebApp;
-  if (tg && typeof tg.onEvent === 'function') {
-    tg.onEvent('themeChanged', setNavThemeFromTelegram);
-  }
-} catch (_) {}
 
 window.SouqiRouter = Object.freeze({
   normalizeRoute: normalizeRoute,
