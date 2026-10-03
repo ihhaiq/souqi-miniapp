@@ -21,7 +21,7 @@ body.subpage-open .market{display:none}
   max-width:100%;
   min-height:100vh;
   background:var(--bg);
-  padding-bottom:calc(84px + env(safe-area-inset-bottom));
+  padding-bottom:calc(84px + var(--nav-safe-bottom));
   overflow-x:hidden;
   direction:rtl
 }
