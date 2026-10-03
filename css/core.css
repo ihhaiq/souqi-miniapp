@@ -39,35 +39,15 @@ svg{display:block;width:100%;height:100%}
 /* bottom navigation — iOS 26-inspired Liquid Glass */
 :root{
   --nav-bar-height:64px;
-  --nav-glass-blur:18px;
+  --nav-glass-blur:22px;
   --nav-glass-alpha:.08;
-  --nav-glow-color:42,168,232;
+  --nav-glow-color:255,214,0;
   --nav-glass-border:rgba(255,255,255,.48);
   --nav-glass-border-soft:rgba(255,255,255,.08);
   --nav-glass-shadow:rgba(0,0,0,.35);
-  --nav-active-alpha:.14;
-  --nav-inactive-color:rgba(255,255,255,.60);
+  --nav-active-alpha:.12;
+  --nav-inactive-color:rgba(255,255,255,.72);
   --nav-active-color:#fff;
-}
-:root[data-nav-theme="light"]{
-  --nav-glass-alpha:.45;
-  --nav-glass-border:rgba(255,255,255,.82);
-  --nav-glass-border-soft:rgba(70,80,92,.10);
-  --nav-glass-shadow:rgba(38,48,60,.16);
-  --nav-active-alpha:.34;
-  --nav-inactive-color:rgba(23,29,36,.58);
-  --nav-active-color:#161b22;
-}
-@media(prefers-color-scheme:light){
-  :root:not([data-nav-theme="dark"]){
-    --nav-glass-alpha:.45;
-    --nav-glass-border:rgba(255,255,255,.82);
-    --nav-glass-border-soft:rgba(70,80,92,.10);
-    --nav-glass-shadow:rgba(38,48,60,.16);
-    --nav-active-alpha:.34;
-    --nav-inactive-color:rgba(23,29,36,.58);
-    --nav-active-color:#161b22;
-  }
 }
 .app{
   padding-bottom:calc(var(--nav-bar-height) + 36px + env(safe-area-inset-bottom))
@@ -87,16 +67,15 @@ svg{display:block;width:100%;height:100%}
   isolation:isolate;
   border-radius:999px;
   background:
-    linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.025) 44%,rgba(255,255,255,.012)),
-    rgba(255,255,255,var(--nav-glass-alpha));
+    linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));
   border:1px solid rgba(255,255,255,.16);
   box-shadow:
     0 8px 32px var(--nav-glass-shadow),
     inset 0 1px 0 rgba(255,255,255,.35),
     inset 0 -1px 0 rgba(255,255,255,.08),
     inset 0 0 20px rgba(255,255,255,.05);
-  -webkit-backdrop-filter:blur(var(--nav-glass-blur)) saturate(180%) brightness(1.1);
-  backdrop-filter:blur(var(--nav-glass-blur)) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter:blur(var(--nav-glass-blur)) saturate(160%) brightness(1.05);
+  backdrop-filter:blur(var(--nav-glass-blur)) saturate(160%) brightness(1.05);
   z-index:100
 }
 .bottom::before{
@@ -148,14 +127,14 @@ svg{display:block;width:100%;height:100%}
   pointer-events:none;
   transform-origin:center;
   background:
-    linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.055)),
-    rgba(255,255,255,var(--nav-active-alpha));
-  border:1px solid rgba(255,255,255,.22);
+    linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.12)) padding-box,
+    linear-gradient(135deg,rgba(255,255,255,.45),rgba(255,255,255,.05)) border-box;
+  border:1px solid transparent;
   box-shadow:
-    0 0 18px rgba(var(--nav-glow-color),.16),
-    inset 0 1px 0 rgba(255,255,255,.42),
-    inset 0 -1px 0 rgba(255,255,255,.07),
-    inset 0 0 14px rgba(255,255,255,.055);
+    0 0 18px rgba(255,214,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.35),
+    inset 0 -1px 0 rgba(255,255,255,.06),
+    inset 0 0 14px rgba(255,255,255,.04);
   -webkit-backdrop-filter:blur(calc(var(--nav-glass-blur) * .72)) saturate(175%) brightness(1.08);
   backdrop-filter:blur(calc(var(--nav-glass-blur) * .72)) saturate(175%) brightness(1.08);
   transition:
@@ -166,7 +145,7 @@ svg{display:block;width:100%;height:100%}
   will-change:transform,width
 }
 .liquid-nav-indicator.is-stretching{
-  filter:drop-shadow(0 0 8px rgba(var(--nav-glow-color),.16))
+  filter:drop-shadow(0 0 8px rgba(255,214,0,.22))
 }
 .bottom.nav-no-motion .liquid-nav-indicator{transition:none!important}
 .nav{
@@ -200,7 +179,7 @@ svg{display:block;width:100%;height:100%}
 .nav:active,
 .nav.is-pressed{
   transform:scale(1.08);
-  filter:drop-shadow(0 0 9px rgba(var(--nav-glow-color),.26))
+  filter:drop-shadow(0 0 9px rgba(255,214,0,.22))
 }
 .nav .nav-icon{
   width:24px;
@@ -224,22 +203,13 @@ svg{display:block;width:100%;height:100%}
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.26))
 }
 .nav.active{
-  color:var(--nav-active-color)
+  color:#fff;
+  text-shadow:0 1px 2px rgba(0,0,0,.5)
 }
 .nav.active .nav-ref-img{opacity:1}
-@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-  .bottom{
-    background:
-      linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.018) 52%,rgba(255,255,255,.008)),
-      rgba(255,255,255,var(--nav-glass-alpha))
-  }
-}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .bottom{
     background:rgba(28,31,36,.78)
-  }
-  :root[data-nav-theme="light"] .bottom{
-    background:rgba(245,247,250,.88)
   }
 }
 @media(prefers-reduced-motion:reduce){
