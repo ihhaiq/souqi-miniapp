@@ -1,5 +1,6 @@
 /* frontend-only page routing */
 const marketPage = document.getElementById('marketPage');
+const ordersPage = document.getElementById('ordersPage');
 const addProductPage = document.getElementById('addProductPage');
 const escrowPage = document.getElementById('escrowPage');
 const accountPage = document.getElementById('accountPage');
@@ -9,7 +10,7 @@ const bottomNav = document.getElementById('bottomNav');
 
 function normalizeRoute(value){
   const route = String(value || '').replace(/^#/, '');
-  if (route === 'add-product' || route === 'escrow' || route === 'account' || route === 'wallet' || route === 'market') return route;
+  if (route === 'orders' || route === 'add-product' || route === 'escrow' || route === 'account' || route === 'wallet' || route === 'market') return route;
   return 'market';
 }
 
@@ -18,12 +19,14 @@ function showRoute(route, updateHash){
   const isMarket = route === 'market';
 
   if (marketPage) marketPage.hidden = !isMarket;
+  if (ordersPage) ordersPage.hidden = route !== 'orders';
   if (addProductPage) addProductPage.hidden = route !== 'add-product';
   if (escrowPage) escrowPage.hidden = route !== 'escrow';
   if (accountPage) accountPage.hidden = route !== 'account';
   if (walletPage) walletPage.hidden = route !== 'wallet';
   document.body.classList.toggle('subpage-open', !isMarket);
   document.body.classList.toggle('wallet-route', route === 'wallet');
+  document.body.classList.toggle('orders-route', route === 'orders');
 
   if (bottomNav) {
     bottomNav.querySelectorAll('.nav').forEach(function(btn){
@@ -51,10 +54,10 @@ if (bottomNav) {
     if (!btn) return;
     const route = btn.dataset.route;
 
-    if (route === 'add-product' || route === 'escrow' || route === 'market') {
+    if (route === 'orders' || route === 'add-product' || route === 'escrow' || route === 'market') {
       showRoute(route, true);
     }
-    // "طلباتي" و"المخزن" يبقيان قابلين للضغط بصريًا فقط في هذه المرحلة.
+    // "المخزن" يبقى قابلًا للضغط بصريًا فقط في هذه المرحلة.
   });
 }
 
