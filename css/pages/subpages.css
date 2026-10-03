@@ -711,3 +711,80 @@ body.subpage-open .market{display:none}
     transform:translateY(-2px)
   }
 }
+
+
+/* subtle warm navigation chrome across all subpages */
+.subpage .subpage-header,
+.wallet-page .subpage-header,
+.account-page .subpage-header{
+  background:
+    linear-gradient(105deg,
+      rgba(255,214,72,.045) 0%,
+      rgba(255,197,52,.085) 42%,
+      rgba(255,225,122,.035) 72%,
+      rgba(20,20,20,.965) 100%),
+    rgba(20,20,20,.96);
+  border-bottom-color:rgba(255,214,72,.14);
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.18),
+    inset 0 -1px 0 rgba(255,222,107,.035);
+  -webkit-backdrop-filter:blur(14px) saturate(118%);
+  backdrop-filter:blur(14px) saturate(118%)
+}
+.subpage .subpage-back,
+.subpage .subpage-actions .icon-btn,
+.wallet-page .subpage-back,
+.wallet-page .subpage-actions .icon-btn,
+.account-page .subpage-back,
+.account-page .subpage-actions .icon-btn{
+  background:
+    linear-gradient(145deg,
+      rgba(255,219,96,.075),
+      rgba(255,196,45,.035) 52%,
+      rgba(255,255,255,.025)),
+    rgba(36,36,34,.9);
+  border-color:rgba(255,217,92,.12);
+  color:#d8d5c7;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 3px 10px rgba(0,0,0,.12)
+}
+.subpage .subpage-heading h1,
+.wallet-page .subpage-heading h1,
+.account-page .subpage-heading h1{
+  color:#f4f0df
+}
+.subpage .subpage-heading span,
+.wallet-page .subpage-heading span,
+.account-page .subpage-heading span{
+  color:#918b72
+}
+
+/* stronger readability for mediation steps and disclaimer */
+.mediation-step b{
+  font-size:18px;
+  font-weight:900;
+  line-height:1.5
+}
+.mediation-step p{
+  margin-top:7px;
+  color:#bebebe;
+  font-size:15px;
+  font-weight:700;
+  font-style:italic;
+  line-height:1.85
+}
+.disclaimer-card .section-title{
+  font-size:20px
+}
+.disclaimer-card p{
+  font-size:15px;
+  line-height:2.05
+}
+
+@media(max-width:390px){
+  .mediation-step b{font-size:17px}
+  .mediation-step p{font-size:14px}
+  .disclaimer-card .section-title{font-size:19px}
+  .disclaimer-card p{font-size:14px}
+}
