@@ -788,3 +788,98 @@ body.subpage-open .market{display:none}
   .disclaimer-card .section-title{font-size:19px}
   .disclaimer-card p{font-size:14px}
 }
+
+
+/* stronger sunset-gold navigation treatment based on the supplied reference */
+.subpage .subpage-header,
+.wallet-page .subpage-header,
+.account-page .subpage-header{
+  position:sticky;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(115% 150% at 82% -18%,
+      rgba(255,249,140,.34) 0%,
+      rgba(255,228,72,.24) 27%,
+      rgba(255,188,44,.10) 50%,
+      transparent 70%),
+    radial-gradient(105% 130% at 10% 5%,
+      rgba(255,111,35,.34) 0%,
+      rgba(255,138,34,.24) 30%,
+      rgba(255,196,40,.10) 58%,
+      transparent 76%),
+    linear-gradient(118deg,
+      rgba(55,37,18,.98) 0%,
+      rgba(78,48,18,.97) 24%,
+      rgba(92,61,18,.95) 52%,
+      rgba(66,50,21,.97) 74%,
+      rgba(29,27,24,.98) 100%)!important;
+  border-bottom-color:rgba(255,205,65,.32)!important;
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.26),
+    0 3px 15px rgba(255,155,28,.08),
+    inset 0 -1px 0 rgba(255,235,140,.09)!important
+}
+.subpage .subpage-header::after,
+.wallet-page .subpage-header::after,
+.account-page .subpage-header::after{
+  content:"";
+  position:absolute;
+  inset:auto -8% -28% -8%;
+  height:68%;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:48% 52% 0 0 / 34% 42% 0 0;
+  background:
+    linear-gradient(105deg,
+      rgba(255,204,41,.18),
+      rgba(255,241,128,.24) 44%,
+      rgba(255,141,34,.17) 78%,
+      rgba(255,106,35,.12));
+  filter:blur(7px)
+}
+
+.subpage .subpage-back,
+.subpage .subpage-actions .icon-btn,
+.wallet-page .subpage-back,
+.wallet-page .subpage-actions .icon-btn,
+.account-page .subpage-back,
+.account-page .subpage-actions .icon-btn{
+  background:
+    linear-gradient(145deg,
+      rgba(255,238,136,.18) 0%,
+      rgba(255,191,49,.12) 42%,
+      rgba(255,111,35,.09) 100%),
+    rgba(38,34,28,.94)!important;
+  border-color:rgba(255,211,82,.28)!important;
+  color:#f4ecd0!important;
+  box-shadow:
+    0 5px 14px rgba(0,0,0,.22),
+    0 2px 9px rgba(255,171,30,.07),
+    inset 0 1px 0 rgba(255,255,255,.08)!important
+}
+.subpage .subpage-back:active,
+.subpage .subpage-actions .icon-btn:active,
+.wallet-page .subpage-back:active,
+.wallet-page .subpage-actions .icon-btn:active,
+.account-page .subpage-back:active,
+.account-page .subpage-actions .icon-btn:active{
+  background:
+    linear-gradient(145deg,
+      rgba(255,246,170,.22),
+      rgba(255,191,49,.16) 46%,
+      rgba(255,111,35,.12)),
+    rgba(42,37,29,.96)!important
+}
+
+.subpage .subpage-heading h1,
+.wallet-page .subpage-heading h1,
+.account-page .subpage-heading h1{
+  color:#fff7dd!important;
+  text-shadow:0 1px 10px rgba(255,199,55,.09)
+}
+.subpage .subpage-heading span,
+.wallet-page .subpage-heading span,
+.account-page .subpage-heading span{
+  color:#c9b987!important
+}
