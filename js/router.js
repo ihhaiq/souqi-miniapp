@@ -7,6 +7,60 @@ const accountPage = document.getElementById('accountPage');
 const walletPage = document.getElementById('walletPage');
 const accountAvatarBtn = document.getElementById('accountAvatarBtn');
 const bottomNav = document.getElementById('bottomNav');
+const liquidNavIndicator = document.getElementById('liquidNavIndicator');
+let liquidNavTimer = 0;
+let currentBottomRoute = null;
+
+function setNavThemeFromTelegram(){
+  const tg = window.Telegram && window.Telegram.WebApp;
+  if (!tg || !tg.colorScheme) return;
+  document.documentElement.setAttribute('data-nav-theme', tg.colorScheme === 'light' ? 'light' : 'dark');
+}
+
+function hapticSelection(){
+  try {
+    const haptic = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback;
+    if (haptic && typeof haptic.selectionChanged === 'function') haptic.selectionChanged();
+  } catch (_) {}
+}
+
+function positionLiquidIndicator(activeBtn, animate){
+  if (!bottomNav || !liquidNavIndicator || !activeBtn) return;
+  const navRect = bottomNav.getBoundingClientRect();
+  const btnRect = activeBtn.getBoundingClientRect();
+  const inset = 3;
+  const x = btnRect.left - navRect.left + inset;
+  const y = btnRect.top - navRect.top + inset;
+  const width = Math.max(0, btnRect.width - inset * 2);
+  const height = Math.max(0, btnRect.height - inset * 2);
+
+  if (!animate) bottomNav.classList.add('nav-no-motion');
+  liquidNavIndicator.style.width = width + 'px';
+  liquidNavIndicator.style.height = height + 'px';
+  liquidNavIndicator.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) scaleX(' + (animate ? '1.08' : '1') + ')';
+
+  if (animate) {
+    liquidNavIndicator.classList.add('is-stretching');
+    cancelAnimationFrame(liquidNavIndicator._settleFrame || 0);
+    liquidNavIndicator._settleFrame = requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        liquidNavIndicator.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) scaleX(1)';
+      });
+    });
+    clearTimeout(liquidNavTimer);
+    liquidNavTimer = setTimeout(function(){
+      liquidNavIndicator.classList.remove('is-stretching');
+    }, 470);
+  } else {
+    requestAnimationFrame(function(){ bottomNav.classList.remove('nav-no-motion'); });
+  }
+}
+
+function syncLiquidIndicator(animate){
+  if (!bottomNav) return;
+  const activeBtn = bottomNav.querySelector('.nav.active');
+  positionLiquidIndicator(activeBtn, !!animate);
+}
 
 function normalizeRoute(value){
   const route = String(value || '').replace(/^#/, '');
@@ -29,9 +83,14 @@ function showRoute(route, updateHash){
   document.body.classList.toggle('orders-route', route === 'orders');
 
   if (bottomNav) {
+    const previousRoute = currentBottomRoute;
     bottomNav.querySelectorAll('.nav').forEach(function(btn){
       btn.classList.toggle('active', btn.dataset.route === route);
     });
+    const changed = previousRoute !== null && previousRoute !== route;
+    currentBottomRoute = route;
+    syncLiquidIndicator(changed);
+    if (changed) hapticSelection();
   }
 
   if (updateHash && window.location.hash !== '#' + route) {
@@ -49,6 +108,16 @@ if (accountAvatarBtn) {
 }
 
 if (bottomNav) {
+  bottomNav.addEventListener('pointerdown', function(e){
+    const btn = e.target.closest('.nav');
+    if (btn) btn.classList.add('is-pressed');
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach(function(type){
+    bottomNav.addEventListener(type, function(){
+      bottomNav.querySelectorAll('.nav.is-pressed').forEach(function(btn){ btn.classList.remove('is-pressed'); });
+    });
+  });
+
   bottomNav.addEventListener('click', function(e){
     const btn = e.target.closest('.nav');
     if (!btn) return;
@@ -72,6 +141,18 @@ document.querySelectorAll('[data-go-wallet]').forEach(function(btn){
 window.addEventListener('hashchange', function(){
   showRoute(window.location.hash, false);
 });
+
+window.addEventListener('resize', function(){
+  syncLiquidIndicator(false);
+});
+
+setNavThemeFromTelegram();
+try {
+  const tg = window.Telegram && window.Telegram.WebApp;
+  if (tg && typeof tg.onEvent === 'function') {
+    tg.onEvent('themeChanged', setNavThemeFromTelegram);
+  }
+} catch (_) {}
 
 window.SouqiRouter = Object.freeze({
   normalizeRoute: normalizeRoute,
