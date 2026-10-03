@@ -1,9 +1,9 @@
 /* Souqi CSS entrypoint — page-oriented structure.
    Keep shared primitives in core.css and page-specific rules under css/pages/. */
-@import url("./tokens.css?v=20261003-0017");
-@import url("./core.css?v=20261003-0017");
-@import url("./pages/market.css?v=20261003-0017");
-@import url("./pages/orders.css?v=20261003-0017");
-@import url("./pages/wallet.css?v=20261003-0017");
-@import url("./pages/subpages.css?v=20261003-0017");
-@import url("./pages/account.css?v=20261003-0017");
+@import url("./tokens.css?v=20261003-0034");
+@import url("./core.css?v=20261003-0034");
+@import url("./pages/market.css?v=20261003-0034");
+@import url("./pages/orders.css?v=20261003-0034");
+@import url("./pages/wallet.css?v=20261003-0034");
+@import url("./pages/subpages.css?v=20261003-0034");
+@import url("./pages/account.css?v=20261003-0034");
