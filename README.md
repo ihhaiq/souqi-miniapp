@@ -1135,3 +1135,36 @@ js/app.js?v=20261002-2248
 - نصوص شريط التنقل السفلي أصبحت أكبر قليلًا وبوزن عريض لتحسين القراءة على الهاتف.
 - نصوص `فلتر محفوظ` و`حفظ` أصبحت أوضح وأكبر.
 - أيقونة `bookmark.png` أصبحت أكبر وأكثر وضوحًا في صف الفلتر المحفوظ وزر الحفظ.
+
+
+## تنظيم الواجهة حسب الصفحات
+
+ابتداءً من فرع `agent-branch` تم فصل الواجهة تنظيميًا بأسلوب Page-oriented بدل إبقاء كل التنسيقات والتفاعلات داخل ملفين كبيرين. التطبيق ما زال Single Page Mini App واحدًا ولا توجد نسخ مستقلة لكل شاشة.
+
+```text
+souqi-miniapp/
+├── index.html
+├── config.js
+├── css/
+│   ├── styles.css          # entrypoint / imports only
+│   ├── core.css            # tokens + shared primitives
+│   └── pages/
+│       ├── market.css
+│       ├── wallet.css
+│       ├── account.css
+│       └── subpages.css    # add-product + escrow
+└── js/
+    ├── api.js
+    ├── app.js              # market/data/Telegram bootstrap
+    ├── router.js           # shared client-side routing
+    └── pages/
+        ├── wallet.js
+        └── subpages.js
+```
+
+القواعد:
+- منطق الـAPI وTelegram المشترك لا يتكرر داخل الصفحات.
+- كل صفحة تضع CSS الخاص بها في `css/pages/`.
+- التفاعلات الخاصة بصفحة توضع في `js/pages/` عندما لا تكون مشتركة.
+- `router.js` هو المسؤول عن إظهار وإخفاء الصفحات وتحديث hash والتنقل السفلي.
+- لا يوجد Build step أو Tailwind؛ الملفات تبقى Static ومناسبة للاستضافة الحالية.
