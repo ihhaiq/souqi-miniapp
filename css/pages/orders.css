@@ -265,29 +265,7 @@
 
 .order-card[hidden]{display:none!important}
 
-body.orders-route .bottom{
-  background:
-    radial-gradient(120% 150% at 78% -20%,rgba(108,187,255,.22),transparent 60%),
-    linear-gradient(118deg,rgba(15,33,64,.98),rgba(18,48,91,.97) 48%,rgba(14,37,72,.98))!important;
-  border-top-color:rgba(73,148,255,.28)!important;
-  box-shadow:
-    0 -10px 28px rgba(0,17,48,.32),
-    inset 0 1px 0 rgba(255,255,255,.045)!important;
-  -webkit-backdrop-filter:blur(18px) saturate(125%);
-  backdrop-filter:blur(18px) saturate(125%)
-}
-body.orders-route .bottom::before{
-  background:linear-gradient(105deg,rgba(48,137,255,.12),rgba(104,185,255,.18) 50%,rgba(31,103,225,.10))!important
-}
-body.orders-route .bottom .nav{color:#7788a5}
-body.orders-route .bottom .nav.active{
-  color:#eaf4ff;
-  background:rgba(47,128,255,.12);
-  border-color:rgba(76,156,255,.30);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.05),
-    0 4px 12px rgba(0,21,61,.16)
-}
+/* Orders inherits the shared transparent glass bottom navigation. */
 
 @media(max-width:390px){
   .orders-page .subpage-header{min-height:76px}
