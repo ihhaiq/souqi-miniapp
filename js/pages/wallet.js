@@ -1,4 +1,4 @@
-/* Wallet page behavior. Network calls go through SouqiServices.wallet. */
+/* Wallet page UI behavior only. Integration belongs to the receiving app. */
 (function(){
   "use strict";
 
@@ -13,43 +13,21 @@
   }
 
   if (walletAmounts) {
-    walletAmounts.addEventListener('click', async function(e){
+    walletAmounts.addEventListener('click', function(e){
       const btn = e.target.closest('.wallet-star-option');
-      if (!btn || btn.disabled) return;
+      if (!btn) return;
 
       walletAmounts.querySelectorAll('.wallet-star-option').forEach(function(option){
         option.classList.toggle('active', option === btn);
       });
 
-      const payload = {
-        amount: Number(btn.dataset.amount || 0),
-        stars: Number(btn.dataset.stars || 0),
-        source: 'telegram-stars'
-      };
-
-      window.dispatchEvent(new CustomEvent('souqi:topup-request', { detail: payload }));
-
-      if (!window.SouqiAPI || window.SouqiAPI.demoMode) return;
-
-      const walletService = window.SouqiServices && window.SouqiServices.wallet;
-      btn.disabled = true;
-      btn.classList.add('is-loading');
-
-      try {
-        const result = walletService
-          ? await walletService.topUp(payload)
-          : await window.SouqiAPI.createTopUp(payload);
-        window.dispatchEvent(new CustomEvent('souqi:topup-created', { detail: result }));
-      } catch (error) {
-        console.error('[souqi] wallet topup failed', error);
-        window.dispatchEvent(new CustomEvent('souqi:topup-error', { detail: error }));
-        if (window.SouqiTelegram) {
-          window.SouqiTelegram.showAlert('تعذر بدء عملية الشحن. حاول مرة أخرى.');
+      window.dispatchEvent(new CustomEvent('souqi:topup-request', {
+        detail: {
+          amount: Number(btn.dataset.amount || 0),
+          stars: Number(btn.dataset.stars || 0),
+          source: 'telegram-stars'
         }
-      } finally {
-        btn.disabled = false;
-        btn.classList.remove('is-loading');
-      }
+      }));
     });
   }
 

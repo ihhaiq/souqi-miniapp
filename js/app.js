@@ -1,12 +1,14 @@
-const tg = window.SouqiTelegram
-  ? window.SouqiTelegram.init()
-  : (window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null);
+const tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null;
 
 if (tg) {
+  try { tg.ready(); } catch(e) {}
+  try { tg.expand(); } catch(e) {}
+  try { tg.setHeaderColor('#141414'); } catch(e) {}
+  try { tg.setBackgroundColor('#141414'); } catch(e) {}
+  try { tg.setBottomBarColor('#181818'); } catch(e) {}
+
   try {
-    const telegramUser = window.SouqiTelegram
-      ? window.SouqiTelegram.getUser()
-      : (tg.initDataUnsafe && tg.initDataUnsafe.user);
+    const telegramUser = tg.initDataUnsafe && tg.initDataUnsafe.user;
     const userAvatar = document.getElementById('userAvatar');
 
     if (telegramUser && telegramUser.photo_url && userAvatar) {
@@ -134,74 +136,6 @@ let sortMode = 0;
 let selectedType = 'all';
 let selectedPrice = 'all';
 
-
-function extractItems(payload){
-  if (Array.isArray(payload)) return payload;
-  if (payload && Array.isArray(payload.items)) return payload.items;
-  return null;
-}
-
-function normalizeItems(items, fallbackType){
-  return (items || []).map(function(item){
-    return {
-      id: String(item.id || ''),
-      name: String(item.name || ''),
-      price: Number(item.price || 0),
-      type: String(item.type || fallbackType || 'gift'),
-      created: item.created ? String(item.created) : '',
-      audience: item.audience ? String(item.audience) : ''
-    };
-  }).filter(function(item){
-    return item.id && item.name && Number.isFinite(item.price);
-  });
-}
-
-function setBalance(value){
-  const amount = Number(value);
-  if (!Number.isFinite(amount)) return;
-  const topBalance = document.getElementById('balanceValue');
-  if (topBalance) topBalance.textContent = String(amount);
-}
-
-function setWalletCashBalance(value){
-  const amount = Number(value);
-  const walletBalance = document.getElementById('walletBalanceValue');
-  if (!walletBalance || !Number.isFinite(amount)) return;
-  walletBalance.textContent = amount.toFixed(2);
-}
-
-async function hydrateFromBackend(){
-  if (!window.SouqiAPI || window.SouqiAPI.demoMode) return;
-
-  const services = window.SouqiServices || {};
-  const accountService = services.account;
-  const catalogService = services.catalog;
-
-  try {
-    const results = await Promise.all([
-      accountService ? accountService.bootstrap() : window.SouqiAPI.getBootstrap(),
-      catalogService ? catalogService.list('gifts') : window.SouqiAPI.getCatalog('gifts'),
-      catalogService ? catalogService.list('collectibles') : window.SouqiAPI.getCatalog('collectibles'),
-      catalogService ? catalogService.list('channels') : window.SouqiAPI.getCatalog('channels')
-    ]);
-
-    const bootstrap = results[0] || {};
-    const gifts = extractItems(results[1]);
-    const collectibles = extractItems(results[2]);
-    const channels = extractItems(results[3]);
-
-    if (bootstrap.balance !== undefined) setBalance(bootstrap.balance);
-    if (bootstrap.wallet_balance !== undefined) setWalletCashBalance(bootstrap.wallet_balance);
-    if (gifts) giftItems = normalizeItems(gifts, 'gift');
-    if (collectibles) collectibleItems = normalizeItems(collectibles, 'collectible');
-    if (channels) channelItems = normalizeItems(channels, 'channel');
-
-    renderCurrent();
-  } catch (error) {
-    console.error('[souqi] backend bootstrap failed', error);
-    window.dispatchEvent(new CustomEvent('souqi:bootstrap-error', { detail: error }));
-  }
-}
 
 function findCatalogItem(id, mode){
   const source =
@@ -515,42 +449,24 @@ document.getElementById('applyFilters').addEventListener('click', function(){
 });
 
 
-grid.addEventListener('click', async function(e){
+grid.addEventListener('click', function(e){
   const button = e.target.closest('.price');
   if (!button) return;
 
   const item = findCatalogItem(button.dataset.itemId, button.dataset.itemMode || currentMode);
   if (!item) return;
 
-  window.dispatchEvent(new CustomEvent('souqi:purchase-request', {
-    detail: { item: item, category: button.dataset.itemMode || currentMode }
-  }));
+  const detail = {
+    item: item,
+    category: button.dataset.itemMode || currentMode
+  };
 
-  if (!window.SouqiAPI || window.SouqiAPI.demoMode) {
-    const msg = 'طلب شراء تجريبي: ' + item.name + ' — 💎 ' + item.price;
-    if (tg && tg.showAlert) tg.showAlert(msg); else alert(msg);
-    return;
-  }
+  window.dispatchEvent(new CustomEvent('souqi:purchase-request', { detail: detail }));
 
-  button.disabled = true;
-  try {
-    const orderService = window.SouqiServices && window.SouqiServices.orders;
-    const payload = {
-      itemId: item.id,
-      category: button.dataset.itemMode || currentMode
-    };
-    const result = orderService
-      ? await orderService.create(payload)
-      : await window.SouqiAPI.createOrder(payload);
-    window.dispatchEvent(new CustomEvent('souqi:purchase-created', { detail: result }));
-  } catch (error) {
-    console.error('[souqi] purchase failed', error);
-    window.dispatchEvent(new CustomEvent('souqi:purchase-error', { detail: error }));
-    if (window.SouqiTelegram) window.SouqiTelegram.showAlert('تعذر إنشاء الطلب. حاول مرة أخرى.');
-    else if (tg && tg.showAlert) tg.showAlert('تعذر إنشاء الطلب. حاول مرة أخرى.');
-  } finally {
-    button.disabled = false;
-  }
+  // Preview-only feedback. The receiving app can listen to souqi:purchase-request
+  // and replace this behavior with its own existing purchase flow.
+  const msg = 'طلب شراء تجريبي: ' + item.name + ' — 💎 ' + item.price;
+  if (tg && tg.showAlert) tg.showAlert(msg); else alert(msg);
 });
 
 /* carousel */
@@ -611,5 +527,4 @@ document.getElementById('sendToSelfBtn').addEventListener('click', function(){
 
 
 renderCurrent();
-hydrateFromBackend();
 showRoute(window.location.hash || '#market', false);
