@@ -93,6 +93,7 @@ function mountIcons(root) {
   });
 }
 mountIcons();
+window.SouqiUI = Object.assign(window.SouqiUI || {}, { mountIcons: mountIcons });
 
 const grid = document.getElementById('grid');
 const notice = document.getElementById('notice');
@@ -576,47 +577,6 @@ document.getElementById('bannerCarousel').addEventListener('touchend', function(
   touchX = null;
 }, {passive:true});
 
-/* wallet */
-const walletPage = document.getElementById('walletPage');
-const topupBtn = document.getElementById('topupBtn');
-const walletAmounts = document.getElementById('walletAmounts');
-const walletRefresh = document.getElementById('walletRefresh');
-
-if (topupBtn) {
-  topupBtn.addEventListener('click', function(){
-    showRoute('wallet', true);
-  });
-}
-
-if (walletAmounts) {
-  walletAmounts.addEventListener('click', function(e){
-    const btn = e.target.closest('.wallet-star-option');
-    if (!btn) return;
-
-    walletAmounts.querySelectorAll('.wallet-star-option').forEach(function(option){
-      option.classList.toggle('active', option === btn);
-    });
-
-    const price = Number(btn.dataset.amount || 0);
-    const stars = Number(btn.dataset.stars || 0);
-
-    window.dispatchEvent(new CustomEvent('souqi:topup-request', {
-      detail: { amount: price, stars: stars, source: 'telegram-stars' }
-    }));
-  });
-}
-
-if (walletRefresh) {
-  walletRefresh.addEventListener('click', function(){
-    walletRefresh.classList.remove('is-refreshing');
-    void walletRefresh.offsetWidth;
-    walletRefresh.classList.add('is-refreshing');
-    window.setTimeout(function(){ walletRefresh.classList.remove('is-refreshing'); }, 420);
-
-    window.dispatchEvent(new CustomEvent('souqi:wallet-refresh'));
-  });
-}
-
 document.querySelectorAll('.featured-quick-btn').forEach(function(btn){
   btn.addEventListener('click', function(){
     document.getElementById('featuredAmount').value = btn.dataset.amount || '';
@@ -637,98 +597,6 @@ document.getElementById('sendToSelfBtn').addEventListener('click', function(){
 });
 
 
-
-/* frontend-only page routing */
-const marketPage = document.getElementById('marketPage');
-const addProductPage = document.getElementById('addProductPage');
-const escrowPage = document.getElementById('escrowPage');
-const accountPage = document.getElementById('accountPage');
-const accountAvatarBtn = document.getElementById('accountAvatarBtn');
-const bottomNav = document.getElementById('bottomNav');
-
-function normalizeRoute(value){
-  const route = String(value || '').replace(/^#/, '');
-  if (route === 'add-product' || route === 'escrow' || route === 'account' || route === 'wallet' || route === 'market') return route;
-  return 'market';
-}
-
-function showRoute(route, updateHash){
-  route = normalizeRoute(route);
-  const isMarket = route === 'market';
-
-  if (marketPage) marketPage.hidden = !isMarket;
-  if (addProductPage) addProductPage.hidden = route !== 'add-product';
-  if (escrowPage) escrowPage.hidden = route !== 'escrow';
-  if (accountPage) accountPage.hidden = route !== 'account';
-  if (walletPage) walletPage.hidden = route !== 'wallet';
-  document.body.classList.toggle('subpage-open', !isMarket);
-  document.body.classList.toggle('wallet-route', route === 'wallet');
-
-  if (bottomNav) {
-    bottomNav.querySelectorAll('.nav').forEach(function(btn){
-      btn.classList.toggle('active', btn.dataset.route === route);
-    });
-  }
-
-  if (updateHash && window.location.hash !== '#' + route) {
-    history.replaceState(null, '', '#' + route);
-  }
-
-  window.scrollTo({top:0, behavior:'auto'});
-  mountIcons(document);
-}
-
-if (accountAvatarBtn) {
-  accountAvatarBtn.addEventListener('click', function(){
-    showRoute('account', true);
-  });
-}
-
-if (bottomNav) {
-  bottomNav.addEventListener('click', function(e){
-    const btn = e.target.closest('.nav');
-    if (!btn) return;
-    const route = btn.dataset.route;
-
-    if (route === 'add-product' || route === 'escrow' || route === 'market') {
-      showRoute(route, true);
-    }
-    // "طلباتي" و"المخزن" يبقيان قابلين للضغط بصريًا فقط في هذه المرحلة.
-  });
-}
-
-document.querySelectorAll('[data-go-market]').forEach(function(btn){
-  btn.addEventListener('click', function(){ showRoute('market', true); });
-});
-
-document.querySelectorAll('[data-go-wallet]').forEach(function(btn){
-  btn.addEventListener('click', function(){ showRoute('wallet', true); });
-});
-
-document.querySelectorAll('[data-escrow-action="market"]').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    showRoute('market', true);
-  });
-});
-
-document.querySelectorAll('[data-escrow-action="history"]').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    const historySection = document.getElementById('escrowHistory');
-    if (!historySection) return;
-    historySection.scrollIntoView({behavior:'smooth', block:'start'});
-  });
-});
-
-document.querySelectorAll('.status-tab').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    document.querySelectorAll('.status-tab').forEach(function(tab){ tab.classList.remove('active'); });
-    btn.classList.add('active');
-  });
-});
-
-window.addEventListener('hashchange', function(){
-  showRoute(window.location.hash, false);
-});
 
 
 renderCurrent();
