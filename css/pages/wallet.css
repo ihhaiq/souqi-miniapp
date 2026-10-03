@@ -385,13 +385,7 @@
 }
 .wallet-transfer-empty{min-height:158px}
 
-/* Wallet keeps the exact same bottom-nav palette as Account / Market. */
-.wallet-route .bottom{
-  background:#181818;
-  border-top-color:#252525
-}
-.wallet-route .bottom .nav{color:#666}
-.wallet-route .bottom .nav.active{color:#efefef}
+/* Bottom navigation inherits the shared sunset-gold chrome from core.css. */
 
 .hidden{display:none!important}
 
