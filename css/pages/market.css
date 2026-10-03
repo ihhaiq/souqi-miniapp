@@ -1599,10 +1599,10 @@
 
 /* navigation label clarity */
 .bottom .nav{
-  color:#c1b894
+  color:#8291a8
 }
 .bottom .nav.active{
-  color:#fff7dd
+  color:#f5f9ff
 }
 @media(max-width:390px){
   .bottom .nav{
