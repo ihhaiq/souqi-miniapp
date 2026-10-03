@@ -8,7 +8,9 @@
 
   function setFilter(filter){
     tabs.forEach(function(tab){
-      tab.classList.toggle('active', tab.dataset.orderFilter === filter);
+      const active = tab.dataset.orderFilter === filter;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
     });
 
     cards.forEach(function(card){
