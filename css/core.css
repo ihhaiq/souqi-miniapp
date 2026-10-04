@@ -36,14 +36,11 @@ svg{display:block;width:100%;height:100%}
 }
 .shell{padding:10px 10px 18px}
 
-/* bottom navigation — milky liquid glass */
+/* bottom navigation — milky liquid glass, floating content */
 :root{
   --nav-bar-height:72px;
   --nav-safe-bottom:max(env(safe-area-inset-bottom,0px),var(--tg-safe-area-inset-bottom,0px),var(--tg-content-safe-area-inset-bottom,0px));
-  --nav-orb-size:48px;
-  --nav-glass-blur:22px;
-  --nav-glow-color:255,214,0;
-  --nav-inactive-color:rgba(255,255,255,.76);
+  --nav-inactive-color:rgba(255,255,255,.74);
   --nav-active-color:#fff;
 }
 
@@ -62,7 +59,7 @@ svg{display:block;width:100%;height:100%}
   display:grid;
   grid-template-columns:repeat(5,minmax(0,1fr));
   gap:2px;
-  overflow:visible;
+  overflow:hidden;
   isolation:isolate;
   border-radius:999px;
   background:rgba(255,255,255,.014);
@@ -105,76 +102,9 @@ svg{display:block;width:100%;height:100%}
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
 }
 
+/* Kept in DOM for the existing router animation logic, intentionally invisible. */
 .liquid-nav-indicator{
-  position:absolute;
-  top:0;
-  left:0;
-  width:0;
-  height:0;
-  z-index:1;
-  border-radius:999px;
-  pointer-events:none;
-  transform-origin:center;
-  background:
-    radial-gradient(120% 150% at 28% 18%, rgba(255,255,255,.34), rgba(255,255,255,.16) 24%, rgba(255,255,255,.08) 52%, rgba(255,255,255,.04) 72%) padding-box,
-    linear-gradient(135deg,
-      rgba(255,255,255,.56) 0%,
-      rgba(255,255,255,.12) 30%,
-      rgba(110,215,255,.14) 56%,
-      rgba(255,120,200,.10) 74%,
-      rgba(255,214,0,.18) 100%) border-box;
-  border:1px solid transparent;
-  box-shadow:
-    0 5px 16px rgba(0,0,0,.14),
-    0 0 16px rgba(255,214,0,.12),
-    inset 0 1px 0 rgba(255,255,255,.55),
-    inset 0 -1px 0 rgba(255,255,255,.07),
-    inset 0 0 18px rgba(255,255,255,.05);
-  -webkit-backdrop-filter:blur(var(--nav-glass-blur)) saturate(180%) brightness(1.06);
-  backdrop-filter:blur(var(--nav-glass-blur)) saturate(180%) brightness(1.06);
-  transition:
-    transform .45s cubic-bezier(.34,1.56,.64,1),
-    width .45s cubic-bezier(.34,1.56,.64,1),
-    height .45s cubic-bezier(.34,1.56,.64,1),
-    opacity .18s ease,
-    filter .2s ease;
-  will-change:transform,width;
-}
-
-.liquid-nav-indicator::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  pointer-events:none;
-  background:
-    radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,.24), transparent 54%);
-  opacity:.95;
-}
-
-.liquid-nav-indicator::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  border-radius:inherit;
-  pointer-events:none;
-  background:
-    linear-gradient(115deg,
-      transparent 18%,
-      rgba(255,255,255,.025) 32%,
-      rgba(255,255,255,.16) 45%,
-      rgba(255,255,255,.03) 56%,
-      transparent 70%);
-  mix-blend-mode:screen;
-  opacity:.82;
-}
-
-.liquid-nav-indicator.is-stretching{
-  filter:drop-shadow(0 0 8px rgba(255,214,0,.16));
-}
-
-.bottom.nav-no-motion .liquid-nav-indicator{
-  transition:none!important;
+  display:none!important;
 }
 
 .nav{
@@ -183,7 +113,7 @@ svg{display:block;width:100%;height:100%}
   min-width:0;
   min-height:0;
   border:0;
-  border-radius:999px;
+  border-radius:0;
   background:transparent!important;
   box-shadow:none!important;
   display:flex;
@@ -196,63 +126,24 @@ svg{display:block;width:100%;height:100%}
   font-size:10.5px;
   font-weight:500;
   line-height:1.05;
+  opacity:.92;
   text-shadow:0 1px 2px rgba(0,0,0,.42);
   transition:
-    color .18s ease,
-    transform .24s cubic-bezier(.34,1.56,.64,1),
-    filter .18s ease;
+    color .24s ease,
+    opacity .24s ease,
+    transform .34s cubic-bezier(.34,1.56,.64,1),
+    text-shadow .24s ease;
   will-change:transform;
 }
 
-.nav::before{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  width:var(--nav-orb-size);
-  height:var(--nav-orb-size);
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  border-radius:50%;
-  background:
-    radial-gradient(120% 150% at 28% 18%, rgba(255,255,255,.26), rgba(255,255,255,.10) 30%, rgba(255,255,255,.05) 58%, rgba(255,255,255,.025) 76%) padding-box,
-    linear-gradient(140deg,
-      rgba(255,255,255,.42) 0%,
-      rgba(255,255,255,.09) 50%,
-      rgba(120,220,255,.11) 78%,
-      rgba(255,255,255,.18) 100%) border-box;
-  border:1px solid transparent;
-  box-shadow:
-    0 4px 12px rgba(0,0,0,.12),
-    inset 0 1px 0 rgba(255,255,255,.36),
-    inset 0 -1px 0 rgba(255,255,255,.05),
-    inset 0 0 12px rgba(255,255,255,.03);
-  -webkit-backdrop-filter:blur(20px) saturate(180%) brightness(1.05);
-  backdrop-filter:blur(20px) saturate(180%) brightness(1.05);
-  opacity:.88;
-  transition:
-    opacity .18s ease,
-    transform .24s cubic-bezier(.34,1.56,.64,1),
-    filter .18s ease;
-}
-
-.nav.active::before{
-  opacity:0;
-  transform:translate(-50%,-50%) scale(.82);
-}
-
 .nav:hover{
-  color:rgba(255,255,255,.9);
+  color:rgba(255,255,255,.88);
+  opacity:1;
 }
 
 .nav:active,
 .nav.is-pressed{
-  transform:scale(1.07);
-  filter:drop-shadow(0 0 8px rgba(255,214,0,.14));
-}
-
-.nav.is-pressed::before{
-  transform:translate(-50%,-50%) scale(1.04);
+  transform:scale(1.045);
 }
 
 .nav .nav-icon{
@@ -275,13 +166,23 @@ svg{display:block;width:100%;height:100%}
   object-fit:contain;
   pointer-events:none;
   user-select:none;
-  opacity:.92;
+  opacity:.90;
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.34));
 }
 
 .nav.active{
-  color:#fff;
-  text-shadow:0 1px 2px rgba(0,0,0,.52);
+  color:var(--nav-active-color);
+  opacity:1;
+  transform:translateY(-1px) scale(1.025);
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.52),
+    0 0 7px rgba(255,214,0,.10);
+}
+
+.nav.active .nav-icon{
+  filter:
+    drop-shadow(0 1px 2px rgba(0,0,0,.34))
+    drop-shadow(0 0 4px rgba(255,214,0,.10));
 }
 
 .nav.active .nav-ref-img{
@@ -289,21 +190,18 @@ svg{display:block;width:100%;height:100%}
 }
 
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-  .bottom{background:rgba(18,20,25,.44)}
-  .nav::before{background:rgba(70,78,88,.30)}
-  .liquid-nav-indicator{background:rgba(120,128,138,.34)}
+  .bottom{
+    background:rgba(18,20,25,.44);
+  }
 }
 
 @media(max-width:390px){
-  :root{--nav-orb-size:44px}
   .bottom{padding-inline:4px}
   .nav{font-size:10px}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .liquid-nav-indicator,
-  .nav,
-  .nav::before{
+  .nav{
     transition:none!important;
   }
 }
