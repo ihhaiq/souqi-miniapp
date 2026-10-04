@@ -759,7 +759,7 @@
 .sheet-backdrop{
   position:fixed;
   inset:0;
-  z-index:70;
+  z-index:140;
   background:rgba(0,0,0,.58);
   opacity:0;
   pointer-events:none;
@@ -769,7 +769,7 @@
   position:fixed;
   left:50%;
   bottom:0;
-  z-index:71;
+  z-index:150;
   width:min(100%,960px);
   transform:translate(-50%,105%);
   background:#1a1a1a;
