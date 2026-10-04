@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="./css/styles.css?v=20261004-1316">
+<link rel="stylesheet" href="./css/styles.css?v=20261004-1530">
 <style id="critical-active-tab-style">
 #tabs.social-tabs > .tab > .tab-label{
   display:block!important;
@@ -276,38 +276,47 @@
       </header>
 
       <main class="subpage-content orders-content">
-        <div class="orders-title-row">
-          <h2>الطلبات</h2>
-          <button class="orders-add-btn" id="ordersAddButton" type="button" aria-label="إضافة منتج">
-            <span aria-hidden="true">＋</span>
-          </button>
-        </div>
+        <section class="info-card orders-overview">
+          <div class="orders-title-row">
+            <div>
+              <h2 class="section-title">طلباتي</h2>
+              <p class="section-copy">تابع المشتريات والمبيعات وحالة كل عملية من مكان واحد.</p>
+            </div>
+            <button class="orders-add-btn" id="ordersAddButton" type="button" aria-label="إضافة منتج">
+              <span aria-hidden="true">＋</span>
+            </button>
+          </div>
 
-        <div class="orders-tabs" role="tablist" aria-label="فلترة الطلبات">
-          <button class="orders-tab active" type="button" role="tab" aria-selected="true" data-order-filter="all">كل طلباتي</button>
-          <button class="orders-tab" type="button" role="tab" aria-selected="false" data-order-filter="purchase">المشتريات</button>
-          <button class="orders-tab" type="button" role="tab" aria-selected="false" data-order-filter="sale">المبيعات</button>
-        </div>
+          <div class="orders-tabs status-tabs" role="tablist" aria-label="فلترة الطلبات">
+            <button class="orders-tab status-tab active" type="button" role="tab" aria-selected="true" data-order-filter="all"><span>الكل</span><b>1</b></button>
+            <button class="orders-tab status-tab" type="button" role="tab" aria-selected="false" data-order-filter="purchase"><span>المشتريات</span><b>0</b></button>
+            <button class="orders-tab status-tab" type="button" role="tab" aria-selected="false" data-order-filter="sale"><span>المبيعات</span><b>1</b></button>
+          </div>
+        </section>
 
-        <section class="orders-list" data-slot="orders-list" aria-label="قائمة الطلبات">
-          <article class="order-card" data-order-type="sale" data-slot="order-preview">
-            <div class="order-card-main">
-              <div class="order-product-icon" aria-hidden="true"><span data-icon="storage"></span></div>
-              <div class="order-copy">
-                <h3 data-slot="order-title">قناة تلجرام 23k للبيع</h3>
-                <div class="order-meta">
-                  <span>DEAL-1003</span>
-                  <span class="order-separator">|</span>
-                  <span>2 أكتوبر 2026</span>
-                </div>
-                <p class="order-note">لا يوجد وسيط معيّن</p>
-              </div>
+        <section class="info-card orders-history" data-slot="orders-list" aria-label="قائمة الطلبات">
+          <div class="orders-history-head">
+            <h2 class="section-title">سجل الطلبات</h2>
+            <span class="orders-count">1 عملية</span>
+          </div>
+
+          <article class="order-card deal-card" data-order-type="sale" data-slot="order-preview">
+            <div class="deal-head">
+              <strong dir="ltr">DEAL-1003</strong>
+              <span class="order-status deal-status" data-slot="order-status">طلب جديد</span>
             </div>
 
-            <div class="order-card-footer">
-              <strong class="order-price" data-slot="order-price">$30.00</strong>
-              <span class="order-status" data-slot="order-status">طلب جديد</span>
+            <h3 data-slot="order-title">قناة تلجرام 23k للبيع</h3>
+
+            <div class="deal-meta">
+              <span>2 أكتوبر 2026 · لا يوجد وسيط معيّن</span>
+              <b class="order-price" data-slot="order-price" dir="ltr">$30.00</b>
             </div>
+
+            <button class="deal-open ui-only-action" type="button" data-action="open-order">
+              <span>فتح تفاصيل الطلب</span>
+              <span aria-hidden="true">←</span>
+            </button>
           </article>
         </section>
       </main>
@@ -868,10 +877,10 @@
   </section>
 </div>
 
-<script src="./js/app.js?v=20261004-1316"></script>
-<script src="./js/router.js?v=20261004-1316"></script>
-<script src="./js/pages/subpages.js?v=20261004-1316"></script>
-<script src="./js/pages/orders.js?v=20261004-1316"></script>
-<script src="./js/pages/wallet.js?v=20261004-1316"></script>
+<script src="./js/app.js?v=20261004-1530"></script>
+<script src="./js/router.js?v=20261004-1530"></script>
+<script src="./js/pages/subpages.js?v=20261004-1530"></script>
+<script src="./js/pages/orders.js?v=20261004-1530"></script>
+<script src="./js/pages/wallet.js?v=20261004-1530"></script>
 </body>
 </html>
