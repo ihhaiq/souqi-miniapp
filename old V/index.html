@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#141414">
+<title>سوقي</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="./css/styles.css?v=20261004-0624">
+<style id="critical-active-tab-style">
+#tabs.social-tabs > .tab > .tab-label{
+  display:block!important;
+  max-width:0!important;
+  opacity:0!important;
+  overflow:hidden!important;
+  white-space:nowrap!important;
+}
+#tabs.social-tabs > .tab.active{
+  width:auto!important;
+  flex:0 0 auto!important;
+  padding-inline:4px 8px!important;
+  gap:4px!important;
+}
+#tabs.social-tabs > .tab.active > .tab-label{
+  display:block!important;
+  width:auto!important;
+  max-width:82px!important;
+  opacity:1!important;
+}
+#tabs.social-tabs > .tab[data-mode="gifts"].active{min-width:74px!important}
+#tabs.social-tabs > .wallet-toggle.active{min-width:78px!important}
+
+/* Final nav guard: icon + label float directly on the glass bar. */
+#bottomNav .liquid-nav-indicator{display:none!important}
+#bottomNav .nav,
+#bottomNav .nav.active,
+#bottomNav .nav:active,
+#bottomNav .nav.is-pressed{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#bottomNav .nav::before,
+#bottomNav .nav::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <section id="marketPage" class="market">
+    <div class="shell">
+      <div class="row-top">
+        <div class="user-box">
+          <button id="accountAvatarBtn" class="avatar-button" type="button" aria-label="فتح حسابي"><img id="userAvatar" class="avatar" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCAAuAC4DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDkf2aP2XLL4m+HX8c+Op7uDQWkMVhZWziN7xlYBnZ+SIwdy4AySCcgDn6hi/ZA/Z+dB/xQDHjhjqt7z+U3/wBarv7Lkaj9k3wXKV+X7LIcep8+Tmu8+IHi+w8FfDnUfEursotYFAxKxCZZgoyfqw+teY5zqTaudKhGKPDvHH7Pf7NXgzS4pp/h/bSTux/cPr15E7KFOdu6fnnAJ6DJPavCNC1j9kO68SDTPEPwruNJtiWU38WtXt3HGR2YJKG+pAOM+nI5zxF+0BqnxE0OTStcuYbNGly0VspCrCMpErMOQqsysznkuRjoK8S1nVrG6vojYwNGYyy72JLvhiATkZzz6mt6VKUr8zCUoxS5T9GbX9ln9mzxH4aS/wBD8KkW9zGGhu7fVbssAeQQHlIzgjhl4PXpXxv+0R8Cbj4K+MrQWF3Nf+HtUDvYTzgebGVxuik24BYbhhgACCeODXvH7Enj7UZBqXgO4h820jja9hdJFDR/MA4+YjKAtnjJBbp1x0f7c72N7+zfol5aTRStH4lii8yIg7c21ySoPpwPrisOaVOok3oVKKlG6R6j+zIcfsjeCASB/oshz/23krpvjL4Bb4j/AAW1nw3bIn9oSQO1i0hwiz7SEJyD3P8AI9QK4r9mhmn/AGSPCUQwdlq+DnP/AC2kNd1Lr/kSmJ5GUpkFM4B/D/PeuZYlU6jbN1Qc4o/MrR4bTwX8OfG3gjxToxj8R6s8CedKmHsEhlDnDFvmJIwVAPAHIIriNa8H674V1CK08TQT2F3Lbx3MMUqEM8TjKMOPun1zxzX6Sat4W8AeOvjal94k8Jad4gdLISyyTlme0KsAny5wyHLErg4Iz3NcF+0pr3wputPsbfUNE0vxN4tT91bXdm7BNPgLZ/eupx/uoTnLZ4BOeyON1M3hbmf+xL8M9a0+C/8AiNqa/ZobiP7DaRuh3SIdrO4ORjoijqPvVp/txwRWvwB0y2s7KK3gPiO2kIjXarMbW6zjt+VHgT4veNtXW20y3+xWOm26BRFbwkEKOi5z3qh+2G1/cfss6Nf38mXn8TQFA+eB9luvWuX27qVVFG06Hs6blc6/9lzxVYv8DvDGgeY0syWUshCD7mJn4PPrmu3+Jfh7WLoQ3+i7ijvh1hTLsefk3ZwM9M471+dXw5+KOt+Ab0fZpZ3tjwFjk2snJJxnjnNfUXhr9uHwvY2iW/iTw9r99IpB8yGOEn9ZBUV8G1NszpYjRJHd+CvEeq+EfDPjjxBeaDPe6s0sXlW0SEKiRoxJ9lTexI+g6njk9asLf4veEPEOq23h59KuIF3SzrEAl6ByzcE4cYxk8Nn2OdBv22fgvN9qY+FvGUEt1kTGOztWDnGMnNxzwKpaR+2F8BNG0KPSIfC3jd7dSWKPY2hDEnv/AKTTcZ9jSNVLqdB8FPhRfQzxT3bTLZAj5ZRu3AY4B69utYv7eOq6fF8GvDvhmF085dYS4XnqqQTK35GRfzpdT/bp+GFtok0Hhzwl4ot7gqRG0ttbooPvtmPFfJPxe+LeufFrxdFqWpRC1srVClnZht/lhsFmZsAszEDPpgAdMnXD0G58zMKs7xtfY//Z" alt=""></button>
+          <div class="balance">
+            <svg class="balance-gem" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 10l9 12 9-12-9-8Z" fill="#F0C94A"/><path d="M7.5 9 12 2l4.5 7L12 22 7.5 9Z" fill="#DDB633" opacity=".55"/></svg>
+            <span id="balanceValue">2007</span>
+            <button id="topupBtn" class="plus" aria-label="إعادة تعبئة المحفظة">+</button>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="icon-btn" data-go-wallet aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn" aria-label="الإعلانات"><span class="action-icon" data-icon="megaphone"></span></button>
+          <button class="icon-btn" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </div>
+
+      <div class="banner-wrap" id="bannerCarousel">
+        <div class="banner-track" id="bannerTrack">
+          <div class="banner-slide">
+            <div class="banner-copy">
+              <div class="banner-title">ضع إعلانك هنا</div>
+              <div class="banner-sub">مساحة إعلانية واضحة داخل السوق</div>
+              <div class="banner-badge">احجز الآن</div>
+            </div>
+            <div class="banner-art">
+              <span class="banner-icon" data-icon="megaphone"></span>
+              <span class="banner-icon" data-icon="gift"></span>
+            </div>
+          </div>
+          <div class="banner-slide">
+            <div class="banner-copy">
+              <div class="banner-title">إعلان معروض</div>
+              <div class="banner-sub">اعرض منتجك للمستخدمين مباشرة</div>
+              <div class="banner-badge">اعرض إعلانك</div>
+            </div>
+            <div class="banner-art">
+              <span class="banner-icon" data-icon="star"></span>
+              <span class="banner-icon" data-icon="card"></span>
+            </div>
+          </div>
+          <div class="banner-slide">
+            <div class="banner-copy">
+              <div class="banner-title">لوحة إعلانية</div>
+              <div class="banner-sub">تتغير الإعلانات تلقائياً كل عدة ثوانٍ</div>
+              <div class="banner-badge">مساحة متاحة</div>
+            </div>
+            <div class="banner-art">
+              <span class="banner-icon" data-icon="board"></span>
+              <span class="banner-icon" data-icon="telegram"></span>
+            </div>
+          </div>
+        </div>
+        <div class="banner-dots" id="bannerDots"></div>
+      </div>
+
+      <div class="tabs-row">
+        <div class="tabs social-tabs" id="tabs">
+          <button class="tab tab-fixed active" data-mode="gifts" data-wallet-close type="button" aria-label="الهدايا">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_01 م-1.png" alt=""></span>
+            <span class="tab-label">الهدايا</span>
+          </button>
+
+          <button id="socialWalletToggle" class="tab tab-fixed wallet-toggle" type="button" aria-label="Telegram" aria-expanded="false">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_08 م-5.png" alt=""></span>
+            <span class="tab-label">Telegram</span>
+          </button>
+
+          <div id="socialWallet" class="social-wallet closed" aria-hidden="true">
+            <div class="social-wallet-fade social-wallet-fade-start" aria-hidden="true"></div>
+            <div id="socialWalletTrack" class="social-wallet-track" role="tablist" aria-label="مواقع التواصل">
+              <button class="social-pill" type="button" data-platform="all" role="tab" aria-selected="false" aria-label="الكل">
+                <span class="platform-icon" aria-hidden="true">🌐</span><span class="platform-label">الكل</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="facebook" role="tab" aria-selected="false" aria-label="Facebook">
+                <span class="platform-icon" aria-hidden="true">👥</span><span class="platform-label">Facebook</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="instagram" role="tab" aria-selected="false" aria-label="Instagram">
+                <span class="platform-icon" aria-hidden="true">📸</span><span class="platform-label">Instagram</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="tiktok" role="tab" aria-selected="false" aria-label="TikTok">
+                <span class="platform-icon" aria-hidden="true">🎵</span><span class="platform-label">TikTok</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="youtube" role="tab" aria-selected="false" aria-label="YouTube">
+                <span class="platform-icon" aria-hidden="true">▶️</span><span class="platform-label">YouTube</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="snapchat" role="tab" aria-selected="false" aria-label="Snapchat">
+                <span class="platform-icon" aria-hidden="true">👻</span><span class="platform-label">Snapchat</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="x" role="tab" aria-selected="false" aria-label="X">
+                <span class="platform-icon" aria-hidden="true">✕</span><span class="platform-label">X</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="capcut" role="tab" aria-selected="false" aria-label="CapCut">
+                <span class="platform-icon" aria-hidden="true">🎬</span><span class="platform-label">CapCut</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="gemini" role="tab" aria-selected="false" aria-label="Gemini">
+                <span class="platform-icon" aria-hidden="true">✨</span><span class="platform-label">Gemini</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="other" role="tab" aria-selected="false" aria-label="أخرى">
+                <span class="platform-icon" aria-hidden="true">🌍</span><span class="platform-label">أخرى</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="pinterest" role="tab" aria-selected="false" aria-label="Pinterest">
+                <span class="platform-icon" aria-hidden="true">📌</span><span class="platform-label">Pinterest</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="linkedin" role="tab" aria-selected="false" aria-label="LinkedIn">
+                <span class="platform-icon" aria-hidden="true">💼</span><span class="platform-label">LinkedIn</span>
+              </button>
+              <button class="social-pill" type="button" data-platform="threads" role="tab" aria-selected="false" aria-label="Threads">
+                <span class="platform-icon" aria-hidden="true">🧵</span><span class="platform-label">Threads</span>
+              </button>
+            </div>
+            <div class="social-wallet-fade social-wallet-fade-end" aria-hidden="true"></div>
+          </div>
+
+          <button class="tab tab-fixed" data-mode="featured" type="button" aria-label="شراء النجوم أو بريميوم">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_04 م-3.png" alt=""></span>
+          </button>
+          <button class="tab tab-fixed" data-mode="collectibles" type="button" aria-label="المقتنيات">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_07 م-4.png" alt=""></span>
+            <span class="tab-label">مقتنيات</span>
+          </button>
+          <button class="tab tab-fixed" data-mode="channels" type="button" aria-label="القنوات">
+            <span class="tab-icon"><img class="tab-asset-icon" src="Assets/صورة ChatGPT 1 أكتوبر 2026، 11_01_08 م-5.png" alt=""></span>
+            <span class="tab-label">قنوات</span>
+          </button>
+        </div>
+        <button class="cart-btn" aria-label="العربة"><span class="action-icon" data-icon="cart"></span></button>
+      </div>
+
+      <section id="featuredPanel" class="featured-panel" hidden>
+        <div class="featured-head">
+          <span>ماذا تريد أن تشتري؟</span>
+          <span class="featured-info" aria-hidden="true">i</span>
+        </div>
+
+        <div class="featured-options">
+          <label class="featured-option">
+            <input type="radio" name="featuredProduct" value="stars" checked>
+            <span class="radio-dot"></span>
+            <span>نجوم تليكرام</span>
+            <span class="product-mark">⭐</span>
+          </label>
+          <label class="featured-option">
+            <input type="radio" name="featuredProduct" value="premium">
+            <span class="radio-dot"></span>
+            <span>تليكرام بريميوم</span>
+            <span class="product-mark">🌟</span>
+          </label>
+        </div>
+
+        <div class="featured-divider"></div>
+
+        <label class="featured-label" for="featuredRecipient">المستلم</label>
+        <div class="featured-recipient-row">
+          <input id="featuredRecipient" class="featured-input" placeholder="أدخل مستخدم تليكرام">
+          <button id="sendToSelfBtn" class="featured-self" type="button">أرسل لنفسك</button>
+        </div>
+
+        <label class="featured-label" for="featuredAmount">الكمية</label>
+        <input id="featuredAmount" class="featured-input featured-amount" inputmode="numeric" placeholder="أدخل الكمية (50 - 1000000) أو اختر سريعاً">
+
+        <div class="featured-quick">
+          <button class="featured-quick-btn" type="button" data-amount="50"><span>⭐</span><b>50</b></button>
+          <button class="featured-quick-btn" type="button" data-amount="500"><span>⭐</span><b>500</b></button>
+          <button class="featured-quick-btn" type="button" data-amount="1000"><span>⭐</span><b>1000</b></button>
+        </div>
+      </section>
+
+      <div class="search-tools" id="searchTools">
+        <div class="search">
+          <span class="small-icon" data-icon="search"></span>
+          <input id="searchInput" placeholder="ابحث باسم الهدية أو رقمها">
+        </div>
+        <button id="filterBtn" class="tool-btn" aria-label="الفلاتر"><span class="small-icon" data-icon="sliders"></span></button>
+        <button id="sortBtn" class="tool-btn" aria-label="الترتيب"><span class="small-icon" data-icon="sort"></span></button>
+      </div>
+
+      <div class="market-filter-strip" id="marketFilterStrip" aria-label="فلاتر الهدايا">
+        <button class="market-filter-tool" id="marketStripFilterBtn" type="button" aria-label="فتح الفلاتر">
+          <span class="small-icon" data-icon="sliders"></span>
+        </button>
+        <button class="market-filter-chip" type="button" data-strip-filter="nft" aria-disabled="true"><span>NFT</span><img class="chip-chevron-img" src="Assets/chevron-down.png" alt="" aria-hidden="true"></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="model" aria-disabled="true"><span>النموذج</span><img class="chip-chevron-img" src="Assets/chevron-down.png" alt="" aria-hidden="true"></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="backdrop" aria-disabled="true"><span>الخلفية</span><img class="chip-chevron-img" src="Assets/chevron-down.png" alt="" aria-hidden="true"></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="symbol" aria-disabled="true"><span>الرمز</span><img class="chip-chevron-img" src="Assets/chevron-down.png" alt="" aria-hidden="true"></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="price" aria-disabled="true"><span>السعر</span><img class="chip-chevron-img" src="Assets/chevron-down.png" alt="" aria-hidden="true"></button>
+        <button class="market-filter-chip premarket-chip" type="button" data-strip-filter="premarket"><span class="cube-mini" aria-hidden="true"></span><span>قبل السوق</span></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="lucky" aria-disabled="true"><span>ضربة حظ</span></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="unupgraded" aria-disabled="true"><span>غير مطوّرة</span></button>
+        <button class="market-filter-chip" type="button" data-strip-filter="crafted" aria-disabled="true"><span>مصنوعة</span></button>
+      </div>
+
+      <div class="market-line">
+        <div>
+          <div id="marketTitle" class="market-title">الهدايا المعروضة</div>
+          <div id="marketMeta" class="market-meta">8 عناصر</div>
+        </div>
+        <div id="sortLabel" class="sort-label">الأحدث أولاً</div>
+      </div>
+
+      <div class="notice" id="notice">تجنب القنوات التي تبيع هدايا مطورة بطرق غير موثوقة</div>
+      <section class="grid" id="grid"></section>
+    </div>
+  </section>
+
+
+  <section id="ordersPage" class="app-page subpage orders-page" data-page="orders" hidden>
+    <div class="subpage-shell">
+      <header class="subpage-header">
+        <button class="subpage-back" type="button" data-go-market aria-label="الرجوع إلى السوق">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>طلباتي</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="icon-btn ui-only-action" type="button" data-go-wallet aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content orders-content">
+        <div class="orders-title-row">
+          <h2>الطلبات</h2>
+          <button class="orders-add-btn" id="ordersAddButton" type="button" aria-label="إضافة منتج">
+            <span aria-hidden="true">＋</span>
+          </button>
+        </div>
+
+        <div class="orders-tabs" role="tablist" aria-label="فلترة الطلبات">
+          <button class="orders-tab active" type="button" role="tab" aria-selected="true" data-order-filter="all">كل طلباتي</button>
+          <button class="orders-tab" type="button" role="tab" aria-selected="false" data-order-filter="purchase">المشتريات</button>
+          <button class="orders-tab" type="button" role="tab" aria-selected="false" data-order-filter="sale">المبيعات</button>
+        </div>
+
+        <section class="orders-list" aria-label="قائمة الطلبات">
+          <article class="order-card" data-order-type="sale">
+            <div class="order-card-main">
+              <div class="order-product-icon" aria-hidden="true"><span data-icon="storage"></span></div>
+              <div class="order-copy">
+                <h3>قناة تلجرام 23k للبيع</h3>
+                <div class="order-meta">
+                  <span>DEAL-1003</span>
+                  <span class="order-separator">|</span>
+                  <span>2 أكتوبر 2026</span>
+                </div>
+                <p class="order-note">لا يوجد وسيط معيّن</p>
+              </div>
+            </div>
+
+            <div class="order-card-footer">
+              <strong class="order-price">$30.00</strong>
+              <span class="order-status">طلب جديد</span>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <section id="addProductPage" class="app-page subpage" data-page="add-product" hidden>
+    <div class="subpage-shell">
+      <header class="subpage-header">
+        <button class="subpage-back" type="button" data-go-market aria-label="الرجوع إلى السوق">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>أضف منتج</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="icon-btn ui-only-action" type="button" data-go-wallet aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content">
+        <section class="info-card add-product-hero">
+          <div class="hero-plus" aria-hidden="true">＋</div>
+          <h2>اعرض منتجك في سوقي</h2>
+          <p>حسابات، قنوات، وخدمات رقمية. اختر المنصة وأضف التفاصيل والصور في نموذج واحد.</p>
+          <button class="page-primary ui-only-action" type="button">
+            <span class="button-plus" aria-hidden="true">＋</span>
+            <span>إضافة منتج جديد</span>
+          </button>
+          <button class="page-secondary ui-only-action" type="button">
+            <span class="small-icon" data-icon="storage"></span>
+            <span>إدارة منتجاتي</span>
+          </button>
+        </section>
+
+        <section class="info-card">
+          <h2 class="section-title">كيف تبدأ؟</h2>
+          <ol class="steps-list">
+            <li>اختر المنصة ونوع المنتج.</li>
+            <li>أضف الوصف والسعر والصور وإثباتات الملكية الخاصة.</li>
+            <li>ترسله للإدارة للمراجعة قبل عرضه في السوق.</li>
+            <li>تابع طلبات المشترين من «طلباتي».</li>
+          </ol>
+        </section>
+
+        <div class="page-note">إثباتات الملكية تظهر للإدارة فقط، ولا تُعرض للمشترين.</div>
+      </main>
+    </div>
+  </section>
+
+  <section id="escrowPage" class="app-page subpage" data-page="escrow" hidden>
+    <div class="subpage-shell">
+      <header class="subpage-header">
+        <button class="subpage-back" type="button" data-go-market aria-label="الرجوع إلى السوق">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>الوساطة</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="icon-btn ui-only-action" type="button" data-go-wallet aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content">
+        <section class="info-card mediation-hero">
+          <div class="hero-shield" aria-hidden="true"><img class="escrow-shield-asset escrow-shield-hero" src="Assets/shield-check.png" alt=""></div>
+          <h2>الوساطة في سوقي</h2>
+          <p>اتفاق واضح، إثباتات خاصة، ومتابعة لكل خطوة.</p>
+          <div class="mediation-hero-actions">
+            <button class="page-primary ui-only-action" type="button" data-escrow-action="market">اختر منتجًا وابدأ طلبك</button>
+            <button class="page-secondary ui-only-action" type="button" data-escrow-action="history">سجل عملياتي</button>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <h2 class="section-title">كيف تتم الوساطة؟</h2>
+          <div class="mediation-steps">
+            <div class="mediation-step">
+              <b><span>1.</span> طلب وتعيين وسيط</b>
+              <p>تراجع الإدارة الطلب وتختار وسيطًا متاحًا لا يكون طرفًا في الصفقة.</p>
+            </div>
+            <div class="mediation-step">
+              <b><span>2.</span> شروط وموافقة الطرفين</b>
+              <p>تراجع العمولة وطريقة الدفع والمهل، ثم يوافق كل طرف على نفس نسخة الاتفاق.</p>
+            </div>
+            <div class="mediation-step">
+              <b><span>3.</span> توثيق ومراجعة الإثباتات</b>
+              <p>يرسل كل طرف إثباته الخاص؛ لا يبدأ التنفيذ قبل اعتماد إثبات من كل طرف.</p>
+            </div>
+            <div class="mediation-step">
+              <b><span>4.</span> تبادل وتأكيد</b>
+              <p>يتابع الوسيط الدفع والنقل. يؤكد الطرفان سلامة التبادل، ثم تنتهي فترة التحقق قبل الإكمال.</p>
+            </div>
+            <div class="mediation-step">
+              <b><span>5.</span> إبلاغ عند الشك</b>
+              <p>افتح العملية واضغط «بلاغ عاجل / فتح نزاع». تتوقف مراحلها ويظهر رقم بلاغ تراجعه الإدارة.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <h2 class="section-title">الرسوم والمهل</h2>
+          <div class="page-note page-note-inner">لم تضبط الإدارة الإعدادات الافتراضية بعد. تظهر رسوم كل عملية ومهلها قبل موافقة الطرفين.</div>
+        </section>
+
+        <section class="info-card">
+          <h2 class="section-title">طرق الدفع والتوثيق</h2>
+          <p class="section-copy">تحدد الإدارة تعليمات الدفع والإثباتات في ملف العملية قبل الموافقة.</p>
+          <button class="page-secondary ui-only-action" type="button">عرض طرق الشحن المتاحة</button>
+          <p class="section-hint">طرق شحن المحفظة مستقلة عن تعليمات دفع الصفقة التي يعتمدها الوسيط.</p>
+        </section>
+
+        <section class="info-card">
+          <h2 class="section-title">الوسطاء المتاحون</h2>
+          <p class="section-copy">لا يوجد وسيط متاح الآن. تواصل مع الإدارة.</p>
+        </section>
+
+        <section class="info-card mediation-history" id="escrowHistory">
+          <h2 class="section-title">سجل الوساطة الخاص بك</h2>
+
+          <div class="status-tabs" aria-label="حالات الوساطة">
+            <button class="status-tab active ui-only-action" type="button"><span>الكل</span><b>1</b></button>
+            <button class="status-tab ui-only-action" type="button"><span>معلقة</span><b>1</b></button>
+            <button class="status-tab ui-only-action" type="button"><span>مكتملة</span><b>0</b></button>
+            <button class="status-tab ui-only-action" type="button"><span>نزاعات</span><b>0</b></button>
+            <button class="status-tab ui-only-action" type="button"><span>مرفوضة</span><b>0</b></button>
+            <button class="status-tab ui-only-action" type="button"><span>ملغاة</span><b>0</b></button>
+          </div>
+
+          <div class="history-search">
+            <span class="small-icon" data-icon="search"></span>
+            <input type="text" placeholder="رقم العملية أو اسم المنتج" aria-label="بحث في سجل الوساطة">
+            <button class="history-search-go ui-only-action" type="button" aria-label="بحث">←</button>
+          </div>
+
+          <article class="deal-card">
+            <div class="deal-head">
+              <strong dir="ltr">DEAL-1003</strong>
+              <span class="deal-status">طلب جديد</span>
+            </div>
+            <h3>قناه تلجرام 23k للبيع</h3>
+            <div class="deal-meta">
+              <span>٠١‏/١٠‏/٢٠٢٦، ٨:١٢ م</span>
+              <b dir="ltr">$30.00</b>
+            </div>
+            <button class="deal-open ui-only-action" type="button">
+              <span>فتح ملف العملية</span>
+              <span aria-hidden="true">←</span>
+            </button>
+          </article>
+
+          <div class="history-footer">
+            <span>1 عملية · صفحة 1</span>
+            <div>
+              <button class="pager-btn ui-only-action" type="button">السابق</button>
+              <button class="pager-btn ui-only-action" type="button">التالي</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="info-card disclaimer-card">
+          <h2 class="section-title">ملاحظات وإخلاء مسؤولية</h2>
+          <p>الوساطة تنظم التبادل وتراجع الإثباتات، ولا تعني ضمان ملكية المنتج أو خلوه من المشكلات. الضمان هنا توثيق وإثباتات فقط؛ لا يحجز النظام رصيد الطرفين. لا ترسل كلمة مرور أو رمز دخول أو بيانات دفع سرية في الملاحظات أو الإثباتات. راجع الرسوم والمهل والتعليمات قبل الموافقة، وأبلغ فورًا عند الشك.</p>
+        </section>
+      </main>
+    </div>
+  </section>
+
+
+
+  <section id="accountPage" class="app-page subpage account-page" data-page="account" hidden>
+    <div class="subpage-shell">
+      <header class="subpage-header account-header">
+        <button class="subpage-back" type="button" data-go-market aria-label="الرجوع إلى السوق">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>حسابي</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="icon-btn ui-only-action" type="button" data-go-wallet aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content account-content">
+        <section class="account-profile-panel" aria-label="بيانات الحساب">
+          <div class="account-profile-top">
+            <div class="account-profile-avatar-wrap">
+              <img id="accountProfileAvatar" class="account-profile-avatar" alt="" hidden>
+              <span id="accountProfileFallback" class="account-profile-fallback" aria-hidden="true">H</span>
+            </div>
+
+            <div class="account-profile-main">
+              <div class="account-name-row">
+                <div class="account-title-wrap">
+                  <h2 id="accountProfileName" class="account-profile-name">Huge Pony</h2>
+                  <div id="accountProfileId" class="account-profile-id">1467</div>
+                </div>
+
+                <button class="account-edit-name ui-only-action" type="button" aria-label="تعديل الاسم">تعديل</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="account-stats account-stats-priority" aria-label="إحصائيات الحساب">
+            <div class="account-stat account-stat-deals">
+              <div class="account-stat-label"><span>صفقات مكتملة</span></div>
+              <div class="account-stat-field"><b>0</b></div>
+            </div>
+
+            <div class="account-stat account-stat-rating">
+              <div class="account-stat-label"><span>التقييم</span></div>
+              <div class="account-stat-field"><b>0.00</b></div>
+            </div>
+
+            <div class="account-stat account-stat-products">
+              <div class="account-stat-label"><span>المنتجات</span></div>
+              <div class="account-stat-field"><b>0</b></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="account-menu-group" aria-label="إدارة الحساب">
+          <button class="account-menu-row ui-only-action" type="button" data-go-wallet>
+            <span class="account-row-icon" data-icon="wallet"></span>
+            <span class="account-row-label">المحفظة وشحن الرصيد</span>
+            <span class="account-row-arrow" aria-hidden="true">←</span>
+          </button>
+          <button class="account-menu-row ui-only-action" type="button">
+            <span class="account-row-icon" data-icon="storage"></span>
+            <span class="account-row-label">منتجاتي</span>
+            <span class="account-row-arrow" aria-hidden="true">←</span>
+          </button>
+          <button class="account-menu-row ui-only-action" type="button">
+            <span class="account-row-icon" data-icon="heart"></span>
+            <span class="account-row-label">المفضلة</span>
+            <span class="account-row-arrow" aria-hidden="true">←</span>
+          </button>
+          <button class="account-menu-row ui-only-action" type="button">
+            <span class="account-row-icon" data-icon="send"></span>
+            <span class="account-row-label">أعلن لدينا</span>
+            <span class="account-row-arrow" aria-hidden="true">←</span>
+          </button>
+        </section>
+
+        <section class="account-menu-group" aria-label="الخدمات والإعدادات">
+          <button class="account-menu-row ui-only-action" type="button">
+            <span class="account-row-icon" data-icon="referral"></span>
+            <span class="account-row-label">الإحالة والأرباح</span>
+            <span class="account-row-arrow" aria-hidden="true">←</span>
+          </button>
+          <button class="account-menu-row ui-only-action" type="button">
+            <span class="account-row-icon" data-icon="star-outline"></span>
+            <span class="account-row-label">تجارب العملاء</span>
+            <span class="account-row-arrow" aria-hidden="true">←</span>
+          </button>
+          <button class="account-menu-row ui-only-action" type="button">
+            <span class="account-row-icon" data-icon="shield"></span>
+            <span class="account-row-label">عضوية VIP</span>
+            <span class="account-row-arrow" aria-hidden="true">←</span>
+          </button>
+          <button class="account-menu-row ui-only-action" type="button">
+            <span class="account-row-icon" data-icon="document"></span>
+            <span class="account-row-label">دليل الاستخدام</span>
+            <span class="account-row-arrow" aria-hidden="true">←</span>
+          </button>
+          <button class="account-menu-row ui-only-action" type="button">
+            <span class="account-row-icon" data-icon="support"></span>
+            <span class="account-row-label">الدعم والشكاوى</span>
+            <span class="account-row-arrow" aria-hidden="true">←</span>
+          </button>
+          <button class="account-menu-row ui-only-action" type="button">
+            <span class="account-row-icon" data-icon="sun"></span>
+            <span class="account-row-label">تغيير المظهر · فاتح</span>
+            <span class="account-row-arrow" aria-hidden="true">←</span>
+          </button>
+        </section>
+
+        <details class="account-terms-collapsible">
+          <summary class="account-terms-summary">
+            <span class="account-terms-icon" data-icon="shield"></span>
+            <span>شروط المتجر</span>
+            <span class="account-terms-chevron" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="account-terms-body">
+            <p>أنت مسؤول عن صحة البيانات. يُحظر الاحتيال والحسابات المسروقة. مراجعة الإعلان لا تعني ضمان الملكية. تتم متابعة الصفقة بإشراف الإدارة والوسيط. لا تضع في متجرك أي بيانات خاصة أو حساسة. عند الحاجة استخدم /paysupport.</p>
+            <div class="account-terms-accepted">✓ وافقت على الشروط</div>
+          </div>
+        </details>
+      </main>
+    </div>
+  </section>
+
+
+    <nav class="bottom" id="bottomNav" aria-label="التنقل الرئيسي">
+      <button class="nav active" type="button" data-route="market" aria-label="السوق">
+        <span class="nav-icon" data-icon="market"></span><span>السوق</span>
+      </button>
+      <button class="nav" type="button" data-route="orders" aria-label="طلباتي">
+        <span class="nav-icon" data-icon="orders"></span><span>طلباتي</span>
+      </button>
+      <button class="nav" type="button" data-route="add-product" aria-label="أضف منتج">
+        <span class="nav-icon nav-plus" aria-hidden="true">＋</span><span>أضف منتج</span>
+      </button>
+      <button class="nav" type="button" data-route="escrow" aria-label="الوساطة">
+        <img class="nav-icon nav-ref-img escrow-shield-asset" src="Assets/shield-check.png" alt="" aria-hidden="true"><span>الوساطة</span>
+      </button>
+      <button class="nav" type="button" data-route="storage" aria-label="المخزن">
+        <span class="nav-icon" data-icon="storage"></span><span>المخزن</span>
+      </button>
+    </nav>
+
+  <div id="sheetBackdrop" class="sheet-backdrop"></div>
+  <section id="filterSheet" class="filter-sheet gift-filter-sheet" aria-hidden="true">
+    <div class="sheet-head">
+      <strong>فلاتر</strong>
+      <button id="sheetClose" class="sheet-close" type="button" aria-label="إغلاق">×</button>
+    </div>
+
+    <div class="filter-accordion">
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button" data-filter-toggle="price" aria-expanded="false">
+          <span>السعر</span><span class="filter-chevron">⌄</span>
+        </button>
+        <div class="filter-accordion-panel" data-filter-panel="price" hidden>
+          <div class="filter-options">
+            <button class="filter-chip active" data-filter="price" data-value="all">الكل</button>
+            <button class="filter-chip" data-filter="price" data-value="low">أقل من 10</button>
+            <button class="filter-chip" data-filter="price" data-value="mid">10 - 20</button>
+            <button class="filter-chip" data-filter="price" data-value="high">أكثر من 20</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>المميزة</span><span class="filter-chevron">⌄</span>
+        </button>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button" data-filter-toggle="nft" aria-expanded="false">
+          <span>NFT</span><span class="filter-chevron">⌄</span>
+        </button>
+        <div class="filter-accordion-panel" data-filter-panel="nft" hidden>
+          <div class="filter-options">
+            <button class="filter-chip active" data-filter="type" data-value="all">الكل</button>
+            <button class="filter-chip" data-filter="type" data-value="gift">هدايا</button>
+            <button class="filter-chip" data-filter="type" data-value="nft">NFT</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>النموذج</span><span class="filter-chevron">⌄</span>
+        </button>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>الخلفية</span><span class="filter-chevron">⌄</span>
+        </button>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>الرمز</span><span class="filter-chevron">⌄</span>
+        </button>
+      </div>
+
+      <div class="filter-accordion-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>رقم الهدية</span><span class="filter-chevron">⌄</span>
+        </button>
+      </div>
+
+      <div class="filter-accordion-item filter-saved-item">
+        <button class="filter-accordion-toggle" type="button">
+          <span>فلتر محفوظ</span><img class="filter-bookmark-icon" src="Assets/bookmark.png" alt="" aria-hidden="true"><span class="filter-chevron">⌄</span>
+        </button>
+        <button class="filter-save-btn ui-only-action" type="button">حفظ <img class="filter-bookmark-icon filter-bookmark-save" src="Assets/bookmark.png" alt="" aria-hidden="true"></button>
+      </div>
+    </div>
+
+    <div class="sheet-actions">
+      <button id="resetFilters" class="sheet-reset" type="button">إعادة ضبط</button>
+      <button id="applyFilters" class="sheet-apply" type="button">عرض النتائج</button>
+    </div>
+  </section>
+
+  <section id="walletPage" class="app-page subpage wallet-page" data-page="wallet" hidden>
+    <div class="subpage-shell wallet-shell">
+      <header class="subpage-header wallet-page-header">
+        <button class="subpage-back" type="button" data-go-market aria-label="الرجوع إلى السوق">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>المحفظة</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات المحفظة">
+          <button class="icon-btn ui-only-action" type="button" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content wallet-content">
+        <section class="wallet-intro" aria-labelledby="walletIntroTitle">
+          <h2 id="walletIntroTitle">محفظتك، جاهزة لفرصتك القادمة</h2>
+          <p>اشحن رصيدك، وتابع كل حركة مالية بوضوح.</p>
+        </section>
+
+        <section class="wallet-balance-card" aria-label="الرصيد المتاح">
+          <div class="wallet-balance-head">
+            <div class="wallet-balance-brand">
+              <span class="wallet-balance-brand-icon" data-icon="wallet"></span>
+              <span>المحفظة الرقمية</span>
+            </div>
+            <div class="wallet-safe-badge">
+              <span class="wallet-safe-icon" data-icon="shield"></span>
+              <span>حسابك</span>
+            </div>
+          </div>
+          <div class="wallet-balance-label">الرصيد المتاح</div>
+          <div class="wallet-cash-balance" aria-label="رصيد المحفظة">$<span id="walletBalanceValue">0.00</span></div>
+          <div class="wallet-balance-note">كل عملياتك محفوظة في كشف الحساب</div>
+        </section>
+
+        <section class="wallet-section-card wallet-stars-card">
+          <div class="wallet-section-heading">
+            <span class="wallet-section-icon" aria-hidden="true">☆</span>
+            <h2>الشحن بنجوم تيليجرام</h2>
+          </div>
+
+          <div class="wallet-star-options" id="walletAmounts" aria-label="خيارات شحن النجوم">
+            <button class="wallet-star-option" type="button" data-amount="1" data-stars="100">
+              <span class="wallet-option-main"><b>$1.00</b><small>100 نجمة</small></span>
+              <span class="wallet-option-plus" aria-hidden="true">＋</span>
+            </button>
+            <button class="wallet-star-option" type="button" data-amount="5" data-stars="450">
+              <span class="wallet-option-main"><b>$5.00</b><small>450 نجمة</small></span>
+              <span class="wallet-option-plus" aria-hidden="true">＋</span>
+            </button>
+            <button class="wallet-star-option" type="button" data-amount="10" data-stars="850">
+              <span class="wallet-option-main"><b>$10.00</b><small>850 نجمة</small></span>
+              <span class="wallet-option-plus" aria-hidden="true">＋</span>
+            </button>
+            <button class="wallet-star-option" type="button" data-amount="25" data-stars="2000">
+              <span class="wallet-option-main"><b>$25.00</b><small>2,000 نجمة</small></span>
+              <span class="wallet-option-plus" aria-hidden="true">＋</span>
+            </button>
+          </div>
+
+          <button class="wallet-coupon-row ui-only-action" type="button">
+            <span class="wallet-coupon-icon" data-icon="card"></span>
+            <span>لديك كود شحن؟</span>
+            <span class="wallet-row-arrow" aria-hidden="true">←</span>
+          </button>
+        </section>
+
+        <button class="wallet-section-card wallet-transfer-methods ui-only-action" type="button">
+          <span class="wallet-transfer-icon" data-icon="wallet"></span>
+          <span>طرق التحويل</span>
+        </button>
+
+        <section class="wallet-activity-card">
+          <div class="wallet-activity-head">
+            <h2>آخر حركات المحفظة</h2>
+            <button class="wallet-refresh ui-only-action" id="walletRefresh" type="button" aria-label="تحديث سجل المحفظة">↻</button>
+          </div>
+
+          <div class="wallet-empty-state wallet-history-empty">
+            <span class="wallet-empty-icon" data-icon="storage"></span>
+            <strong>بداية صفحة جديدة</strong>
+            <p>سيظهر سجل الشحن هنا بعد أول عملية.</p>
+          </div>
+
+          <div class="wallet-activity-divider"></div>
+
+          <div class="wallet-transfer-title">طلبات التحويل</div>
+          <div class="wallet-empty-state wallet-transfer-empty">
+            <span class="wallet-empty-icon" data-icon="storage"></span>
+            <strong>لا توجد طلبات تحويل</strong>
+            <p>تستطيع متابعة الطلب هنا بعد إرسال رقم العملية.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </section>
+</div>
+
+<script src="./js/app.js?v=20261004-0624"></script>
+<script src="./js/router.js?v=20261004-0624"></script>
+<script src="./js/pages/subpages.js?v=20261004-0624"></script>
+<script src="./js/pages/orders.js?v=20261004-0624"></script>
+<script src="./js/pages/wallet.js?v=20261004-0624"></script>
+</body>
+</html>

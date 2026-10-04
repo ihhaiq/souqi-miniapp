@@ -1,0 +1,1175 @@
+/* ==========================================================================
+   Market Screen Styles (Telegram Mini App • 390px Viewport)
+   Strictly NO Emojis • Vector Icons Only • High-End Dark & Electric Yellow Theme
+   ========================================================================== */
+
+.market-view {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--bg-base, #121214);
+  color: var(--text-primary, #FFFFFF);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(64px + var(--safe-area-bottom, 0px) + 20px);
+  position: relative;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ==========================================================================
+   1. TOP HEADER BAR
+   ========================================================================== */
+.market-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--safe-area-top, 0px) + 12px) 16px 12px 16px;
+  background-color: var(--bg-base, #121214);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.user-profile-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #252830, #1A1C20);
+  border: 1px solid var(--line, #2A2C32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, #A1A7B3);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.user-avatar:active {
+  transform: scale(0.95);
+}
+
+.balance-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-surface, #1C1D21);
+  border: 1px solid var(--line, #2A2C32);
+  padding: 5px 12px 5px 8px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.balance-pill:active {
+  background-color: var(--bg-surface-elevated, #222328);
+}
+
+.diamond-icon {
+  color: var(--accent-gold, #FFC700);
+}
+
+.balance-val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary, #FFFFFF);
+  line-height: 1;
+}
+
+.balance-add-btn {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted, #71767F);
+  margin-right: 2px;
+}
+
+.top-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.square-action-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background-color: var(--bg-surface-elevated, #222328);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--text-secondary, #A1A7B3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.square-action-btn:active {
+  transform: scale(0.94);
+  background-color: #2D3038;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   2. FEATURED HERO BANNER
+   ========================================================================== */
+.market-hero-banner {
+  padding: 4px 16px 14px 16px;
+}
+
+.banner-card {
+  position: relative;
+  background: linear-gradient(135deg, #1C1D22 0%, #16171A 100%);
+  border: 1px solid var(--line, #2A2C32);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.banner-tag {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent-yellow, #FFD200);
+  background: rgba(255, 210, 0, 0.12);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 2px;
+}
+
+.banner-title {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.banner-desc {
+  font-size: 11px;
+  color: var(--text-muted, #71767F);
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-surface-elevated, #222328);
+  border: 1px solid var(--line, #2A2C32);
+  color: #FFFFFF;
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.15s ease;
+}
+
+.banner-cta:active {
+  transform: scale(0.96);
+  background-color: var(--accent-yellow, #FFD200);
+  color: #121214;
+}
+
+.banner-visual {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 210, 0, 0.7);
+}
+
+.banner-glow-orb {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, rgba(255, 210, 0, 0.25) 0%, transparent 70%);
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   3. SERVICES & PLATFORMS HORIZONTAL CHIPS (Replica of Reference - NO EMOJIS)
+/* ==========================================================================
+   3. SERVICES & CATEGORIES CAPSULE RAIL (Pixel Replica of Screenshot)
+   ========================================================================== */
+.categories-capsule-section {
+  display: flex;
+  align-items: center;
+  padding: 0 16px 12px 16px;
+  gap: 8px;
+  direction: ltr;
+}
+
+/* Outer single unified capsule rail */
+.category-capsule-rail {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #17181D;
+  border: 1px solid #282A31;
+  border-radius: 12px;
+  padding: 4px;
+  height: 44px;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  user-select: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-capsule-rail.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.category-capsule-rail::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Rail Item */
+.rail-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  height: 34px;
+  padding: 0 10px;
+  color: #7E8491;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+  box-sizing: border-box;
+  gap: 0;
+}
+
+.rail-item .item-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.rail-item .item-icon-wrap svg {
+  color: #8E95A2;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Collapsed text when not active */
+.rail-item .item-label {
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Space Grotesk', 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF;
+  transition: max-width 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease, margin 0.2s ease;
+  margin-inline-start: 0;
+}
+
+/* ACTIVE STATE: Raised capsule pill with icon + label */
+.rail-item.active {
+  background-color: #272A32;
+  border-color: #3B3F4B;
+  color: #FFFFFF;
+  padding: 0 14px 0 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.rail-item.active .item-icon-wrap svg {
+  color: #FFFFFF;
+}
+
+.rail-item.active .item-label {
+  max-width: 130px;
+  opacity: 1;
+  margin-inline-start: 8px;
+}
+
+.rail-item:hover:not(.active) .item-icon-wrap svg {
+  color: #CBD0D8;
+}
+
+/* Standalone Cart Button */
+.rail-cart-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #17181D;
+  border: 1px solid #282A31;
+  color: #8E95A2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rail-cart-btn:active {
+  transform: scale(0.94);
+  color: #FFFFFF;
+  background-color: #22242B;
+}
+
+.cart-badge-count {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  background-color: var(--accent-yellow, #FFD200);
+  color: #121214;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 9999px;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   4. SEARCH & FILTER SECTION
+   ========================================================================== */
+.search-filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 16px 14px 16px;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input-wrap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  color: var(--text-muted, #71767F);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  height: 40px;
+  background-color: var(--bg-input, #18191D);
+  border: 1px solid var(--line, #2A2C32);
+  border-radius: 10px;
+  padding: 0 38px 0 32px;
+  color: var(--text-primary, #FFFFFF);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 12px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.search-input:focus {
+  border-color: rgba(255, 210, 0, 0.4);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted, #71767F);
+}
+
+.search-clear-btn {
+  position: absolute;
+  left: 10px;
+  background: none;
+  border: none;
+  color: var(--text-muted, #71767F);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.filter-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.filter-pills-row::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-pill-trigger {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: var(--bg-surface, #1C1D21);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--text-secondary, #A1A7B3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.filter-dropdown-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background-color: var(--bg-surface, #1C1D21);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--text-secondary, #A1A7B3);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.filter-dropdown-pill:active {
+  transform: scale(0.96);
+}
+
+.filter-dropdown-pill.active {
+  background-color: var(--accent-yellow, #FFD200);
+  border-color: var(--accent-yellow, #FFD200);
+  color: #121214;
+  font-weight: 700;
+}
+
+.filter-dropdown-pill.active .chevron-svg {
+  color: #121214;
+}
+
+.chevron-svg {
+  color: var(--text-muted, #71767F);
+}
+
+.active-filter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: rgba(255, 210, 0, 0.15);
+  border: 1px solid rgba(255, 210, 0, 0.35);
+  color: var(--accent-yellow, #FFD200);
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.badge-reset-btn {
+  background: none;
+  border: none;
+  color: var(--accent-yellow, #FFD200);
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   5. 2-COLUMN PRODUCTS GRID (Pixel Replica of Reference 1)
+   ========================================================================== */
+.products-grid-section {
+  padding: 0 16px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.product-card {
+  background-color: var(--bg-surface, #1C1D21);
+  border: 1px solid var(--line, #2A2C32);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.product-card:active {
+  transform: scale(0.98);
+  border-color: #3B3E48;
+}
+
+/* Card Cover Image Area */
+.card-cover-area {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #151619;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cover-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.telegram-pattern {
+  background: radial-gradient(circle, rgba(51, 156, 255, 0.22) 0%, #151619 75%);
+  color: #339CFF;
+}
+
+.x-pattern {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, #151619 75%);
+  color: #FFFFFF;
+}
+
+.youtube-pattern {
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.22) 0%, #151619 75%);
+  color: #EF4444;
+}
+
+.cursor-pattern {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.20) 0%, #151619 75%);
+  color: #38BDF8;
+}
+
+.lovable-pattern {
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.22) 0%, #151619 75%);
+  color: #F43F5E;
+}
+
+.kling-pattern {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, #151619 75%);
+  color: #A855F7;
+}
+
+.manus-pattern {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, #151619 75%);
+  color: #6366F1;
+}
+
+.quillbot-pattern {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, #151619 75%);
+  color: #10B981;
+}
+
+.netflix-pattern {
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.24) 0%, #151619 75%);
+  color: #E50914;
+}
+
+.spotify-pattern {
+  background: radial-gradient(circle, rgba(30, 215, 96, 0.22) 0%, #151619 75%);
+  color: #1ED760;
+}
+
+.supabase-pattern {
+  background: radial-gradient(circle, rgba(62, 207, 142, 0.22) 0%, #151619 75%);
+  color: #3ECF8E;
+}
+
+.railway-pattern {
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.20) 0%, #151619 75%);
+  color: #C084FC;
+}
+
+.nitro-pattern {
+  background: radial-gradient(circle, rgba(88, 101, 242, 0.24) 0%, #151619 75%);
+  color: #5865F2;
+}
+
+.vpn-pattern {
+  background: radial-gradient(circle, rgba(70, 130, 255, 0.22) 0%, #151619 75%);
+  color: #4682FF;
+}
+
+.stars-pattern {
+  background: radial-gradient(circle, rgba(255, 210, 0, 0.22) 0%, #151619 75%);
+  color: #FFD200;
+}
+
+.gift-pattern {
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, #151619 75%);
+  color: #FBBF24;
+}
+
+.cover-badges-top {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  z-index: 2;
+}
+
+.verified-badge-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background-color: rgba(18, 18, 20, 0.75);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #22C55E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-lock-pill {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: rgba(18, 18, 20, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary, #A1A7B3);
+  z-index: 2;
+}
+
+/* Card Metadata Area */
+.card-meta-area {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.product-title {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary, #FFFFFF);
+  margin: 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-id-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted, #71767F);
+}
+
+.product-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+  gap: 6px;
+}
+
+.price-chip-btn {
+  flex: 1;
+  height: 32px;
+  background-color: var(--bg-surface-elevated, #222328);
+  border: 1px solid var(--line, #2A2C32);
+  border-radius: 8px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.price-chip-btn:active {
+  background-color: #2D3038;
+  transform: scale(0.97);
+}
+
+.chip-diamond {
+  color: var(--accent-gold, #FFC700);
+}
+
+.price-amount {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.quick-cart-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: var(--bg-surface-elevated, #222328);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--text-secondary, #A1A7B3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.quick-cart-btn:active {
+  transform: scale(0.95);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   6. EMPTY STATE
+   ========================================================================== */
+.market-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  gap: 12px;
+}
+
+.empty-icon-box {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background-color: var(--bg-surface, #1C1D21);
+  border: 1px solid var(--line, #2A2C32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted, #71767F);
+  margin-bottom: 4px;
+}
+
+.empty-title {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary, #FFFFFF);
+  margin: 0;
+}
+
+.empty-desc {
+  font-size: 12px;
+  color: var(--text-muted, #71767F);
+  margin: 0;
+  max-width: 240px;
+  line-height: 1.5;
+}
+
+.empty-reset-btn {
+  margin-top: 8px;
+  padding: 8px 18px;
+  border-radius: 10px;
+  background-color: var(--bg-surface-elevated, #222328);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--accent-yellow, #FFD200);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   9. BOTTOM NAVIGATION DOCK (Pixel-Exact with White Active Top Indicator)
+   ========================================================================== */
+.bottom-dock-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: calc(64px + var(--safe-area-bottom, 0px));
+  padding-bottom: var(--safe-area-bottom, 0px);
+  background: rgba(18, 18, 20, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line-subtle, #202227);
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  z-index: 50;
+  box-sizing: border-box;
+}
+
+.dock-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-muted, #71767F);
+  position: relative;
+  cursor: pointer;
+  padding: 6px 0 4px 0;
+  transition: color 0.15s ease;
+}
+
+.active-indicator-bar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 2.5px;
+  background-color: #FFFFFF;
+  border-radius: 0 0 2px 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease, width 0.2s ease;
+}
+
+.dock-tab.active .active-indicator-bar {
+  opacity: 1;
+}
+
+.dock-tab.active {
+  color: #FFFFFF;
+}
+
+.dock-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3px;
+  transition: transform 0.15s ease;
+}
+
+.dock-tab:active .dock-icon-wrap {
+  transform: scale(0.92);
+}
+
+.dock-label {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   10. BOTTOM SHEETS (Filter & Sort Modals)
+   ========================================================================== */
+.bottom-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.bottom-sheet-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bottom-sheet-panel {
+  background-color: #16171A;
+  border-top: 1px solid #2E3038;
+  border-radius: 20px 20px 0 0;
+  padding: 12px 20px calc(var(--safe-area-bottom, 0px) + 20px) 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 80vh;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.bottom-sheet-overlay.open .bottom-sheet-panel {
+  transform: translateY(0);
+}
+
+.sheet-drag-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: #33363F;
+  margin: 0 auto 4px auto;
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sheet-title {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.sheet-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted, #71767F);
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.sheet-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sheet-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sheet-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted, #71767F);
+  text-transform: uppercase;
+}
+
+.sheet-chips-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sheet-filter-chip {
+  padding: 7px 14px;
+  border-radius: 8px;
+  background-color: var(--bg-surface-elevated, #222328);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--text-secondary, #A1A7B3);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sheet-filter-chip.active {
+  background-color: var(--accent-yellow, #FFD200);
+  border-color: var(--accent-yellow, #FFD200);
+  color: #121214;
+  font-weight: 700;
+}
+
+.price-inputs-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sheet-num-input {
+  flex: 1;
+  height: 38px;
+  background-color: var(--bg-input, #18191D);
+  border: 1px solid var(--line, #2A2C32);
+  border-radius: 8px;
+  padding: 0 12px;
+  color: #FFFFFF;
+  font-size: 13px;
+  text-align: center;
+  outline: none;
+}
+
+.price-separator {
+  color: var(--text-muted, #71767F);
+  font-weight: bold;
+}
+
+.sheet-footer {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-sheet-reset {
+  flex: 1;
+  height: 42px;
+  background-color: var(--bg-surface-elevated, #222328);
+  border: 1px solid var(--line, #2A2C32);
+  border-radius: 10px;
+  color: var(--text-secondary, #A1A7B3);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-sheet-apply {
+  flex: 2;
+  height: 42px;
+  background-color: var(--accent-yellow, #FFD200);
+  border: none;
+  border-radius: 10px;
+  color: #121214;
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Sort Rows */
+.sort-panel .sheet-body {
+  gap: 4px;
+}
+
+.sort-option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: none;
+  border: none;
+  color: var(--text-secondary, #A1A7B3);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: right;
+  width: 100%;
+}
+
+.sort-option-row.active {
+  background-color: var(--bg-surface-elevated, #222328);
+  color: var(--accent-yellow, #FFD200);
+  font-weight: 700;
+}
+
+.sort-option-row .check-icon {
+  opacity: 0;
+  color: var(--accent-yellow, #FFD200);
+}
+
+.sort-option-row.active .check-icon {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   11. UNIVERSAL RESPONSIVE ADAPTATIONS (Mobile to Desktop)
+   ========================================================================== */
+@media (max-width: 360px) {
+  .products-grid {
+    gap: 8px;
+    padding: 0 10px;
+  }
+  .card-meta-area {
+    padding: 8px 8px 10px 8px;
+  }
+  .product-title {
+    font-size: 11px;
+    min-height: 28px;
+  }
+  .product-id-tag {
+    font-size: 10px;
+  }
+  .price-chip-btn {
+    padding: 5px 8px;
+    gap: 4px;
+  }
+  .price-amount {
+    font-size: 11px;
+  }
+  .quick-cart-btn {
+    width: 28px;
+    height: 28px;
+  }
+  .banner-wrap {
+    margin: 8px 10px;
+  }
+  .search-filter-section {
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 481px) {
+  /* Desktop & Tablet Centered Presentation */
+  .market-view {
+    border-left: 1px solid var(--line-subtle, #202227);
+    border-right: 1px solid var(--line-subtle, #202227);
+  }
+  .bottom-dock-nav {
+    border-left: 1px solid var(--line-subtle, #202227);
+    border-right: 1px solid var(--line-subtle, #202227);
+  }
+}
+
