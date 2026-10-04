@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="./css/styles.css?v=20261004-0624">
+<link rel="stylesheet" href="./css/styles.css?v=20261004-1238">
 <style id="critical-active-tab-style">
 #tabs.social-tabs > .tab > .tab-label{
   display:block!important;
@@ -66,7 +66,7 @@
         <div class="actions">
           <button class="icon-btn" data-go-wallet data-action="open-wallet" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
           <button class="icon-btn" aria-label="الإعلانات"><span class="action-icon" data-icon="megaphone"></span></button>
-          <button class="icon-btn" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+          <button class="icon-btn" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
         </div>
       </div>
 
@@ -271,7 +271,7 @@
         </div>
         <div class="subpage-actions" aria-label="أدوات الصفحة">
           <button class="icon-btn ui-only-action" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
-          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
         </div>
       </header>
 
@@ -326,7 +326,7 @@
         </div>
         <div class="subpage-actions" aria-label="أدوات الصفحة">
           <button class="icon-btn ui-only-action" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
-          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
         </div>
       </header>
 
@@ -372,7 +372,7 @@
         </div>
         <div class="subpage-actions" aria-label="أدوات الصفحة">
           <button class="icon-btn ui-only-action" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
-          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
         </div>
       </header>
 
@@ -495,7 +495,7 @@
         </div>
         <div class="subpage-actions" aria-label="أدوات الصفحة">
           <button class="icon-btn ui-only-action" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
-          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
         </div>
       </header>
 
@@ -609,6 +609,67 @@
   </section>
 
 
+    <div class="more-menu-backdrop" id="moreMenuBackdrop" hidden></div>
+    <aside class="more-menu" id="moreMenu" aria-hidden="true" aria-label="المزيد">
+      <div class="more-menu-head">
+        <h2>المزيد</h2>
+        <button class="more-menu-close" id="moreMenuClose" type="button" aria-label="إغلاق">×</button>
+      </div>
+
+      <div class="more-menu-list">
+        <button class="more-menu-row" type="button" data-go-wallet data-action="open-wallet">
+          <span class="more-menu-icon" data-icon="wallet"></span>
+          <span class="more-menu-label">المحفظة وشحن الرصيد</span>
+          <span class="more-menu-arrow" aria-hidden="true">←</span>
+        </button>
+        <button class="more-menu-row" type="button" data-action="manage-listings">
+          <span class="more-menu-icon" data-icon="storage"></span>
+          <span class="more-menu-label">منتجاتي</span>
+          <span class="more-menu-arrow" aria-hidden="true">←</span>
+        </button>
+        <button class="more-menu-row" type="button" data-action="open-favorites">
+          <span class="more-menu-icon" data-icon="heart"></span>
+          <span class="more-menu-label">المفضلة</span>
+          <span class="more-menu-arrow" aria-hidden="true">←</span>
+        </button>
+        <button class="more-menu-row" type="button" data-action="advertise-with-us">
+          <span class="more-menu-icon" data-icon="send"></span>
+          <span class="more-menu-label">أعلن لدينا</span>
+          <span class="more-menu-arrow" aria-hidden="true">←</span>
+        </button>
+        <button class="more-menu-row" type="button" data-action="referrals">
+          <span class="more-menu-icon" data-icon="referral"></span>
+          <span class="more-menu-label">الإحالة والأرباح</span>
+          <span class="more-menu-arrow" aria-hidden="true">←</span>
+        </button>
+        <button class="more-menu-row" type="button" data-action="customer-experiences">
+          <span class="more-menu-icon" data-icon="star-outline"></span>
+          <span class="more-menu-label">تجارب العملاء</span>
+          <span class="more-menu-arrow" aria-hidden="true">←</span>
+        </button>
+        <button class="more-menu-row" type="button" data-action="vip-membership">
+          <span class="more-menu-icon" data-icon="shield"></span>
+          <span class="more-menu-label">عضوية VIP</span>
+          <span class="more-menu-arrow" aria-hidden="true">←</span>
+        </button>
+        <button class="more-menu-row" type="button" data-action="usage-guide">
+          <span class="more-menu-icon" data-icon="document"></span>
+          <span class="more-menu-label">دليل الاستخدام</span>
+          <span class="more-menu-arrow" aria-hidden="true">←</span>
+        </button>
+        <button class="more-menu-row" type="button" data-action="support">
+          <span class="more-menu-icon" data-icon="support"></span>
+          <span class="more-menu-label">الدعم والشكاوى</span>
+          <span class="more-menu-arrow" aria-hidden="true">←</span>
+        </button>
+        <button class="more-menu-row" type="button" data-action="toggle-theme">
+          <span class="more-menu-icon" data-icon="sun"></span>
+          <span class="more-menu-label">تغيير المظهر · داكن</span>
+          <span class="more-menu-arrow" aria-hidden="true">←</span>
+        </button>
+      </div>
+    </aside>
+
     <nav class="bottom" id="bottomNav" aria-label="التنقل الرئيسي">
       <button class="nav active" type="button" data-route="market" aria-label="السوق">
         <span class="nav-icon" data-icon="market"></span><span>السوق</span>
@@ -622,8 +683,8 @@
       <button class="nav" type="button" data-route="escrow" aria-label="الوساطة">
         <img class="nav-icon nav-ref-img escrow-shield-asset" src="Assets/shield-check.png" alt="" aria-hidden="true"><span>الوساطة</span>
       </button>
-      <button class="nav" type="button" data-route="storage" aria-label="المخزن">
-        <span class="nav-icon" data-icon="storage"></span><span>المخزن</span>
+      <button class="nav" type="button" data-route="account" aria-label="حسابي">
+        <span class="nav-icon" data-icon="user"></span><span>حسابي</span>
       </button>
     </nav>
 
@@ -718,7 +779,7 @@
         </div>
         <div class="subpage-actions" aria-label="أدوات المحفظة">
           <button class="icon-btn ui-only-action" type="button" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
-          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة"><span class="action-icon" data-icon="menu"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
         </div>
       </header>
 
@@ -807,10 +868,10 @@
   </section>
 </div>
 
-<script src="./js/app.js?v=20261004-0624"></script>
-<script src="./js/router.js?v=20261004-0624"></script>
-<script src="./js/pages/subpages.js?v=20261004-0624"></script>
-<script src="./js/pages/orders.js?v=20261004-0624"></script>
-<script src="./js/pages/wallet.js?v=20261004-0624"></script>
+<script src="./js/app.js?v=20261004-1238"></script>
+<script src="./js/router.js?v=20261004-1238"></script>
+<script src="./js/pages/subpages.js?v=20261004-1238"></script>
+<script src="./js/pages/orders.js?v=20261004-1238"></script>
+<script src="./js/pages/wallet.js?v=20261004-1238"></script>
 </body>
 </html>
