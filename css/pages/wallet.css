@@ -507,82 +507,69 @@
 }
 
 
-/* Wallet balance card — vivid glass overlay reference */
+/* Wallet balance card — same glass material as bottom navigation */
 .wallet-balance-card{
   position:relative;
   overflow:hidden;
   isolation:isolate;
   border-radius:24px;
-  border:1px solid rgba(255,255,255,.20)!important;
-  background:
-    radial-gradient(130% 150% at 4% 4%,
-      rgba(72,168,255,.34) 0%,
-      rgba(88,113,255,.26) 30%,
-      rgba(108,74,220,.12) 50%,
-      transparent 70%),
-    radial-gradient(120% 135% at 92% 12%,
-      rgba(255,77,220,.34) 0%,
-      rgba(216,69,220,.22) 34%,
-      rgba(163,64,196,.10) 54%,
-      transparent 72%),
-    radial-gradient(110% 120% at 85% 100%,
-      rgba(255,180,68,.22) 0%,
-      rgba(255,122,98,.15) 32%,
-      transparent 62%),
-    linear-gradient(135deg,
-      rgba(92,84,180,.30) 0%,
-      rgba(103,69,162,.24) 44%,
-      rgba(136,63,135,.22) 72%,
-      rgba(122,95,61,.16) 100%),
-    rgba(255,255,255,.028)!important;
+  border:1px solid rgba(255,255,255,.03)!important;
+  background:rgba(255,255,255,.014)!important;
   box-shadow:
-    0 12px 28px rgba(0,0,0,.16),
-    0 0 18px rgba(123,92,235,.07),
-    inset 0 1px 0 rgba(255,255,255,.28),
-    inset 0 -1px 0 rgba(255,255,255,.05),
-    inset 0 0 24px rgba(255,255,255,.03)!important;
-  -webkit-backdrop-filter:blur(18px) saturate(175%) brightness(1.04)!important;
-  backdrop-filter:blur(18px) saturate(175%) brightness(1.04)!important;
+    0 10px 24px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.04)!important;
+  -webkit-backdrop-filter:blur(6px) saturate(110%)!important;
+  backdrop-filter:blur(6px) saturate(110%)!important;
 }
 
+/* Colored layer sits behind the glass surface, not on it. */
 .wallet-balance-card::before{
   content:"";
   position:absolute;
-  inset:0;
-  z-index:0;
+  inset:-10%;
+  z-index:-2;
   pointer-events:none;
   border-radius:inherit;
   background:
-    radial-gradient(90% 62% at 22% -6%,
-      rgba(255,255,255,.24) 0%,
-      rgba(255,255,255,.10) 24%,
-      rgba(255,255,255,.04) 42%,
-      transparent 64%),
-    linear-gradient(118deg,
-      transparent 8%,
-      rgba(255,255,255,.035) 24%,
-      rgba(255,255,255,.12) 39%,
-      rgba(255,255,255,.055) 51%,
-      transparent 68%);
-  mix-blend-mode:screen;
-  opacity:.94;
+    radial-gradient(58% 72% at 14% 18%,
+      rgba(90,148,255,.62) 0%,
+      rgba(105,91,232,.40) 42%,
+      transparent 72%),
+    radial-gradient(62% 76% at 84% 20%,
+      rgba(255,75,213,.56) 0%,
+      rgba(204,73,213,.34) 44%,
+      transparent 74%),
+    radial-gradient(58% 72% at 84% 88%,
+      rgba(255,183,72,.36) 0%,
+      rgba(255,119,85,.22) 44%,
+      transparent 72%),
+    linear-gradient(135deg,
+      rgba(80,78,164,.26),
+      rgba(117,64,139,.22) 56%,
+      rgba(116,88,52,.16));
+  filter:blur(18px) saturate(145%);
+  opacity:.84;
+  transform:scale(1.06);
 }
 
+/* Glass specular layer — mirrors the bottom bar treatment. */
 .wallet-balance-card::after{
   content:"";
   position:absolute;
-  inset:1px;
-  z-index:0;
+  inset:0;
+  z-index:-1;
   pointer-events:none;
   border-radius:inherit;
   background:
-    linear-gradient(180deg,
-      rgba(255,255,255,.10) 0%,
-      rgba(255,255,255,.025) 16%,
-      transparent 38%);
+    linear-gradient(115deg,
+      transparent 0%,
+      rgba(255,255,255,.02) 24%,
+      rgba(255,255,255,.055) 43%,
+      rgba(255,255,255,.016) 58%,
+      transparent 78%);
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.055),
-    inset 0 12px 26px rgba(255,255,255,.035);
+    inset 0 1px 0 rgba(255,255,255,.04);
+  opacity:.72;
 }
 
 .wallet-balance-card > *{
@@ -591,13 +578,12 @@
 }
 
 .wallet-balance-card .wallet-safe-badge{
-  background:rgba(255,255,255,.12)!important;
-  border:1px solid rgba(255,255,255,.18)!important;
+  background:rgba(255,255,255,.055)!important;
+  border:1px solid rgba(255,255,255,.06)!important;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.18),
-    0 4px 12px rgba(0,0,0,.10)!important;
-  -webkit-backdrop-filter:blur(14px) saturate(165%)!important;
-  backdrop-filter:blur(14px) saturate(165%)!important;
+    inset 0 1px 0 rgba(255,255,255,.05)!important;
+  -webkit-backdrop-filter:blur(6px) saturate(110%)!important;
+  backdrop-filter:blur(6px) saturate(110%)!important;
 }
 
 .wallet-balance-brand,
