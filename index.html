@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="./css/styles.css?v=20261004-0436">
+<link rel="stylesheet" href="./css/styles.css?v=20261004-0448">
 <style id="critical-active-tab-style">
 #tabs.social-tabs > .tab > .tab-label{
   display:block!important;
@@ -29,6 +29,25 @@
 }
 #tabs.social-tabs > .tab[data-mode="gifts"].active{min-width:74px!important}
 #tabs.social-tabs > .wallet-toggle.active{min-width:78px!important}
+
+/* Final nav guard: icon + label float directly on the glass bar. */
+#bottomNav .liquid-nav-indicator{display:none!important}
+#bottomNav .nav,
+#bottomNav .nav.active,
+#bottomNav .nav:active,
+#bottomNav .nav.is-pressed{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#bottomNav .nav::before,
+#bottomNav .nav::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
 </style>
 </head>
 <body>
@@ -591,7 +610,6 @@
 
 
     <nav class="bottom" id="bottomNav" aria-label="التنقل الرئيسي">
-      <span class="liquid-nav-indicator" id="liquidNavIndicator" aria-hidden="true"></span>
       <button class="nav active" type="button" data-route="market" aria-label="السوق">
         <span class="nav-icon" data-icon="market"></span><span>السوق</span>
       </button>
@@ -789,10 +807,10 @@
   </section>
 </div>
 
-<script src="./js/app.js?v=20261004-0436"></script>
-<script src="./js/router.js?v=20261004-0436"></script>
-<script src="./js/pages/subpages.js?v=20261004-0436"></script>
-<script src="./js/pages/orders.js?v=20261004-0436"></script>
-<script src="./js/pages/wallet.js?v=20261004-0436"></script>
+<script src="./js/app.js?v=20261004-0448"></script>
+<script src="./js/router.js?v=20261004-0448"></script>
+<script src="./js/pages/subpages.js?v=20261004-0448"></script>
+<script src="./js/pages/orders.js?v=20261004-0448"></script>
+<script src="./js/pages/wallet.js?v=20261004-0448"></script>
 </body>
 </html>
