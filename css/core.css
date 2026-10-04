@@ -371,13 +371,13 @@ h1,h2,h3,
 }
 
 .more-menu-head{
-  min-height:76px;
-  padding:8px 2px 12px;
+  min-height:50px;
+  padding:4px 2px 7px;
   display:grid;
-  grid-template-columns:48px minmax(0,1fr) 48px;
+  grid-template-columns:38px minmax(0,1fr) 38px;
   align-items:center;
   direction:ltr;
-  border-bottom:1px solid rgba(255,255,255,.055);
+  border-bottom:1px solid rgba(255,255,255,.045);
 }
 .more-menu-head h2{
   grid-column:3;
@@ -385,38 +385,36 @@ h1,h2,h3,
   color:#fff;
   direction:rtl;
   text-align:right;
-  font-size:20px;
+  font-size:17px;
   font-weight:800;
-  line-height:1.2;
+  line-height:1.15;
   text-shadow:0 1px 2px rgba(0,0,0,.42);
 }
 .more-menu-close{
   grid-column:1;
   grid-row:1;
-  width:48px;
-  height:48px;
+  width:36px;
+  height:36px;
   display:grid;
   place-items:center;
   padding:0;
-  border-radius:15px;
-  background:rgba(255,255,255,.014)!important;
-  border:1px solid rgba(255,255,255,.055)!important;
-  color:rgba(255,255,255,.88);
-  font-size:29px;
+  border-radius:11px;
+  background:rgba(255,255,255,.02)!important;
+  border:1px solid rgba(255,255,255,.045)!important;
+  color:rgba(255,255,255,.84);
+  font-size:23px;
   font-weight:300;
   line-height:1;
-  box-shadow:
-    0 8px 18px rgba(0,0,0,.08),
-    inset 0 1px 0 rgba(255,255,255,.05)!important;
-  -webkit-backdrop-filter:blur(6px) saturate(110%);
-  backdrop-filter:blur(6px) saturate(110%);
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
 }
 
 .more-menu-list{
   position:relative;
   width:100%;
-  height:calc(100dvh - max(18px,env(safe-area-inset-top)) - 98px - env(safe-area-inset-bottom));
-  margin-top:16px;
+  height:calc(100dvh - max(18px,env(safe-area-inset-top)) - 72px - env(safe-area-inset-bottom));
+  margin-top:8px;
   padding:4px 18px 14px;
   overflow-y:auto;
   overscroll-behavior:contain;
@@ -518,10 +516,10 @@ body.more-menu-open{overflow:hidden}
     padding-inline:10px;
   }
   .more-menu-head{
-    min-height:70px;
+    min-height:46px;
   }
   .more-menu-list{
-    margin-top:12px;
+    margin-top:7px;
     padding-inline:15px;
     border-radius:24px;
   }
