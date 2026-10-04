@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="./css/styles.css?v=20261004-1544">
+<link rel="stylesheet" href="./css/styles.css?v=20261004-1610">
 <style id="critical-active-tab-style">
 #tabs.social-tabs > .tab > .tab-label{
   display:block!important;
@@ -492,6 +492,108 @@
 
 
 
+  <section id="storagePage" class="app-page subpage storage-page" data-page="storage" hidden>
+    <div class="subpage-shell">
+      <header class="subpage-header">
+        <button class="subpage-back" type="button" data-go-account aria-label="الرجوع إلى حسابي">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>المخزون</h1>
+          <span>منتجاتك</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="icon-btn ui-only-action" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة"><span class="action-icon" data-icon="wallet"></span></button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content storage-content">
+        <section class="info-card storage-hero">
+          <div class="storage-hero-row">
+            <div>
+              <h2 class="section-title">منتجاتك</h2>
+              <p class="section-copy">إدارة ومتابعة المنتجات التي أضفتها إلى سوقي.</p>
+            </div>
+            <span class="storage-total" data-slot="storage-total">3 منتجات</span>
+          </div>
+
+          <div class="storage-tools">
+            <label class="storage-search">
+              <span class="small-icon" data-icon="search"></span>
+              <input type="search" placeholder="ابحث في منتجاتك..." data-slot="storage-search">
+            </label>
+
+            <div class="storage-filters" aria-label="فلاتر المخزون">
+              <button class="storage-filter active" type="button" data-storage-filter="all">الكل</button>
+              <button class="storage-filter" type="button" data-storage-filter="active">معروض</button>
+              <button class="storage-view-toggle" type="button" aria-label="تغيير طريقة العرض" data-action="toggle-storage-view">
+                <span data-icon="market"></span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="info-card storage-products" data-slot="storage-products">
+          <div class="storage-section-head">
+            <div>
+              <h2 class="section-title">منتجات Telegram</h2>
+              <p class="section-copy">منتجاتك المرتبطة بتيليجرام.</p>
+            </div>
+            <span class="storage-section-count">3</span>
+          </div>
+
+          <div class="storage-grid">
+            <article class="storage-product-card" data-product-state="active">
+              <div class="storage-product-preview">
+                <span class="storage-product-icon" data-icon="gift"></span>
+              </div>
+              <div class="storage-product-body">
+                <h3>هدية تيليجرام</h3>
+                <span class="storage-product-state">معروض</span>
+              </div>
+            </article>
+
+            <article class="storage-product-card" data-product-state="active">
+              <div class="storage-product-preview">
+                <span class="storage-product-icon" data-icon="user"></span>
+              </div>
+              <div class="storage-product-body">
+                <h3>حساب تيليجرام</h3>
+                <span class="storage-product-state">معروض</span>
+              </div>
+            </article>
+
+            <article class="storage-product-card" data-product-state="draft">
+              <div class="storage-product-preview">
+                <span class="storage-product-icon" data-icon="telegram"></span>
+              </div>
+              <div class="storage-product-body">
+                <h3>قناة تيليجرام</h3>
+                <span class="storage-product-state muted">مسودة</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="info-card storage-stats">
+          <h2 class="section-title">إحصائيات سريعة</h2>
+          <div class="storage-stats-grid">
+            <div class="storage-stat"><span>إجمالي المنتجات</span><b data-slot="storage-stat-total">3</b></div>
+            <div class="storage-stat"><span>المنتجات المعروضة</span><b data-slot="storage-stat-active">2</b></div>
+            <div class="storage-stat"><span>مباعة</span><b data-slot="storage-stat-sold">0</b></div>
+          </div>
+        </section>
+
+        <button class="page-primary storage-add-product" type="button" data-action="create-listing">
+          <span aria-hidden="true">＋</span>
+          <span>إضافة منتج جديد</span>
+        </button>
+      </main>
+    </div>
+  </section>
+
+
   <section id="accountPage" class="app-page subpage account-page" data-page="account" hidden>
     <div class="subpage-shell">
       <header class="subpage-header account-header">
@@ -554,7 +656,7 @@
           </button>
           <button class="account-menu-row ui-only-action" type="button" data-action="manage-listings">
             <span class="account-row-icon" data-icon="storage"></span>
-            <span class="account-row-label">منتجاتي</span>
+            <span class="account-row-label">المخزون</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
           <button class="account-menu-row ui-only-action" type="button" data-action="open-favorites">
@@ -633,7 +735,7 @@
         </button>
         <button class="more-menu-row" type="button" data-action="manage-listings">
           <span class="more-menu-icon" data-icon="storage"></span>
-          <span class="more-menu-label">منتجاتي</span>
+          <span class="more-menu-label">المخزون</span>
           <span class="more-menu-arrow" aria-hidden="true">←</span>
         </button>
         <button class="more-menu-row" type="button" data-action="open-favorites">
@@ -877,10 +979,10 @@
   </section>
 </div>
 
-<script src="./js/app.js?v=20261004-1544"></script>
-<script src="./js/router.js?v=20261004-1544"></script>
-<script src="./js/pages/subpages.js?v=20261004-1544"></script>
-<script src="./js/pages/orders.js?v=20261004-1544"></script>
-<script src="./js/pages/wallet.js?v=20261004-1544"></script>
+<script src="./js/app.js?v=20261004-1610"></script>
+<script src="./js/router.js?v=20261004-1610"></script>
+<script src="./js/pages/subpages.js?v=20261004-1610"></script>
+<script src="./js/pages/orders.js?v=20261004-1610"></script>
+<script src="./js/pages/wallet.js?v=20261004-1610"></script>
 </body>
 </html>
