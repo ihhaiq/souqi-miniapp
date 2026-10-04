@@ -92,11 +92,6 @@ document.querySelectorAll('[data-go-market]').forEach(function(btn){
   btn.addEventListener('click', function(){ showRoute('market', true); });
 });
 
-document.querySelectorAll('[data-go-wallet]').forEach(function(btn){
-  btn.addEventListener('click', function(){ showRoute('wallet', true); });
-});
-
-
 /* Robust global More menu control.
    Kept in router so the hamburger works even if another page script fails. */
 function setGlobalMoreMenuOpen(open){
@@ -114,6 +109,15 @@ function setGlobalMoreMenuOpen(open){
 }
 
 document.addEventListener('click', function(e){
+  const walletTrigger = e.target.closest('[data-go-wallet]');
+  if (walletTrigger && !walletTrigger.closest('#moreMenu .more-menu-row')) {
+    e.preventDefault();
+    e.stopPropagation();
+    setGlobalMoreMenuOpen(false);
+    showRoute('wallet', true);
+    return;
+  }
+
   const trigger = e.target.closest('[data-more-menu-trigger]');
   if (trigger) {
     e.preventDefault();
