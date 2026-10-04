@@ -505,3 +505,105 @@
 .wallet-balance-value{
   text-shadow:0 1px 2px rgba(0,0,0,.24);
 }
+
+
+/* Wallet balance card — vivid glass overlay reference */
+.wallet-balance-card{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.20)!important;
+  background:
+    radial-gradient(130% 150% at 4% 4%,
+      rgba(72,168,255,.34) 0%,
+      rgba(88,113,255,.26) 30%,
+      rgba(108,74,220,.12) 50%,
+      transparent 70%),
+    radial-gradient(120% 135% at 92% 12%,
+      rgba(255,77,220,.34) 0%,
+      rgba(216,69,220,.22) 34%,
+      rgba(163,64,196,.10) 54%,
+      transparent 72%),
+    radial-gradient(110% 120% at 85% 100%,
+      rgba(255,180,68,.22) 0%,
+      rgba(255,122,98,.15) 32%,
+      transparent 62%),
+    linear-gradient(135deg,
+      rgba(92,84,180,.42) 0%,
+      rgba(103,69,162,.34) 44%,
+      rgba(136,63,135,.30) 72%,
+      rgba(122,95,61,.22) 100%),
+    rgba(255,255,255,.06)!important;
+  box-shadow:
+    0 16px 38px rgba(0,0,0,.22),
+    0 0 24px rgba(123,92,235,.10),
+    inset 0 1px 0 rgba(255,255,255,.34),
+    inset 0 -1px 0 rgba(255,255,255,.06),
+    inset 0 0 32px rgba(255,255,255,.04)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(190%) brightness(1.08)!important;
+  backdrop-filter:blur(22px) saturate(190%) brightness(1.08)!important;
+}
+
+.wallet-balance-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:
+    radial-gradient(90% 62% at 22% -6%,
+      rgba(255,255,255,.34) 0%,
+      rgba(255,255,255,.15) 24%,
+      rgba(255,255,255,.04) 42%,
+      transparent 64%),
+    linear-gradient(118deg,
+      transparent 8%,
+      rgba(255,255,255,.035) 24%,
+      rgba(255,255,255,.18) 39%,
+      rgba(255,255,255,.055) 51%,
+      transparent 68%);
+  mix-blend-mode:screen;
+  opacity:.94;
+}
+
+.wallet-balance-card::after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  z-index:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,.10) 0%,
+      rgba(255,255,255,.025) 16%,
+      transparent 38%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.055),
+    inset 0 12px 26px rgba(255,255,255,.035);
+}
+
+.wallet-balance-card > *{
+  position:relative;
+  z-index:1;
+}
+
+.wallet-balance-card .wallet-safe-badge{
+  background:rgba(255,255,255,.12)!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 4px 12px rgba(0,0,0,.10)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(165%)!important;
+  backdrop-filter:blur(14px) saturate(165%)!important;
+}
+
+.wallet-balance-brand,
+.wallet-balance-label,
+.wallet-balance-value,
+.wallet-balance-card p,
+.wallet-balance-card span{
+  text-shadow:0 1px 2px rgba(0,0,0,.24);
+}
