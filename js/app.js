@@ -528,3 +528,52 @@ document.getElementById('sendToSelfBtn').addEventListener('click', function(){
 
 renderCurrent();
 showRoute(window.location.hash || '#market', false);
+
+
+/* More menu — Liquid Glass drawer */
+const moreMenu = document.getElementById('moreMenu');
+const moreMenuBackdrop = document.getElementById('moreMenuBackdrop');
+const moreMenuClose = document.getElementById('moreMenuClose');
+
+function setMoreMenuOpen(open){
+  if (!moreMenu || !moreMenuBackdrop) return;
+  const next = Boolean(open);
+  moreMenu.classList.toggle('open', next);
+  moreMenu.setAttribute('aria-hidden', next ? 'false' : 'true');
+  moreMenuBackdrop.hidden = !next;
+  document.body.classList.toggle('more-menu-open', next);
+  try {
+    const h = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback;
+    if (next && h && typeof h.selectionChanged === 'function') h.selectionChanged();
+  } catch (_) {}
+}
+
+document.querySelectorAll('[data-more-menu-trigger]').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    setMoreMenuOpen(true);
+  });
+});
+
+if (moreMenuClose) moreMenuClose.addEventListener('click', function(){ setMoreMenuOpen(false); });
+if (moreMenuBackdrop) moreMenuBackdrop.addEventListener('click', function(){ setMoreMenuOpen(false); });
+
+if (moreMenu) {
+  moreMenu.addEventListener('click', function(e){
+    const row = e.target.closest('.more-menu-row');
+    if (!row) return;
+    if (row.hasAttribute('data-go-wallet')) {
+      window.setTimeout(function(){ setMoreMenuOpen(false); }, 0);
+      return;
+    }
+    const action = row.dataset.action || '';
+    if (action === 'manage-listings' && window.SouqiRouter) {
+      window.SouqiRouter.showRoute('account', true);
+    }
+    window.setTimeout(function(){ setMoreMenuOpen(false); }, 0);
+  });
+}
+
+window.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') setMoreMenuOpen(false);
+});
