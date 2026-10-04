@@ -1,53 +1,53 @@
-# Souqi Mini App — Frontend Template
+# Souqi Mini App — Frontend Handoff
 
-هذا المستودع مخصص للواجهة الأمامية فقط، ليتم تسليم التصميم والتفاعلات الجاهزة إلى المطور ودمجها داخل التطبيق المصغر الموجود لديه.
+هذا الفرع مخصص لتطوير واجهة الـMini App وتسليمها جاهزة للدمج مع الـBackend الحالي. الواجهة هنا لا تفترض endpoints أو schemas ولا تضيف منطق مصادقة أو دفع من طرفها.
 
-لا يحتوي هذا الفرع على Backend contract، API client، services layer، endpoints مفترضة، قواعد بيانات، أو منطق دفع/مصادقة من عندنا.
+## الهيكل النهائي المعروف للمشروع
 
-## الهدف
-
-- توفير واجهة Mobile-first جاهزة بصريًا.
-- الحفاظ على RTL والتخطيط والتفاعلات المحلية.
-- تنظيم CSS وJavaScript حسب الصفحات.
-- إبقاء نقاط الربط محايدة حتى يربطها المطور بمنطقه الحالي.
-- عدم فرض هيكل Backend أو أسماء endpoints أو schemas.
-
-## الهيكل
+المطور أوضح أن التطبيق النهائي يعمل داخل مستودع واحد، بالتقسيم التالي:
 
 ```text
-souqi-miniapp/
-├── index.html
-├── Assets/
-├── css/
-│   ├── styles.css
-│   ├── tokens.css
-│   ├── core.css
-│   └── pages/
-│       ├── market.css
-│       ├── account.css
-│       ├── wallet.css
-│       └── subpages.css
-└── js/
-    ├── app.js
-    ├── router.js
-    └── pages/
-        ├── subpages.js
-        └── wallet.js
+app/web          HTML, CSS, JavaScript
+app/api          FastAPI API
+app/bot          Telegram bot / aiogram 3
+app/services     Business logic
+app/database     Database models
+migrations       Alembic migrations
 ```
 
-## مسؤولية الملفات
+الفرونت Static، ويتم تقديمه من FastAPI على نفس السيرفر والدومين خلف Nginx وHTTPS. هذا الفرع يمثل مادة الواجهة التي يمكن دمجها لاحقًا داخل `app/web`.
 
-- `index.html`: هيكل الشاشات وعناصر الواجهة.
-- `css/tokens.css`: القيم المشتركة للتصميم مثل الألوان والمسافات والـradius والطباعة.
-- `css/core.css`: القواعد والمكونات المشتركة.
-- `css/pages/*`: تنسيق كل صفحة.
-- `js/app.js`: تفاعلات السوق، العرض التجريبي، Telegram UI data عند توفرها، والـrendering المحلي.
-- `js/router.js`: التنقل المحلي بين صفحات الواجهة عبر hash.
-- `js/pages/*`: سلوك خاص بصفحة معينة.
+## مسؤولية هذا الفرع
 
-## نقاط الربط
+- التصميم والـRTL والـMobile-first.
+- تفاعلات الواجهة المحلية والتنقل.
+- حالات العرض التجريبية.
+- تحديد نقاط الربط بوضوح للمطور.
+- عدم فرض طريقة تنفيذ Backend.
 
-الواجهة لا تنفذ Backend calls. بعض الأفعال تطلق أحداثًا محايدة يستطيع التطبيق المستلم الاستماع لها وربطها بمنطقه الموجود:
+لا نضيف هنا `api.js` أو `services/` أو `fetch()` أو JWT أو endpoints جديدة إلا بعد اتفاق صريح مع مطور الـBackend.
+
+## نقاط الربط الدلالية
+
+العناصر التي تحتاج ربطًا بالخادم تحمل `data-action`، والأماكن التي تستقبل بيانات حقيقية تحمل `data-slot`.
+
+أمثلة:
+
+```html
+<button data-action="create-listing">إضافة منتج جديد</button>
+<button data-action="wallet-stars-topup" data-amount="5" data-stars="450">...</button>
+<button data-action="start-mediation">...</button>
+
+<span data-slot="wallet-balance">0.00</span>
+<section data-slot="market-listings"></section>
+<section data-slot="mediation-history"></section>
+```
+
+هذه الأسماء تصف وظيفة العنصر فقط، وليست أسماء endpoints ولا API contract. مطور الـBackend يربطها بالمنطق والمسارات الموجودة لديه.
+
+## الأحداث الموجودة حاليًا
+
+بعض التفاعلات تطلق أحداث Frontend محايدة:
 
 ```text
 souqi:purchase-request
@@ -56,35 +56,55 @@ souqi:wallet-refresh
 souqi:social-platform-change
 ```
 
-مثال:
+وجود `data-action` لا يلغي هذه الأحداث ولا يغير السلوك الحالي.
 
-```js
-window.addEventListener("souqi:purchase-request", function (event) {
-  // اربط هنا تدفق الشراء الموجود أصلًا في تطبيقك.
-  console.log(event.detail);
-});
+## معلومات Backend المتفق عليها
+
+- Backend: Python 3.12 + FastAPI.
+- Bot: aiogram 3.
+- Database access: SQLAlchemy Async + Alembic.
+- قاعدة الإنتاج الحالية SQLite، مع قابلية انتقال لاحقة إلى PostgreSQL.
+- التحقق من هوية مستخدم Telegram يتم حاليًا عبر `Telegram.WebApp.initData` في الهيدر `X-Telegram-Init-Data` للطلبات التي تحتاج هوية.
+- البحث والفلاتر والترتيب والـpagination في السوق مسؤولية السيرفر.
+- المحفظة والدفع والتأكيد تبقى مسؤولية الـBackend والبوت؛ نجاح واجهة الدفع في الفرونت وحده لا يضيف الرصيد.
+- الوساطة تعتمد على الحالة وبيانات إضافية للموافقات والإثباتات، لذلك الفرونت لا يستنتج الأزرار المسموحة من `status` وحدها.
+
+## حالات معروفة للعرض
+
+المنتجات:
+
+```text
+draft
+pending_review
+under_review
+needs_changes
+rejected
+active
+sold
+suspended
 ```
 
-هذه الأحداث ليست API contract ولا تفرض طريقة تنفيذ محددة.
+الوساطة / الصفقات:
 
-## Telegram
+```text
+pending_admin
+waiting_mediator
+mediator_assigned
+in_progress
+money_received_by_mediator
+transferring_account
+completed
+cancelled
+rejected
+disputed
+```
 
-يتم تحميل Telegram WebApp SDK فقط لخدمة العرض داخل الواجهة، مثل:
-
-- تهيئة Mini App عند المعاينة.
-- عرض صورة واسم/ID المستخدم عند توفرها.
-- استخدام تنبيه Telegram في بعض تفاعلات المعاينة.
-
-لا تعتمد الواجهة على هذه البيانات كمصادقة، ولا تحتوي على منطق خادم.
-
-## بيانات المعاينة
-
-بيانات المنتجات والأسعار والقنوات الموجودة داخل JavaScript هي بيانات Frontend تجريبية لعرض التصميم فقط. المطور يستبدل مصدرها بالطريقة المناسبة لتطبيقه الحالي.
+هذه القيم موثقة للعرض والترجمة البصرية فقط. تحديد الإجراءات المسموحة يبقى من جهة الـBackend.
 
 ## قواعد التطوير
 
-- لا تضف `fetch()` أو endpoints أو schemas افتراضية بدون اتفاق مع المطور.
+- لا تخترع endpoint أو schema أو payload من الفرونت.
 - لا تضف أسرارًا أو Bot Token أو مفاتيح Backend.
-- أي صفحة جديدة توضع CSS الخاص بها داخل `css/pages/`.
-- أي تفاعل خاص بصفحة يوضع داخل `js/pages/` عندما يكون منفصلًا عن منطق السوق المشترك.
-- حافظ على التطبيق Static وMobile-first ما لم يطلب المطور غير ذلك.
+- لا تجعل نجاح UI دليلًا على نجاح عملية مالية.
+- حافظ على `data-action` و`data-slot` عند تعديل العناصر حتى تبقى نقاط الدمج واضحة.
+- أي قرار يحتاج معرفة بعقد الـBackend يُتفق عليه مع المطور قبل تنفيذه.
