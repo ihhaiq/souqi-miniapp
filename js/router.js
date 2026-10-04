@@ -4,6 +4,7 @@ const ordersPage = document.getElementById('ordersPage');
 const addProductPage = document.getElementById('addProductPage');
 const escrowPage = document.getElementById('escrowPage');
 const accountPage = document.getElementById('accountPage');
+const favoritesPage = document.getElementById('favoritesPage');
 const storagePage = document.getElementById('storagePage');
 const walletPage = document.getElementById('walletPage');
 const accountAvatarBtn = document.getElementById('accountAvatarBtn');
@@ -19,7 +20,7 @@ function hapticSelection(){
 
 function normalizeRoute(value){
   const route = String(value || '').replace(/^#/, '');
-  if (route === 'orders' || route === 'add-product' || route === 'escrow' || route === 'account' || route === 'storage' || route === 'wallet' || route === 'market') return route;
+  if (route === 'orders' || route === 'add-product' || route === 'escrow' || route === 'account' || route === 'storage' || route === 'favorites' || route === 'wallet' || route === 'market') return route;
   return 'market';
 }
 
@@ -33,11 +34,13 @@ function showRoute(route, updateHash){
   if (escrowPage) escrowPage.hidden = route !== 'escrow';
   if (accountPage) accountPage.hidden = route !== 'account';
   if (storagePage) storagePage.hidden = route !== 'storage';
+  if (favoritesPage) favoritesPage.hidden = route !== 'favorites';
   if (walletPage) walletPage.hidden = route !== 'wallet';
   document.body.classList.toggle('subpage-open', !isMarket);
   document.body.classList.toggle('wallet-route', route === 'wallet');
   document.body.classList.toggle('orders-route', route === 'orders');
   document.body.classList.toggle('storage-route', route === 'storage');
+  document.body.classList.toggle('favorites-route', route === 'favorites');
 
   if (bottomNav) {
     const previousRoute = currentBottomRoute;
@@ -131,6 +134,8 @@ document.addEventListener('click', function(e){
       showRoute('wallet', true);
     } else if (row.dataset.action === 'manage-listings') {
       showRoute('storage', true);
+    } else if (row.dataset.action === 'open-favorites') {
+      showRoute('favorites', true);
     }
     setGlobalMoreMenuOpen(false);
   }
@@ -140,6 +145,11 @@ document.addEventListener('keydown', function(e){
   if (e.key === 'Escape') setGlobalMoreMenuOpen(false);
 });
 
+
+
+document.querySelectorAll('[data-action="open-favorites"]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('favorites', true); });
+});
 
 document.querySelectorAll('[data-action="manage-listings"]').forEach(function(btn){
   btn.addEventListener('click', function(){ showRoute('storage', true); });
