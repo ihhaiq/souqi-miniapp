@@ -90,6 +90,53 @@ document.querySelectorAll('[data-go-wallet]').forEach(function(btn){
   btn.addEventListener('click', function(){ showRoute('wallet', true); });
 });
 
+
+/* Robust global More menu control.
+   Kept in router so the hamburger works even if another page script fails. */
+function setGlobalMoreMenuOpen(open){
+  const menu = document.getElementById('moreMenu');
+  const backdrop = document.getElementById('moreMenuBackdrop');
+  if (!menu || !backdrop) return;
+
+  const next = Boolean(open);
+  menu.classList.toggle('open', next);
+  menu.setAttribute('aria-hidden', next ? 'false' : 'true');
+  backdrop.hidden = !next;
+  document.body.classList.toggle('more-menu-open', next);
+
+  if (next) hapticSelection();
+}
+
+document.addEventListener('click', function(e){
+  const trigger = e.target.closest('[data-more-menu-trigger]');
+  if (trigger) {
+    e.preventDefault();
+    e.stopPropagation();
+    setGlobalMoreMenuOpen(true);
+    return;
+  }
+
+  if (e.target.closest('#moreMenuClose') || e.target.id === 'moreMenuBackdrop') {
+    e.preventDefault();
+    setGlobalMoreMenuOpen(false);
+    return;
+  }
+
+  const row = e.target.closest('#moreMenu .more-menu-row');
+  if (row) {
+    if (row.hasAttribute('data-go-wallet')) {
+      showRoute('wallet', true);
+    } else if (row.dataset.action === 'manage-listings') {
+      showRoute('account', true);
+    }
+    setGlobalMoreMenuOpen(false);
+  }
+}, true);
+
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') setGlobalMoreMenuOpen(false);
+});
+
 window.addEventListener('hashchange', function(){
   showRoute(window.location.hash, false);
 });
