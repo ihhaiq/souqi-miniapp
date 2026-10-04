@@ -36,7 +36,7 @@ svg{display:block;width:100%;height:100%}
 }
 .shell{padding:10px 10px 18px}
 
-/* bottom navigation — Liquid Glass control-orb experiment */
+/* bottom navigation — milky liquid glass */
 :root{
   --nav-bar-height:72px;
   --nav-safe-bottom:max(env(safe-area-inset-bottom,0px),var(--tg-safe-area-inset-bottom,0px),var(--tg-content-safe-area-inset-bottom,0px));
@@ -46,9 +46,11 @@ svg{display:block;width:100%;height:100%}
   --nav-inactive-color:rgba(255,255,255,.76);
   --nav-active-color:#fff;
 }
+
 .app{
-  padding-bottom:calc(var(--nav-bar-height) + 36px + var(--nav-safe-bottom))
+  padding-bottom:calc(var(--nav-bar-height) + 36px + var(--nav-safe-bottom));
 }
+
 .bottom{
   position:fixed;
   left:50%;
@@ -63,15 +65,16 @@ svg{display:block;width:100%;height:100%}
   overflow:visible;
   isolation:isolate;
   border-radius:999px;
-  background:rgba(255,255,255,.018);
-  border:1px solid rgba(255,255,255,.035);
+  background:rgba(255,255,255,.014);
+  border:1px solid rgba(255,255,255,.03);
   box-shadow:
-    0 12px 34px rgba(0,0,0,.14),
-    inset 0 1px 0 rgba(255,255,255,.045);
-  -webkit-backdrop-filter:blur(5px) saturate(115%);
-  backdrop-filter:blur(5px) saturate(115%);
-  z-index:100
+    0 10px 24px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.04);
+  -webkit-backdrop-filter:blur(6px) saturate(110%);
+  backdrop-filter:blur(6px) saturate(110%);
+  z-index:100;
 }
+
 .bottom::before{
   content:"";
   position:absolute;
@@ -82,12 +85,13 @@ svg{display:block;width:100%;height:100%}
   background:
     linear-gradient(115deg,
       transparent 0%,
-      rgba(255,255,255,.025) 24%,
-      rgba(255,255,255,.075) 43%,
-      rgba(255,255,255,.018) 58%,
+      rgba(255,255,255,.02) 24%,
+      rgba(255,255,255,.055) 43%,
+      rgba(255,255,255,.016) 58%,
       transparent 78%);
-  opacity:.72
+  opacity:.72;
 }
+
 .bottom::after{
   content:"";
   position:absolute;
@@ -98,8 +102,9 @@ svg{display:block;width:100%;height:100%}
   z-index:4;
   pointer-events:none;
   border-radius:999px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.24),transparent)
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
 }
+
 .liquid-nav-indicator{
   position:absolute;
   top:0;
@@ -111,15 +116,20 @@ svg{display:block;width:100%;height:100%}
   pointer-events:none;
   transform-origin:center;
   background:
-    radial-gradient(115% 145% at 42% -8%,rgba(255,255,255,.32),rgba(255,255,255,.10) 42%,rgba(255,255,255,.055) 68%,rgba(255,255,255,.035)) padding-box,
-    linear-gradient(132deg,rgba(255,255,255,.66),rgba(255,255,255,.10) 42%,rgba(255,255,255,.04) 63%,rgba(255,214,0,.32)) border-box;
+    radial-gradient(120% 150% at 28% 18%, rgba(255,255,255,.34), rgba(255,255,255,.16) 24%, rgba(255,255,255,.08) 52%, rgba(255,255,255,.04) 72%) padding-box,
+    linear-gradient(135deg,
+      rgba(255,255,255,.56) 0%,
+      rgba(255,255,255,.12) 30%,
+      rgba(110,215,255,.14) 56%,
+      rgba(255,120,200,.10) 74%,
+      rgba(255,214,0,.18) 100%) border-box;
   border:1px solid transparent;
   box-shadow:
-    0 7px 20px rgba(0,0,0,.22),
-    0 0 20px rgba(255,214,0,.16),
-    inset 0 1px 0 rgba(255,255,255,.58),
-    inset 0 -1px 0 rgba(255,255,255,.09),
-    inset 0 0 18px rgba(255,255,255,.06);
+    0 5px 16px rgba(0,0,0,.14),
+    0 0 16px rgba(255,214,0,.12),
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 -1px 0 rgba(255,255,255,.07),
+    inset 0 0 18px rgba(255,255,255,.05);
   -webkit-backdrop-filter:blur(var(--nav-glass-blur)) saturate(180%) brightness(1.06);
   backdrop-filter:blur(var(--nav-glass-blur)) saturate(180%) brightness(1.06);
   transition:
@@ -128,8 +138,20 @@ svg{display:block;width:100%;height:100%}
     height .45s cubic-bezier(.34,1.56,.64,1),
     opacity .18s ease,
     filter .2s ease;
-  will-change:transform,width
+  will-change:transform,width;
 }
+
+.liquid-nav-indicator::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,.24), transparent 54%);
+  opacity:.95;
+}
+
 .liquid-nav-indicator::after{
   content:"";
   position:absolute;
@@ -139,17 +161,22 @@ svg{display:block;width:100%;height:100%}
   background:
     linear-gradient(115deg,
       transparent 18%,
-      rgba(255,255,255,.03) 32%,
-      rgba(255,255,255,.18) 45%,
-      rgba(255,255,255,.035) 56%,
+      rgba(255,255,255,.025) 32%,
+      rgba(255,255,255,.16) 45%,
+      rgba(255,255,255,.03) 56%,
       transparent 70%);
   mix-blend-mode:screen;
-  opacity:.82
+  opacity:.82;
 }
+
 .liquid-nav-indicator.is-stretching{
-  filter:drop-shadow(0 0 10px rgba(255,214,0,.20))
+  filter:drop-shadow(0 0 8px rgba(255,214,0,.16));
 }
-.bottom.nav-no-motion .liquid-nav-indicator{transition:none!important}
+
+.bottom.nav-no-motion .liquid-nav-indicator{
+  transition:none!important;
+}
+
 .nav{
   position:relative;
   z-index:2;
@@ -174,8 +201,9 @@ svg{display:block;width:100%;height:100%}
     color .18s ease,
     transform .24s cubic-bezier(.34,1.56,.64,1),
     filter .18s ease;
-  will-change:transform
+  will-change:transform;
 }
+
 .nav::before{
   content:"";
   position:absolute;
@@ -187,43 +215,59 @@ svg{display:block;width:100%;height:100%}
   transform:translate(-50%,-50%);
   border-radius:50%;
   background:
-    radial-gradient(110% 130% at 38% 8%,rgba(255,255,255,.16),rgba(255,255,255,.055) 54%,rgba(255,255,255,.028)) padding-box,
-    linear-gradient(140deg,rgba(255,255,255,.38),rgba(255,255,255,.055) 55%,rgba(255,255,255,.16)) border-box;
+    radial-gradient(120% 150% at 28% 18%, rgba(255,255,255,.26), rgba(255,255,255,.10) 30%, rgba(255,255,255,.05) 58%, rgba(255,255,255,.025) 76%) padding-box,
+    linear-gradient(140deg,
+      rgba(255,255,255,.42) 0%,
+      rgba(255,255,255,.09) 50%,
+      rgba(120,220,255,.11) 78%,
+      rgba(255,255,255,.18) 100%) border-box;
   border:1px solid transparent;
   box-shadow:
-    0 5px 14px rgba(0,0,0,.18),
-    inset 0 1px 0 rgba(255,255,255,.34),
-    inset 0 -1px 0 rgba(255,255,255,.06),
-    inset 0 0 12px rgba(255,255,255,.035);
-  -webkit-backdrop-filter:blur(18px) saturate(175%) brightness(1.04);
-  backdrop-filter:blur(18px) saturate(175%) brightness(1.04);
-  opacity:.78;
+    0 4px 12px rgba(0,0,0,.12),
+    inset 0 1px 0 rgba(255,255,255,.36),
+    inset 0 -1px 0 rgba(255,255,255,.05),
+    inset 0 0 12px rgba(255,255,255,.03);
+  -webkit-backdrop-filter:blur(20px) saturate(180%) brightness(1.05);
+  backdrop-filter:blur(20px) saturate(180%) brightness(1.05);
+  opacity:.88;
   transition:
     opacity .18s ease,
-    transform .24s cubic-bezier(.34,1.56,.64,1)
+    transform .24s cubic-bezier(.34,1.56,.64,1),
+    filter .18s ease;
 }
+
 .nav.active::before{
   opacity:0;
-  transform:translate(-50%,-50%) scale(.82)
+  transform:translate(-50%,-50%) scale(.82);
 }
-.nav:hover{color:rgba(255,255,255,.88)}
+
+.nav:hover{
+  color:rgba(255,255,255,.9);
+}
+
 .nav:active,
 .nav.is-pressed{
-  transform:scale(1.075);
-  filter:drop-shadow(0 0 10px rgba(255,214,0,.16))
+  transform:scale(1.07);
+  filter:drop-shadow(0 0 8px rgba(255,214,0,.14));
 }
+
 .nav.is-pressed::before{
-  transform:translate(-50%,-50%) scale(1.06)
+  transform:translate(-50%,-50%) scale(1.04);
 }
+
 .nav .nav-icon{
   width:23px;
   height:23px;
   display:flex;
   align-items:center;
   justify-content:center;
-  filter:drop-shadow(0 1px 2px rgba(0,0,0,.34))
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.34));
 }
-.nav .nav-icon svg{stroke-width:1.6}
+
+.nav .nav-icon svg{
+  stroke-width:1.6;
+}
+
 .nav-ref-img{
   width:23px;
   height:23px;
@@ -231,29 +275,36 @@ svg{display:block;width:100%;height:100%}
   object-fit:contain;
   pointer-events:none;
   user-select:none;
-  opacity:.90;
-  filter:drop-shadow(0 1px 2px rgba(0,0,0,.34))
+  opacity:.92;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.34));
 }
+
 .nav.active{
   color:#fff;
-  text-shadow:0 1px 2px rgba(0,0,0,.52)
+  text-shadow:0 1px 2px rgba(0,0,0,.52);
 }
-.nav.active .nav-ref-img{opacity:1}
+
+.nav.active .nav-ref-img{
+  opacity:1;
+}
+
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-  .bottom{background:rgba(18,20,25,.52)}
-  .nav::before{background:rgba(55,59,66,.72)}
-  .liquid-nav-indicator{background:rgba(78,82,88,.82)}
+  .bottom{background:rgba(18,20,25,.44)}
+  .nav::before{background:rgba(70,78,88,.30)}
+  .liquid-nav-indicator{background:rgba(120,128,138,.34)}
 }
+
 @media(max-width:390px){
   :root{--nav-orb-size:44px}
   .bottom{padding-inline:4px}
   .nav{font-size:10px}
 }
+
 @media(prefers-reduced-motion:reduce){
   .liquid-nav-indicator,
   .nav,
   .nav::before{
-    transition:none!important
+    transition:none!important;
   }
 }
 
