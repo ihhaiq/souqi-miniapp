@@ -76,10 +76,9 @@ if (bottomNav) {
     if (!btn) return;
     const route = btn.dataset.route;
 
-    if (route === 'orders' || route === 'add-product' || route === 'escrow' || route === 'market') {
+    if (route === 'orders' || route === 'add-product' || route === 'escrow' || route === 'account' || route === 'market') {
       showRoute(route, true);
     }
-    // "المخزن" يبقى قابلًا للضغط بصريًا فقط في هذه المرحلة.
   });
 }
 
