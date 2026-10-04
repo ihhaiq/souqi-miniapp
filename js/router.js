@@ -4,6 +4,7 @@ const ordersPage = document.getElementById('ordersPage');
 const addProductPage = document.getElementById('addProductPage');
 const escrowPage = document.getElementById('escrowPage');
 const accountPage = document.getElementById('accountPage');
+const storagePage = document.getElementById('storagePage');
 const walletPage = document.getElementById('walletPage');
 const accountAvatarBtn = document.getElementById('accountAvatarBtn');
 const bottomNav = document.getElementById('bottomNav');
@@ -18,7 +19,7 @@ function hapticSelection(){
 
 function normalizeRoute(value){
   const route = String(value || '').replace(/^#/, '');
-  if (route === 'orders' || route === 'add-product' || route === 'escrow' || route === 'account' || route === 'wallet' || route === 'market') return route;
+  if (route === 'orders' || route === 'add-product' || route === 'escrow' || route === 'account' || route === 'storage' || route === 'wallet' || route === 'market') return route;
   return 'market';
 }
 
@@ -31,10 +32,12 @@ function showRoute(route, updateHash){
   if (addProductPage) addProductPage.hidden = route !== 'add-product';
   if (escrowPage) escrowPage.hidden = route !== 'escrow';
   if (accountPage) accountPage.hidden = route !== 'account';
+  if (storagePage) storagePage.hidden = route !== 'storage';
   if (walletPage) walletPage.hidden = route !== 'wallet';
   document.body.classList.toggle('subpage-open', !isMarket);
   document.body.classList.toggle('wallet-route', route === 'wallet');
   document.body.classList.toggle('orders-route', route === 'orders');
+  document.body.classList.toggle('storage-route', route === 'storage');
 
   if (bottomNav) {
     const previousRoute = currentBottomRoute;
@@ -127,7 +130,7 @@ document.addEventListener('click', function(e){
     if (row.hasAttribute('data-go-wallet')) {
       showRoute('wallet', true);
     } else if (row.dataset.action === 'manage-listings') {
-      showRoute('account', true);
+      showRoute('storage', true);
     }
     setGlobalMoreMenuOpen(false);
   }
@@ -135,6 +138,15 @@ document.addEventListener('click', function(e){
 
 document.addEventListener('keydown', function(e){
   if (e.key === 'Escape') setGlobalMoreMenuOpen(false);
+});
+
+
+document.querySelectorAll('[data-action="manage-listings"]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('storage', true); });
+});
+
+document.querySelectorAll('[data-go-account]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('account', true); });
 });
 
 window.addEventListener('hashchange', function(){
