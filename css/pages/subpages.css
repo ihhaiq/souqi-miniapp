@@ -1015,3 +1015,94 @@ body.subpage-open .market{display:none}
   font-weight:600!important;
   text-shadow:0 1px 2px rgba(0,0,0,.35)!important;
 }
+
+
+/* Wallet header — same Liquid Glass material as bottom navigation */
+#walletPage .subpage-header{
+  position:sticky;
+  top:0;
+  z-index:30;
+  overflow:hidden;
+  isolation:isolate;
+  width:calc(100% - 20px);
+  min-height:64px;
+  margin:8px 10px 0;
+  padding:8px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.014)!important;
+  border:1px solid rgba(255,255,255,.03)!important;
+  border-bottom-color:rgba(255,255,255,.03)!important;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.04)!important;
+  -webkit-backdrop-filter:blur(6px) saturate(110%)!important;
+  backdrop-filter:blur(6px) saturate(110%)!important;
+}
+
+#walletPage .subpage-header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg,
+      transparent 0%,
+      rgba(255,255,255,.02) 24%,
+      rgba(255,255,255,.055) 43%,
+      rgba(255,255,255,.016) 58%,
+      transparent 78%);
+  opacity:.72;
+}
+
+#walletPage .subpage-header::after{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:0;
+  bottom:auto;
+  height:1px;
+  z-index:4;
+  pointer-events:none;
+  border-radius:999px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)!important;
+  filter:none!important;
+}
+
+#walletPage .subpage-back,
+#walletPage .subpage-actions .icon-btn{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:rgba(255,255,255,.82)!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+
+#walletPage .subpage-back:active,
+#walletPage .subpage-actions .icon-btn:active{
+  background:transparent!important;
+  transform:scale(.96);
+}
+
+#walletPage .subpage-heading h1{
+  color:#fff!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.42)!important;
+}
+
+#walletPage .subpage-heading span{
+  display:block!important;
+  width:auto!important;
+  min-height:0!important;
+  margin-top:2px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:rgba(255,255,255,.60)!important;
+  font-weight:600!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.35)!important;
+}
