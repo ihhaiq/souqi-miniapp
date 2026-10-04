@@ -530,18 +530,18 @@
       rgba(255,122,98,.15) 32%,
       transparent 62%),
     linear-gradient(135deg,
-      rgba(92,84,180,.42) 0%,
-      rgba(103,69,162,.34) 44%,
-      rgba(136,63,135,.30) 72%,
-      rgba(122,95,61,.22) 100%),
-    rgba(255,255,255,.06)!important;
+      rgba(92,84,180,.30) 0%,
+      rgba(103,69,162,.24) 44%,
+      rgba(136,63,135,.22) 72%,
+      rgba(122,95,61,.16) 100%),
+    rgba(255,255,255,.028)!important;
   box-shadow:
-    0 16px 38px rgba(0,0,0,.22),
-    0 0 24px rgba(123,92,235,.10),
-    inset 0 1px 0 rgba(255,255,255,.34),
-    inset 0 -1px 0 rgba(255,255,255,.06),
-    inset 0 0 32px rgba(255,255,255,.04)!important;
-  -webkit-backdrop-filter:blur(22px) saturate(190%) brightness(1.08)!important;
+    0 12px 28px rgba(0,0,0,.16),
+    0 0 18px rgba(123,92,235,.07),
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(255,255,255,.05),
+    inset 0 0 24px rgba(255,255,255,.03)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(175%) brightness(1.04)!important;
   backdrop-filter:blur(22px) saturate(190%) brightness(1.08)!important;
 }
 
@@ -554,14 +554,14 @@
   border-radius:inherit;
   background:
     radial-gradient(90% 62% at 22% -6%,
-      rgba(255,255,255,.34) 0%,
-      rgba(255,255,255,.15) 24%,
+      rgba(255,255,255,.24) 0%,
+      rgba(255,255,255,.10) 24%,
       rgba(255,255,255,.04) 42%,
       transparent 64%),
     linear-gradient(118deg,
       transparent 8%,
       rgba(255,255,255,.035) 24%,
-      rgba(255,255,255,.18) 39%,
+      rgba(255,255,255,.12) 39%,
       rgba(255,255,255,.055) 51%,
       transparent 68%);
   mix-blend-mode:screen;
