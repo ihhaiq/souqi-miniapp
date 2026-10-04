@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أضف منتج - الشاشات التفاعلية (Sell & Bottom Sheets)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="project-header">
+    <div class="meta-tag">
+      <span class="meta-dot"></span>
+      TELEGRAM MINI APP · 390PX VIEWPORT · RTL ARABIC
+    </div>
+    <h1 class="project-title">شاشة بيع (أضف منتج) والنوافذ المنبثقة التابعة لها</h1>
+    <p class="project-subtitle">تنفيذ شاشة بيع الرسمية وفق نظام التصميم المعتمد ونظام الطبقات الرمادية المحايدة، مع نافذة اختيار المنصة ونموذج تفاصيل الإعلان الكامل.</p>
+  </header>
+
+  <main class="boards-container">
+
+    <!-- FRAME 1: Main Sell Screen -->
+    <div class="board-column">
+      <div class="board-label">الإطار 1: شاشة أضف منتج الأساسية (Restyled)</div>
+      <div class="viewport">
+        
+        <!-- Top Bar -->
+        <header class="top-bar">
+          <div class="top-bar-right">
+            <button class="icon-btn" aria-label="رجوع">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <div class="brand-group">
+              <span class="brand-title">أضف منتج</span>
+              <span class="brand-sub">سوقي</span>
+            </div>
+          </div>
+          <div class="top-bar-left">
+            <button class="icon-btn" aria-label="المحفظة">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="3"/>
+                <path d="M16 12h2"/>
+              </svg>
+            </button>
+            <button class="icon-btn" aria-label="القائمة">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="screen-content">
+
+          <!-- Intro Card -->
+          <section class="intro-card">
+            <div class="plus-badge">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </div>
+            <h2 class="intro-heading">اعرض منتجك في سوقي</h2>
+            <p class="intro-text">حسابات، قنوات وخدمات رقمية. اختر المنصة وأضف التفاصيل والصور في نموذج واحد.</p>
+            
+            <button class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              إضافة منتج جديد
+            </button>
+
+            <button class="btn-ghost-manage">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+              إدارة منتجاتي
+            </button>
+          </section>
+
+          <!-- How to start panel -->
+          <section class="panel-box">
+            <h3 class="panel-heading">كيف تبدأ؟</h3>
+            <ol class="numbered-steps">
+              <li class="step-item">
+                <span class="step-number">1</span>
+                <span>اختر المنصة ونوع المنتج.</span>
+              </li>
+              <li class="step-item">
+                <span class="step-number">2</span>
+                <span>أضف الوصف والسعر والصور وإثباتات الملكية الخاصة.</span>
+              </li>
+              <li class="step-item">
+                <span class="step-number">3</span>
+                <span>ترسله الإدارة للمراجعة قبل عرضه في السوق.</span>
+              </li>
+              <li class="step-item">
+                <span class="step-number">4</span>
+                <span>تابع طلبات المشترين من «طلباتي».</span>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Security Notice text -->
+          <div class="security-notice">
+            إثباتات الملكية تظهر للإدارة فقط، ولا تُعرض للمشترين.
+          </div>
+
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+          <a href="#" class="nav-item">
+            <span class="nav-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+                <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+            </span>
+            <span>السوق</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </span>
+            <span>طلباتي</span>
+          </a>
+          <a href="#" class="nav-item active">
+            <span class="nav-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </span>
+            <span>بيع</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </span>
+            <span>الوساطة</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </span>
+            <span>حسابي</span>
+          </a>
+        </nav>
+
+      </div>
+    </div>
+
+
+    <!-- FRAME 2: Platform Picker Sheet (Step 1) -->
+    <div class="board-column">
+      <div class="board-label">الإطار 2: نافذة اختيار المنصة (Step 1 Bottom Sheet)</div>
+      <div class="viewport">
+        
+        <!-- Underlying Dimmed Content -->
+        <header class="top-bar">
+          <div class="top-bar-right">
+            <div class="icon-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+            <div class="brand-group">
+              <span class="brand-title">أضف منتج</span>
+              <span class="brand-sub">سوقي</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="screen-content" style="filter: blur(1px); opacity: 0.4;">
+          <div class="intro-card">
+            <div class="plus-badge">+</div>
+            <h2 class="intro-heading">اعرض منتجك في سوقي</h2>
+          </div>
+        </div>
+
+        <!-- Dimmed Backdrop & Bottom Sheet -->
+        <div class="dimmed-backdrop">
+          <div class="bottom-sheet" style="height: auto;">
+            <div class="sheet-handle-bar"></div>
+            
+            <div class="sheet-header">
+              <h3 class="sheet-title">إضافة إعلان · اختر المنصة</h3>
+              <button class="icon-btn" aria-label="إغلاق">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="sheet-body">
+              <form class="form-group" onsubmit="event.preventDefault();">
+                <label class="form-label" for="platform-picker">المنصة</label>
+                <select id="platform-picker" class="form-select">
+                  <option value="Instagram" selected>📸 · Instagram</option>
+                  <option value="Telegram">✈️ · Telegram</option>
+                  <option value="TikTok">🎵 · TikTok</option>
+                  <option value="Facebook">👥 · Facebook</option>
+                  <option value="YouTube">▶️ · YouTube</option>
+                  <option value="Snapchat">👻 · Snapchat</option>
+                  <option value="Twitter">🐦 · X / Twitter</option>
+                  <option value="other">🌐 · أخرى</option>
+                </select>
+
+                <!-- Quick selectable list items for enhanced feel -->
+                <div class="platform-row-select" style="margin-top: 10px;">
+                  <div class="platform-option-item selected">
+                    <span><span class="badge-icon">📸</span> Instagram</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <div class="platform-option-item">
+                    <span><span class="badge-icon">✈️</span> Telegram</span>
+                  </div>
+                  <div class="platform-option-item">
+                    <span><span class="badge-icon">🎵</span> TikTok</span>
+                  </div>
+                  <div class="platform-option-item">
+                    <span><span class="badge-icon">👥</span> Facebook</span>
+                  </div>
+                  <div class="platform-option-item">
+                    <span><span class="badge-icon">▶️</span> YouTube</span>
+                  </div>
+                </div>
+
+                <div class="sheet-footer-actions">
+                  <button type="button" class="btn-ghost-cancel">إلغاء</button>
+                  <button type="button" class="btn-sheet-submit">التالي</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- FRAME 3: Add-listing Form Sheet (Step 2 - Instagram Example) -->
+    <div class="board-column">
+      <div class="board-label">الإطار 3: نموذج إعلان Instagram (Step 2 Scrollable Sheet)</div>
+      <div class="viewport">
+
+        <!-- Top Bar behind -->
+        <header class="top-bar">
+          <div class="top-bar-right">
+            <div class="icon-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+            <div class="brand-group">
+              <span class="brand-title">أضف منتج</span>
+              <span class="brand-sub">سوقي</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Dimmed Backdrop & Tall Scrollable Sheet -->
+        <div class="dimmed-backdrop">
+          <div class="bottom-sheet" style="height: 94%;">
+            <div class="sheet-handle-bar"></div>
+
+            <div class="sheet-header">
+              <h3 class="sheet-title">إعلان Instagram</h3>
+              <button class="icon-btn" aria-label="إغلاق">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="sheet-body">
+              <div class="form-intro-banner">
+                أدخل بيانات Instagram. الحقول بعلامة * م
+              </div>
+
+              <form class="form-group" style="gap: 12px;" onsubmit="event.preventDefault();">
+                
+                <!-- Section 1 -->
+                <div class="form-section-divider">بيانات الإعلان</div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-title">العنوان</label>
+                  <input type="text" id="f-title" class="form-input" placeholder="اكتب عنواناً جذاباً ومختصراً...">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-url">رابط الحساب أو العرض</label>
+                  <input type="url" id="f-url" class="form-input" style="direction: ltr; text-align: right;" placeholder="https://instagram.com/account">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                  <div class="form-group">
+                    <label class="form-label" for="f-price">السعر</label>
+                    <input type="number" id="f-price" class="form-input" style="direction: ltr;" placeholder="0.00 $">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="f-followers">عدد المتابعين</label>
+                    <input type="number" id="f-followers" class="form-input" style="direction: ltr;" placeholder="25000">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-desc">الوصف</label>
+                  <textarea id="f-desc" class="form-textarea" placeholder="أدخل تفاصيل الحساب، طبيعة المتابعين، وتاريخ الإنشاء..."></textarea>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="form-section-divider">تفاصيل Instagram</div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-country">
+                    دولة الجمهور الأساسية
+                    <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="f-country" class="form-input" placeholder="مثال: الخليج، مصر، السعودية...">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-age">
+                    عمر الحساب أو تاريخ إنشائه
+                    <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="f-age" class="form-input" placeholder="مثال: سنتين، 2022...">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                  <div class="form-group">
+                    <label class="form-label" for="f-reach">
+                      متوسط الوصول للمنشور
+                      <span class="optional-tag">اختياري</span>
+                    </label>
+                    <input type="number" id="f-reach" class="form-input" style="direction: ltr;" placeholder="15000">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="f-eng">
+                      نسبة التفاعل (%)
+                      <span class="optional-tag">اختياري</span>
+                    </label>
+                    <input type="number" id="f-eng" class="form-input" style="direction: ltr;" placeholder="4.5%">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-verified">
+                    هل توجد شارة توثيق؟
+                    <span class="optional-tag">اختياري</span>
+                  </label>
+                  <select id="f-verified" class="form-select">
+                    <option value="">اختر أو اتركه فارغًا</option>
+                    <option value="yes">نعم</option>
+                    <option value="no">لا</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-type">
+                    نوع الحساب
+                    <span class="optional-tag">اختياري</span>
+                  </label>
+                  <select id="f-type" class="form-select">
+                    <option value="">اختر أو اتركه فارغًا</option>
+                    <option value="personal">شخصي</option>
+                    <option value="creator">منشئ محتوى</option>
+                    <option value="business">تجاري</option>
+                  </select>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="form-section-divider">الصور</div>
+
+                <div class="form-group">
+                  <label class="form-label">صور الإعلان (من صورة إلى 5)</label>
+                  <div class="file-upload-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                    <span>اختر صور الإعلان أو اسحبها هنا</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">
+                    إثبات الملكية
+                    <span class="optional-tag">يظهر للإدارة فقط</span>
+                  </label>
+                  <div class="file-upload-box" style="border-color: rgba(240, 167, 50, 0.4); background: rgba(240, 167, 50, 0.04);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span style="color: #D1D5DC;">رفع لقطات إثبات الحساب (لوحة التحكم / الإعدادات)</span>
+                  </div>
+                </div>
+
+                <div class="sheet-footer-actions">
+                  <button type="button" class="btn-ghost-cancel">إلغاء</button>
+                  <button type="button" class="btn-sheet-submit">معاينة المنتج</button>
+                </div>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

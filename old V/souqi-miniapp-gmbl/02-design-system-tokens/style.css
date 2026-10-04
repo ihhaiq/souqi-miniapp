@@ -1,0 +1,20 @@
+body {
+  background-color: #121315;
+  color: #F2F4F7;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 32px;
+  line-height: 1.6;
+}
+.markdown-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #1A1C1F;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #2E3238;
+}
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: inherit;
+}

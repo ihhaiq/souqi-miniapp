@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظام التصميم لتطبيق تيليجرام المصغر - ورقة المكونات الكاملة</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: IBM Plex Sans Arabic & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4 md:p-8 flex justify-center selection:bg-sky-500/20">
+
+  <!-- Desktop Presentation Frame showcasing the 390px Mobile System + Design Tokens & Component Kit -->
+  <div class="max-w-[1400px] w-full grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+    
+    <!-- LEFT / DESKTOP SIDEBAR: Design Tokens, Guidelines & RTL Principles -->
+    <div class="xl:col-span-4 space-y-6">
+      <!-- Overview Card -->
+      <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-[16px] p-6">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-3 h-3 rounded-full bg-[#339CFF] ring-4 ring-[#339CFF]/20"></div>
+            <h1 class="text-lg font-bold tracking-tight text-[#F2F4F7]">نظام التصميم — تيليجرام</h1>
+          </div>
+          <span class="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#23262B] text-[#878E99] border border-[#2E3238]">
+            RTL • 390px
+          </span>
+        </div>
+        <p class="text-xs text-[#878E99] leading-relaxed mb-4">
+          نظام متكامل واحترافي لسوق الحسابات والقنوات الرقمية مبني بأسلوب النوافذ المدمجة في تيليجرام (Telegram Mini App). يعتمد ۳ طبقات رمادية محايدة بدون توهج مفرط ولون تمييزي هادئ واحد (<span class="num text-[#339CFF]">#339CFF</span>).
+        </p>
+        
+        <!-- Live Palette Matrix -->
+        <h3 class="text-[11px] font-bold uppercase tracking-wider text-[#878E99] mb-3 border-t border-[#2E3238] pt-4">
+          جدول الألوان والرموز (Token Matrix)
+        </h3>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2.5 rounded-[8px] bg-[#121315] border border-[#2E3238] flex items-center justify-between">
+            <span class="text-[11px] text-[#878E99]">bg</span>
+            <span class="num text-[10px] text-[#F2F4F7]">#121315</span>
+          </div>
+          <div class="p-2.5 rounded-[8px] bg-[#1A1C1F] border border-[#2E3238] flex items-center justify-between">
+            <span class="text-[11px] text-[#878E99]">panel</span>
+            <span class="num text-[10px] text-[#F2F4F7]">#1A1C1F</span>
+          </div>
+          <div class="p-2.5 rounded-[8px] bg-[#23262B] border border-[#2E3238] flex items-center justify-between">
+            <span class="text-[11px] text-[#878E99]">panel-2</span>
+            <span class="num text-[10px] text-[#F2F4F7]">#23262B</span>
+          </div>
+          <div class="p-2.5 rounded-[8px] bg-[#1A1C1F] border border-[#2E3238] flex items-center justify-between">
+            <span class="text-[11px] text-[#878E99]">line</span>
+            <span class="num text-[10px] text-[#878E99]">#2E3238</span>
+          </div>
+          <div class="p-2.5 rounded-[8px] bg-[#1A1C1F] border border-[#2E3238] flex items-center justify-between col-span-2">
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 rounded bg-[#339CFF]"></div>
+              <span class="text-[11px] font-medium text-[#F2F4F7]">accent</span>
+            </div>
+            <span class="num text-[11px] text-[#339CFF] font-semibold">#339CFF</span>
+          </div>
+          <div class="p-2 rounded-[8px] bg-[#1A1C1F] border border-[#2E3238] flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#2CC984]"></span>
+              <span class="text-[10px] text-[#878E99]">green</span>
+            </div>
+            <span class="num text-[9px] text-[#2CC984]">#2CC984</span>
+          </div>
+          <div class="p-2 rounded-[8px] bg-[#1A1C1F] border border-[#2E3238] flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#F2545B]"></span>
+              <span class="text-[10px] text-[#878E99]">red</span>
+            </div>
+            <span class="num text-[9px] text-[#F2545B]">#F2545B</span>
+          </div>
+          <div class="p-2 rounded-[8px] bg-[#1A1C1F] border border-[#2E3238] flex items-center justify-between col-span-2">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#F0A732]"></span>
+              <span class="text-[10px] text-[#878E99]">amber (حالات التعليق والتحذير)</span>
+            </div>
+            <span class="num text-[9px] text-[#F0A732]">#F0A732</span>
+          </div>
+        </div>
+
+        <!-- Light Theme Comparison -->
+        <div class="mt-4 pt-4 border-t border-[#2E3238]">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-[#878E99]">النمط الفاتح المتطابق (Light 1:1)</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[#23262B] text-[#878E99]">Light Mode</span>
+          </div>
+          <div class="p-3 bg-[#F6F7F9] border border-[#E1E4EB] rounded-[10px] text-[#15171B] flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 rounded bg-[#0A84EA]"></div>
+              <span class="font-medium text-[#15171B]">معاينة النمط الفاتح</span>
+            </div>
+            <span class="text-[11px] text-[#6E7683] num font-mono">bg: #F6F7F9</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Radii & Spacing Rules -->
+      <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-[16px] p-6 space-y-4">
+        <h3 class="text-sm font-bold text-[#F2F4F7]">معايير الحواف والتباعد (Radii & Spacing)</h3>
+        <div class="space-y-2 text-xs">
+          <div class="flex justify-between items-center py-1.5 border-b border-[#2E3238]">
+            <span class="text-[#878E99]">radius-sm (الأزرار وحقول الإدخال)</span>
+            <span class="num font-semibold text-[#F2F4F7]">8px</span>
+          </div>
+          <div class="flex justify-between items-center py-1.5 border-b border-[#2E3238]">
+            <span class="text-[#878E99]">radius-md (بطاقات المنتجات والشيت)</span>
+            <span class="num font-semibold text-[#F2F4F7]">12px</span>
+          </div>
+          <div class="flex justify-between items-center py-1.5 border-b border-[#2E3238]">
+            <span class="text-[#878E99]">radius-lg (الحاويات الرئيسية والبانر)</span>
+            <span class="num font-semibold text-[#F2F4F7]">18px</span>
+          </div>
+          <div class="flex justify-between items-center py-1.5">
+            <span class="text-[#878E99]">radius-pill (الشارات والوسوم)</span>
+            <span class="num font-semibold text-[#F2F4F7]">9999px</span>
+          </div>
+        </div>
+
+        <div class="p-3 bg-[#23262B] border border-[#2E3238] rounded-[10px] text-xs space-y-1.5">
+          <p class="font-semibold text-[#339CFF]">قواعد RTL الصارمة:</p>
+          <p class="text-[#878E99] leading-relaxed">
+            • الأسهم وشارات التفاصيل تشير لليسار (←).<br>
+            • الحقول والبحث وعناوين الأقسام تبدأ من أقصى اليمين.<br>
+            • العملات، الأرصدة، والمعرفات الرقمية (<span class="num">USDT, #9240</span>) تحتفظ بقراءة LTR لعدم التداخل.
+          </p>
+        </div>
+      </div>
+
+      <!-- Component Sheet States: Buttons & Form Kit -->
+      <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-[16px] p-6 space-y-5">
+        <h3 class="text-sm font-bold text-[#F2F4F7]">حالات الأزرار وحزم النماذج (Button & Form States)</h3>
+        
+        <!-- Button States -->
+        <div class="space-y-2">
+          <span class="text-[11px] font-semibold text-[#878E99] uppercase">حالات الأزرار (Buttons States)</span>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <!-- Primary Default -->
+            <button class="w-full py-2.5 px-3 bg-[#339CFF] hover:bg-[#268de6] active:bg-[#1b7ad0] text-white font-medium rounded-[8px] transition-colors text-center">
+              أساسي (Default)
+            </button>
+            <!-- Primary Pressed -->
+            <button class="w-full py-2.5 px-3 bg-[#1e7bc9] ring-2 ring-[#339CFF]/40 text-white font-medium rounded-[8px] text-center">
+              مضغوط (Pressed)
+            </button>
+            <!-- Secondary -->
+            <button class="w-full py-2.5 px-3 bg-[#23262B] hover:bg-[#2e3238] border border-[#2E3238] text-[#F2F4F7] font-medium rounded-[8px] transition-colors text-center">
+              ثانوي (Secondary)
+            </button>
+            <!-- Disabled -->
+            <button disabled class="w-full py-2.5 px-3 bg-[#23262B]/50 border border-[#2E3238]/50 text-[#878E99]/50 font-medium rounded-[8px] cursor-not-allowed text-center">
+              معطل (Disabled)
+            </button>
+          </div>
+          <!-- Ghost & Icon -->
+          <div class="flex items-center gap-2 pt-1">
+            <button class="flex-1 py-2 px-3 text-[#339CFF] hover:bg-[#339CFF]/10 rounded-[8px] text-xs font-medium text-center">
+              زر شفاف (Ghost Button)
+            </button>
+            <button class="w-9 h-9 flex items-center justify-center bg-[#23262B] border border-[#2E3238] rounded-[8px] text-[#F2F4F7] active:bg-[#2E3238]">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Form Kit Checklist -->
+        <div class="space-y-3 pt-3 border-t border-[#2E3238]">
+          <span class="text-[11px] font-semibold text-[#878E99] uppercase">حزمة الحقول المكتملة (Form Kit)</span>
+          
+          <!-- Text Field with required mark -->
+          <div>
+            <div class="flex justify-between items-center mb-1 text-xs">
+              <label class="text-[#F2F4F7] font-medium">اسم القناة أو الحساب <span class="text-[#F2545B]">*</span></label>
+              <span class="text-[10px] text-[#878E99]">مطلوب</span>
+            </div>
+            <input type="text" value="قناة الصفقات الرقمية" class="w-full h-10 px-3 bg-[#23262B] border border-[#2E3238] focus:border-[#339CFF] focus:outline-none rounded-[8px] text-xs text-[#F2F4F7]">
+          </div>
+
+          <!-- URL Field with LTR inner prefix -->
+          <div>
+            <div class="flex justify-between items-center mb-1 text-xs">
+              <label class="text-[#F2F4F7] font-medium">رابط تيليجرام العام <span class="text-[#878E99] text-[10px] font-normal">(اختياري)</span></label>
+            </div>
+            <div class="relative">
+              <input type="text" placeholder="username" dir="ltr" class="w-full h-10 pr-3 pl-16 bg-[#23262B] border border-[#2E3238] focus:border-[#339CFF] focus:outline-none rounded-[8px] text-xs text-[#F2F4F7] text-left">
+              <span class="absolute left-3 top-2.5 text-xs text-[#878E99] font-mono select-none">t.me/</span>
+            </div>
+          </div>
+
+          <!-- Select Box -->
+          <div>
+            <label class="block text-xs font-medium text-[#F2F4F7] mb-1">المنصة والتصنيف</label>
+            <div class="relative">
+              <select class="w-full h-10 px-3 bg-[#23262B] border border-[#2E3238] rounded-[8px] text-xs text-[#F2F4F7] appearance-none focus:outline-none focus:border-[#339CFF]">
+                <option>قناة تيليجرام موثقة (Telegram Channel)</option>
+                <option>مجموعة نقاش عامة (Telegram Group)</option>
+                <option>بوت تجاري مسجل (Telegram Bot)</option>
+              </select>
+              <div class="absolute left-3 top-3 pointer-events-none text-[#878E99]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error State Input -->
+          <div>
+            <div class="flex justify-between items-center mb-1 text-xs">
+              <label class="text-[#F2545B] font-medium">سعر العرض الأدنى</label>
+              <span class="text-[10px] text-[#F2545B]">قيمة غير صالحة</span>
+            </div>
+            <input type="text" value="-25" class="w-full h-10 px-3 bg-[#23262B] border border-[#F2545B] rounded-[8px] text-xs text-[#F2F4F7] focus:outline-none">
+            <p class="text-[10px] text-[#F2545B] mt-1">يجب أن يكون السعر رقماً موجباً بالدولار الرقمي.</p>
+          </div>
+
+          <!-- Checkbox component -->
+          <label class="flex items-center gap-2.5 cursor-pointer pt-1 text-xs text-[#F2F4F7]">
+            <input type="checkbox" checked class="w-4 h-4 accent-[#339CFF] bg-[#23262B] border-[#2E3238] rounded">
+            <span>الموافقة على سياسة الضمان المالي لحين تسليم الحساب</span>
+          </label>
+        </div>
+
+        <!-- Toast notification mockup -->
+        <div class="pt-3 border-t border-[#2E3238]">
+          <span class="text-[11px] font-semibold text-[#878E99] uppercase block mb-2">إشعار التنبيه (Toast Notification)</span>
+          <div class="p-3 bg-[#1A1C1F] border border-[#2E3238] rounded-[10px] shadow-lg flex items-center justify-between">
+            <div class="flex items-center gap-2.5 text-xs">
+              <div class="w-5 h-5 rounded-full bg-[#2CC984]/15 text-[#2CC984] flex items-center justify-center font-bold">✓</div>
+              <span class="text-[#F2F4F7]">تم إدراج القناة في السوق بنجاح</span>
+            </div>
+            <button class="text-[#878E99] hover:text-white text-sm">✕</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT / CENTER: The Actual 390px Mobile App Screen Showcase -->
+    <div class="xl:col-span-8 flex flex-col items-center">
+      
+      <div class="mb-3 flex items-center gap-3">
+        <span class="text-xs font-medium text-[#878E99]">هيكل الشاشة التفاعلي:</span>
+        <span class="text-xs px-2.5 py-1 rounded-full bg-[#1A1C1F] text-[#339CFF] border border-[#2E3238] font-mono">
+          390px Mobile Viewport Frame
+        </span>
+      </div>
+
+      <!-- 390px Mobile Container -->
+      <div class="w-[390px] bg-[#121315] border border-[#2E3238] rounded-[24px] shadow-2xl overflow-hidden flex flex-col relative text-right">
+        
+        <!-- TELEGRAM APP TOP CHROME / HEADER -->
+        <div class="bg-[#1A1C1F] border-b border-[#2E3238] px-4 py-3 flex items-center justify-between sticky top-0 z-40">
+          <div class="flex items-center gap-2.5">
+            <!-- Back Button pointing right in RTL (indicates back) -->
+            <button class="w-8 h-8 rounded-[8px] bg-[#23262B] border border-[#2E3238] flex items-center justify-center text-[#F2F4F7] active:scale-95 transition-transform" title="رجوع">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-sm font-bold text-[#F2F4F7]">سوق الحسابات</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#2CC984]" title="متصل"></span>
+              </div>
+              <p class="text-[10px] text-[#878E99]">منصة الصفقات الرقمية الموثقة</p>
+            </div>
+          </div>
+          <!-- Action Icon Buttons -->
+          <div class="flex items-center gap-1.5">
+            <button class="w-8 h-8 rounded-[8px] bg-[#23262B] border border-[#2E3238] flex items-center justify-center text-[#878E99] hover:text-[#F2F4F7]" title="البحث">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="w-8 h-8 rounded-[8px] bg-[#23262B] border border-[#2E3238] flex items-center justify-center text-[#878E99] hover:text-[#F2F4F7]" title="القائمة">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- SCROLLABLE SCREEN CONTENT -->
+        <div class="p-4 space-y-4 pb-24 overflow-y-auto max-h-[780px]">
+          
+          <!-- 1. SOFT GRADIENT HERO PANEL WITH GLASS TILES (Wallet Balance & Stats) -->
+          <div class="hero-gradient border border-[#2E3238] rounded-[18px] p-4 text-[#F2F4F7] relative overflow-hidden">
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <span class="text-[10px] uppercase font-bold tracking-wider text-[#878E99] block mb-1">الرصيد الإجمالي المتاح</span>
+                <div class="flex items-baseline gap-1.5">
+                  <span class="num text-2xl font-bold tracking-tight text-white">4,850.50</span>
+                  <span class="text-xs font-semibold text-[#339CFF] uppercase">USDT</span>
+                </div>
+              </div>
+              <button class="px-3 py-1.5 bg-[#339CFF] hover:bg-[#288fe8] text-white text-xs font-medium rounded-[8px] transition-colors shadow-sm">
+                + إيداع سريع
+              </button>
+            </div>
+
+            <!-- Glass Tiles Matrix inside Hero -->
+            <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/10">
+              <div class="glass-tile rounded-[10px] p-2.5">
+                <span class="text-[10px] text-gray-300 block mb-0.5">أرباح الحسابات النشطة</span>
+                <div class="flex items-center justify-between">
+                  <span class="num text-sm font-bold text-white">+840.20</span>
+                  <span class="text-[10px] font-semibold text-[#2CC984] num">+18.4%</span>
+                </div>
+              </div>
+              <div class="glass-tile rounded-[10px] p-2.5">
+                <span class="text-[10px] text-gray-300 block mb-0.5">صفقات قيد الضمان</span>
+                <div class="flex items-center justify-between">
+                  <span class="num text-sm font-bold text-white">2</span>
+                  <span class="text-[10px] text-[#F0A732]">معلقة</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. UNDERLINE TABS NAVIGATION -->
+          <div class="flex border-b border-[#2E3238] text-xs font-medium">
+            <button class="flex-1 pb-2.5 text-[#339CFF] border-b-2 border-[#339CFF] font-semibold text-center">
+              القنوات المميزة
+            </button>
+            <button class="flex-1 pb-2.5 text-[#878E99] hover:text-[#F2F4F7] text-center">
+              حسابات الألعاب
+            </button>
+            <button class="flex-1 pb-2.5 text-[#878E99] hover:text-[#F2F4F7] text-center">
+              مجموعات تفاعلية
+            </button>
+          </div>
+
+          <!-- 3. SEARCH FIELD & FILTER BAR -->
+          <div class="space-y-2">
+            <div class="relative">
+              <input type="text" placeholder="ابحث باسم القناة، المعرف الرقمي، أو المجال..." class="w-full h-10 pr-9 pl-4 bg-[#1A1C1F] border border-[#2E3238] focus:border-[#339CFF] focus:outline-none rounded-[8px] text-xs text-[#F2F4F7] placeholder-[#878E99]">
+              <div class="absolute right-3 top-3 text-[#878E99]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
+            </div>
+
+            <!-- Horizontally scrolling filter chips -->
+            <div class="flex gap-2 overflow-x-auto no-scrollbar py-1 text-xs">
+              <span class="px-3 py-1.5 rounded-full bg-[#339CFF] text-white font-medium whitespace-nowrap text-[11px] cursor-pointer">
+                الكل (142)
+              </span>
+              <span class="px-3 py-1.5 rounded-full bg-[#1A1C1F] border border-[#2E3238] text-[#878E99] hover:text-[#F2F4F7] whitespace-nowrap text-[11px] cursor-pointer">
+                موثقة رسمياً ✓
+              </span>
+              <span class="px-3 py-1.5 rounded-full bg-[#1A1C1F] border border-[#2E3238] text-[#878E99] hover:text-[#F2F4F7] whitespace-nowrap text-[11px] cursor-pointer">
+                أكثر من 50k عضو
+              </span>
+              <span class="px-3 py-1.5 rounded-full bg-[#1A1C1F] border border-[#2E3238] text-[#878E99] hover:text-[#F2F4F7] whitespace-nowrap text-[11px] cursor-pointer">
+                دخل شهري مثبت
+              </span>
+            </div>
+          </div>
+
+          <!-- 4. SECTION HEADER & PRODUCT CARDS -->
+          <div>
+            <div class="flex justify-between items-center mb-2.5">
+              <span class="text-xs font-bold uppercase tracking-wider text-[#878E99]">العروض المتاحة فوراً</span>
+              <a href="#" class="text-[11px] text-[#339CFF] hover:underline flex items-center gap-1">
+                <span>عرض الكل</span>
+                <span class="text-xs">←</span>
+              </a>
+            </div>
+
+            <!-- Product Card 1 -->
+            <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-[12px] p-3.5 space-y-3">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-start gap-3">
+                  <!-- Cover / Avatar Placeholder -->
+                  <div class="w-12 h-12 rounded-[8px] bg-[#23262B] border border-[#2E3238] flex items-center justify-center font-bold text-xs text-[#339CFF] uppercase">
+                    TG
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <h4 class="text-xs font-bold text-[#F2F4F7]">شبكة الأخبار التقنية اليومية</h4>
+                      <span class="px-1.5 py-0.5 rounded-[4px] bg-[#2CC984]/10 text-[#2CC984] text-[9px] font-semibold">موثق</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-[10px] text-[#878E99] mt-0.5">
+                      <span>البائع: @al_mohandis</span>
+                      <span>•</span>
+                      <span class="num text-[#878E99]">#ID-8821</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Favorite Icon -->
+                <button class="text-[#878E99] hover:text-[#F2545B] p-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </button>
+              </div>
+
+              <!-- Metrics Row -->
+              <div class="grid grid-cols-3 gap-2 py-2 px-2.5 bg-[#23262B] rounded-[8px] text-[10px] border border-[#2E3238]/60">
+                <div>
+                  <span class="text-[#878E99] block">المشتركون</span>
+                  <span class="num font-bold text-[#F2F4F7]">124,500</span>
+                </div>
+                <div>
+                  <span class="text-[#878E99] block">معدل المشاهدة</span>
+                  <span class="num font-bold text-[#2CC984]">42.8%</span>
+                </div>
+                <div>
+                  <span class="text-[#878E99] block">سنة التأسيس</span>
+                  <span class="num font-bold text-[#F2F4F7]">2021</span>
+                </div>
+              </div>
+
+              <!-- Price & CTA Buttons -->
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[9px] text-[#878E99] block">السعر المطلوب</span>
+                  <div class="flex items-baseline gap-1">
+                    <span class="num text-sm font-bold text-white">1,250</span>
+                    <span class="text-[10px] text-[#339CFF] font-medium">USDT</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button class="px-2.5 py-1.5 bg-[#23262B] border border-[#2E3238] hover:bg-[#2E3238] rounded-[8px] text-xs text-[#F2F4F7] font-medium">
+                    التفاصيل
+                  </button>
+                  <button class="px-3.5 py-1.5 bg-[#339CFF] hover:bg-[#248ee8] rounded-[8px] text-xs text-white font-medium">
+                    شراء فوري
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 2 (Pending status) -->
+            <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-[12px] p-3.5 space-y-3 mt-3">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-12 h-12 rounded-[8px] bg-[#23262B] border border-[#2E3238] flex items-center justify-center font-bold text-xs text-[#F0A732]">
+                    PUBG
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <h4 class="text-xs font-bold text-[#F2F4F7]">حساب ألعاب أسطوري ليفل 82</h4>
+                      <span class="px-1.5 py-0.5 rounded-[4px] bg-[#F0A732]/10 text-[#F0A732] text-[9px] font-semibold">حجز مؤقت</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-[10px] text-[#878E99] mt-0.5">
+                      <span>البائع: @khalid_store</span>
+                      <span>•</span>
+                      <span class="num text-[#878E99]">#ID-3490</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="text-[#F2545B] p-1">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </button>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[9px] text-[#878E99] block">السعر النهائي</span>
+                  <div class="flex items-baseline gap-1">
+                    <span class="num text-sm font-bold text-white">490</span>
+                    <span class="text-[10px] text-[#339CFF] font-medium">USDT</span>
+                  </div>
+                </div>
+                <button disabled class="px-4 py-1.5 bg-[#23262B] border border-[#2E3238] rounded-[8px] text-xs text-[#878E99] cursor-not-allowed">
+                  محجوز حالياً
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. LIST ROW WITH RTL CHEVRON & KEY-VALUE LIST -->
+          <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-[12px] p-3 space-y-2">
+            <span class="text-[10px] uppercase font-bold text-[#878E99] block mb-1">بيانات وإجراءات سريعة</span>
+            
+            <a href="#" class="flex items-center justify-between p-2 rounded-[8px] hover:bg-[#23262B] transition-colors">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-[8px] bg-[#23262B] border border-[#2E3238] flex items-center justify-center text-xs text-[#339CFF]">⚡</span>
+                <div class="text-xs">
+                  <span class="font-medium text-[#F2F4F7] block">نظام الضمان التلقائي (Escrow)</span>
+                  <span class="text-[10px] text-[#878E99]">حماية البائع والمشتري حتى استلام الكود</span>
+                </div>
+              </div>
+              <!-- Left chevron for progression in RTL -->
+              <span class="text-xs text-[#878E99]">←</span>
+            </a>
+
+            <div class="pt-2 border-t border-[#2E3238] space-y-1.5 text-xs">
+              <div class="flex justify-between py-1 text-[11px]">
+                <span class="text-[#878E99]">عمولة المنصة</span>
+                <span class="num font-semibold text-[#F2F4F7]">1.5%</span>
+              </div>
+              <div class="flex justify-between py-1 text-[11px]">
+                <span class="text-[#878E99]">متوسط وقت نقل الملكية</span>
+                <span class="num font-semibold text-[#2CC984]">~14 دقيقة</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. NUMBERED STEPS LIST (How it works in RTL) -->
+          <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-[12px] p-4 space-y-3">
+            <h4 class="text-xs font-bold text-[#F2F4F7]">خطوات الشراء الآمن عبر البوت</h4>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-[#23262B] border border-[#2E3238] flex items-center justify-center text-[10px] font-bold num text-[#339CFF]">1</span>
+                <div>
+                  <span class="font-medium text-[#F2F4F7] block">حجز القناة وإيداع المبلغ</span>
+                  <span class="text-[11px] text-[#878E99]">يتم تجميد القيمة في العقد الذكي دون وصول البائع إليها.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-[#23262B] border border-[#2E3238] flex items-center justify-center text-[10px] font-bold num text-[#339CFF]">2</span>
+                <div>
+                  <span class="font-medium text-[#F2F4F7] block">نقل صلاحية المالك الأساسي (Owner)</span>
+                  <span class="text-[11px] text-[#878E99]">يتنازل البائع عن ملكية القناة لحسابك في تيليجرام.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-[#23262B] border border-[#2E3238] flex items-center justify-center text-[10px] font-bold num text-[#339CFF]">3</span>
+                <div>
+                  <span class="font-medium text-[#F2F4F7] block">تأكيد الاستلام وتحرير الرصيد</span>
+                  <span class="text-[11px] text-[#878E99]">بمجرد تحققك، يتم تحويل المبلغ للبائع تلقائياً.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. EMPTY STATE (Empty listings / No results) -->
+          <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-[12px] p-6 text-center space-y-2.5">
+            <div class="w-12 h-12 rounded-full bg-[#23262B] border border-[#2E3238] flex items-center justify-center mx-auto text-[#878E99]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
+            </div>
+            <h5 class="text-xs font-bold text-[#F2F4F7]">لا توجد طلبات بيع غير مكتملة</h5>
+            <p class="text-[11px] text-[#878E99] max-w-[240px] mx-auto">
+              جميع حساباتك وقنواتك المعروضة تم تدقيقها ونشرها في السوق العام بنجاح.
+            </p>
+            <button class="px-4 py-1.5 bg-[#23262B] border border-[#2E3238] hover:border-[#339CFF] text-[#F2F4F7] text-xs font-medium rounded-[8px] transition-colors inline-block mt-1">
+              إضافة قناة جديدة للبيع
+            </button>
+          </div>
+
+          <!-- 8. BOTTOM SHEET DEMO IN-FLOW -->
+          <div class="bg-[#1A1C1F] border border-[#2E3238] rounded-t-[18px] p-4 space-y-3 pt-2">
+            <!-- Sheet handle -->
+            <div class="w-10 h-1 bg-[#2E3238] rounded-full mx-auto mb-2"></div>
+            <div class="flex justify-between items-center">
+              <h5 class="text-xs font-bold text-[#F2F4F7]">تأكيد عملية التحويل المالي</h5>
+              <button class="text-[#878E99] hover:text-white text-xs">✕</button>
+            </div>
+            <p class="text-[11px] text-[#878E99]">
+              سيتم سحب الرصيد من محفظة تيليجرام الداخلية إلى العقد المؤقت.
+            </p>
+            <div class="flex gap-2 pt-1">
+              <button class="flex-1 py-2 bg-[#339CFF] text-white text-xs font-medium rounded-[8px]">
+                تأكيد ومتابعة
+              </button>
+              <button class="px-4 py-2 bg-[#23262B] border border-[#2E3238] text-[#878E99] text-xs font-medium rounded-[8px]">
+                إلغاء
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TELEGRAM 5-TAB BOTTOM NAVIGATION BAR -->
+        <div class="bg-[#1A1C1F] border-t border-[#2E3238] px-2 py-1.5 grid grid-cols-5 gap-1 absolute bottom-0 inset-x-0 z-40">
+          
+          <!-- Tab 1: Market (Active) -->
+          <button class="flex flex-col items-center justify-center py-1 relative">
+            <span class="w-5 h-0.5 bg-[#339CFF] rounded-full absolute -top-1.5 inset-x-auto"></span>
+            <svg class="w-5 h-5 text-[#339CFF]" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v2H4V4zm0 4h16v12H4V8zm2 2v8h12v-8H6z"/></svg>
+            <span class="text-[10px] font-semibold text-white mt-1">السوق</span>
+          </button>
+
+          <!-- Tab 2: Orders -->
+          <button class="flex flex-col items-center justify-center py-1 text-[#878E99] hover:text-[#F2F4F7]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+            <span class="text-[10px] mt-1">طلباتي</span>
+          </button>
+
+          <!-- Tab 3: PlayHub / Activity -->
+          <button class="flex flex-col items-center justify-center py-1 text-[#878E99] hover:text-[#F2F4F7]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span class="text-[10px] mt-1">النشاط</span>
+          </button>
+
+          <!-- Tab 4: Tasks -->
+          <button class="flex flex-col items-center justify-center py-1 text-[#878E99] hover:text-[#F2F4F7]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span class="text-[10px] mt-1">المهام</span>
+          </button>
+
+          <!-- Tab 5: Storage / Wallet -->
+          <button class="flex flex-col items-center justify-center py-1 text-[#878E99] hover:text-[#F2F4F7]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+            <span class="text-[10px] mt-1">المحفظة</span>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

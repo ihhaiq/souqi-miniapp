@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>سوقي (@SoqyBot) - شاشة التحميل والبدء</title>
+<!-- Tailwind CSS CDN with forms & container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: IBM Plex Sans Arabic & Space Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#121315',
+              surface: '#1A1C1F',
+              inner: '#23262B',
+              border: '#2E3238',
+              accent: '#339CFF',
+              text: '#F2F4F7',
+              muted: '#878E99',
+              canvas: '#0D0E11',
+            }
+          },
+          fontFamily: {
+            arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Presentation Styles -->
+<link rel="stylesheet" href="style.css">
+<!-- Component & Spinner Animations -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dot-grid flex flex-col items-center justify-start min-h-screen py-10 px-4 select-none">
+<!-- BEGIN: PresentationHeader -->
+<header class="text-center max-w-xl mb-8 flex flex-col items-center" data-purpose="presentation-header">
+<!-- Meta tag badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface border border-brand-border text-brand-muted text-xs font-mono tracking-wider mb-3">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse"></span>
+<span>TELEGRAM MINI APP • 390PX VIEWPORT • RTL ARABIC</span>
+</div>
+<!-- Title -->
+<h1 class="text-2xl font-bold tracking-tight text-brand-text mb-2">
+      شاشة التحميل والبدء (Splash / Loading Screen)
+    </h1>
+<!-- Subtitle description -->
+<p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
+      إعادة تصميم متكاملة وفق نظام التصميم المعتمد لمشروع سوقي بنمط داكن محايد مع حركة تحميل متقنة
+    </p>
+</header>
+<!-- END: PresentationHeader -->
+<!-- BEGIN: PhoneFrameContainer -->
+<main class="relative shadow-2xl transition-all duration-300" data-purpose="mobile-mockup-wrapper">
+<!-- Outer ambient phone rim glow -->
+<div class="absolute -inset-1.5 rounded-[50px] bg-gradient-to-b from-brand-border/40 to-transparent blur-sm pointer-events-none"></div>
+<!-- Mobile Device Viewport (390px x 844px) -->
+<div class="relative w-[390px] h-[844px] bg-brand-bg rounded-[44px] border-[3px] border-brand-border overflow-hidden flex flex-col justify-between shadow-2xl">
+<!-- BEGIN: StatusBar -->
+<section class="w-full pt-3 px-7 flex items-center justify-between z-20" data-purpose="telegram-status-bar">
+<!-- Right side in RTL (Time display) -->
+<span class="font-mono text-[13px] font-semibold tracking-tight text-brand-text/90">9:41</span>
+<!-- Center Dynamic Island Notch Indicator -->
+<div class="w-24 h-4 bg-black/60 rounded-full flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-brand-surface/80 border border-brand-border/60"></div>
+</div>
+<!-- Left side in RTL (System status icons) -->
+<div class="flex items-center gap-1.5 text-brand-text/80">
+<!-- Cellular signal -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24">
+<path d="M2 17h3v4H2v-4zm5-4h3v8H7v-8zm5-4h3v12h-3V9zm5-4h3v16h-3V5z"></path>
+</svg>
+<!-- Wifi -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24">
+<path d="M12 4c4.08 0 7.78 1.66 10.46 4.34l-2.12 2.12C18.17 8.29 15.24 7 12 7c-3.24 0-6.17 1.29-8.34 3.46L1.54 8.34C4.22 5.66 7.92 4 12 4zm0 6c2.42 0 4.62.98 6.21 2.57l-2.12 2.12C14.92 13.52 13.53 13 12 13s-2.92.52-4.09 1.69l-2.12-2.12C7.38 10.98 9.58 10 12 10zm0 6c1.1 0 2 .9 2 2 0 .55-.22 1.05-.59 1.41L12 20.83l-1.41-1.42C10.22 19.05 10 18.55 10 18c0-1.1.9-2 2-2z"></path>
+</svg>
+<!-- Battery icon -->
+<div class="w-5 h-2.5 border border-brand-text/70 rounded-[3px] p-[1px] flex items-center">
+<div class="w-full h-full bg-brand-text/90 rounded-[1px]"></div>
+</div>
+</div>
+</section>
+<!-- END: StatusBar -->
+<!-- BEGIN: CenterBrandBlock -->
+<section class="flex-1 flex flex-col items-center justify-center -mt-6 px-6" data-purpose="splash-center-content">
+<!-- App Logo Card -->
+<div class="icon-badge w-[76px] h-[76px] rounded-[22px] bg-brand-surface border border-brand-border flex items-center justify-center mb-5 shadow-lg">
+<span class="text-brand-text font-bold text-3xl font-arabic pb-1 select-none">
+            س
+          </span>
+</div>
+<!-- Brand Name -->
+<h2 class="text-2xl font-bold tracking-tight text-brand-text mb-3 font-arabic">
+          سوقي
+        </h2>
+<!-- Status Loading Text -->
+<p class="text-[13px] font-medium text-brand-muted mb-7 tracking-wide font-arabic">
+          جارٍ تحميل المتجر...
+        </p>
+<!-- Refined Smooth Circular Spinner -->
+<div aria-label="تحميل" class="loader-ring" role="status"></div>
+</section>
+<!-- END: CenterBrandBlock -->
+<!-- BEGIN: BottomFooterBranding -->
+<footer class="w-full pb-4 flex flex-col items-center gap-4" data-purpose="telegram-footer">
+<!-- Telegram Bot Handle -->
+<span class="text-xs font-mono font-medium text-brand-muted tracking-widest uppercase hover:text-brand-accent transition-colors duration-200 cursor-default">
+          @SoqyBot
+        </span>
+<!-- iOS Bottom Indicator Pill -->
+<div aria-hidden="true" class="w-32 h-1 bg-white/20 rounded-full"></div>
+</footer>
+<!-- END: BottomFooterBranding -->
+</div>
+</main>
+<!-- END: PhoneFrameContainer -->
+</body></html>

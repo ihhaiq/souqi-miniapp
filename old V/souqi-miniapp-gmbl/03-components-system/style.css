@@ -1,0 +1,44 @@
+:root {
+      --bg: #121315;
+      --panel: #1A1C1F;
+      --panel-2: #23262B;
+      --line: #2E3238;
+      --text: #F2F4F7;
+      --muted: #878E99;
+      --accent: #339CFF;
+      --accent-wash: rgba(51, 156, 255, 0.12);
+      --green: #2CC984;
+      --red: #F2545B;
+      --amber: #F0A732;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .num, .latin-num {
+      font-family: 'Space Grotesk', sans-serif;
+      direction: ltr;
+      display: inline-block;
+      font-variant-numeric: tabular-nums;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(51,156,255,0.22) 0%, rgba(139,92,246,0.18) 50%, rgba(20,22,26,0.95) 100%), #1A1C1F;
+    }
+    .glass-tile {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    /* Custom Scrollbar for horizontal chips */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }

@@ -2,12 +2,6 @@
 # Souqi Mini App — Comprehensive .gitignore
 # ==========================================
 
-# Reference & Source Documents (Not for Production Git)
-باك اند.docx
-*.docx
-**/souqi-miniapp-gmbl/
-souqi-miniapp-gmbl/
-
 # Environment Variables & Secrets
 .env
 .env.local

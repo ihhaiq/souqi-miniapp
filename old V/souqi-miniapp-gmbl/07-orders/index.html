@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>طلباتي - شاشة الطلبات والحالة التفاعلية (Orders & Proposed State)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- PROJECT PRESENTATION HEADER -->
+  <header class="project-header">
+    <div class="project-badge">
+      <span class="badge-dot"></span>
+      <span>TELEGRAM MINI APP · 390PX VIEWPORT · RTL ARABIC</span>
+    </div>
+    <h1 class="project-title">شاشة طلباتي (Orders Screen) - النمط الداكن المحايد</h1>
+    <p class="project-subtitle">تنفيذ شاشة الطلبات الرسمية وفق نظام التصميم المعتمد، مع الشاشة المقترحة (PROPOSED) بالبيانات النموذجية</p>
+  </header>
+
+  <!-- WORKSPACE FRAMES (FRAME 1 & FRAME 2) -->
+  <main class="workspace-frames">
+
+    <!-- ==================== FRAME 1: EXACT MATCH RESTYLED ==================== -->
+    <div class="frame-wrapper">
+      <div class="frame-tag">الإطار 1: شاشة طلباتي الأساسية (Empty State)</div>
+      <div class="device-viewport">
+        
+        <!-- TOP BAR -->
+        <header class="top-bar">
+          <!-- RIGHT SIDE: Back button + Title & Subtitle -->
+          <div class="top-bar-right">
+            <button class="icon-btn" aria-label="رجوع">
+              <!-- RTL back chevron pointing right -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            <div class="top-bar-titles">
+              <span class="top-bar-title">طلباتي</span>
+              <span class="top-bar-subtitle">سوقي</span>
+            </div>
+          </div>
+
+          <!-- LEFT SIDE: Wallet icon + Menu icon -->
+          <div class="top-bar-left">
+            <button class="icon-btn" aria-label="المحفظة">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M7 15h0.01"></path>
+                <path d="M2 9.5h20"></path>
+              </svg>
+            </button>
+            <button class="icon-btn" aria-label="القائمة">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- MAIN SCROLLABLE CONTENT -->
+        <div class="screen-content">
+          
+          <!-- PAGE HEADING -->
+          <div class="page-heading-row">
+            <h2 class="page-title">الطلبات</h2>
+            <button class="add-action-btn" aria-label="تصفح السوق">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- UNDERLINE TABS -->
+          <nav class="tabs-row">
+            <button class="tab-item active">كل طلباتي</button>
+            <button class="tab-item">المشتريات</button>
+            <button class="tab-item">المبيعات</button>
+          </nav>
+
+          <!-- EMPTY STATE (Exact content & order) -->
+          <div class="empty-state-wrapper">
+            <div class="empty-icon-box">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3 class="empty-title">لا توجد طلبات هنا</h3>
+            <p class="empty-desc">تابع طلبات الشراء وصفقات البيع في هذا القسم.</p>
+            <a href="#market" class="empty-action-link">تصفح السوق</a>
+          </div>
+
+        </div>
+
+        <!-- BOTTOM NAV (5 TABS, طلباتي ACTIVE) -->
+        <nav class="bottom-nav">
+          <button class="nav-tab">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+            </svg>
+            <span>السوق</span>
+          </button>
+
+          <button class="nav-tab active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>طلباتي</span>
+          </button>
+
+          <button class="nav-tab">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>بيع</span>
+          </button>
+
+          <button class="nav-tab">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+            <span>الوساطة</span>
+          </button>
+
+          <button class="nav-tab">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>حسابي</span>
+          </button>
+        </nav>
+
+      </div>
+    </div>
+
+    <!-- ==================== FRAME 2: PROPOSED STATE ==================== -->
+    <div class="frame-wrapper">
+      <div class="frame-tag proposed">الإطار 2: PROPOSED (شاشة الطلبات مع صفقات حية)</div>
+      <div class="device-viewport">
+        
+        <!-- TOP BAR -->
+        <header class="top-bar">
+          <div class="top-bar-right">
+            <button class="icon-btn" aria-label="رجوع">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            <div class="top-bar-titles">
+              <span class="top-bar-title">طلباتي</span>
+              <span class="top-bar-subtitle">سوقي</span>
+            </div>
+          </div>
+
+          <div class="top-bar-left">
+            <button class="icon-btn" aria-label="المحفظة">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M7 15h0.01"></path>
+                <path d="M2 9.5h20"></path>
+              </svg>
+            </button>
+            <button class="icon-btn" aria-label="القائمة">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- MAIN SCROLLABLE CONTENT -->
+        <div class="screen-content">
+          
+          <!-- PAGE HEADING -->
+          <div class="page-heading-row">
+            <h2 class="page-title">الطلبات</h2>
+            <button class="add-action-btn" aria-label="تصفح السوق">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- UNDERLINE TABS -->
+          <nav class="tabs-row">
+            <button class="tab-item active">كل طلباتي (2)</button>
+            <button class="tab-item">المشتريات (1)</button>
+            <button class="tab-item">المبيعات (1)</button>
+          </nav>
+
+          <!-- PROPOSED SAMPLE ORDER CARDS (Reuse Product-Card visual language) -->
+          <div class="orders-list">
+            
+            <!-- ORDER CARD 1: IN ESCROW / IN PROGRESS (BUYER) -->
+            <article class="order-card">
+              <div class="order-card-header">
+                <div class="platform-chip">
+                  <span>✈️</span>
+                  <span>Telegram</span>
+                </div>
+                <div class="status-badge escrow">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>قيد الوساطة</span>
+                </div>
+              </div>
+
+              <h4 class="order-title">قناه تلجرام 23k للبيع</h4>
+
+              <div class="order-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-label">الدور في الصفقة</span>
+                  <span class="meta-value">مشتري (Buyer)</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">تاريخ الطلب</span>
+                  <span class="meta-value mono">2025-05-18</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">رقم الصفقة</span>
+                  <span class="meta-value mono">#ORD-9410</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">البائع</span>
+                  <span class="meta-value">سليم (@salim)</span>
+                </div>
+              </div>
+
+              <div class="order-card-footer">
+                <div class="order-price-box">
+                  <span class="order-price-label">المبلغ المضمون</span>
+                  <span class="order-price-value">$30.00</span>
+                </div>
+                <button class="order-details-btn">
+                  <span>متابعة الوسيط</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- RTL arrow pointing left for going forward -->
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </article>
+
+            <!-- ORDER CARD 2: COMPLETED (SELLER) -->
+            <article class="order-card">
+              <div class="order-card-header">
+                <div class="platform-chip">
+                  <span>📸</span>
+                  <span>Instagram</span>
+                </div>
+                <div class="status-badge completed">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>مكتمل ومسلّم</span>
+                </div>
+              </div>
+
+              <h4 class="order-title">حساب إنستغرام متفاعل 45k متابع</h4>
+
+              <div class="order-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-label">الدور في الصفقة</span>
+                  <span class="meta-value">بائع (Seller)</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">تاريخ التسليم</span>
+                  <span class="meta-value mono">2025-05-12</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">رقم الصفقة</span>
+                  <span class="meta-value mono">#ORD-8824</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">المشتري</span>
+                  <span class="meta-value">أحمد ع.</span>
+                </div>
+              </div>
+
+              <div class="order-card-footer">
+                <div class="order-price-box">
+                  <span class="order-price-label">صافي الأرباح المحولة</span>
+                  <span class="order-price-value">$120.00</span>
+                </div>
+                <button class="order-details-btn">
+                  <span>سجل المعاملة</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </article>
+
+          </div>
+
+        </div>
+
+        <!-- BOTTOM NAV (5 TABS, طلباتي ACTIVE) -->
+        <nav class="bottom-nav">
+          <button class="nav-tab">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+            </svg>
+            <span>السوق</span>
+          </button>
+
+          <button class="nav-tab active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>طلباتي</span>
+          </button>
+
+          <button class="nav-tab">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>بيع</span>
+          </button>
+
+          <button class="nav-tab">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+            <span>الوساطة</span>
+          </button>
+
+          <button class="nav-tab">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>حسابي</span>
+          </button>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+body {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      background-color: #0b0c0e;
+      color: #F2F4F7;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .tabular-nums {
+      font-family: 'Space Grotesk', 'IBM Plex Sans Arabic', sans-serif;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Subtle background grid pattern for presentation canvas */
+    .canvas-bg {
+      background-image: radial-gradient(rgba(46, 50, 56, 0.5) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Hardware accelerated smooth transitions */
+    .interactive-card {
+      transition: all 0.18s ease-in-out;
+    }
+    .interactive-card:active {
+      transform: scale(0.985);
+      background-color: #23262B;
+    }

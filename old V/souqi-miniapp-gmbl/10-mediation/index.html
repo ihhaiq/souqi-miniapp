@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الوساطة - الشاشات التفاعلية (Mediation & Proposed State)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen">
+
+  <!-- Header on Workspace Canvas -->
+  <div class="text-center mb-8 max-w-2xl">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1a1c1f] border border-[#2e3238] text-[#878e99] text-xs font-medium mb-3">
+      <span class="w-2 h-2 rounded-full bg-[#339cff]"></span>
+      <span>TELEGRAM MINI APP · 390PX VIEWPORT · RTL ARABIC</span>
+    </div>
+    <h1 class="text-2xl md:text-3xl font-bold text-[#f2f4f7] mb-2 tracking-tight">شاشة الوساطة (Mediation) والنماذج المقترحة</h1>
+    <p class="text-sm text-[#878e99]">تنفيذ شاشة الوساطة الرسمية وفق نظام التصميم المعتمد، مع الإطار الأساسي والإطار المقترح للصفقات الحية.</p>
+  </div>
+
+  <!-- Frames Side by Side -->
+  <div class="flex flex-wrap items-start justify-center gap-8 w-full max-w-6xl">
+
+    <!-- ==================== FRAME 1 ==================== -->
+    <div class="flex flex-col items-center">
+      <div class="mb-3 px-3 py-1 bg-[#1a1c1f] border border-[#2e3238] rounded-full text-xs text-[#878e99]">
+        الإطار 1: شاشة الوساطة الأساسية (Restyled)
+      </div>
+
+      <div class="mobile-frame">
+        <!-- Top Bar -->
+        <header class="h-14 px-4 border-b border-[#2e3238] bg-[#121315] flex items-center justify-between sticky top-0 z-30">
+          <div class="flex items-center gap-3">
+            <button aria-label="رجوع" class="w-9 h-9 rounded-lg bg-[#1a1c1f] border border-[#2e3238] flex items-center justify-center text-[#878e99] hover:text-[#f2f4f7] transition-colors">
+              <!-- Chevron Right in RTL points forward/back correctly -->
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <div>
+              <h2 class="text-[15px] font-bold text-[#f2f4f7] leading-tight">الوساطة</h2>
+              <span class="text-[10px] text-[#878e99] block font-medium">سوقي</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button aria-label="المحفظة" class="w-9 h-9 rounded-lg bg-[#1a1c1f] border border-[#2e3238] flex items-center justify-center text-[#878e99] hover:text-[#f2f4f7] transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+              </svg>
+            </button>
+            <button aria-label="القائمة" class="w-9 h-9 rounded-lg bg-[#1a1c1f] border border-[#2e3238] flex items-center justify-center text-[#878e99] hover:text-[#f2f4f7] transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- Content Body (Scrollable) -->
+        <main class="p-4 space-y-4 pb-20">
+          
+          <!-- Hero block -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-5 text-center relative overflow-hidden">
+            <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#339cff]/10 border border-[#339cff]/20 flex items-center justify-center text-[#339cff]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-[#f2f4f7] mb-1.5">الوساطة في سوقي</h3>
+            <p class="text-xs text-[#878e99] leading-relaxed mb-4">اتفاق واضح، إثباتات خاصة، ومتابعة لكل خطوة.</p>
+            <div class="flex items-center justify-center gap-2.5">
+              <a href="#" class="flex-1 py-2.5 px-3 rounded-lg bg-[#339cff] hover:bg-[#258bf0] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
+                <span>اختر منتجًا وابدأ طلبك</span>
+                <span class="text-sm">←</span>
+              </a>
+              <button class="py-2.5 px-3.5 rounded-lg bg-[#23262b] border border-[#2e3238] text-xs font-medium text-[#f2f4f7] hover:bg-[#2a2e34] transition-colors">
+                سجل عملياتي
+              </button>
+            </div>
+          </section>
+
+          <!-- Panel: كيف تتم الوساطة؟ -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7] mb-3">كيف تتم الوساطة؟</h4>
+            <div class="space-y-2.5">
+              <div class="p-2.5 rounded-lg bg-[#23262b] border border-[#2e3238] flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#339cff]/15 text-[#339cff] font-bold text-[11px] font-num flex items-center justify-center shrink-0 mt-0.5">1</span>
+                <p class="text-[11px] text-[#f2f4f7] leading-relaxed">
+                  <span class="font-semibold text-white">طلب وتعيين وسيط</span> · تراجع الإدارة الطلب وتختار وسيطًا متاحًا لا يكون طرفًا في الصفقة.
+                </p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#23262b] border border-[#2e3238] flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#339cff]/15 text-[#339cff] font-bold text-[11px] font-num flex items-center justify-center shrink-0 mt-0.5">2</span>
+                <p class="text-[11px] text-[#f2f4f7] leading-relaxed">
+                  <span class="font-semibold text-white">شروط وموافقة الطرفين</span> · تراجع العمولة وطريقة الدفع والمهل، ثم يوافق كل طرف على نفس نسخة الاتفاق.
+                </p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#23262b] border border-[#2e3238] flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#339cff]/15 text-[#339cff] font-bold text-[11px] font-num flex items-center justify-center shrink-0 mt-0.5">3</span>
+                <p class="text-[11px] text-[#f2f4f7] leading-relaxed">
+                  <span class="font-semibold text-white">توثيق ومراجعة الإثباتات</span> · يرسل كل طرف إثباته الخاص؛ لا يبدأ التنفيذ قبل اعتماد إثبات من كل طرف.
+                </p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#23262b] border border-[#2e3238] flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#339cff]/15 text-[#339cff] font-bold text-[11px] font-num flex items-center justify-center shrink-0 mt-0.5">4</span>
+                <p class="text-[11px] text-[#f2f4f7] leading-relaxed">
+                  <span class="font-semibold text-white">تبادل وتأكيد</span> · يتابع الوسيط الدفع والنقل. يؤكد الطرفان سلامة التبادل، ثم تنتهي فترة التحقق قبل الإكمال.
+                </p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#23262b] border border-[#2e3238] flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#339cff]/15 text-[#339cff] font-bold text-[11px] font-num flex items-center justify-center shrink-0 mt-0.5">5</span>
+                <p class="text-[11px] text-[#f2f4f7] leading-relaxed">
+                  <span class="font-semibold text-white">إبلاغ عند الشك</span> · افتح العملية واضغط «بلاغ عاجل / فتح نزاع». تتوقف مراحلها ويظهر رقم بلاغ تراجعه الإدارة.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Panel: الرسوم والمهل -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7] mb-2.5">الرسوم والمهل</h4>
+            <div class="bg-[#23262b] border border-[#2e3238] rounded-lg p-3 text-xs text-[#878e99] leading-relaxed">
+              لم تضبط الإدارة الإعدادات الافتراضية بعد. تظهر رسوم كل عملية ومهلها قبل موافقة الطرفين.
+            </div>
+          </section>
+
+          <!-- Panel: طرق الدفع والتوثيق -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4 space-y-3">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7]">طرق الدفع والتوثيق</h4>
+            <p class="text-xs text-[#878e99] leading-relaxed">
+              تحدد الإدارة تعليمات الدفع والإثباتات في ملف العملية قبل الموافقة.
+            </p>
+            <a href="#" class="block w-full py-2.5 px-3 rounded-lg bg-[#23262b] hover:bg-[#2a2e34] border border-[#2e3238] text-center text-xs font-semibold text-[#f2f4f7] transition-colors">
+              عرض طرق الشحن المتاحة
+            </a>
+            <p class="text-[11px] text-[#878e99] leading-relaxed">
+              طرق شحن المحفظة مستقلة عن تعليمات دفع الصفقة التي يعتمدها الوسيط.
+            </p>
+          </section>
+
+          <!-- Panel: الوسطاء المتاحون -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7] mb-2">الوسطاء المتاحون</h4>
+            <p class="text-xs text-[#878e99]">لا يوجد وسيط متاح الآن. تواصل مع الإدارة.</p>
+          </section>
+
+          <!-- Panel: سجل الوساطة الخاص بك (EMPTY STATE) -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4 space-y-3">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7]">سجل الوساطة الخاص بك</h4>
+            
+            <!-- Filter tabs -->
+            <div class="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1 text-xs">
+              <button class="py-1.5 px-3 rounded-full bg-[#339cff]/15 border border-[#339cff] text-[#339cff] font-semibold whitespace-nowrap">الكل · 0</button>
+              <button class="py-1.5 px-2.5 rounded-full bg-[#23262b] border border-[#2e3238] text-[#878e99] whitespace-nowrap">معلقة · 0</button>
+              <button class="py-1.5 px-2.5 rounded-full bg-[#23262b] border border-[#2e3238] text-[#878e99] whitespace-nowrap">مكتملة · 0</button>
+              <button class="py-1.5 px-2.5 rounded-full bg-[#23262b] border border-[#2e3238] text-[#878e99] whitespace-nowrap">نزاعات · 0</button>
+              <button class="py-1.5 px-2.5 rounded-full bg-[#23262b] border border-[#2e3238] text-[#878e99] whitespace-nowrap">مرفوضة · 0</button>
+              <button class="py-1.5 px-2.5 rounded-full bg-[#23262b] border border-[#2e3238] text-[#878e99] whitespace-nowrap">ملغاة · 0</button>
+            </div>
+
+            <!-- Search row -->
+            <div class="relative">
+              <input type="text" aria-label="بحث عمليات الوساطة" placeholder="رقم العملية أو اسم المنتج" 
+                     class="w-full bg-[#23262b] border border-[#2e3238] rounded-lg py-2.5 pr-3 pl-9 text-xs text-[#f2f4f7] placeholder-[#878e99] focus:outline-none focus:border-[#339cff]">
+              <button aria-label="بحث الوساطة" class="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#878e99] hover:text-[#f2f4f7]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Records list: Empty -->
+            <div class="py-7 text-center rounded-lg bg-[#23262b]/50 border border-[#2e3238]/60">
+              <p class="text-xs text-[#878e99]">لا توجد عمليات مطابقة.</p>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex items-center justify-between pt-1 text-xs">
+              <span class="text-[#878e99] font-num text-[11px]">0 عملية · صفحة 1</span>
+              <div class="flex items-center gap-1.5">
+                <button disabled class="py-1 px-3 rounded bg-[#23262b] border border-[#2e3238] text-[#878e99] opacity-50 cursor-not-allowed">السابق</button>
+                <button disabled class="py-1 px-3 rounded bg-[#23262b] border border-[#2e3238] text-[#878e99] opacity-50 cursor-not-allowed">التالي</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Panel: ملاحظات وإخلاء مسؤولية -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7] mb-2">ملاحظات وإخلاء مسؤولية</h4>
+            <p class="text-[11px] text-[#878e99] leading-relaxed">
+              الوساطة تنظم التبادل وتراجع الإثباتات، ولا تعني ضمان ملكية المنتج أو خلوه من المشكلات. الضمان هنا توثيق وإثباتات فقط؛ لا يحجز النظام رصيد الطرفين. لا ترسل كلمة مرور أو رمز دخول أو بيانات دفع سرية في الملاحظات أو الإثباتات. راجع الرسوم والمهل والتعليمات قبل الموافقة، وأبلغ فورًا عند الشك.
+            </p>
+          </section>
+
+        </main>
+
+        <!-- Fixed Bottom Navigation (5 tabs) -->
+        <nav class="h-16 border-t border-[#2e3238] bg-[#121315]/95 backdrop-blur-md px-2 flex items-center justify-around fixed bottom-0 left-0 right-0 z-30" style="position: absolute;">
+          <!-- 1. السوق -->
+          <a href="#" class="flex flex-col items-center gap-1 text-[#878e99] hover:text-[#f2f4f7] flex-1 py-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+            </svg>
+            <span class="text-[10px] font-medium">السوق</span>
+          </a>
+          <!-- 2. طلباتي -->
+          <a href="#" class="flex flex-col items-center gap-1 text-[#878e99] hover:text-[#f2f4f7] flex-1 py-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            <span class="text-[10px] font-medium">طلباتي</span>
+          </a>
+          <!-- 3. بيع -->
+          <a href="#" class="flex flex-col items-center gap-1 text-[#878e99] hover:text-[#f2f4f7] flex-1 py-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            <span class="text-[10px] font-medium">بيع</span>
+          </a>
+          <!-- 4. الوساطة (ACTIVE) -->
+          <a href="#" class="flex flex-col items-center gap-1 text-[#339cff] flex-1 py-1 relative">
+            <span class="absolute top-0 w-8 h-0.5 bg-[#339cff] rounded-full"></span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <span class="text-[10px] font-bold">الوساطة</span>
+          </a>
+          <!-- 5. حسابي -->
+          <a href="#" class="flex flex-col items-center gap-1 text-[#878e99] hover:text-[#f2f4f7] flex-1 py-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+            <span class="text-[10px] font-medium">حسابي</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ==================== FRAME 2 (PROPOSED) ==================== -->
+    <div class="flex flex-col items-center">
+      <div class="mb-3 px-3 py-1 bg-[#339cff]/10 border border-[#339cff]/30 rounded-full text-xs font-semibold text-[#339cff] flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#339cff] animate-pulse"></span>
+        الإطار 2: PROPOSED (شاشة الوساطة مع سجل عمليات حية)
+      </div>
+
+      <div class="mobile-frame">
+        <!-- Top Bar -->
+        <header class="h-14 px-4 border-b border-[#2e3238] bg-[#121315] flex items-center justify-between sticky top-0 z-30">
+          <div class="flex items-center gap-3">
+            <button aria-label="رجوع" class="w-9 h-9 rounded-lg bg-[#1a1c1f] border border-[#2e3238] flex items-center justify-center text-[#878e99] hover:text-[#f2f4f7] transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <div>
+              <h2 class="text-[15px] font-bold text-[#f2f4f7] leading-tight">الوساطة</h2>
+              <span class="text-[10px] text-[#878e99] block font-medium">سوقي</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button aria-label="المحفظة" class="w-9 h-9 rounded-lg bg-[#1a1c1f] border border-[#2e3238] flex items-center justify-center text-[#878e99] hover:text-[#f2f4f7] transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+              </svg>
+            </button>
+            <button aria-label="القائمة" class="w-9 h-9 rounded-lg bg-[#1a1c1f] border border-[#2e3238] flex items-center justify-center text-[#878e99] hover:text-[#f2f4f7] transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- Content Body (Scrollable) -->
+        <main class="p-4 space-y-4 pb-20">
+          
+          <!-- Hero block -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-5 text-center relative overflow-hidden">
+            <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#339cff]/10 border border-[#339cff]/20 flex items-center justify-center text-[#339cff]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-[#f2f4f7] mb-1.5">الوساطة في سوقي</h3>
+            <p class="text-xs text-[#878e99] leading-relaxed mb-4">اتفاق واضح، إثباتات خاصة، ومتابعة لكل خطوة.</p>
+            <div class="flex items-center justify-center gap-2.5">
+              <a href="#" class="flex-1 py-2.5 px-3 rounded-lg bg-[#339cff] hover:bg-[#258bf0] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
+                <span>اختر منتجًا وابدأ طلبك</span>
+                <span class="text-sm">←</span>
+              </a>
+              <button class="py-2.5 px-3.5 rounded-lg bg-[#23262b] border border-[#2e3238] text-xs font-medium text-[#f2f4f7] hover:bg-[#2a2e34] transition-colors">
+                سجل عملياتي
+              </button>
+            </div>
+          </section>
+
+          <!-- Panel: كيف تتم الوساطة؟ -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7] mb-3">كيف تتم الوساطة؟</h4>
+            <div class="space-y-2.5">
+              <div class="p-2.5 rounded-lg bg-[#23262b] border border-[#2e3238] flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#339cff]/15 text-[#339cff] font-bold text-[11px] font-num flex items-center justify-center shrink-0 mt-0.5">1</span>
+                <p class="text-[11px] text-[#f2f4f7] leading-relaxed">
+                  <span class="font-semibold text-white">طلب وتعيين وسيط</span> · تراجع الإدارة الطلب وتختار وسيطًا متاحًا لا يكون طرفًا في الصفقة.
+                </p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#23262b] border border-[#2e3238] flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#339cff]/15 text-[#339cff] font-bold text-[11px] font-num flex items-center justify-center shrink-0 mt-0.5">2</span>
+                <p class="text-[11px] text-[#f2f4f7] leading-relaxed">
+                  <span class="font-semibold text-white">شروط وموافقة الطرفين</span> · تراجع العمولة وطريقة الدفع والمهل، ثم يوافق كل طرف على نفس نسخة الاتفاق.
+                </p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#23262b] border border-[#2e3238] flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#339cff]/15 text-[#339cff] font-bold text-[11px] font-num flex items-center justify-center shrink-0 mt-0.5">3</span>
+                <p class="text-[11px] text-[#f2f4f7] leading-relaxed">
+                  <span class="font-semibold text-white">توثيق ومراجعة الإثباتات</span> · يرسل كل طرف إثباته الخاص؛ لا يبدأ التنفيذ قبل اعتماد إثبات من كل طرف.
+                </p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#23262b] border border-[#2e3238] flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#339cff]/15 text-[#339cff] font-bold text-[11px] font-num flex items-center justify-center shrink-0 mt-0.5">4</span>
+                <p class="text-[11px] text-[#f2f4f7] leading-relaxed">
+                  <span class="font-semibold text-white">تبادل وتأكيد</span> · يتابع الوسيط الدفع والنقل. يؤكد الطرفان سلامة التبادل، ثم تنتهي فترة التحقق قبل الإكمال.
+                </p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#23262b] border border-[#2e3238] flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#339cff]/15 text-[#339cff] font-bold text-[11px] font-num flex items-center justify-center shrink-0 mt-0.5">5</span>
+                <p class="text-[11px] text-[#f2f4f7] leading-relaxed">
+                  <span class="font-semibold text-white">إبلاغ عند الشك</span> · افتح العملية واضغط «بلاغ عاجل / فتح نزاع». تتوقف مراحلها ويظهر رقم بلاغ تراجعه الإدارة.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Panel: الرسوم والمهل -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7] mb-2.5">الرسوم والمهل</h4>
+            <div class="bg-[#23262b] border border-[#2e3238] rounded-lg p-3 text-xs text-[#878e99] leading-relaxed">
+              لم تضبط الإدارة الإعدادات الافتراضية بعد. تظهر رسوم كل عملية ومهلها قبل موافقة الطرفين.
+            </div>
+          </section>
+
+          <!-- Panel: طرق الدفع والتوثيق -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4 space-y-3">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7]">طرق الدفع والتوثيق</h4>
+            <p class="text-xs text-[#878e99] leading-relaxed">
+              تحدد الإدارة تعليمات الدفع والإثباتات في ملف العملية قبل الموافقة.
+            </p>
+            <a href="#" class="block w-full py-2.5 px-3 rounded-lg bg-[#23262b] hover:bg-[#2a2e34] border border-[#2e3238] text-center text-xs font-semibold text-[#f2f4f7] transition-colors">
+              عرض طرق الشحن المتاحة
+            </a>
+            <p class="text-[11px] text-[#878e99] leading-relaxed">
+              طرق شحن المحفظة مستقلة عن تعليمات دفع الصفقة التي يعتمدها الوسيط.
+            </p>
+          </section>
+
+          <!-- Panel: الوسطاء المتاحون -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7] mb-2">الوسطاء المتاحون</h4>
+            <p class="text-xs text-[#878e99]">لا يوجد وسيط متاح الآن. تواصل مع الإدارة.</p>
+          </section>
+
+          <!-- Panel: سجل الوساطة الخاص بك (PROPOSED WITH 2 LIVE RECORDS) -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <h4 class="text-[13px] font-bold text-[#f2f4f7]">سجل الوساطة الخاص بك</h4>
+              <span class="text-[10px] font-semibold text-[#339cff] bg-[#339cff]/10 px-2 py-0.5 rounded border border-[#339cff]/20">PROPOSED</span>
+            </div>
+            
+            <!-- Filter tabs with counts -->
+            <div class="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1 text-xs">
+              <button class="py-1.5 px-3 rounded-full bg-[#339cff]/15 border border-[#339cff] text-[#339cff] font-semibold whitespace-nowrap">الكل · 2</button>
+              <button class="py-1.5 px-2.5 rounded-full bg-[#23262b] border border-[#2e3238] text-[#878e99] whitespace-nowrap">معلقة · 1</button>
+              <button class="py-1.5 px-2.5 rounded-full bg-[#23262b] border border-[#2e3238] text-[#878e99] whitespace-nowrap">مكتملة · 1</button>
+              <button class="py-1.5 px-2.5 rounded-full bg-[#23262b] border border-[#2e3238] text-[#878e99] whitespace-nowrap">نزاعات · 0</button>
+              <button class="py-1.5 px-2.5 rounded-full bg-[#23262b] border border-[#2e3238] text-[#878e99] whitespace-nowrap">مرفوضة · 0</button>
+              <button class="py-1.5 px-2.5 rounded-full bg-[#23262b] border border-[#2e3238] text-[#878e99] whitespace-nowrap">ملغاة · 0</button>
+            </div>
+
+            <!-- Search row -->
+            <div class="relative">
+              <input type="text" aria-label="بحث عمليات الوساطة" placeholder="رقم العملية أو اسم المنتج" 
+                     class="w-full bg-[#23262b] border border-[#2e3238] rounded-lg py-2.5 pr-3 pl-9 text-xs text-[#f2f4f7] placeholder-[#878e99] focus:outline-none focus:border-[#339cff]">
+              <button aria-label="بحث الوساطة" class="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#878e99] hover:text-[#f2f4f7]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Proposed Records List (2 Sample Cards) -->
+            <div class="space-y-3">
+              
+              <!-- Card 1: Pending Verification -->
+              <div class="p-3.5 rounded-lg bg-[#23262b] border border-[#2e3238] space-y-2.5">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-sm">✈️</span>
+                    <span class="text-[11px] font-semibold text-[#f2f4f7]">قناه تلجرام 23k للبيع</span>
+                  </div>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#f0a732]/10 border border-[#f0a732]/30 text-[#f0a732] text-[10px] font-semibold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#f0a732]"></span>
+                    قيد المراجعة
+                  </span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 p-2 rounded bg-[#1a1c1f]/70 text-[10px]">
+                  <div>
+                    <span class="text-[#878e99] block">الأطراف:</span>
+                    <span class="text-[#f2f4f7] font-medium">مشتري (أنت) ↔ سليم</span>
+                  </div>
+                  <div>
+                    <span class="text-[#878e99] block">الوسيط المعتمد:</span>
+                    <span class="text-[#f2f4f7] font-medium">فيصل (#MED-04)</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-1 border-t border-[#2e3238]/60">
+                  <div>
+                    <span class="text-[10px] text-[#878e99] block">مبلغ الصفقة</span>
+                    <span class="text-xs font-bold text-[#f2f4f7] font-num">$30.00</span>
+                  </div>
+                  <button class="py-1.5 px-3 rounded-md bg-[#339cff]/15 hover:bg-[#339cff]/25 border border-[#339cff]/40 text-[#339cff] text-[11px] font-semibold flex items-center gap-1 transition-colors">
+                    <span>متابعة الغرفة</span>
+                    <span>←</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Card 2: Completed -->
+              <div class="p-3.5 rounded-lg bg-[#23262b] border border-[#2e3238] space-y-2.5">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-sm">📸</span>
+                    <span class="text-[11px] font-semibold text-[#f2f4f7]">حساب إنستغرام متفاعل 45k</span>
+                  </div>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#2cc984]/10 border border-[#2cc984]/30 text-[#2cc984] text-[10px] font-semibold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#2cc984]"></span>
+                    مكتملة بنجاح
+                  </span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 p-2 rounded bg-[#1a1c1f]/70 text-[10px]">
+                  <div>
+                    <span class="text-[#878e99] block">الأطراف:</span>
+                    <span class="text-[#f2f4f7] font-medium">بائع (أنت) ↔ أحمد ع.</span>
+                  </div>
+                  <div>
+                    <span class="text-[#878e99] block">الوسيط المعتمد:</span>
+                    <span class="text-[#f2f4f7] font-medium">إدارة سوقي (#ADM)</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-1 border-t border-[#2e3238]/60">
+                  <div>
+                    <span class="text-[10px] text-[#878e99] block">صافي الأرباح</span>
+                    <span class="text-xs font-bold text-[#2cc984] font-num">$120.00</span>
+                  </div>
+                  <button class="py-1.5 px-3 rounded-md bg-[#1a1c1f] hover:bg-[#23262b] border border-[#2e3238] text-[#f2f4f7] text-[11px] font-medium flex items-center gap-1 transition-colors">
+                    <span>سجل الإثباتات</span>
+                    <span>←</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex items-center justify-between pt-1 text-xs">
+              <span class="text-[#878e99] font-num text-[11px]">2 عملية · صفحة 1</span>
+              <div class="flex items-center gap-1.5">
+                <button disabled class="py-1 px-3 rounded bg-[#23262b] border border-[#2e3238] text-[#878e99] opacity-50 cursor-not-allowed">السابق</button>
+                <button disabled class="py-1 px-3 rounded bg-[#23262b] border border-[#2e3238] text-[#878e99] opacity-50 cursor-not-allowed">التالي</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Panel: ملاحظات وإخلاء مسؤولية -->
+          <section class="bg-[#1a1c1f] border border-[#2e3238] rounded-xl p-4">
+            <h4 class="text-[13px] font-bold text-[#f2f4f7] mb-2">ملاحظات وإخلاء مسؤولية</h4>
+            <p class="text-[11px] text-[#878e99] leading-relaxed">
+              الوساطة تنظم التبادل وتراجع الإثباتات، ولا تعني ضمان ملكية المنتج أو خلوه من المشكلات. الضمان هنا توثيق وإثباتات فقط؛ لا يحجز النظام رصيد الطرفين. لا ترسل كلمة مرور أو رمز دخول أو بيانات دفع سرية في الملاحظات أو الإثباتات. راجع الرسوم والمهل والتعليمات قبل الموافقة، وأبلغ فورًا عند الشك.
+            </p>
+          </section>
+
+        </main>
+
+        <!-- Fixed Bottom Navigation (5 tabs) -->
+        <nav class="h-16 border-t border-[#2e3238] bg-[#121315]/95 backdrop-blur-md px-2 flex items-center justify-around fixed bottom-0 left-0 right-0 z-30" style="position: absolute;">
+          <!-- 1. السوق -->
+          <a href="#" class="flex flex-col items-center gap-1 text-[#878e99] hover:text-[#f2f4f7] flex-1 py-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+            </svg>
+            <span class="text-[10px] font-medium">السوق</span>
+          </a>
+          <!-- 2. طلباتي -->
+          <a href="#" class="flex flex-col items-center gap-1 text-[#878e99] hover:text-[#f2f4f7] flex-1 py-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            <span class="text-[10px] font-medium">طلباتي</span>
+          </a>
+          <!-- 3. بيع -->
+          <a href="#" class="flex flex-col items-center gap-1 text-[#878e99] hover:text-[#f2f4f7] flex-1 py-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            <span class="text-[10px] font-medium">بيع</span>
+          </a>
+          <!-- 4. الوساطة (ACTIVE) -->
+          <a href="#" class="flex flex-col items-center gap-1 text-[#339cff] flex-1 py-1 relative">
+            <span class="absolute top-0 w-8 h-0.5 bg-[#339cff] rounded-full"></span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <span class="text-[10px] font-bold">الوساطة</span>
+          </a>
+          <!-- 5. حسابي -->
+          <a href="#" class="flex flex-col items-center gap-1 text-[#878e99] hover:text-[#f2f4f7] flex-1 py-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+            <span class="text-[10px] font-medium">حسابي</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
