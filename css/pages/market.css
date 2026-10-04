@@ -1609,3 +1609,72 @@
     font-size:11px
   }
 }
+
+
+/* Gift cards — same Liquid Glass material as the bottom navigation */
+.grid .card{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:rgba(255,255,255,.014)!important;
+  border:1px solid rgba(255,255,255,.035)!important;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.045)!important;
+  -webkit-backdrop-filter:blur(6px) saturate(110%)!important;
+  backdrop-filter:blur(6px) saturate(110%)!important;
+}
+
+.grid .card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:inherit;
+  background:
+    linear-gradient(115deg,
+      transparent 0%,
+      rgba(255,255,255,.02) 24%,
+      rgba(255,255,255,.055) 43%,
+      rgba(255,255,255,.016) 58%,
+      transparent 78%);
+  opacity:.72;
+}
+
+.grid .card::after{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:0;
+  height:1px;
+  pointer-events:none;
+  border-radius:999px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+}
+
+.grid .card .preview,
+.grid .card .preview.gift-only{
+  background:rgba(255,255,255,.018)!important;
+  border-bottom:1px solid rgba(255,255,255,.035)!important;
+  color:rgba(255,255,255,.82)!important;
+}
+
+.grid .card .card-body{
+  background:transparent!important;
+}
+
+.grid .card .preview-type{
+  background:rgba(255,255,255,.035)!important;
+  border:1px solid rgba(255,255,255,.055)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important;
+  -webkit-backdrop-filter:blur(6px) saturate(110%)!important;
+  backdrop-filter:blur(6px) saturate(110%)!important;
+}
+
+.grid .card .price{
+  background:rgba(255,255,255,.035)!important;
+  border:1px solid rgba(255,255,255,.045)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important;
+}
