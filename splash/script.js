@@ -49,10 +49,12 @@ window.SplashModule = {
       updateStatus('جاهز للانطلاق!', 100);
       await this._delay(400);
 
-      // Restore dark theme for the main app views
+      // Restore active theme for the main app views
       if (tg) {
-        tg.setHeaderColor?.('#121214');
-        tg.setBackgroundColor?.('#121214');
+        const currentTheme = document.documentElement.getAttribute('data-theme') || localStorage.getItem('souqi_theme') || 'dark';
+        const color = (currentTheme === 'light') ? '#F5F7FA' : '#121214';
+        tg.setHeaderColor?.(color);
+        tg.setBackgroundColor?.(color);
       }
 
       if (screenEl) {

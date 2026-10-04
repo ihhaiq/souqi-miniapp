@@ -24,6 +24,7 @@ window.App = {
    */
   init() {
     console.log('[App] Bootstrapping application...');
+    this.initTheme();
     this.initTelegram();
     this.bindGlobalNavigation();
 
@@ -81,14 +82,17 @@ window.App = {
       }, 400);
     }
 
-    // Update theme-color to Carbon Dark
+    // Update theme-color according to active theme
+    const isLight = (document.documentElement.getAttribute('data-theme') === 'light');
+    const color = isLight ? '#F5F7FA' : '#121214';
+
     const metaTheme = document.getElementById('themeColorMeta');
-    if (metaTheme) metaTheme.setAttribute('content', '#121214');
+    if (metaTheme) metaTheme.setAttribute('content', color);
 
     const tg = window.Telegram?.WebApp;
     if (tg) {
-      tg.setHeaderColor?.('#121214');
-      tg.setBackgroundColor?.('#121214');
+      tg.setHeaderColor?.(color);
+      tg.setBackgroundColor?.(color);
     }
   },
 
@@ -102,6 +106,7 @@ window.App = {
     console.log(`[App] Navigating to: ${pageName}`, params);
 
     const marketWrapper = document.getElementById('marketPageWrapper');
+    const accountWrapper = document.getElementById('accountPageWrapper');
     const subpageWrapper = document.getElementById('subpageWrapper');
 
     // 1. If returning to Market from anywhere
@@ -111,6 +116,11 @@ window.App = {
       }
       this.currentPage = 'market';
       this.state.activeTab = 'market';
+
+      if (accountWrapper) {
+        accountWrapper.style.display = 'none';
+        accountWrapper.classList.remove('active');
+      }
 
       if (subpageWrapper) {
         subpageWrapper.innerHTML = '';
@@ -129,7 +139,39 @@ window.App = {
       return;
     }
 
-    // 2. Navigating Forward to a Subpage or other Tab
+    // 2. Direct Pre-rendered Account Navigation
+    if (pageName === 'account' && accountWrapper) {
+      if (this.currentPage !== 'account') {
+        this.history.push({ page: this.currentPage, params: {}, scrollY: window.scrollY });
+      }
+      this.currentPage = 'account';
+      this.state.activeTab = 'account';
+
+      if (marketWrapper) {
+        marketWrapper.style.display = 'none';
+        marketWrapper.classList.remove('active');
+      }
+
+      if (subpageWrapper) {
+        subpageWrapper.innerHTML = '';
+        subpageWrapper.style.display = 'none';
+        subpageWrapper.classList.remove('active');
+      }
+
+      accountWrapper.style.display = 'flex';
+      accountWrapper.classList.add('active');
+
+      if (window.AccountModule && typeof window.AccountModule.init === 'function') {
+        window.AccountModule.init({ params });
+      }
+
+      this.updateBottomDockActive('account');
+      this.updateBackButton(true);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      return;
+    }
+
+    // 3. Navigating Forward to a Subpage or other Tab
     // Save current page state in history for backward navigation (الإياب)
     this.history.push({
       page: this.currentPage,
@@ -140,10 +182,14 @@ window.App = {
     this.currentPage = pageName;
     this.updateBackButton(true);
 
-    // Hide Market and Show Subpage Host
+    // Hide Market and Account, Show Subpage Host
     if (marketWrapper) {
       marketWrapper.style.display = 'none';
       marketWrapper.classList.remove('active');
+    }
+    if (accountWrapper) {
+      accountWrapper.style.display = 'none';
+      accountWrapper.classList.remove('active');
     }
 
     if (subpageWrapper) {
@@ -219,7 +265,13 @@ window.App = {
           this.state.activeTab = 'market';
 
           const marketWrapper = document.getElementById('marketPageWrapper');
+          const accountWrapper = document.getElementById('accountPageWrapper');
           const subpageWrapper = document.getElementById('subpageWrapper');
+
+          if (accountWrapper) {
+            accountWrapper.style.display = 'none';
+            accountWrapper.classList.remove('active');
+          }
 
           if (subpageWrapper) {
             subpageWrapper.innerHTML = '';
@@ -334,6 +386,61 @@ window.App = {
       script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
       document.body.appendChild(script);
     });
+  },
+
+  // ==========================================================================
+  // THEME MANAGEMENT (Dark Carbon <-> Milky White أبيض حليبي)
+  // ==========================================================================
+  initTheme() {
+    const savedTheme = localStorage.getItem('souqi_theme') || 'dark';
+    this.applyTheme(savedTheme, false);
+  },
+
+  applyTheme(theme, animate = true) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('souqi_theme', theme);
+
+    const isLight = (theme === 'light');
+    const color = isLight ? '#F5F7FA' : '#121214';
+
+    const metaTheme = document.getElementById('themeColorMeta');
+    if (metaTheme) metaTheme.setAttribute('content', color);
+
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.setHeaderColor?.(color);
+      tg.setBackgroundColor?.(color);
+    }
+
+    this.updateAccountThemeUI(theme);
+    console.log(`[App] Applied theme: ${theme}`);
+  },
+
+  toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const nextTheme = (current === 'light') ? 'dark' : 'light';
+    this.applyTheme(nextTheme, true);
+    window.Telegram?.WebApp?.HapticFeedback?.selectionChanged?.();
+    return nextTheme;
+  },
+
+  updateAccountThemeUI(theme) {
+    if (window.AccountModule && typeof window.AccountModule.updateThemeUI === 'function') {
+      window.AccountModule.updateThemeUI(theme);
+    } else {
+      const tag = document.getElementById('themeStatusTag');
+      if (tag) tag.textContent = (theme === 'light') ? 'أبيض حليبي' : 'داكن';
+      const sub = document.getElementById('themeStatusSub');
+      if (sub) sub.textContent = (theme === 'light') ? 'التبديل إلى الوضع الداكن' : 'التبديل إلى أبيض حليبي';
+      const icon = document.getElementById('themeToggleIcon');
+      if (icon) {
+        if (theme === 'light') {
+          icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+        } else {
+          icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+        }
+      }
+    }
   }
 };
 

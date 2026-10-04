@@ -1,0 +1,541 @@
+<!-- ==========================================================================
+     SOUQI — ACCOUNT SCREEN MODULE (حسابي)
+     Pure Semantic HTML • Zero Emojis • Vector Icons Only • High-End Dark Carbon & Milky White
+     ========================================================================== -->
+
+<div class="account-view" id="accountView">
+
+  <!-- 1. TOP HEADER BAR -->
+  <header class="account-top-bar">
+    <div class="top-nav-group">
+      <button class="header-back-btn" id="accountBackBtn" aria-label="الرجوع إلى السوق" type="button">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+      <div class="top-heading-box">
+        <h1 class="top-title">حسابي</h1>
+        <span class="top-sub">سوقي</span>
+      </div>
+    </div>
+
+    <div class="top-actions-group">
+      <!-- Balance Pill -->
+      <button class="header-balance-pill" id="accountHeaderBalanceBtn" aria-label="شحن الرصيد" data-action="navigate" data-target="wallet" type="button">
+        <span class="plus-icon">+</span>
+        <span class="pill-amount num" id="accountHeaderBalanceVal">$0.00</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="3"/>
+          <circle cx="16" cy="12" r="2"/>
+          <path d="M6 8h4"/>
+        </svg>
+      </button>
+
+      <!-- Menu Button -->
+      <button class="icon-circle-btn" id="accountMenuBtn" aria-label="القائمة" title="القائمة" type="button">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- 2. MAIN SCROLLABLE CONTENT -->
+  <main class="account-main-content">
+
+    <!-- A. User Profile Glass Card -->
+    <section class="account-profile-card">
+      <div class="profile-top-row">
+        <div class="avatar-container">
+          <img id="accountProfileAvatar" class="profile-avatar-img" src="" alt="صورة المستخدم" style="display: none;">
+          <div id="accountProfileFallback" class="profile-avatar-fallback">M</div>
+          <span class="online-indicator-dot" title="متصل الآن"></span>
+        </div>
+
+        <div class="profile-info-col">
+          <div class="profile-name-row">
+            <h2 class="profile-name" id="accountProfileName">مستخدم سوقي</h2>
+            <button class="btn-edit-badge" id="openEditNameBtn" type="button" aria-label="تعديل الاسم">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              <span>تعديل</span>
+            </button>
+          </div>
+          <div class="profile-id-tag">
+            <span class="id-label">المعرف:</span>
+            <span class="id-value num" id="accountProfileId">#1467</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats Priority Grid (Ordered matching original: صفقات مكتملة | التقييم | المنتجات المعروضة) -->
+      <div class="account-stats-grid" aria-label="إحصائيات الحساب">
+        <div class="stat-cell">
+          <span class="stat-label">صفقات مكتملة</span>
+          <span class="stat-val num" id="statCompletedDeals">0</span>
+        </div>
+        <div class="stat-separator"></div>
+        <div class="stat-cell">
+          <span class="stat-label">التقييم</span>
+          <div class="rating-val-wrap">
+            <span class="stat-val num" id="statUserRating">5.00</span>
+            <svg class="rating-star-icon" viewBox="0 0 24 24" width="13" height="13" fill="#FFC700">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/>
+            </svg>
+          </div>
+        </div>
+        <div class="stat-separator"></div>
+        <div class="stat-cell">
+          <span class="stat-label">المنتجات المعروضة</span>
+          <span class="stat-val num" id="statActiveProducts">0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- B. Double Feature Cards Grid (Wallet & Referrals) -->
+    <section class="account-cards-grid" aria-label="المحفظة والإحالات السريعة">
+      <!-- Card 1: رصيد محفظتك (Primary Blue Gradient) -->
+      <div class="account-action-card card-wallet" id="accountWalletCardBtn" role="button" tabindex="0" data-action="navigate" data-target="wallet">
+        <div class="action-card-header">
+          <div class="action-card-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="3"/>
+              <circle cx="16" cy="12" r="2"/>
+              <path d="M6 8h4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="action-card-body">
+          <span class="action-card-subtitle">رصيد محفظتك</span>
+          <div class="action-card-value">
+            <span class="currency-symbol">$</span><span class="num" id="accountWalletBalance">0.00</span>
+          </div>
+        </div>
+        <div class="action-card-footer">
+          <span class="action-card-link">شحن الرصيد</span>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 2: شارك سوقي / ادعُ أصدقاءك (Vibrant Purple Gradient) -->
+      <div class="account-action-card card-referral" id="accountReferralCardBtn" role="button" tabindex="0" data-action="navigate" data-target="referral-earnings">
+        <div class="action-card-header">
+          <div class="action-card-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 12v10H4V12"/>
+              <path d="M2 7h20v5H2z"/>
+              <path d="M12 22V7"/>
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="action-card-body">
+          <span class="action-card-subtitle">شارك سوقي</span>
+          <div class="action-card-headline">ادعُ أصدقاءك</div>
+        </div>
+        <div class="action-card-footer">
+          <span class="action-card-link">الإحالة والأرباح</span>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- C. Quick Access Card: طلباتي وسجل العمليات & عمليات الوساطة (Strictly Monochrome B&W Icons) -->
+    <section class="account-quick-card" aria-label="روابط العمليات المباشرة">
+      <!-- 1. My Orders & Transactions -->
+      <button class="menu-item-row" data-action="navigate" data-target="orders" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">طلباتي وسجل العمليات</span>
+        </div>
+        <div class="menu-item-end">
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- 2. Mediation / Escrow -->
+      <button class="menu-item-row" data-action="navigate" data-target="mediation" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">عمليات الوساطة</span>
+        </div>
+        <div class="menu-item-end">
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+    </section>
+
+    <!-- D. Main Services Header -->
+    <h3 class="section-title-clean">كل ما تحتاجه</h3>
+
+    <!-- E. Main Menu Card (Monochrome Icons) -->
+    <section class="account-menu-card" aria-label="كل ما تحتاجه">
+      <!-- 1. Wallet -->
+      <button class="menu-item-row" data-action="navigate" data-target="wallet" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="3"/>
+            <circle cx="16" cy="12" r="2"/>
+            <path d="M6 8h4"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">المحفظة وشحن الرصيد</span>
+        </div>
+        <div class="menu-item-end">
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- 2. My Listings -->
+      <button class="menu-item-row" data-action="navigate" data-target="my-listings" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">منتجاتي</span>
+        </div>
+        <div class="menu-item-end">
+          <span class="row-badge num" id="myListingsCountBadge">0</span>
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- 3. Favorites -->
+      <button class="menu-item-row" data-action="navigate" data-target="favorites" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">المفضلة</span>
+        </div>
+        <div class="menu-item-end">
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- 4. Advertise with Us -->
+      <button class="menu-item-row" data-action="navigate" data-target="advertise" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">أعلن لدينا</span>
+        </div>
+        <div class="menu-item-end">
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- 5. Referral & Earnings -->
+      <button class="menu-item-row" data-action="navigate" data-target="referral-earnings" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 12v10H4V12"/>
+            <path d="M2 7h20v5H2z"/>
+            <path d="M12 22V7"/>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">الإحالة والأرباح</span>
+        </div>
+        <div class="menu-item-end">
+          <span class="promo-pill">3% عمولة</span>
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- 6. VIP Membership -->
+      <button class="menu-item-row" data-action="navigate" data-target="vip-membership" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/>
+            <line x1="4" y1="20" x2="20" y2="20"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">عضوية VIP</span>
+        </div>
+        <div class="menu-item-end">
+          <span class="vip-tag">ترقية</span>
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- 7. Customer Reviews -->
+      <button class="menu-item-row" data-action="navigate" data-target="customer-reviews" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">تجارب العملاء</span>
+        </div>
+        <div class="menu-item-end">
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- 8. Usage Guide -->
+      <button class="menu-item-row" data-action="navigate" data-target="usage-guide" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">دليل الاستخدام</span>
+        </div>
+        <div class="menu-item-end">
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- 9. Support & Complaints -->
+      <button class="menu-item-row" data-action="navigate" data-target="support-complaints" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">الدعم والشكاوى</span>
+        </div>
+        <div class="menu-item-end">
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- 10. Theme Toggle (التبديل إلى أبيض حليبي) -->
+      <button class="menu-item-row" id="themeToggleBtn" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg id="themeToggleIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">مظهر التطبيق</span>
+          <span class="menu-item-sub" id="themeStatusSub">التبديل إلى أبيض حليبي</span>
+        </div>
+        <div class="menu-item-end">
+          <span class="theme-status-tag" id="themeStatusTag">داكن</span>
+        </div>
+      </button>
+
+      <!-- 11. Terms & Policies -->
+      <button class="menu-item-row" id="openTermsSheetBtn" type="button">
+        <div class="menu-item-icon-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="menu-item-label-wrap">
+          <span class="menu-item-title">شروط وسياسات المتجر</span>
+        </div>
+        <div class="menu-item-end">
+          <svg class="row-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </div>
+      </button>
+    </section>
+
+    <!-- App Version & Legal Footer -->
+    <div class="account-version-footer">
+      <span class="app-version-text num">Souqi WebApp v2.4.0 • Telegram Cloud Node</span>
+      <span class="app-copyright-text">جميع الحقوق محفوظة لمنصة سوقي الرقمية © 2026</span>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================
+       BOTTOM NAVIGATION DOCK (Tab 5: Account is ACTIVE)
+       ======================================================================== -->
+  <nav class="bottom-dock-nav" id="accountBottomDock">
+    <!-- Tab 1: Market -->
+    <button class="dock-tab" data-target="market" role="tab" aria-selected="false">
+      <div class="active-indicator-bar"></div>
+      <div class="dock-icon-wrap">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+        </svg>
+      </div>
+      <span class="dock-label">السوق</span>
+    </button>
+
+    <!-- Tab 2: Orders -->
+    <button class="dock-tab" data-target="orders" role="tab" aria-selected="false">
+      <div class="active-indicator-bar"></div>
+      <div class="dock-icon-wrap">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </div>
+      <span class="dock-label">طلباتي</span>
+    </button>
+
+    <!-- Tab 3: Sell (أضف منتج with stylized center icon) -->
+    <button class="dock-tab dock-tab-center" data-target="sell" role="tab" aria-selected="false">
+      <div class="dock-icon-wrap">
+        <div class="dock-center-add-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </div>
+      </div>
+      <span class="dock-label">أضف منتج</span>
+    </button>
+
+    <!-- Tab 4: Mediation -->
+    <button class="dock-tab" data-target="mediation" role="tab" aria-selected="false">
+      <div class="active-indicator-bar"></div>
+      <div class="dock-icon-wrap">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="dock-label">الوساطة</span>
+    </button>
+
+    <!-- Tab 5: Account (Active) -->
+    <button class="dock-tab active" data-target="account" role="tab" aria-selected="true">
+      <div class="active-indicator-bar"></div>
+      <div class="dock-icon-wrap">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <span class="dock-label">حسابي</span>
+    </button>
+  </nav>
+
+  <!-- ========================================================================
+       MODAL 1: EDIT NAME BOTTOM SHEET
+       ======================================================================== -->
+  <div class="bottom-sheet-overlay" id="editNameSheetOverlay" role="dialog" aria-modal="true" aria-labelledby="editNameSheetTitle">
+    <div class="bottom-sheet-panel">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <h3 class="sheet-title" id="editNameSheetTitle">تعديل الاسم المعروض</h3>
+        <button class="sheet-close-btn" id="closeEditNameSheetBtn" aria-label="إغلاق" type="button">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="sheet-body">
+        <p class="sheet-desc">الاسم المعروض هو الذي سيظهر للبائعين والمشترين في الصفقات وغرف الوساطة.</p>
+        <div class="form-group">
+          <label class="form-label" for="customProfileNameInput">الاسم الجديد</label>
+          <input type="text" id="customProfileNameInput" class="form-input" placeholder="أدخل اسمك المعروض..." maxlength="32">
+        </div>
+      </div>
+
+      <div class="sheet-footer">
+        <button class="btn-primary" id="saveEditNameBtn" type="button">حفظ التغييرات</button>
+        <button class="btn-secondary" id="cancelEditNameBtn" type="button">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 2: TERMS & POLICIES BOTTOM SHEET
+       ======================================================================== -->
+  <div class="bottom-sheet-overlay" id="termsSheetOverlay" role="dialog" aria-modal="true" aria-labelledby="termsSheetTitle">
+    <div class="bottom-sheet-panel">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <h3 class="sheet-title" id="termsSheetTitle">شروط وسياسات منصة سوقي</h3>
+        <button class="sheet-close-btn" id="closeTermsSheetBtn" aria-label="إغلاق" type="button">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="sheet-body legal-terms-body">
+        <h4>1. سياسة الوساطة والضمان (Escrow Policy)</h4>
+        <p>تضمن منصة سوقي حماية أموال المشتري حتى تأكيد استلام الحساب أو الخدمة بالكامل ونقل الملكية بنجاح.</p>
+
+        <h4>2. عمولة الصفقات</h4>
+        <p>تقتطع المنصة عمولة رمزية 5% على الصفقات العادية، وتمنح مروجي الروابط عمولة إحالة قدرها 3%.</p>
+
+        <h4>3. شروط البائعين</h4>
+        <p>يلتزم البائع بتسليم بيانات الحساب مطابقة تماماً للمعلومات المعروضة في بطاقة البيع وضمان عدم استرداده مستقبلاً.</p>
+      </div>
+
+      <div class="sheet-footer">
+        <button class="btn-primary" id="acceptTermsBtn" type="button">أوافق وأفهم الشروط</button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,1103 @@
+/* ==========================================================================
+   Account Screen Styles (Telegram Mini App • Universal Responsive)
+   Strictly NO Emojis • Vector Icons Only • High-End Dark Carbon & Milky White
+   ========================================================================== */
+
+.account-view {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--bg-base, #121214);
+  color: var(--text-primary, #FFFFFF);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(64px + var(--safe-area-bottom, 0px) + 24px);
+  position: relative;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ==========================================================================
+   1. TOP HEADER BAR
+   ========================================================================== */
+.account-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--safe-area-top, 0px) + 12px) 16px 12px 16px;
+  background: rgba(18, 18, 20, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--line-subtle, #202227);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.top-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-back-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background-color: var(--bg-surface, #1C1D21);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--text-primary, #FFFFFF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.header-back-btn:active {
+  transform: scale(0.92);
+  background-color: var(--bg-surface-elevated, #222328);
+}
+
+.top-heading-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-title {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary, #FFFFFF);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.top-sub {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent-yellow, #FFD200);
+}
+
+.top-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-balance-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-surface, #1C1D21);
+  border: 1px solid var(--line, #2A2C32);
+  border-radius: 9999px;
+  padding: 5px 12px;
+  color: var(--text-primary, #FFFFFF);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: 'Space Grotesk', 'IBM Plex Sans Arabic', sans-serif;
+}
+
+.header-balance-pill:active {
+  transform: scale(0.94);
+  border-color: var(--accent-yellow, #FFD200);
+}
+
+.header-balance-pill .plus-icon {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3B82F6;
+  line-height: 1;
+}
+
+.header-balance-pill .pill-amount {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.header-balance-pill svg {
+  color: #3B82F6;
+}
+
+.icon-circle-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background-color: var(--bg-surface, #1C1D21);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--text-secondary, #A1A7B3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.icon-circle-btn:active {
+  transform: scale(0.92);
+  color: var(--accent-yellow, #FFD200);
+}
+
+/* ==========================================================================
+   2. MAIN CONTENT AREA
+   ========================================================================== */
+.account-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+/* ==========================================================================
+   3. USER PROFILE GLASS CARD
+   ========================================================================== */
+.account-profile-card {
+  background: linear-gradient(145deg, #1C1D21 0%, #17181C 100%);
+  border: 1px solid var(--line, #2A2C32);
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.account-profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(255, 210, 0, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.profile-top-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar-container {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1.5px solid var(--accent-yellow, #FFD200);
+}
+
+.profile-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2D3038, #1C1D22);
+  border: 1.5px solid var(--line, #2A2C32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-yellow, #FFD200);
+}
+
+.online-indicator-dot {
+  position: absolute;
+  bottom: -2px;
+  left: -2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--accent-green, #22C55E);
+  border: 2.5px solid #1C1D21;
+}
+
+.profile-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.profile-name {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-edit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background-color: var(--bg-surface-elevated, #222328);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--text-secondary, #A1A7B3);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.btn-edit-badge:active {
+  transform: scale(0.92);
+  background-color: var(--accent-yellow, #FFD200);
+  color: #121214;
+  border-color: var(--accent-yellow, #FFD200);
+}
+
+.profile-id-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted, #71767F);
+}
+
+.profile-id-tag .id-value {
+  color: var(--text-secondary, #A1A7B3);
+  font-weight: 600;
+}
+
+/* Quick Stats Grid */
+.account-stats-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-input, #18191D);
+  border: 1px solid var(--line-subtle, #202227);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.stat-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+}
+
+.stat-val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted, #71767F);
+}
+
+.rating-val-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rating-star-icon {
+  color: var(--accent-gold, #FFC700);
+  fill: var(--accent-gold, #FFC700);
+  filter: drop-shadow(0 0 3px rgba(255, 199, 0, 0.4));
+  flex-shrink: 0;
+}
+
+.stat-separator {
+  width: 1px;
+  height: 26px;
+  background-color: var(--line, #2A2C32);
+}
+
+/* ==========================================================================
+   4. DOUBLE FEATURE CARDS GRID (Wallet & Referral)
+   ========================================================================== */
+.account-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.account-action-card {
+  border-radius: 18px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 145px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.account-action-card:active {
+  transform: scale(0.97);
+}
+
+/* Card 1: Wallet (Deep Blue Gradient) */
+.card-wallet {
+  background: linear-gradient(145deg, #1E40AF 0%, #172554 100%);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.22);
+  color: #FFFFFF;
+}
+
+/* Card 2: Referral (Deep Purple Gradient) */
+.card-referral {
+  background: linear-gradient(145deg, #6B21A8 0%, #3B0764 100%);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 0 8px 24px rgba(107, 33, 168, 0.22);
+  color: #FFFFFF;
+}
+
+.action-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.action-card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.action-card-body {
+  margin: 10px 0 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.action-card-subtitle {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.88;
+}
+
+.action-card-value {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'Space Grotesk', 'IBM Plex Sans Arabic', sans-serif;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.action-card-headline {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.action-card-footer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.95;
+  margin-top: auto;
+}
+
+.action-card-link {
+  line-height: 1;
+}
+
+/* ==========================================================================
+   5. QUICK ACCESS CARD (طلباتي & الوساطة)
+   ========================================================================== */
+.account-quick-card {
+  background-color: var(--bg-surface, #1C1D21);
+  border: 1px solid var(--line, #2A2C32);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 4px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.account-quick-card .menu-item-row:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   6. SECTION TITLE
+   ========================================================================== */
+.section-title-clean {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary, #FFFFFF);
+  margin: 10px 4px 4px 4px;
+  text-align: right;
+  transition: color 0.25s ease;
+}
+
+/* ==========================================================================
+   7. MAIN MENU CARD
+   ========================================================================== */
+.account-menu-card {
+  background-color: var(--bg-surface, #1C1D21);
+  border: 1px solid var(--line, #2A2C32);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.menu-item-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--line-subtle, #202227);
+  color: var(--text-primary, #FFFFFF);
+  cursor: pointer;
+  text-align: right;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.menu-item-row:last-child {
+  border-bottom: none;
+}
+
+.menu-item-row:active {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.menu-item-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: var(--bg-surface-elevated, #222328);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--text-primary, #FFFFFF);
+  transition: all 0.15s ease;
+}
+
+.menu-item-label-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.menu-item-title {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary, #FFFFFF);
+}
+
+.menu-item-sub {
+  font-size: 11px;
+  color: var(--text-muted, #71767F);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-item-end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.row-arrow {
+  color: var(--text-muted, #71767F);
+  transition: transform 0.15s ease;
+}
+
+.row-badge {
+  background-color: var(--bg-surface-elevated, #222328);
+  color: var(--text-secondary, #A1A7B3);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  border: 1px solid var(--line, #2A2C32);
+}
+
+.vip-tag {
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+}
+
+.theme-status-tag {
+  background-color: var(--bg-surface-elevated, #222328);
+  color: var(--accent-yellow, #FFD200);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid var(--line, #2A2C32);
+}
+
+/* ==========================================================================
+   8. FOOTER INFO
+   ========================================================================== */
+.account-version-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 0 8px 0;
+  text-align: center;
+}
+
+.app-version-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted, #71767F);
+}
+
+.app-copyright-text {
+  font-size: 10px;
+  color: var(--text-muted, #555A64);
+}
+
+/* ==========================================================================
+   9. BOTTOM NAVIGATION DOCK
+   ========================================================================== */
+.bottom-dock-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: calc(64px + var(--safe-area-bottom, 0px));
+  padding-bottom: var(--safe-area-bottom, 0px);
+  background: rgba(18, 18, 20, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line-subtle, #202227);
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  z-index: 50;
+  box-sizing: border-box;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.dock-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-muted, #71767F);
+  position: relative;
+  cursor: pointer;
+  padding: 6px 0 4px 0;
+  transition: color 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.dock-tab:active {
+  transform: scale(0.95);
+}
+
+.active-indicator-bar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 2.5px;
+  background-color: #FFFFFF;
+  border-radius: 0 0 2px 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease, width 0.2s ease;
+}
+
+.dock-tab.active .active-indicator-bar {
+  opacity: 1;
+}
+
+.dock-icon-wrap {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dock-label {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  margin-top: 3px;
+  line-height: 1;
+}
+
+.dock-tab.active {
+  color: #FFFFFF;
+}
+
+.dock-tab.active .dock-label {
+  font-weight: 700;
+}
+
+/* Center Dock Add Button */
+.dock-tab-center .dock-center-add-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #3B82F6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+  transition: all 0.15s ease;
+}
+
+.dock-tab-center:active .dock-center-add-icon {
+  transform: scale(0.92);
+  background-color: rgba(59, 130, 246, 0.25);
+}
+
+/* ==========================================================================
+   10. BOTTOM SHEET MODALS
+   ========================================================================== */
+.bottom-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.bottom-sheet-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bottom-sheet-panel {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--bg-surface, #1C1D21);
+  border-top: 1px solid var(--line, #2A2C32);
+  border-radius: 20px 20px 0 0;
+  padding: 12px 18px calc(20px + var(--safe-area-bottom, 0px)) 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.bottom-sheet-overlay.open .bottom-sheet-panel {
+  transform: translateY(0);
+}
+
+.sheet-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: var(--line, #2A2C32);
+  align-self: center;
+  margin-bottom: 4px;
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sheet-title {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.sheet-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  color: var(--text-muted, #71767F);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sheet-desc {
+  font-size: 12px;
+  color: var(--text-secondary, #A1A7B3);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary, #A1A7B3);
+}
+
+.form-input {
+  width: 100%;
+  height: 44px;
+  border-radius: 10px;
+  background-color: var(--bg-input, #18191D);
+  border: 1px solid var(--line, #2A2C32);
+  color: #FFFFFF;
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 14px;
+  padding: 0 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease;
+}
+
+.form-input:focus {
+  border-color: var(--accent-yellow, #FFD200);
+}
+
+.sheet-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-primary {
+  flex: 1;
+  height: 44px;
+  border-radius: 12px;
+  background-color: var(--accent-yellow, #FFD200);
+  color: #121214;
+  border: none;
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background-color: var(--bg-surface-elevated, #222328);
+  border: 1px solid var(--line, #2A2C32);
+  color: var(--text-secondary, #A1A7B3);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.legal-terms-body {
+  max-height: 280px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 6px;
+}
+
+.legal-terms-body h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-yellow, #FFD200);
+  margin: 0;
+}
+
+.legal-terms-body p {
+  font-size: 12px;
+  color: var(--text-secondary, #A1A7B3);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   11. MILKY WHITE THEME (أبيض حليبي) FOR ACCOUNT SCREEN
+   ========================================================================== */
+[data-theme="light"] .account-view {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .account-top-bar {
+  background: rgba(245, 247, 250, 0.94);
+  border-bottom-color: var(--line);
+}
+
+[data-theme="light"] .header-back-btn,
+[data-theme="light"] .icon-circle-btn {
+  background-color: #FFFFFF;
+  border-color: var(--line);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .header-balance-pill {
+  background-color: #FFFFFF;
+  border-color: var(--line);
+  color: var(--text-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .top-title {
+  color: #0F172A;
+}
+
+[data-theme="light"] .account-profile-card {
+  background: #FFFFFF;
+  border-color: var(--line);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .account-profile-card::before {
+  display: none;
+}
+
+[data-theme="light"] .profile-name {
+  color: #0F172A;
+}
+
+[data-theme="light"] .profile-avatar-fallback {
+  background: linear-gradient(135deg, #E2E8F0, #CBD5E1);
+  color: #0F172A;
+  border-color: var(--line);
+}
+
+[data-theme="light"] .online-indicator-dot {
+  border-color: #FFFFFF;
+}
+
+[data-theme="light"] .btn-edit-badge {
+  background-color: #F1F5F9;
+  border-color: #E2E8F0;
+  color: #334155;
+}
+
+[data-theme="light"] .account-stats-grid {
+  background-color: #F8FAFC;
+  border-color: var(--line-subtle);
+}
+
+[data-theme="light"] .stat-val {
+  color: #0F172A;
+}
+
+[data-theme="light"] .stat-separator {
+  background-color: var(--line-subtle);
+}
+
+/* Light Theme Styling for Cards - matches user screenshot */
+[data-theme="light"] .card-wallet {
+  background: linear-gradient(145deg, #2563EB 0%, #1D4ED8 100%);
+  border: none;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.28);
+}
+
+[data-theme="light"] .card-referral {
+  background: linear-gradient(145deg, #7C3AED 0%, #6D28D9 100%);
+  border: none;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.28);
+}
+
+[data-theme="light"] .account-quick-card,
+[data-theme="light"] .account-menu-card {
+  background-color: #FFFFFF;
+  border-color: var(--line);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .menu-item-row {
+  border-bottom-color: var(--line-subtle);
+}
+
+[data-theme="light"] .menu-item-row:hover,
+[data-theme="light"] .menu-item-row:active {
+  background-color: #F8FAFC;
+}
+
+[data-theme="light"] .menu-item-title {
+  color: #0F172A;
+}
+
+[data-theme="light"] .menu-item-sub {
+  color: #64748B;
+}
+
+[data-theme="light"] .row-arrow {
+  color: #94A3B8;
+}
+
+[data-theme="light"] .menu-item-icon-wrap {
+  background-color: #F1F5F9;
+  border-color: #E2E8F0;
+  color: #2563EB;
+}
+
+[data-theme="light"] .theme-status-tag {
+  background-color: #F1F5F9;
+  color: #475569;
+  border-color: #E2E8F0;
+}
+
+[data-theme="light"] .section-title-clean {
+  color: #0F172A;
+}
+
+[data-theme="light"] .bottom-sheet-panel {
+  background-color: #FFFFFF;
+  color: #0F172A;
+  border-top-color: var(--line);
+}
+
+[data-theme="light"] .sheet-handle {
+  background-color: #CBD5E1;
+}
+
+[data-theme="light"] .sheet-title {
+  color: #0F172A;
+}
+
+[data-theme="light"] .sheet-desc,
+[data-theme="light"] .legal-terms-body p {
+  color: #475569;
+}
+
+[data-theme="light"] .legal-terms-body h4 {
+  color: #0F172A;
+}
+
+[data-theme="light"] .form-input {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+  color: #0F172A;
+}
+
+[data-theme="light"] .form-input:focus {
+  border-color: #2563EB;
+  background-color: #FFFFFF;
+}
+
+[data-theme="light"] .btn-secondary {
+  background-color: #F1F5F9;
+  border-color: #E2E8F0;
+  color: #475569;
+}
+
+[data-theme="light"] .bottom-dock-nav {
+  background: rgba(255, 255, 255, 0.94);
+  border-top-color: var(--line);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .dock-tab {
+  color: #64748B;
+}
+
+[data-theme="light"] .dock-tab.active {
+  color: #0F172A;
+}
+
+[data-theme="light"] .dock-tab.active .active-indicator-bar {
+  background-color: #0F172A;
+}
+
+[data-theme="light"] .dock-tab-center .dock-center-add-icon {
+  background-color: rgba(37, 99, 235, 0.12);
+  color: #2563EB;
+  border-color: rgba(37, 99, 235, 0.25);
+}
