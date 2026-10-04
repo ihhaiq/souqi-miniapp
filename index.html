@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="./css/styles.css?v=20261004-1610">
+<link rel="stylesheet" href="./css/styles.css?v=20261004-1642">
 <style id="critical-active-tab-style">
 #tabs.social-tabs > .tab > .tab-label{
   display:block!important;
@@ -594,6 +594,103 @@
   </section>
 
 
+  <section id="favoritesPage" class="app-page subpage favorites-page" data-page="favorites" hidden>
+    <div class="subpage-shell">
+      <header class="subpage-header favorites-header">
+        <button class="subpage-back" type="button" data-go-account aria-label="الرجوع إلى حسابي">
+          <span data-icon="back"></span>
+        </button>
+
+        <div class="subpage-heading">
+          <h1>المفضلة</h1>
+          <span>سوقي</span>
+        </div>
+
+        <div class="favorites-head-actions">
+          <button class="favorites-wallet-balance" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة والرصيد">
+            <span class="favorites-wallet-icon" data-icon="wallet"></span>
+            <span class="favorites-wallet-value">$<b data-slot="favorites-wallet-balance">0.00</b></span>
+          </button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger>
+            <span class="action-icon" data-icon="menu"></span>
+          </button>
+        </div>
+      </header>
+
+      <main class="subpage-content favorites-content">
+        <section class="info-card favorites-intro">
+          <h2 class="section-title">منتجاتك المفضلة</h2>
+          <p class="section-copy">كل العروض التي حفظتها في مكان واحد.</p>
+
+          <div class="favorites-product-tabs" aria-label="تصنيفات المنتجات">
+            <button class="favorite-product-tab active" type="button" data-favorite-mode="all" aria-label="الكل">
+              <span class="favorite-tab-icon" data-icon="market"></span>
+              <span>الكل</span>
+            </button>
+            <button class="favorite-product-tab" type="button" data-favorite-mode="facebook" aria-label="Facebook">
+              <span class="favorite-platform-mark">f</span>
+              <span>Facebook</span>
+            </button>
+            <button class="favorite-product-tab" type="button" data-favorite-mode="instagram" aria-label="Instagram">
+              <span class="favorite-platform-mark">@</span>
+              <span>Instagram</span>
+            </button>
+            <button class="favorite-product-tab" type="button" data-favorite-mode="tiktok" aria-label="TikTok">
+              <span class="favorite-platform-mark">♪</span>
+              <span>TikTok</span>
+            </button>
+            <button class="favorite-product-tab" type="button" data-favorite-mode="youtube" aria-label="YouTube">
+              <span class="favorite-platform-mark">▶</span>
+              <span>YouTube</span>
+            </button>
+            <button class="favorite-product-tab" type="button" data-favorite-mode="telegram" aria-label="Telegram">
+              <span class="favorite-tab-icon" data-icon="telegram"></span>
+              <span>Telegram</span>
+            </button>
+            <button class="favorite-product-tab" type="button" data-favorite-mode="gifts" aria-label="الهدايا">
+              <span class="favorite-tab-icon" data-icon="gift"></span>
+              <span>الهدايا</span>
+            </button>
+            <button class="favorite-product-tab" type="button" data-favorite-mode="collectibles" aria-label="المقتنيات">
+              <span class="favorite-tab-icon" data-icon="star"></span>
+              <span>المقتنيات</span>
+            </button>
+            <button class="favorite-product-tab" type="button" data-favorite-mode="channels" aria-label="القنوات">
+              <span class="favorite-tab-icon" data-icon="telegram"></span>
+              <span>القنوات</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="info-card favorites-list-card">
+          <div class="favorites-list-head">
+            <div>
+              <h2 class="section-title">المفضلة</h2>
+              <p class="section-copy"><span data-slot="favorites-count">0</span> منتج مضاف</p>
+            </div>
+            <button class="favorites-filter-btn" type="button" data-action="filter-favorites" aria-label="تصفية">
+              <span class="small-icon" data-icon="sliders"></span>
+            </button>
+          </div>
+
+          <label class="favorites-search">
+            <span class="small-icon" data-icon="search"></span>
+            <input type="search" placeholder="ابحث باسم المنتج أو رقمه..." data-slot="favorites-search">
+          </label>
+
+          <div class="favorites-grid" data-slot="favorites-items"></div>
+
+          <div class="favorites-empty" data-slot="favorites-empty">
+            <span class="favorites-empty-icon" data-icon="storage"></span>
+            <strong>لا توجد عروض مفضلة</strong>
+            <p>احفظ المنتجات التي تعجبك، وستظهر هنا.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </section>
+
+
   <section id="accountPage" class="app-page subpage account-page" data-page="account" hidden>
     <div class="subpage-shell">
       <header class="subpage-header account-header">
@@ -979,10 +1076,10 @@
   </section>
 </div>
 
-<script src="./js/app.js?v=20261004-1610"></script>
-<script src="./js/router.js?v=20261004-1610"></script>
-<script src="./js/pages/subpages.js?v=20261004-1610"></script>
-<script src="./js/pages/orders.js?v=20261004-1610"></script>
-<script src="./js/pages/wallet.js?v=20261004-1610"></script>
+<script src="./js/app.js?v=20261004-1642"></script>
+<script src="./js/router.js?v=20261004-1642"></script>
+<script src="./js/pages/subpages.js?v=20261004-1642"></script>
+<script src="./js/pages/orders.js?v=20261004-1642"></script>
+<script src="./js/pages/wallet.js?v=20261004-1642"></script>
 </body>
 </html>
