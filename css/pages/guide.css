@@ -40,8 +40,8 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: rgba(255,255,255,.014);
-  border: 1px solid rgba(255,255,255,.03);
+  background: rgba(255,255,255,.014) !important;
+  border: 1px solid rgba(255,255,255,.03) !important;
   border-radius: 18px;
   padding: 18px 18px 20px;
   display: flex;
@@ -60,7 +60,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
   border-radius: inherit;
   pointer-events: none;
   background:
@@ -80,10 +80,15 @@
   right: 8%;
   top: 0;
   height: 1px;
-  z-index: -1;
+  z-index: 2;
   pointer-events: none;
   border-radius: 999px;
   background: linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+}
+
+.guide-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .guide-card:active {
