@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#141414">
 <title>سوقي</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link rel="stylesheet" href="./css/styles.css?v=20261004-1910">
+<link rel="stylesheet" href="./css/styles.css?v=20261005-1435">
 <style id="critical-active-tab-style">
 #tabs.social-tabs > .tab > .tab-label{
   display:block!important;
@@ -760,7 +760,7 @@
             <span class="account-row-label">المفضلة</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-          <button class="account-menu-row ui-only-action" type="button">
+          <button class="account-menu-row ui-only-action" type="button" data-action="open-advertise">
             <span class="account-row-icon" data-icon="send"></span>
             <span class="account-row-label">أعلن لدينا</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
@@ -768,27 +768,27 @@
         </section>
 
         <section class="account-menu-group" aria-label="الخدمات والإعدادات">
-          <button class="account-menu-row ui-only-action" type="button">
+          <button class="account-menu-row ui-only-action" type="button" data-action="open-referral">
             <span class="account-row-icon" data-icon="referral"></span>
             <span class="account-row-label">الإحالة والأرباح</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-          <button class="account-menu-row ui-only-action" type="button">
+          <button class="account-menu-row ui-only-action" type="button" data-action="open-experiences">
             <span class="account-row-icon" data-icon="star-outline"></span>
             <span class="account-row-label">تجارب العملاء</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-          <button class="account-menu-row ui-only-action" type="button">
+          <button class="account-menu-row ui-only-action" type="button" data-action="open-vip">
             <span class="account-row-icon" data-icon="shield"></span>
             <span class="account-row-label">عضوية VIP</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-          <button class="account-menu-row ui-only-action" type="button">
+          <button class="account-menu-row ui-only-action" type="button" data-action="open-guide">
             <span class="account-row-icon" data-icon="document"></span>
             <span class="account-row-label">دليل الاستخدام</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
           </button>
-          <button class="account-menu-row ui-only-action" type="button">
+          <button class="account-menu-row ui-only-action" type="button" data-action="open-support">
             <span class="account-row-icon" data-icon="support"></span>
             <span class="account-row-label">الدعم والشكاوى</span>
             <span class="account-row-arrow" aria-hidden="true">←</span>
@@ -811,6 +811,468 @@
             <div class="account-terms-accepted">✓ وافقت على الشروط</div>
           </div>
         </details>
+      </main>
+    </div>
+  </section>
+
+  <section id="advertisePage" class="app-page subpage advertise-page" data-page="advertise" hidden>
+    <div class="subpage-shell advertise-shell">
+      <header class="subpage-header advertise-header">
+        <button class="subpage-back" type="button" data-go-account aria-label="الرجوع إلى حسابي">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>أعلن لدينا</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="header-wallet-balance" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة والرصيد">
+            <span class="header-wallet-icon" data-icon="wallet"></span>
+            <span class="header-wallet-value">$<b data-slot="header-wallet-balance">0.00</b></span>
+          </button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content advertise-content">
+        <div class="advertise-intro">
+          <p class="advertise-intro-text">اختر طريقة عرض إعلانك والترويج له.</p>
+        </div>
+
+        <div class="advertise-cards-group">
+          <!-- Card 1: النشر في القناة -->
+          <button class="advertise-card ui-only-action" type="button" data-action="open-channel-ad-sheet">
+            <span class="advertise-card-icon-wrap">
+              <span data-icon="megaphone"></span>
+            </span>
+            <div class="advertise-card-info">
+              <h2 class="advertise-card-title">النشر في القناة</h2>
+              <p class="advertise-card-sub">ارسل إعلانك ليظهر في قناة سوقي الرسمية بعد المراجعة</p>
+            </div>
+            <span class="advertise-card-arrow" aria-hidden="true">←</span>
+          </button>
+
+          <!-- Card 2: أعلن في المتجر -->
+          <button class="advertise-card ui-only-action" type="button" data-action="open-add-product">
+            <span class="advertise-card-icon-wrap">
+              <span data-icon="bag"></span>
+            </span>
+            <div class="advertise-card-info">
+              <h2 class="advertise-card-title">أعلن في المتجر</h2>
+              <p class="advertise-card-sub">اضف منتجك مباشرة إلى السوق ليراه جميع المستخدمين</p>
+            </div>
+            <span class="advertise-card-arrow" aria-hidden="true">←</span>
+          </button>
+
+          <!-- Card 3: تمييز المنتجات وخدمات الترويج -->
+          <a class="advertise-card ui-only-action" href="https://t.me/SoqyBot?start=ads" target="_blank" rel="noopener noreferrer" data-action="open-bot-promo">
+            <span class="advertise-card-icon-wrap">
+              <span data-icon="star-outline"></span>
+            </span>
+            <div class="advertise-card-info">
+              <h2 class="advertise-card-title">تمييز المنتجات وخدمات الترويج</h2>
+              <p class="advertise-card-sub">تواصل مع الإدارة لطلب بنرات أو تثبيت عروضك</p>
+            </div>
+            <span class="advertise-card-arrow" aria-hidden="true">←</span>
+          </a>
+        </div>
+
+        <!-- قسم طلبات النشر الخاصة بي -->
+        <section class="advertise-history-section" aria-labelledby="advertiseHistoryTitle">
+          <h2 id="advertiseHistoryTitle" class="advertise-section-title">طلبات النشر الخاصة بي</h2>
+          <div class="advertise-empty-card" data-slot="advertise-empty-state">
+            <div class="advertise-empty-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <div class="advertise-empty-title">لا توجد طلبات نشر</div>
+            <p class="advertise-empty-desc">بعد إرسال إعلانك، تظهر حالته هنا.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <section id="vipPage" class="app-page subpage vip-page" data-page="vip" hidden>
+    <div class="subpage-shell vip-shell">
+      <header class="subpage-header vip-header">
+        <button class="subpage-back" type="button" data-go-account aria-label="الرجوع إلى حسابي">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>عضوية VIP</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="header-wallet-balance" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة والرصيد">
+            <span class="header-wallet-icon" data-icon="wallet"></span>
+            <span class="header-wallet-value">$<b data-slot="header-wallet-balance">0.00</b></span>
+          </button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content vip-content">
+        <!-- بطاقة مميزات عضوية التجار VIP -->
+        <section class="vip-hero-card" aria-label="تفاصيل عضوية التجار VIP">
+          <div class="vip-hero-icon-wrap">
+            <span data-icon="shield"></span>
+          </div>
+          <h2 class="vip-hero-title">عضوية التجار VIP</h2>
+          <p class="vip-hero-sub">شارة عضوية مميزة بجانب اسمك وإعلاناتك في المتجر والقناة.</p>
+        </section>
+
+        <!-- باقات الاشتراك -->
+        <div class="vip-packages-group" aria-label="باقات عضوية VIP">
+          <!-- باقة 7 يوم -->
+          <button class="vip-package-card ui-only-action" type="button" data-action="vip-buy-stars" data-days="7" data-stars="150">
+            <div class="vip-package-info">
+              <h3 class="vip-package-title">عضوية 7 يوم</h3>
+              <span class="vip-package-stars">150 نجمة تيليجرام</span>
+            </div>
+            <span class="vip-package-arrow" aria-hidden="true">←</span>
+          </button>
+
+          <!-- باقة 30 يوم -->
+          <button class="vip-package-card ui-only-action" type="button" data-action="vip-buy-stars" data-days="30" data-stars="450">
+            <div class="vip-package-info">
+              <h3 class="vip-package-title">عضوية 30 يوم</h3>
+              <span class="vip-package-stars">450 نجمة تيليجرام</span>
+            </div>
+            <span class="vip-package-arrow" aria-hidden="true">←</span>
+          </button>
+
+          <!-- باقة 90 يوم -->
+          <button class="vip-package-card ui-only-action" type="button" data-action="vip-buy-stars" data-days="90" data-stars="1350">
+            <div class="vip-package-info">
+              <h3 class="vip-package-title">عضوية 90 يوم</h3>
+              <span class="vip-package-stars">1,350 نجمة تيليجرام</span>
+            </div>
+            <span class="vip-package-arrow" aria-hidden="true">←</span>
+          </button>
+
+          <!-- باقة 365 يوم -->
+          <button class="vip-package-card ui-only-action" type="button" data-action="vip-buy-stars" data-days="365" data-stars="2500">
+            <div class="vip-package-info">
+              <h3 class="vip-package-title">عضوية 365 يوم</h3>
+              <span class="vip-package-stars">2,500 نجمة تيليجرام</span>
+            </div>
+            <span class="vip-package-arrow" aria-hidden="true">←</span>
+          </button>
+        </div>
+
+        <!-- ملاحظة التفعيل والدعم -->
+        <div class="vip-disclaimer-card" aria-label="تنبيه الاشتراك والدعم">
+          <p class="vip-disclaimer-text">تُفعّل العضوية بعد تأكيد الدفع من تيليجرام. للدعم بشأن الاشتراك استخدم /paysupport في البوت.</p>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <section id="supportPage" class="app-page subpage support-page" data-page="support" hidden>
+    <div class="subpage-shell support-shell">
+      <header class="subpage-header support-header">
+        <button class="subpage-back" type="button" data-go-account aria-label="الرجوع إلى حسابي">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>الدعم</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="header-wallet-balance" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة والرصيد">
+            <span class="header-wallet-icon" data-icon="wallet"></span>
+            <span class="header-wallet-value">$<b data-slot="header-wallet-balance">0.00</b></span>
+          </button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content support-content">
+        <!-- شريط الإجراء العلوي: العنوان وزر تذكرة جديدة -->
+        <div class="support-top-row">
+          <div class="support-top-info">
+            <h2 class="support-top-title">نسمعك، ونتابع معك</h2>
+            <p class="support-top-sub">استفسار، اقتراح أو مشكلة في طلب؟ اكتب لنا التفاصيل.</p>
+          </div>
+          <button class="btn-new-ticket ui-only-action" type="button" data-action="open-support-ticket-sheet" aria-label="تذكرة جديدة">
+            <span aria-hidden="true">＋</span>
+            <span>تذكرة جديدة</span>
+          </button>
+        </div>
+
+        <!-- الحالة الفارغة: لا توجد تذاكر -->
+        <section class="support-empty-section" aria-label="سجل التذاكر">
+          <div class="support-empty-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <h3 class="support-empty-title">كيف نقدر نساعدك؟</h3>
+          <p class="support-empty-desc">ابدأ تذكرة جديدة وسيراجع الفريق رسالتك. يمكنك متابعة الرد من هذه الصفحة.</p>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <section id="guidePage" class="app-page subpage guide-page" data-page="guide" hidden>
+    <div class="subpage-shell guide-shell">
+      <header class="subpage-header guide-header">
+        <button class="subpage-back" type="button" data-go-account aria-label="الرجوع إلى حسابي">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>دليل الاستخدام</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="header-wallet-balance" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة والرصيد">
+            <span class="header-wallet-icon" data-icon="wallet"></span>
+            <span class="header-wallet-value">$<b data-slot="header-wallet-balance">0.00</b></span>
+          </button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content guide-content">
+        <div class="guide-cards-group" aria-label="أقسام دليل الاستخدام">
+          <!-- الشراء -->
+          <article class="guide-card">
+            <h2 class="guide-card-title">الشراء</h2>
+            <p class="guide-card-text">تصفح السوق، افتح تفاصيل المنتج ثم اطلب شراءه. تتابع الإدارة الطلب وتعين وسيطًا؛ تابع الحالة من طلباتي.</p>
+          </article>
+
+          <!-- البيع -->
+          <article class="guide-card">
+            <h2 class="guide-card-title">البيع</h2>
+            <p class="guide-card-text">اختر بيع، ثم أضف منتجك وتفاصيله وصوره. تظهر إثباتات الملكية للإدارة فقط. راجع حالة منتجك من منتجاتي.</p>
+          </article>
+
+          <!-- المحفظة -->
+          <article class="guide-card">
+            <h2 class="guide-card-title">المحفظة</h2>
+            <p class="guide-card-text">اشحن بالنجوم أو بكود شحن أو بأحد التحويلات المفعلة. التحويلات اليدوية تحتاج مراجعة الإدارة قبل إضافة الرصيد.</p>
+          </article>
+
+          <!-- الإعلانات -->
+          <article class="guide-card">
+            <h2 class="guide-card-title">الإعلانات</h2>
+            <p class="guide-card-text">من أعلن لدينا، املأ قالب النشر وراجع المعاينة ثم أرسل. القناة تستقبل أربعة إعلانات بحد أقصى خلال الساعة الأخيرة بعد الموافقة.</p>
+          </article>
+
+          <!-- الدعم -->
+          <article class="guide-card">
+            <h2 class="guide-card-title">الدعم</h2>
+            <p class="guide-card-text">أرسل مشكلة أو شكوى من الدعم، وتابع رد الإدارة من نفس الصفحة. لمشكلات مشتريات النجوم يمكنك استخدام /paysupport في البوت.</p>
+          </article>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <section id="referralPage" class="app-page subpage referral-page" data-page="referral" hidden>
+    <div class="subpage-shell referral-shell">
+      <header class="subpage-header referral-header">
+        <button class="subpage-back" type="button" data-go-account aria-label="الرجوع إلى حسابي">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>الإحالة</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="header-wallet-balance" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة والرصيد">
+            <span class="header-wallet-icon" data-icon="wallet"></span>
+            <span class="header-wallet-value">$<b data-slot="header-wallet-balance">0.00</b></span>
+          </button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content referral-content">
+        <!-- ترويسة الصفحة -->
+        <div class="referral-intro">
+          <h2 class="referral-main-title">شارك الفرصة. واربح معنا.</h2>
+          <p class="referral-main-sub">كل دعوة تبدأ بك، وكل صفقة مكتملة تصنع فرقًا.</p>
+        </div>
+
+        <!-- بطاقة العرض الترويجية Hero -->
+        <section class="referral-hero-card" aria-label="تفاصيل العمولة">
+          <h3 class="referral-hero-title">دعوة بسيطة.</h3>
+          <div class="referral-hero-highlight">عمولة 3% لكل صفقة.</div>
+          <p class="referral-hero-desc">احصل على عمولتك عندما تكتمل صفقة لمستخدم انضم من رابطك.</p>
+        </section>
+
+        <!-- شبكة الإحصائيات 2x2 -->
+        <div class="referral-stats-grid" aria-label="إحصائيات الإحالة">
+          <!-- دعواتك -->
+          <div class="referral-stat-card">
+            <div class="referral-stat-head">
+              <span class="referral-stat-label">دعواتك</span>
+              <div class="referral-stat-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="referral-stat-value" data-slot="referral-invites-count">0</div>
+            <div class="referral-stat-footer">
+              <span class="referral-stat-dot"></span>
+              <span>عدد المستخدمين المدعوين</span>
+            </div>
+          </div>
+
+          <!-- إجمالي الأرباح -->
+          <div class="referral-stat-card">
+            <div class="referral-stat-head">
+              <span class="referral-stat-label">إجمالي الأرباح</span>
+              <div class="referral-stat-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                  <polyline points="16 7 22 7 22 13"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="referral-stat-value" data-slot="referral-total-earnings">$0.00</div>
+            <div class="referral-stat-footer">
+              <span class="referral-stat-dot"></span>
+              <span>العمولات المسجلة</span>
+            </div>
+          </div>
+
+          <!-- المتاح -->
+          <div class="referral-stat-card">
+            <div class="referral-stat-head">
+              <span class="referral-stat-label">المتاح</span>
+              <div class="referral-stat-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="5" width="20" height="14" rx="3"></rect>
+                  <path d="M2 10h20"></path>
+                  <circle cx="16" cy="14" r="1.5"></circle>
+                </svg>
+              </div>
+            </div>
+            <div class="referral-stat-value" data-slot="referral-available-balance">$0.00</div>
+            <div class="referral-stat-footer">
+              <span class="referral-stat-dot"></span>
+              <span>رصيد أرباح الإحالة</span>
+            </div>
+          </div>
+
+          <!-- المسحوب -->
+          <div class="referral-stat-card">
+            <div class="referral-stat-head">
+              <span class="referral-stat-label">المسحوب</span>
+              <div class="referral-stat-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="referral-stat-value" data-slot="referral-withdrawn-amount">$0.00</div>
+            <div class="referral-stat-footer">
+              <span class="referral-stat-dot"></span>
+              <span>السحوبات المسجلة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة رابط الدعوة -->
+        <section class="referral-link-card" aria-label="رابط الدعوة الخاص بك">
+          <div class="referral-link-card-head">
+            <svg class="referral-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+            <h3 class="referral-link-card-title">رابط دعوتك الخاص</h3>
+          </div>
+
+          <div class="referral-link-box">
+            <span id="referralLinkText" class="referral-link-url" dir="ltr">https://t.me/SoqyBot?start=ref_REF2CIGOVW</span>
+          </div>
+
+          <div class="referral-actions-bar">
+            <div class="referral-code-wrap">
+              <span class="referral-code-label">كودك:</span>
+              <strong id="referralCodeValue" class="referral-code-val">REF2CIGOVW</strong>
+            </div>
+
+            <div class="referral-btn-group">
+              <button id="copyReferralLinkBtn" class="btn-copy-referral ui-only-action" type="button" data-action="copy-referral-link">
+                <span class="btn-copy-icon" data-icon="copy"></span>
+                <span>نسخ الرابط</span>
+              </button>
+              <button class="btn-share-referral ui-only-action" type="button" data-action="share-referral" aria-label="مشاركة">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                <span>مشاركة</span>
+              </button>
+            </div>
+          </div>
+
+          <button class="btn-withdraw-referral ui-only-action" type="button" data-action="open-support" aria-label="تواصل لطلب سحب الأرباح">
+            <span>تواصل لطلب سحب الأرباح</span>
+            <span class="withdraw-arrow" aria-hidden="true">←</span>
+          </button>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <section id="experiencesPage" class="app-page subpage experiences-page" data-page="experiences" hidden>
+    <div class="subpage-shell experiences-shell">
+      <header class="subpage-header experiences-header">
+        <button class="subpage-back" type="button" data-go-account aria-label="الرجوع إلى حسابي">
+          <span data-icon="back"></span>
+        </button>
+        <div class="subpage-heading">
+          <h1>تجارب العملاء</h1>
+          <span>سوقي</span>
+        </div>
+        <div class="subpage-actions" aria-label="أدوات الصفحة">
+          <button class="header-wallet-balance" type="button" data-go-wallet data-action="open-wallet" aria-label="المحفظة والرصيد">
+            <span class="header-wallet-icon" data-icon="wallet"></span>
+            <span class="header-wallet-value">$<b data-slot="header-wallet-balance">0.00</b></span>
+          </button>
+          <button class="icon-btn ui-only-action" type="button" aria-label="القائمة" data-more-menu-trigger><span class="action-icon" data-icon="menu"></span></button>
+        </div>
+      </header>
+
+      <main class="subpage-content experiences-content">
+        <!-- بطاقة ملخص التقييمات وزر شارك تجربتك -->
+        <section class="experiences-hero-card" aria-label="ملخص التقييمات">
+          <div class="experiences-hero-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h2 class="experiences-hero-title">تجارب العملاء</h2>
+          <p class="experiences-hero-sub"><span data-slot="reviews-count">0</span> تقييم معتمد · لا يوجد متوسط بعد</p>
+          <button class="btn-share-experience ui-only-action" type="button" data-action="open-experiences-sheet">شارك تجربتك</button>
+        </section>
+
+        <!-- الحالة الفارغة: لا توجد تقييمات منشورة بعد -->
+        <div class="experiences-empty-section" data-slot="reviews-empty-state">
+          <div class="experiences-empty-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <h3 class="experiences-empty-title">لا توجد تقييمات منشورة بعد</h3>
+          <p class="experiences-empty-desc">تظهر التجارب بعد مراجعة الإدارة.</p>
+        </div>
       </main>
     </div>
   </section>
@@ -1078,9 +1540,94 @@
   </section>
 </div>
 
-<script src="./js/app.js?v=20261004-1910"></script>
-<script src="./js/router.js?v=20261004-1910"></script>
-<script src="./js/pages/subpages.js?v=20261004-1910"></script>
+  <div id="channelAdBackdrop" class="channel-ad-backdrop" aria-hidden="true"></div>
+  <aside id="channelAdSheet" class="channel-ad-sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="channelAdSheetTitle">
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="channel-ad-head">
+      <h3 id="channelAdSheetTitle" class="channel-ad-title">قالب إعلان القناة</h3>
+      <button id="closeChannelAdBtn" class="channel-ad-close" type="button" data-action="close-channel-ad-sheet" aria-label="إغلاق">✕</button>
+    </div>
+    <p class="channel-ad-guide">عدّل القالب، ثم راجع الإعلان قبل إرساله. النشر مجاني بعد موافقة الإدارة.</p>
+
+    <button id="copyAdTemplateBtn" class="channel-ad-copy-btn" type="button" data-action="copy-ad-template">
+      <span data-icon="copy"></span>
+      <span class="copy-btn-text">نسخ القالب</span>
+    </button>
+
+    <div class="channel-ad-field-group">
+      <label for="channelAdContent" class="channel-ad-label">تفاصيل الإعلان</label>
+      <textarea id="channelAdContent" class="channel-ad-textarea" spellcheck="false">العنوان: اكتب هنا
+تفاصيل الإعلان: اكتب هنا
+التصنيف: اكتب هنا
+التواصل: اكتب هنا
+رابط الزر: -</textarea>
+    </div>
+
+    <div class="channel-ad-actions">
+      <button id="previewChannelAdBtn" class="btn-preview-channel-ad" type="button" data-action="preview-channel-ad">معاينة الإعلان</button>
+      <button id="cancelChannelAdBtn" class="btn-cancel-channel-ad" type="button" data-action="close-channel-ad-sheet">إلغاء</button>
+    </div>
+  </aside>
+
+  <div id="supportTicketBackdrop" class="support-ticket-backdrop" aria-hidden="true"></div>
+  <aside id="supportTicketSheet" class="support-ticket-sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="supportTicketSheetTitle">
+    <div class="support-sheet-grab" aria-hidden="true"></div>
+    <div class="support-sheet-head">
+      <h3 id="supportTicketSheetTitle" class="support-sheet-title">تذكرة دعم جديدة</h3>
+      <button id="closeSupportTicketBtn" class="support-sheet-close" type="button" data-action="close-support-ticket-sheet" aria-label="إغلاق">✕</button>
+    </div>
+
+    <div class="support-field-group">
+      <label for="supportTicketMessage" class="support-field-label">الرسالة</label>
+      <textarea id="supportTicketMessage" class="support-textarea" placeholder="اكتب تفاصيل استفسارك أو مشكلتك هنا..." spellcheck="false"></textarea>
+    </div>
+
+    <div class="support-sheet-actions">
+      <button id="submitSupportTicketBtn" class="btn-submit-support-ticket" type="button" data-action="submit-support-ticket">إرسال الرسالة</button>
+      <button id="cancelSupportTicketBtn" class="btn-cancel-support-ticket" type="button" data-action="close-support-ticket-sheet">إلغاء</button>
+    </div>
+  </aside>
+
+  <div id="experiencesSheetBackdrop" class="experiences-sheet-backdrop" aria-hidden="true"></div>
+  <aside id="experiencesSheet" class="experiences-sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="experiencesSheetTitle">
+    <div class="experiences-sheet-grab" aria-hidden="true"></div>
+    <div class="experiences-sheet-head">
+      <button id="closeExperiencesSheetBtn" class="experiences-sheet-close" type="button" data-action="close-experiences-sheet" aria-label="إغلاق">✕</button>
+      <h3 id="experiencesSheetTitle" class="experiences-sheet-title">شارك تجربتك</h3>
+    </div>
+
+    <div class="experiences-field-group">
+      <label for="reviewRatingSelect" class="experiences-field-label">التقييم</label>
+      <div class="experiences-select-wrap">
+        <select id="reviewRatingSelect" class="experiences-select">
+          <option value="5">5 / 5</option>
+          <option value="4">4 / 5</option>
+          <option value="3">3 / 5</option>
+          <option value="2">2 / 5</option>
+          <option value="1">1 / 5</option>
+        </select>
+        <span class="experiences-select-arrow" aria-hidden="true">⌄</span>
+      </div>
+    </div>
+
+    <div class="experiences-field-group">
+      <label for="reviewExperienceText" class="experiences-field-label">تجربتك</label>
+      <textarea id="reviewExperienceText" class="experiences-textarea" placeholder="" spellcheck="false"></textarea>
+    </div>
+
+    <div class="experiences-sheet-actions">
+      <button id="cancelExperienceBtn" class="btn-cancel-experience" type="button" data-action="close-experiences-sheet">إلغاء</button>
+      <button id="submitExperienceBtn" class="btn-submit-experience" type="button" data-action="submit-experience">إرسال للمراجعة</button>
+    </div>
+  </aside>
+
+  <div id="referralToast" class="referral-toast" aria-live="polite" hidden>
+    <span>تم النسخ</span>
+  </div>
+
+<script src="./js/app.js?v=20261005-1345"></script>
+<script src="./js/router.js?v=20261005-1435"></script>
+<script src="./js/pages/subpages.js?v=20261005-1435"></script>
 <script src="./js/pages/orders.js?v=20261004-1910"></script>
 <script src="./js/pages/wallet.js?v=20261004-1910"></script>
 </body>

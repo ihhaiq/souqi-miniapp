@@ -1,0 +1,71 @@
+/* ==========================================================================
+   User Guide Page Styles (دليل الاستخدام) — Souqi Mini App
+   Adheres strictly to AGENTS.md:
+   - Mobile-first & RTL
+   - Dark surfaces: #141414 base, #202020 cards, #303030 borders
+   - Typography: #fff for titles, #a6a6a6 for body copy
+   - Maximum width 480px, responsive padding
+   ========================================================================== */
+
+.guide-page {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  background: var(--bg, #141414);
+  padding-bottom: calc(88px + var(--nav-safe-bottom, 0px));
+  direction: rtl;
+}
+
+.guide-shell {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.guide-content {
+  padding: 14px 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Guide Cards Group */
+.guide-cards-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.guide-card {
+  background: #202020;
+  border: 1px solid #303030;
+  border-radius: 18px;
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform .15s ease, border-color .15s ease;
+  box-sizing: border-box;
+}
+
+.guide-card:active {
+  transform: scale(0.995);
+}
+
+.guide-card-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.guide-card-text {
+  font-size: 13.5px;
+  color: #a6a6a6;
+  line-height: 1.7;
+  margin: 0;
+  text-align: right;
+  word-break: break-word;
+}

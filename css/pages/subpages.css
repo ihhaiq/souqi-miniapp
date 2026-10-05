@@ -908,10 +908,16 @@ body.subpage-open .market{display:none}
 }
 
 
-/* Shared Liquid Glass headers: Add Product, Escrow, Account */
+/* Shared Liquid Glass headers: Add Product, Escrow, Account, Advertise, VIP, Support, Guide, Referral, Experiences */
 #addProductPage .subpage-header,
 #escrowPage .subpage-header,
-#accountPage .subpage-header{
+#accountPage .subpage-header,
+#advertisePage .subpage-header,
+#vipPage .subpage-header,
+#supportPage .subpage-header,
+#guidePage .subpage-header,
+#referralPage .subpage-header,
+#experiencesPage .subpage-header{
   position:sticky;
   top:0;
   z-index:30;
@@ -934,7 +940,13 @@ body.subpage-open .market{display:none}
 
 #addProductPage .subpage-header::before,
 #escrowPage .subpage-header::before,
-#accountPage .subpage-header::before{
+#accountPage .subpage-header::before,
+#advertisePage .subpage-header::before,
+#vipPage .subpage-header::before,
+#supportPage .subpage-header::before,
+#guidePage .subpage-header::before,
+#referralPage .subpage-header::before,
+#experiencesPage .subpage-header::before{
   content:"";
   position:absolute;
   inset:0;
@@ -953,7 +965,13 @@ body.subpage-open .market{display:none}
 
 #addProductPage .subpage-header::after,
 #escrowPage .subpage-header::after,
-#accountPage .subpage-header::after{
+#accountPage .subpage-header::after,
+#advertisePage .subpage-header::after,
+#vipPage .subpage-header::after,
+#supportPage .subpage-header::after,
+#guidePage .subpage-header::after,
+#referralPage .subpage-header::after,
+#experiencesPage .subpage-header::after{
   content:"";
   position:absolute;
   left:8%;
@@ -973,7 +991,19 @@ body.subpage-open .market{display:none}
 #escrowPage .subpage-back,
 #escrowPage .subpage-actions .icon-btn,
 #accountPage .subpage-back,
-#accountPage .subpage-actions .icon-btn{
+#accountPage .subpage-actions .icon-btn,
+#advertisePage .subpage-back,
+#advertisePage .subpage-actions .icon-btn,
+#vipPage .subpage-back,
+#vipPage .subpage-actions .icon-btn,
+#supportPage .subpage-back,
+#supportPage .subpage-actions .icon-btn,
+#guidePage .subpage-back,
+#guidePage .subpage-actions .icon-btn,
+#referralPage .subpage-back,
+#referralPage .subpage-actions .icon-btn,
+#experiencesPage .subpage-back,
+#experiencesPage .subpage-actions .icon-btn{
   background:transparent!important;
   border:0!important;
   box-shadow:none!important;
@@ -987,21 +1017,46 @@ body.subpage-open .market{display:none}
 #escrowPage .subpage-back:active,
 #escrowPage .subpage-actions .icon-btn:active,
 #accountPage .subpage-back:active,
-#accountPage .subpage-actions .icon-btn:active{
+#accountPage .subpage-actions .icon-btn:active,
+#advertisePage .subpage-back:active,
+#advertisePage .subpage-actions .icon-btn:active,
+#vipPage .subpage-back:active,
+#vipPage .subpage-actions .icon-btn:active,
+#supportPage .subpage-back:active,
+#supportPage .subpage-actions .icon-btn:active,
+#guidePage .subpage-back:active,
+#guidePage .subpage-actions .icon-btn:active,
+#referralPage .subpage-back:active,
+#referralPage .subpage-actions .icon-btn:active,
+#experiencesPage .subpage-back:active,
+#experiencesPage .subpage-actions .icon-btn:active{
   background:transparent!important;
   transform:scale(.96);
 }
 
 #addProductPage .subpage-heading h1,
 #escrowPage .subpage-heading h1,
-#accountPage .subpage-heading h1{
+#accountPage .subpage-heading h1,
+#advertisePage .subpage-heading h1,
+#vipPage .subpage-heading h1,
+#supportPage .subpage-heading h1,
+#guidePage .subpage-heading h1,
+#referralPage .subpage-heading h1,
+#experiencesPage .subpage-heading h1{
   color:#fff!important;
   text-shadow:0 1px 2px rgba(0,0,0,.42)!important;
 }
 
 #addProductPage .subpage-heading span,
 #escrowPage .subpage-heading span,
-#accountPage .subpage-heading span{
+#accountPage .subpage-heading span,
+#advertisePage .subpage-heading span,
+#vipPage .subpage-heading span,
+#supportPage .subpage-heading span,
+#guidePage .subpage-heading span,
+#referralPage .subpage-heading span,
+#experiencesPage .subpage-heading span{
+
   display:block!important;
   width:auto!important;
   min-height:0!important;

@@ -1,0 +1,381 @@
+/* ==========================================================================
+   Advertise Page Styles (أعلن لدينا) — Souqi Mini App
+   Adheres strictly to AGENTS.md:
+   - Mobile-first & RTL
+   - Neutral dark surfaces: #141414 base, #202020 cards, #303030 borders
+   - Blue accent #2ea8f5 for primary CTA
+   - Sheet Z-Index 150 (above bottom nav 100)
+   ========================================================================== */
+
+.advertise-page {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  background: var(--bg, #141414);
+  padding-bottom: calc(88px + var(--nav-safe-bottom, 0px));
+  direction: rtl;
+}
+
+.advertise-shell {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.advertise-content {
+  padding: 10px 12px 24px;
+}
+
+/* Intro text */
+.advertise-intro {
+  margin: 4px 4px 14px;
+}
+
+.advertise-intro-text {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 3 Main Action Cards */
+.advertise-cards-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.advertise-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #202020;
+  border: 1px solid #303030;
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background .15s ease, transform .12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.advertise-card:active {
+  background: #252525;
+  transform: scale(0.99);
+}
+
+.advertise-card-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(46, 168, 245, 0.12);
+  color: #2ea8f5;
+  border: 1px solid rgba(46, 168, 245, 0.22);
+}
+
+.advertise-card-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+}
+
+.advertise-card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.advertise-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.advertise-card-sub {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.advertise-card-arrow {
+  color: #666;
+  font-size: 17px;
+  font-weight: bold;
+  margin-inline-start: 4px;
+  flex-shrink: 0;
+}
+
+/* History / My Requests Section */
+.advertise-history-section {
+  margin-top: 10px;
+}
+
+.advertise-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 4px 12px;
+}
+
+.advertise-empty-card {
+  background: #202020;
+  border: 1px solid #303030;
+  border-radius: 14px;
+  padding: 38px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.advertise-empty-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2ea8f5;
+  margin-bottom: 4px;
+}
+
+.advertise-empty-icon-wrap svg {
+  width: 44px;
+  height: 44px;
+}
+
+.advertise-empty-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.advertise-empty-desc {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Bottom Sheet: Channel Ad Template (قالب إعلان القناة)
+   Z-Index hierarchy per AGENTS.md:
+   Bottom Nav = 100
+   Sheet Backdrop = 140
+   Sheet / Modal = 150
+   ========================================================================== */
+
+#channelAdBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+#channelAdBackdrop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#channelAdSheet {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 150;
+  width: min(100%, 480px);
+  transform: translate(-50%, 105%);
+  background: #1c1c1c;
+  border: 1px solid #303030;
+  border-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  padding: 12px 16px calc(24px + env(safe-area-inset-bottom, 0px));
+  box-sizing: border-box;
+  transition: transform .26s cubic-bezier(0.16, 1, 0.3, 1);
+  direction: rtl;
+}
+
+#channelAdSheet.show {
+  transform: translate(-50%, 0);
+}
+
+.sheet-grab {
+  width: 38px;
+  height: 4px;
+  border-radius: 99px;
+  background: #444;
+  margin: 0 auto 12px;
+}
+
+.channel-ad-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.channel-ad-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.channel-ad-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #252525;
+  border: 1px solid #333;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color .15s ease, background .15s ease;
+}
+
+.channel-ad-close:active {
+  color: #fff;
+  background: #303030;
+}
+
+.channel-ad-guide {
+  font-size: 12px;
+  color: #888;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.channel-ad-copy-btn {
+  width: 100%;
+  height: 42px;
+  border-radius: 10px;
+  background: #242424;
+  border: 1px solid #363636;
+  color: #eee;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+.channel-ad-copy-btn:active {
+  background: #2c2c2c;
+  border-color: #444;
+}
+
+.channel-ad-copy-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.channel-ad-copy-btn.copied {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.35);
+  color: #22c55e;
+}
+
+.channel-ad-field-group {
+  margin-bottom: 16px;
+}
+
+.channel-ad-label {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.channel-ad-textarea {
+  width: 100%;
+  height: 150px;
+  border-radius: 12px;
+  background: #141414;
+  border: 1px solid #303030;
+  color: #eee;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 12px 14px;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color .15s ease;
+}
+
+.channel-ad-textarea:focus {
+  border-color: #2ea8f5;
+}
+
+.channel-ad-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-preview-channel-ad {
+  flex: 1;
+  height: 44px;
+  border-radius: 10px;
+  background: #2ea8f5;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity .15s ease, transform .12s ease;
+}
+
+.btn-preview-channel-ad:active {
+  opacity: 0.9;
+  transform: scale(0.99);
+}
+
+.btn-cancel-channel-ad {
+  width: 80px;
+  height: 44px;
+  border-radius: 10px;
+  background: #242424;
+  border: 1px solid #363636;
+  color: #ccc;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+
+.btn-cancel-channel-ad:active {
+  background: #2c2c2c;
+  color: #fff;
+}

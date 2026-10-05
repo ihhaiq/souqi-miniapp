@@ -7,6 +7,12 @@ const accountPage = document.getElementById('accountPage');
 const favoritesPage = document.getElementById('favoritesPage');
 const storagePage = document.getElementById('storagePage');
 const walletPage = document.getElementById('walletPage');
+const advertisePage = document.getElementById('advertisePage');
+const vipPage = document.getElementById('vipPage');
+const supportPage = document.getElementById('supportPage');
+const guidePage = document.getElementById('guidePage');
+const referralPage = document.getElementById('referralPage');
+const experiencesPage = document.getElementById('experiencesPage');
 const accountAvatarBtn = document.getElementById('accountAvatarBtn');
 const bottomNav = document.getElementById('bottomNav');
 let currentBottomRoute = null;
@@ -20,7 +26,7 @@ function hapticSelection(){
 
 function normalizeRoute(value){
   const route = String(value || '').replace(/^#/, '');
-  if (route === 'orders' || route === 'add-product' || route === 'escrow' || route === 'account' || route === 'storage' || route === 'favorites' || route === 'wallet' || route === 'market') return route;
+  if (route === 'orders' || route === 'add-product' || route === 'escrow' || route === 'account' || route === 'storage' || route === 'favorites' || route === 'wallet' || route === 'advertise' || route === 'vip' || route === 'support' || route === 'guide' || route === 'referral' || route === 'experiences' || route === 'market') return route;
   return 'market';
 }
 
@@ -36,11 +42,23 @@ function showRoute(route, updateHash){
   if (storagePage) storagePage.hidden = route !== 'storage';
   if (favoritesPage) favoritesPage.hidden = route !== 'favorites';
   if (walletPage) walletPage.hidden = route !== 'wallet';
+  if (advertisePage) advertisePage.hidden = route !== 'advertise';
+  if (vipPage) vipPage.hidden = route !== 'vip';
+  if (supportPage) supportPage.hidden = route !== 'support';
+  if (guidePage) guidePage.hidden = route !== 'guide';
+  if (referralPage) referralPage.hidden = route !== 'referral';
+  if (experiencesPage) experiencesPage.hidden = route !== 'experiences';
   document.body.classList.toggle('subpage-open', !isMarket);
   document.body.classList.toggle('wallet-route', route === 'wallet');
   document.body.classList.toggle('orders-route', route === 'orders');
   document.body.classList.toggle('storage-route', route === 'storage');
   document.body.classList.toggle('favorites-route', route === 'favorites');
+  document.body.classList.toggle('advertise-route', route === 'advertise');
+  document.body.classList.toggle('vip-route', route === 'vip');
+  document.body.classList.toggle('support-route', route === 'support');
+  document.body.classList.toggle('guide-route', route === 'guide');
+  document.body.classList.toggle('referral-route', route === 'referral');
+  document.body.classList.toggle('experiences-route', route === 'experiences');
 
   if (bottomNav) {
     const previousRoute = currentBottomRoute;
@@ -140,6 +158,18 @@ document.addEventListener('click', function(e){
       showRoute('storage', true);
     } else if (row.dataset.action === 'open-favorites') {
       showRoute('favorites', true);
+    } else if (row.dataset.action === 'open-advertise' || row.dataset.action === 'advertise-with-us') {
+      showRoute('advertise', true);
+    } else if (row.dataset.action === 'open-vip' || row.dataset.action === 'vip-membership') {
+      showRoute('vip', true);
+    } else if (row.dataset.action === 'open-support' || row.dataset.action === 'customer-support' || row.dataset.action === 'support') {
+      showRoute('support', true);
+    } else if (row.dataset.action === 'open-guide' || row.dataset.action === 'usage-guide' || row.dataset.action === 'guide') {
+      showRoute('guide', true);
+    } else if (row.dataset.action === 'open-referral' || row.dataset.action === 'referrals' || row.dataset.action === 'referral') {
+      showRoute('referral', true);
+    } else if (row.dataset.action === 'open-experiences' || row.dataset.action === 'customer-experiences' || row.dataset.action === 'experiences') {
+      showRoute('experiences', true);
     }
     setGlobalMoreMenuOpen(false);
   }
@@ -157,6 +187,30 @@ document.querySelectorAll('[data-action="open-favorites"]').forEach(function(btn
 
 document.querySelectorAll('[data-action="manage-listings"]').forEach(function(btn){
   btn.addEventListener('click', function(){ showRoute('storage', true); });
+});
+
+document.querySelectorAll('[data-action="open-advertise"]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('advertise', true); });
+});
+
+document.querySelectorAll('[data-action="open-vip"]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('vip', true); });
+});
+
+document.querySelectorAll('[data-action="open-support"]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('support', true); });
+});
+
+document.querySelectorAll('[data-action="open-guide"]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('guide', true); });
+});
+
+document.querySelectorAll('[data-action="open-referral"]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('referral', true); });
+});
+
+document.querySelectorAll('[data-action="open-experiences"]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showRoute('experiences', true); });
 });
 
 document.querySelectorAll('[data-go-account]').forEach(function(btn){
